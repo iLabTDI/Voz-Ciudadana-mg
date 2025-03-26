@@ -11,12 +11,14 @@ import { Navbar } from "../components/Navbar";
 import { Contact } from "./Contact";
 import { Propuestas } from "./Propuestas";
 import { Faq } from "./Faq";
+import { Magistrado3D } from "./Magistradoo3D";
 
 export default function ElectoralLandingPage() {
     const [activeSection, setActiveSection] = useState("inicio");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [animatedText, setAnimatedText] = useState("");
     const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+    const [lastBotMessage, setLastBotMessage] = useState("");
     const [isVisible, setIsVisible] = useState({
         hero: false,
         info: false,
@@ -102,8 +104,8 @@ export default function ElectoralLandingPage() {
                         <div className="md:w-1/2 w-full flex justify-center">
                             <div className="relative w-full max-w-md aspect-[3/4] bg-gradient-to-b from-[#006847]/5 to-[#E8DDB5]/5 rounded-2xl border border-[#006847]/10 shadow-xl flex items-center justify-center overflow-hidden">
                                 {/* AQUI IRA EL VIDEO DEL PERSONAJE */}
-                                <img src={avatar} alt="Magistrado Sergio Arturo Guerrero Olvera" className="w-[650px] h-[500px] object-cover" />
-
+                                {/* <img src={avatar} alt="Magistrado Sergio Arturo Guerrero Olvera" className="w-[650px] h-[500px] object-cover" /> */}
+                                <Magistrado3D lastBotMessage={lastBotMessage} />
                                 <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#006847] to-transparent p-4 text-white">
                                     <h3 className="font-bold text-lg">Mgdo. Sergio Arturo Guerrero Olvera</h3>
                                     <p className="text-sm text-[#E8DDB5]">Sala Regional Guadalajara</p>
@@ -112,12 +114,12 @@ export default function ElectoralLandingPage() {
                         </div>
                         {/* Componente Chat */}
                         <div className="md:w-1/2 w-full mt-8 md:mt-0 flex flex-col">
-                            <Chatbot />
+                            <Chatbot onBotResponse={(msg) => setLastBotMessage(msg)} />
                         </div>
                     </div>
                     {showScrollIndicator && (
-                        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce-slow">
-                            <p className="text-[#006847] mb-2 text-sm font-medium">Descubre más</p>
+                        <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce-slow">
+                            <p className="text-[#006847]  mb-2 text-sm font-medium">Descubre más</p>
                             <div className="w-8 h-8 rounded-full border-2 border-[#006847] flex items-center justify-center">
                                 <ChevronDown className="h-5 w-5 text-[#006847]" />
                             </div>

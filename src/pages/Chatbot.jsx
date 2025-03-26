@@ -20,37 +20,55 @@ export const Chatbot = () => {
   const [isTyping, setIsTyping] = useState(false);
   const chatContainerRef = useRef(null);
 
+  // Función para llamar a la API de Stack AI
+  async function query(data) {
+    const response = await fetch(
+      "https://api.stack-ai.com/inference/v0/run/334ed14d-3ee5-4d16-84c5-9d8a284472ec/678e9d14af219aeb53d9b8e8",
+      {
+        headers: {
+          Authorization: "Bearer 99119d2b-0c5c-4f25-9c23-655cbabfeec6",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await response.json();
+    return result;
+  }
+
+  // Asegura el scroll hasta el último mensaje
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [chatHistory]);
 
-  const getBotResponse = (question) => {
-    const responses = {
-      elecciones:
-        "Las elecciones son procesos democráticos donde los ciudadanos eligen a sus representantes.",
-      tribunal:
-        "El Tribunal Electoral resuelve impugnaciones y vela por la legalidad de los procesos electorales.",
-      magistrado:
-        "Como Magistrado Electoral, mi función es interpretar y hacer cumplir la ley en materia electoral.",
-      hola:
-        "¡Hola! ¿En qué puedo ayudarte sobre temas electorales?",
-    };
+  // Definimos un prompt de sistema que incluye las instrucciones para actuar como Sergio
+  const systemPrompt = `
+  Identidad y Rol:
+  Eres Sergio Arturo Guerrero Olvera, Magistrado del Tribunal Electoral del Poder Judicial de la Federación. Tu función es responder preguntas exclusivamente sobre temas electorales y asuntos del Poder Judicial de la Federación en México (en especial Jalisco y México en general).
+  
+  Ámbito de Respuestas:
+  - Procesos electorales en México.
+  - Derechos políticos y electorales de los ciudadanos mexicanos.
+  - Artículos, normas y regulaciones de la justicia electoral en México.
+  - Información y asuntos relevantes del Tribunal Electoral y del Magistrado actual.
+  
+  Si te solicitan información ajena a este ámbito (por ejemplo, de otros países o legislaciones extranjeras), responde con el mensaje: "Lo siento, no tengo alcance para responder esa pregunta."
+  
+  Estilo y Enfoque:
+  - Respuestas de máximo 200 caracteres.
+  - Utiliza un lenguaje claro, preciso y profesional.
+  - Enfatiza tu experiencia y compromiso con la justicia electoral mexicana.
+  - No te identifiques como IA: si preguntan “¿Quién eres?”, responde como Sergio Arturo Guerrero Olvera, Magistrado del Tribunal Electoral del Poder Judicial de la Federación.
+  
+  Respuesta Predeterminada Fuera de Alcance:
+  "Lo siento, no tengo alcance para responder esa pregunta."
+  `.trim();
 
-    let foundAnswer =
-      "Gracias por tu pregunta. Si bien no tengo información específica sobre ese tema, te invito a explorar más secciones de esta página.";
-    const questionLower = question.toLowerCase();
-    for (const [key, value] of Object.entries(responses)) {
-      if (questionLower.includes(key)) {
-        foundAnswer = value;
-        break;
-      }
-    }
-    return foundAnswer;
-  };
-
-  const handleSubmit = (e) => {
+  // Envío de la pregunta junto con las instrucciones
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!question.trim()) return;
 
@@ -59,23 +77,34 @@ export const Chatbot = () => {
       message: question,
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     };
-
     setChatHistory((prev) => [...prev, userMessage]);
     setQuestion("");
     setIsTyping(true);
 
-    setTimeout(() => {
-      const botResponse = getBotResponse(question);
-      setChatHistory((prev) => [
-        ...prev,
-        {
-          type: "bot",
-          message: botResponse,
-          timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-        },
-      ]);
-      setIsTyping(false);
-    }, 1500);
+    try {
+      // Concatenamos las instrucciones y la pregunta
+      const finalPrompt = systemPrompt + "\nPregunta: " + question;
+      const response = await query({ "in-0": finalPrompt });
+      console.log("Respuesta de Stack AI:", response);
+
+      // Ajustamos para obtener la respuesta del modelo (asumimos que viene en outputs["out-0"])
+      const botMessage = {
+        type: "bot",
+        message: (response.outputs && response.outputs["out-0"]) || "Lo siento, no pude procesar tu pregunta.",
+        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      };
+      setChatHistory((prev) => [...prev, botMessage]);
+    } catch (error) {
+      console.error("Error en la consulta:", error);
+      const botMessage = {
+        type: "bot",
+        message: "Lo siento, hubo un error al procesar tu consulta.",
+        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      };
+      setChatHistory((prev) => [...prev, botMessage]);
+      onBotResponse && onBotResponse(botText);
+    }
+    setIsTyping(false);
   };
 
   const sampleQuestions = [
@@ -112,13 +141,15 @@ export const Chatbot = () => {
         className="h-64 md:h-80 overflow-y-auto p-4 bg-[#F9F9F7] flex flex-col space-y-4 flex-grow"
       >
         {chatHistory.map((chat, index) => (
-          <div key={index} className={`flex ${chat.type === "user" ? "justify-end" : "justify-start"} animate-fadeIn`}>
+          <div
+            key={index}
+            className={`flex ${chat.type === "user" ? "justify-end" : "justify-start"} animate-fadeIn`}
+          >
             <div
-              className={`max-w-[80%] rounded-xl px-4 py-3 ${
-                chat.type === "user"
+              className={`max-w-[80%] rounded-xl px-4 py-3 ${chat.type === "user"
                   ? "bg-[#006847] text-white rounded-tr-none shadow-md"
                   : "bg-white border border-gray-200 shadow-sm rounded-tl-none"
-              }`}
+                }`}
             >
               <div className="flex items-center space-x-2 mb-1">
                 {chat.type === "bot" ? (
@@ -126,7 +157,9 @@ export const Chatbot = () => {
                     <div className="w-6 h-6 rounded-full bg-[#E8DDB5] flex items-center justify-center">
                       <MessageSquare className="h-3 w-3 text-[#006847]" />
                     </div>
-                    <span className="text-xs font-medium text-gray-700">Magistrado Sergio</span>
+                    <span className="text-xs font-medium text-gray-700">
+                      Magistrado Sergio
+                    </span>
                     <span className="text-xs text-gray-500">{chat.timestamp}</span>
                   </>
                 ) : (
@@ -139,7 +172,9 @@ export const Chatbot = () => {
                   </>
                 )}
               </div>
-              <p className={`text-sm ${chat.type === "user" ? "text-white" : "text-gray-800"}`}>{chat.message}</p>
+              <p className={`text-sm ${chat.type === "user" ? "text-white" : "text-gray-800"}`}>
+                {chat.message}
+              </p>
             </div>
           </div>
         ))}
@@ -175,7 +210,10 @@ export const Chatbot = () => {
           {sampleQuestions.map((q, index) => (
             <button
               key={index}
-              onClick={() => handleSampleQuestion(q)}
+              onClick={() => {
+                setQuestion(q);
+                document.getElementById("chat-input")?.focus();
+              }}
               className="text-left text-sm w-full px-3 py-2 rounded-lg bg-[#F9F9F7] border border-gray-200 hover:bg-[#006847]/5 hover:border-[#006847] hover:shadow-md transition-all duration-200 shadow-sm group"
             >
               <div className="flex items-center">
@@ -187,6 +225,7 @@ export const Chatbot = () => {
             </button>
           ))}
         </div>
+
         <form onSubmit={handleSubmit} className="flex gap-2">
           <input
             id="chat-input"
@@ -208,4 +247,4 @@ export const Chatbot = () => {
       </div>
     </div>
   );
-}
+};
