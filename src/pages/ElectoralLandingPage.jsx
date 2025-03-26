@@ -105,6 +105,12 @@ export default function ElectoralLandingPage() {
                             <div className="relative w-full max-w-md aspect-[3/4] bg-gradient-to-b from-[#006847]/5 to-[#E8DDB5]/5 rounded-2xl border border-[#006847]/10 shadow-xl flex items-center justify-center overflow-hidden">
                                 {/* AQUI IRA EL VIDEO DEL PERSONAJE */}
                                 {/* <img src={avatar} alt="Magistrado Sergio Arturo Guerrero Olvera" className="w-[650px] h-[500px] object-cover" /> */}
+
+                                <div className="text:lg z-500 ml-40">Ese wey esta prietoooo xd
+                                    debe de ir un activeIndicator antes del personaje, ya que este listo que se termine
+                                    quitar estas instucciones :D
+                                </div>
+
                                 <Magistrado3D lastBotMessage={lastBotMessage} />
                                 <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#006847] to-transparent p-4 text-white">
                                     <h3 className="font-bold text-lg">Mgdo. Sergio Arturo Guerrero Olvera</h3>
