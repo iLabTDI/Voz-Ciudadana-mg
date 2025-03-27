@@ -15,6 +15,7 @@ const initialMessage = {
 };
 
 export const Chatbot = ({
+  setIsWaitingGlobal = () => {},
   setIsTypingGlobal = () => {},
   setLastBotMessageGlobal = () => {},
 }) => {
@@ -64,6 +65,7 @@ export const Chatbot = ({
     setQuestion("");
 
     // Activar la animación de espera (waiting)
+    setIsWaitingGlobal(true);
     setIsWaiting(true);
     setIsTyping(false);
     setIsTypingGlobal(false);
@@ -83,6 +85,7 @@ export const Chatbot = ({
       setChatHistory((prev) => [...prev, botMessage]);
 
       // Cambiar a animación de typing después de recibir la respuesta
+      setIsWaitingGlobal(false);
       setIsWaiting(false); // Deja de mostrar la animación de "waiting"
       setIsTyping(true);    // Inicia la animación de "typing"
       setIsTypingGlobal(true);

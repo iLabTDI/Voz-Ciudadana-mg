@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 
-export const Magistrado3D = ({ isTyping, lastBotMessage }) => {
+export const Magistrado3D = ({ isWaiting, isTyping, lastBotMessage }) => {
   // Limpiar localStorage y sessionStorage al montar el componente.
   useEffect(() => {
     localStorage.clear();
@@ -44,8 +44,14 @@ export const Magistrado3D = ({ isTyping, lastBotMessage }) => {
 
   // Si el chatbot está "pensando", cambiamos al estado "waiting" (loop).
   useEffect(() => {
-    if (isTyping) {
+    if (isWaiting) {
       setVideoState("waiting");
+    }
+  }, [isWaiting]);
+
+  useEffect(() => {
+    if (isTyping) {
+      setVideoState("responding"); 
     }
   }, [isTyping]);
 

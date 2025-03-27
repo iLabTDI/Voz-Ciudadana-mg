@@ -22,6 +22,7 @@ export default function ElectoralLandingPage() {
     // Control para el “avatar”:
     // - isTypingGlobal: indica si el bot está procesando (para mostrar "waiting")
     // - lastBotMessageGlobal: último mensaje del bot (para mostrar "responding")
+    const [isWaitingGlobal, setIsWaitingGlobal] = useState(false);
     const [isTypingGlobal, setIsTypingGlobal] = useState(false);
     const [lastBotMessageGlobal, setLastBotMessageGlobal] = useState(null);
 
@@ -141,6 +142,7 @@ export default function ElectoralLandingPage() {
                                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#006847]/5 to-[#E8DDB5]/5 z-0" />
                                 <div className="relative z-10 h-[400px] lg:h-[600px] flex items-center justify-center">
                                     <Magistrado3D
+                                        isWaiting={isWaitingGlobal}
                                         isTyping={isTypingGlobal}
                                         lastBotMessage={lastBotMessageGlobal}
                                     />
@@ -150,6 +152,7 @@ export default function ElectoralLandingPage() {
                             {/* Chatbot */}
                             <div className="w-full lg:w-3/5 bg-white">
                                 <Chatbot
+                                    setIsWaitingGlobal={setIsWaitingGlobal}
                                     // Cuando el Chatbot empieza/termina de “pensar”
                                     setIsTypingGlobal={setIsTypingGlobal}
                                     // Cuando llega un nuevo mensaje del bot
