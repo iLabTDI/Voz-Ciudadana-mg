@@ -87,6 +87,7 @@ export const Magistrado3D = ({ isWaiting, isTyping, lastBotMessage }) => {
           ref={greetRef}
           src="/videos/greeting.mp4"
           autoPlay
+          loop
           className="w-full h-full object-cover"
         />
       )}
