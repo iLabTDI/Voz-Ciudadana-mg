@@ -1,24 +1,30 @@
 import { useState, useEffect } from "react";
-import {
-    ChevronDown,
-} from "lucide-react";
+import { ChevronDown, MessageSquare } from "lucide-react";
 import { Chatbot } from "./Chatbot";
-import poder_judicial from "../assets/tribunal_jalisco_logo.png";
-import magistrado from "../assets/magistrado-sergio.jpeg";
-import avatar from "../assets/magistrado-avatar.png";
+import { Magistrado3D } from "./Magistradoo3D";
+
 import { Footer } from "./Footer";
 import { Navbar } from "../components/Navbar";
 import { Contact } from "./Contact";
 import { Propuestas } from "./Propuestas";
 import { Faq } from "./Faq";
-import { Magistrado3D } from "./Magistradoo3D";
+
+import poder_judicial from "../assets/tribunal_jalisco_logo.png";
+import magistrado from "../assets/magistrado-sergio.jpeg";
+import avatar from "../assets/magistrado-avatar.png";
 
 export default function ElectoralLandingPage() {
     const [activeSection, setActiveSection] = useState("inicio");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [animatedText, setAnimatedText] = useState("");
     const [showScrollIndicator, setShowScrollIndicator] = useState(true);
-    const [lastBotMessage, setLastBotMessage] = useState("");
+
+    // Control para el “avatar”:
+    // - isTypingGlobal: indica si el bot está procesando (para mostrar "waiting")
+    // - lastBotMessageGlobal: último mensaje del bot (para mostrar "responding")
+    const [isTypingGlobal, setIsTypingGlobal] = useState(false);
+    const [lastBotMessageGlobal, setLastBotMessageGlobal] = useState(null);
+
     const [isVisible, setIsVisible] = useState({
         hero: false,
         info: false,
@@ -28,6 +34,7 @@ export default function ElectoralLandingPage() {
 
     const fullText = "Justicia Electoral para el Futuro de México";
 
+    // Animación del texto principal
     useEffect(() => {
         let index = 0;
         const timer = setInterval(() => {
@@ -38,18 +45,21 @@ export default function ElectoralLandingPage() {
         return () => clearInterval(timer);
     }, []);
 
+    // Manejo de scroll para animaciones y sección activa
     useEffect(() => {
-        // Estado inicial de visibilidad
         setIsVisible({
             hero: true,
             info: false,
             faq: false,
             contact: false,
         });
+
         const handleScroll = () => {
             const scrollPosition = window.scrollY;
             const windowHeight = window.innerHeight;
+
             setShowScrollIndicator(scrollPosition <= 100);
+
             if (scrollPosition < windowHeight * 0.5) {
                 setActiveSection("inicio");
             } else if (scrollPosition < windowHeight * 1.5) {
@@ -59,6 +69,7 @@ export default function ElectoralLandingPage() {
             } else {
                 setActiveSection("contacto");
             }
+
             setIsVisible({
                 hero: true,
                 info: scrollPosition > windowHeight * 0.1,
@@ -66,6 +77,7 @@ export default function ElectoralLandingPage() {
                 contact: scrollPosition > windowHeight * 1.2,
             });
         };
+
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -82,58 +94,86 @@ export default function ElectoralLandingPage() {
             <div className="fixed inset-0 z-0 opacity-5">
                 <div className="absolute inset-0 bg-pattern"></div>
             </div>
-            {/* Navegación */}
+            {/* Navbar */}
             <Navbar activeSection={activeSection} scrollToSection={scrollToSection} />
 
-            {/* Sección Hero (con imagen y Chatbot) */}
-            <section id="inicio" className={`min-h-screen pt-20 pb-16 md:pt-24 md:pb-20 px-4 transition-all duration-1000 relative z-10 flex items-center ${isVisible.hero ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"}`}>
-                <div className="container mx-auto max-w-6xl">
+            {/* Sección Hero */}
+            <section
+                id="inicio"
+                className={`relative min-h-screen px-4 py-20 md:py-24 transition-all duration-1000 bg-gradient-to-b from-white to-[#F5F5F0] ${isVisible.hero ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                    }`}
+            >
+                <div className="container mx-auto max-w-7xl">
+                    {/* Texto de cabecera */}
                     <div className="text-center mb-8">
-                        <h1 className="text-4xl md:text-5xl font-bold text-[#006847] mb-2 leading-tight">Magistrado Sergio</h1>
-                        <div className="h-1 w-32 bg-[#E8DDB5] mx-auto mb-4"></div>
-                        <h2 className="text-2xl md:text-3xl text-[#333] font-light mb-4">
-                            <span className="text-[#006847] font-normal">{animatedText}</span>
-                            <span className="animate-blink">|</span>
-                        </h2>
-                        <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-                            Bienvenido al primer asistente virtual electoral interactivo del Poder Judicial de la Federación.
+                        <h1 className="text-3xl md:text-5xl font-extrabold text-[#006847] mb-4 leading-snug">
+                            Bienvenido al primer asistente virtual electoral
+                            <span className="block">del Poder Judicial de la Federación</span>
+                        </h1>
+                        <p className="text-gray-700 text-lg md:text-xl max-w-3xl mx-auto ">
+                            Interactúa con el Magistrado 3D y recibe orientación electoral de forma
+                            ágil y cercana. ¡Descubre cómo podemos ayudarte!
                         </p>
                     </div>
-                    <div className="flex flex-col md:flex-row items-stretch gap-8">
-                        {/* Imagen del Magistrado */}
-                        <div className="md:w-1/2 w-full flex justify-center">
-                            <div className="relative w-full max-w-md aspect-[3/4] bg-gradient-to-b from-[#006847]/5 to-[#E8DDB5]/5 rounded-2xl border border-[#006847]/10 shadow-xl flex items-center justify-center overflow-hidden">
-                                {/* AQUI IRA EL VIDEO DEL PERSONAJE */}
-                                {/* <img src={avatar} alt="Magistrado Sergio Arturo Guerrero Olvera" className="w-[650px] h-[500px] object-cover" /> */}
 
-                                <div className="text:lg z-500 ml-40">Ese wey esta prietoooo xd
-                                    debe de ir un activeIndicator antes del personaje, ya que este listo que se termine
-                                    quitar estas instucciones :D
+                    {/* Contenedor principal (Barra verde + Avatar + Chatbot) */}
+                    <div className="flex flex-col items-stretch justify-center gap-0 max-w-10xl mx-auto rounded-2xl overflow-hidden border border-[#006847]/10 shadow-xl">
+                        {/* Barra verde única */}
+                        <div className="bg-[#006847] p-4 text-white flex items-center justify-between w-full">
+                            <div className="flex items-center space-x-3">
+                                <div className="w-10 h-10 rounded-full bg-[#E8DDB5] flex items-center justify-center">
+                                    <MessageSquare className="h-5 w-5 text-[#006847]" />
                                 </div>
-
-                                <Magistrado3D lastBotMessage={lastBotMessage} />
-                                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#006847] to-transparent p-4 text-white">
-                                    <h3 className="font-bold text-lg">Mgdo. Sergio Arturo Guerrero Olvera</h3>
-                                    <p className="text-sm text-[#E8DDB5]">Sala Regional Guadalajara</p>
+                                <div>
+                                    <h3 className="font-bold">Sergio</h3>
+                                    <p className="text-xs text-[#E8DDB5]">Asistente Virtual Electoral</p>
                                 </div>
                             </div>
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 animate-pulse">
+                                En línea
+                            </span>
                         </div>
-                        {/* Componente Chat */}
-                        <div className="md:w-1/2 w-full mt-8 md:mt-0 flex flex-col">
-                            <Chatbot onBotResponse={(msg) => setLastBotMessage(msg)} />
+
+                        {/* Sección Avatar (izquierda) y Chatbot (derecha) */}
+                        <div className="flex flex-col lg:flex-row w-full">
+                            {/* Avatar: Muestra videos en distintos estados */}
+                            <div className="relative w-full lg:w-2/5 bg-white overflow-hidden">
+                                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#006847]/5 to-[#E8DDB5]/5 z-0" />
+                                <div className="relative z-10 h-[400px] lg:h-[600px] flex items-center justify-center">
+                                    <Magistrado3D
+                                        isTyping={isTypingGlobal}
+                                        lastBotMessage={lastBotMessageGlobal}
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Chatbot */}
+                            <div className="w-full lg:w-3/5 bg-white">
+                                <Chatbot
+                                    // Cuando el Chatbot empieza/termina de “pensar”
+                                    setIsTypingGlobal={setIsTypingGlobal}
+                                    // Cuando llega un nuevo mensaje del bot
+                                    setLastBotMessageGlobal={setLastBotMessageGlobal}
+
+                                    // Texto animado en el Chatbot
+                                    animatedText={animatedText}
+                                    
+                                />
+                            </div>
                         </div>
                     </div>
+
+                    {/* Indicador de scroll (opcional) */}
                     {showScrollIndicator && (
-                        <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce-slow">
-                            <p className="text-[#006847]  mb-2 text-sm font-medium">Descubre más</p>
-                            <div className="w-8 h-8 rounded-full border-2 border-[#006847] flex items-center justify-center">
+                        <div className="absolute left-1/2 bottom-8 transform -translate-x-1/2 flex flex-col items-center animate-bounce-slow">
+                            <p className="text-[#006847] mb-2 text-sm font-medium">Descubre más</p>
+                            <div className="w-8 h-8 rounded-full border-2 border-[#006847] flex items-center justify-center pulse-border">
                                 <ChevronDown className="h-5 w-5 text-[#006847]" />
                             </div>
                         </div>
                     )}
                 </div>
             </section>
-
             {/* Sección Información */}
             <section id="informacion" className={`py-16 px-4 bg-white relative z-10 transition-all duration-1000 ${isVisible.info ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"}`}>
                 <div className="container mx-auto max-w-6xl">

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Menu, X, ChevronRight } from "lucide-react";
+import negrito from "../assets/negrito.jpg";
+
 
 export const Navbar = ({ activeSection, scrollToSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,9 +15,10 @@ export const Navbar = ({ activeSection, scrollToSection }) => {
     <nav className="fixed w-full bg-[#006847]/95 backdrop-blur-md text-white z-50 shadow-lg">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <div className="w-12 h-12 rounded-full bg-[#E8DDB5] p-1 flex items-center justify-center shadow-glow">
-            {/* Aquí podrías colocar tu logo */}
-          </div>
+        <div className="w-12 h-12 rounded-full bg-[#E8DDB5] p-1 flex items-center justify-center shadow-glow">
+          <img src={negrito} alt="Negrito" className="w-full h-full rounded-full" />
+       </div>
+
           <div className="flex flex-col">
             <span className="font-bold text-sm md:text-base">Magistrado Sergio</span>
             <span className="text-xs text-[#E8DDB5]">Tribunal Electoral · Sala Guadalajara</span>

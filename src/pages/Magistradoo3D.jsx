@@ -1,48 +1,110 @@
-import React, { useEffect } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
-import { useMediaQuery } from "react-responsive";
+import React, { useEffect, useState, useRef } from "react";
 
-export const Magistrado3D = ({ lastBotMessage }) => {
-  // Detecta si el ancho de la pantalla es menor a 768px (típico breakpoint “md”)
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+export const Magistrado3D = ({ isTyping, lastBotMessage }) => {
+  // Limpiar localStorage y sessionStorage al montar el componente.
+  useEffect(() => {
+    localStorage.clear();
+    sessionStorage.clear();
+  }, []);
 
-  // Ajusta el contenedor
+  const [videoState, setVideoState] = useState("greeting");
+  const greetRef = useRef(null);
+  const waitingRef = useRef(null);
+  const respondingRef = useRef(null);
+
+  // Al montar y cuando se muestra la página (incluyendo el evento pageshow), reiniciamos a "greeting".
+  useEffect(() => {
+    setVideoState("greeting");
+    const handlePageShow = (event) => {
+      setVideoState("greeting");
+    };
+    window.addEventListener("pageshow", handlePageShow);
+    return () => {
+      window.removeEventListener("pageshow", handlePageShow);
+    };
+  }, []);
+
+  // Efecto para el video de saludo (greeting)
+  useEffect(() => {
+    if (videoState === "greeting" && greetRef.current) {
+      const videoElement = greetRef.current;
+      videoElement.load(); // Fuerza la recarga del video
+      videoElement.currentTime = 0;
+      videoElement.play();
+      const handleEnded = () => {
+        videoElement.pause();
+        videoElement.currentTime = videoElement.duration;
+      };
+      videoElement.addEventListener("ended", handleEnded);
+      return () => {
+        videoElement.removeEventListener("ended", handleEnded);
+      };
+    }
+  }, [videoState]);
+
+  // Si el chatbot está "pensando", cambiamos al estado "waiting" (loop).
+  useEffect(() => {
+    if (isTyping) {
+      setVideoState("waiting");
+    }
+  }, [isTyping]);
+
+  // Cuando llega un nuevo mensaje del bot, reproducimos "responding".
+  useEffect(() => {
+    if (lastBotMessage && lastBotMessage.type === "bot") {
+      setVideoState("responding");
+    }
+  }, [lastBotMessage]);
+
+  // Efecto para el video de respuesta (responding)
+  useEffect(() => {
+    if (videoState === "responding" && respondingRef.current) {
+      const videoElement = respondingRef.current;
+      videoElement.load(); // Recargar el video para reiniciarlo
+      videoElement.currentTime = 0;
+      videoElement.play();
+      const handleEnded = () => {
+        setVideoState("greeting");
+      };
+      videoElement.addEventListener("ended", handleEnded);
+      return () => {
+        videoElement.removeEventListener("ended", handleEnded);
+      };
+    }
+  }, [videoState]);
+
   return (
-    <div style={{ width: isMobile ? "100%" : "600px", height: isMobile ? "400px" : "600px" }}>
-      <Canvas>
-        <ambientLight intensity={0.7} />
-        <directionalLight position={[0, 5, 5]} />
-        <MagistradoModel lastBotMessage={lastBotMessage} isMobile={isMobile} />
-      </Canvas>
+    <div className="w-full h-full flex items-center justify-center bg-black">
+      {/* Video 1: Saludo inicial (greeting) */}
+      {videoState === "greeting" && (
+        <video
+          ref={greetRef}
+          src="/videos/greeting.mp4"
+          autoPlay
+          className="w-full h-full object-cover"
+        />
+      )}
+
+      {/* Video 2: Espera (waiting) - loop */}
+      {videoState === "waiting" && (
+        <video
+          ref={waitingRef}
+          src="/videos/waiting.mp4"
+          autoPlay
+          loop
+          className="w-full h-full object-cover"
+        />
+      )}
+
+      {/* Video 3: Respondiendo (responding) */}
+      {videoState === "responding" && (
+        <video
+          ref={respondingRef}
+          src="/videos/responding.mp4"
+          autoPlay
+          className="w-full h-full object-cover"
+        />
+      )}
     </div>
   );
 };
-
-function MagistradoModel({ lastBotMessage, isMobile }) {
-  const { scene, animations } = useGLTF("/prietooo.glb");
-  const { actions } = useAnimations(animations, scene);
-
-  // scale condicional
-  const scaleValue = isMobile ? 2.5 : 3;
-
-  useEffect(() => {
-    if (lastBotMessage && actions["Hablar"]) {
-      actions["Hablar"].reset().fadeIn(0.3).play();
-      const timer = setTimeout(() => {
-        if (actions["Idle"]) {
-          actions["Idle"].reset().fadeIn(0.3).play();
-        }
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [lastBotMessage, actions]);
-
-  return (
-    <primitive
-      object={scene}
-      scale={scaleValue}
-      position={[0, -2.2, 0]}
-    />
-  );
-}
