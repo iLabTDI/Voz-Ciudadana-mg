@@ -1,28 +1,29 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import { MessageSquare } from "lucide-react"
-import { motion } from "framer-motion"
+import { useState, useEffect, useRef } from "react";
+import { MessageSquare, ArrowLeft } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Componentes
-import { ProfileSection } from "../components/ProfileSection"
-import { InspirationSection } from "../components/InspirationSection"
-import { ProposalsSection } from "../components/ProposalsSection"
-import { GallerySection } from "../components/GallerySection"
-import { Chatbot } from "./Chatbot"
-import { Magistrado3D } from "./Magistrado3D"
+import { ProfileSection } from "../components/ProfileSection";
+import { InspirationSection } from "../components/InspirationSection";
+import { ProposalsSection } from "../components/ProposalsSection";
+import { GallerySection } from "../components/GallerySection";
+import { Chatbot } from "./Chatbot";
+import { Magistrado3D } from "./Magistrado3D";
+import { FloatingSocialBar } from "../components/FloatingSocialBar";
 
-import fondo from "../../assets/fondo.jpeg"
+import fondo from "../../assets/fondo.jpeg";
 
 export default function ElectoralLandingPage() {
-  const [showScrollIndicator, setShowScrollIndicator] = useState(true)
-  const [heroImage, setHeroImage] = useState(fondo)
-  const heroRef = useRef(null)
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [heroImage, setHeroImage] = useState(fondo);
+  const heroRef = useRef(null);
 
   // Control para el "avatar"
-  const [isWaitingGlobal, setIsWaitingGlobal] = useState(false)
-  const [isTypingGlobal, setIsTypingGlobal] = useState(false)
-  const [lastBotMessageGlobal, setLastBotMessageGlobal] = useState(null)
+  const [isWaitingGlobal, setIsWaitingGlobal] = useState(false);
+  const [isTypingGlobal, setIsTypingGlobal] = useState(false);
+  const [lastBotMessageGlobal, setLastBotMessageGlobal] = useState(null);
 
   // Estado de visibilidad
   const [isVisible, setIsVisible] = useState({
@@ -31,33 +32,43 @@ export default function ElectoralLandingPage() {
     proposals: false,
     inspiration: false,
     gallery: false,
-  })
+  });
+
+  // Función para desplazarse hacia la parte superior
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    setShowScrollTop(false); // Ocultar el botón después de hacer el scroll
+  };
 
   // Cargar imagen de fondo y activar Hero
   useEffect(() => {
-    setHeroImage(fondo)
-    setTimeout(() => setIsVisible((prev) => ({ ...prev, hero: true })), 300)
-  }, [])
+    setHeroImage(fondo);
+    setTimeout(() => setIsVisible((prev) => ({ ...prev, hero: true })), 300);
+  }, []);
 
   // Manejo de scroll
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      const windowHeight = window.innerHeight
+      const scrollPosition = window.scrollY;
+      const documentHeight = document.documentElement.scrollHeight;
+      const windowHeight = window.innerHeight;
+      setShowScrollTop(scrollPosition + windowHeight >= documentHeight - 100); // Aparece cuando llega al final
 
-      setShowScrollIndicator(scrollPosition <= 100)
       setIsVisible((prev) => ({
         hero: true,
         profile: scrollPosition > windowHeight * 0.5,
         proposals: scrollPosition > windowHeight * 1.3,
         inspiration: scrollPosition > windowHeight * 2.1,
         gallery: scrollPosition > windowHeight * 2.9,
-      }))
-    }
+      }));
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Variantes de animación personalizadas
   const heroVariants = {
@@ -67,7 +78,7 @@ export default function ElectoralLandingPage() {
       y: 0,
       transition: { duration: 0.8, ease: "easeOut" },
     },
-  }
+  };
 
   const profileVariants = {
     hidden: { opacity: 0, x: -50 },
@@ -76,7 +87,7 @@ export default function ElectoralLandingPage() {
       x: 0,
       transition: { duration: 0.6, ease: "easeInOut" },
     },
-  }
+  };
 
   const proposalsVariants = {
     hidden: { opacity: 0, scale: 0.95 },
@@ -85,7 +96,7 @@ export default function ElectoralLandingPage() {
       scale: 1,
       transition: { duration: 0.7, ease: "easeOut" },
     },
-  }
+  };
 
   const inspirationVariants = {
     hidden: { opacity: 0, x: 50 },
@@ -94,7 +105,7 @@ export default function ElectoralLandingPage() {
       x: 0,
       transition: { duration: 0.6, ease: "easeInOut" },
     },
-  }
+  };
 
   const galleryVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -103,7 +114,7 @@ export default function ElectoralLandingPage() {
       y: 0,
       transition: { duration: 0.8, ease: "easeOut" },
     },
-  }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -111,7 +122,7 @@ export default function ElectoralLandingPage() {
       opacity: 1,
       transition: { staggerChildren: 0.2, delayChildren: 0.3 },
     },
-  }
+  };
 
   return (
     <div className="relative bg-gray-100">
@@ -184,10 +195,7 @@ export default function ElectoralLandingPage() {
                 </div>
               </motion.div>
 
-              <motion.div
-                className="w-full lg:w-3/5 bg-white"
-                variants={heroVariants}
-              >
+              <motion.div className="w-full lg:w-3/5 bg-white" variants={heroVariants}>
                 <Chatbot
                   setIsWaitingGlobal={setIsWaitingGlobal}
                   setIsTypingGlobal={setIsTypingGlobal}
@@ -198,6 +206,23 @@ export default function ElectoralLandingPage() {
           </motion.div>
         </motion.div>
       </motion.section>
+
+      {/* Botón de Scroll hacia arriba */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            className="fixed bottom-8 left-8 w-14 h-14 rounded-full bg-gold-500 text-law-900 shadow-lg flex items-center justify-center z-40"
+            onClick={scrollToTop}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <ArrowLeft className="rotate-90 h-6 w-6" />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       {/* Sección de Perfil */}
       <motion.div
@@ -219,16 +244,6 @@ export default function ElectoralLandingPage() {
         <ProposalsSection isVisible={isVisible.proposals} />
       </motion.div>
 
-      {/* Sección Lo Que Me Inspira */}
-      <motion.div
-        className="bg-gradient-to-b from-green-50 to-yellow-50 py-12 md:py-16"
-        variants={inspirationVariants}
-        initial="hidden"
-        animate={isVisible.inspiration ? "visible" : "hidden"}
-      >
-        <InspirationSection isVisible={isVisible.inspiration} />
-      </motion.div>
-
       {/* Sección Galería */}
       <motion.div
         className="bg-gradient-to-b from-yellow-50 to-gray-100 py-12 md:py-16"
@@ -238,6 +253,9 @@ export default function ElectoralLandingPage() {
       >
         <GallerySection isVisible={isVisible.gallery} />
       </motion.div>
+
+      {/* Botón flotante de redes sociales */}
+      <FloatingSocialBar />
     </div>
-  )
+  );
 }

@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #1e4d6b; /* Tech blue */
-  --secondary-color: #d2b48c; /* Beige */
+  --primary-color: #1e3a8a; /* Azul oscuro profesional */
+  --secondary-color: #c9a55c; /* Dorado elegante */
   --accent-color: #f0f0f0; /* Light gray */
   --text-color: #333333; /* Dark gray for text */
   --background-color: #ffffff; /* White background */
@@ -23,20 +23,20 @@ body {
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #1f2937;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
+  background: #4b5563;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0f3a56;
+  background: #6b7280;
 }
 
 /* Animation classes */
@@ -181,7 +181,7 @@ body {
 
 .card {
   background-color: white;
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -196,7 +196,7 @@ body {
   background-color: var(--primary-color);
   color: white;
   padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+  border-radius: 50px;
   font-weight: 600;
   transition: all 0.3s ease;
   border: none;
@@ -206,7 +206,7 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #0f3a56;
+  background-color: #152b67;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -215,7 +215,7 @@ body {
   background-color: var(--secondary-color);
   color: var(--text-color);
   padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+  border-radius: 50px;
   font-weight: 600;
   transition: all 0.3s ease;
   border: none;
@@ -225,7 +225,7 @@ body {
 }
 
 .btn-secondary:hover {
-  background-color: #c0a378;
+  background-color: #b08d3c;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -233,7 +233,8 @@ body {
 .container {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin-top: 0 auto;
+  margin-bottom: 10 auto;
   padding: 0 1rem;
 }
 
@@ -283,6 +284,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-fill-color: transparent;
 }
 
 .pattern-bg {
@@ -328,17 +330,49 @@ body {
 
 /* Chatbot and 3D Magistrate styling */
 .chatbot-container {
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(30, 77, 107, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(30, 58, 138, 0.2);
 }
 
 .magistrado-3d-container {
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(30, 77, 107, 0.2);
-  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(30, 58, 138, 0.2);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* Animación para elementos que aparecen */
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Scrollbar personalizada para el chat */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thumb-gray-700::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+}
+
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Fondo radial para efectos de viñeta */
+.bg-radial-gradient {
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+/* Limitar líneas de texto */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
