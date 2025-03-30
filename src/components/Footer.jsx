@@ -31,15 +31,23 @@ export const Footer = ({ scrollToSection }) => {
 
           <div className="flex space-x-4">
             {[
-              { icon: "facebook", label: "Facebook" },
-              { icon: "twitter", label: "Twitter" },
-              { icon: "instagram", label: "Instagram" },
-              { icon: "linkedin", label: "LinkedIn" },
+              {
+                icon: "x",
+                label: "X",
+              },
+              {
+                icon: "instagram",
+                label: "Instagram",
+              },
+              {
+                icon: "tiktok",
+                label: "TikTok",
+              },
             ].map((social, index) => (
               <a key={index} href="#" className="group" aria-label={social.label}>
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-law-700 border border-law-600 flex items-center justify-center shadow-md group-hover:shadow-[0_0_10px_rgba(212,175,55,0.4)] group-hover:border-gold-500/70 transition-all duration-300">
-                  {social.icon === "facebook" && (
-                    <svg
+                  {social.icon === "x" && (
+                    <svg intranet
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
                       height="20"
@@ -47,19 +55,7 @@ export const Footer = ({ scrollToSection }) => {
                       viewBox="0 0 24 24"
                       className="text-white/90 group-hover:text-gold-300 transition-colors"
                     >
-                      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-                    </svg>
-                  )}
-                  {social.icon === "twitter" && (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      className="text-white/90 group-hover:text-gold-300 transition-colors"
-                    >
-                      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2" />
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                     </svg>
                   )}
                   {social.icon === "instagram" && (
@@ -75,7 +71,7 @@ export const Footer = ({ scrollToSection }) => {
                       <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
                     </svg>
                   )}
-                  {social.icon === "linkedin" && (
+                  {social.icon === "tiktok" && (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -84,9 +80,7 @@ export const Footer = ({ scrollToSection }) => {
                       viewBox="0 0 24 24"
                       className="text-white/90 group-hover:text-gold-300 transition-colors"
                     >
-                      <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
-                      <rect x="2" y="9" width="4" height="12" />
-                      <circle cx="4" cy="4" r="2" />
+                      <path d="M12.53.02C13.84 0 15.14.01 16.44 0c0 1.43.39 2.87 1.17 4.3.78 1.43 1.96 2.5 3.43 3.2v3.6c-1.47 0-2.94-.4-4.41-.8-.78-.2-1.57-.4-2.35-.6v7.9c0 2.8-2.3 5.1-5.1 5.1-2.8 0-5.1-2.3-5.1-5.1 0-2.8 2.3-5.1 5.1-5.1.6 0 1.2.1 1.8.3v3.6c-.6-.2-1.2-.3-1.8-.3-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5c1.4 0 2.5-1.1 2.5-2.5V2.62c0-.6.5-1.1 1.1-1.1z" />
                     </svg>
                   )}
                 </div>

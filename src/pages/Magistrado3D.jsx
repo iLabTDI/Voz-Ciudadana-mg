@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react"
 import { Volume2, VolumeX } from "lucide-react"
 
 export const Magistrado3D = ({ isWaiting, isTyping, lastBotMessage }) => {
-  const [videoSrc, setVideoSrc] = useState("/videos/greeting.mp4")
+  const [videoSrc, setVideoSrc] = useState("/greeting.mp4")
   const [isMuted, setIsMuted] = useState(true)
   const [showControls, setShowControls] = useState(false)
   const videoRef = useRef(null)
@@ -11,18 +11,18 @@ export const Magistrado3D = ({ isWaiting, isTyping, lastBotMessage }) => {
   // Efecto para cambiar el video según el estado
   useEffect(() => {
     if (isWaiting) {
-      setVideoSrc("/videos/waiting.mp4")
+      setVideoSrc("/waiting.mp4")
     } else if (isTyping) {
-      setVideoSrc("/videos/responding.mp4")
+      setVideoSrc("/responding.mp4")
     } else if (lastBotMessage) {
-      setVideoSrc("/videos/responding.mp4")
+      setVideoSrc("/responding.mp4")
       // Volver a "idle" después de 5s
       const timer = setTimeout(() => {
-        setVideoSrc("/videos/greeting.mp4")
+        setVideoSrc("/greeting.mp4")
       }, 5000)
       return () => clearTimeout(timer)
     } else {
-      setVideoSrc("/videos/greeting.mp4")
+      setVideoSrc("/greeting.mp4")
     }
   }, [isWaiting, isTyping, lastBotMessage])
 
