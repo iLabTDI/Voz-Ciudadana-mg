@@ -46,17 +46,17 @@ module.exports = {
         },
         // Nueva paleta de colores profesional para abogados
         law: {
-          DEFAULT: "#1A365D", // Azul oscuro profesional
-          50: "#F0F4F9",
-          100: "#D9E2F0",
-          200: "#B3C6E1",
-          300: "#8DAAD2",
-          400: "#668DC3",
-          500: "#4071B4",
-          600: "#2D5A96",
-          700: "#1A365D", // Color principal
-          800: "#122541",
-          900: "#0A1424",
+          DEFAULT: "#1d4d59", // Color base (azul oscuro)
+          50: "#e5f3f5", // Muy claro
+          100: "#c7e0e3", // Claro
+          200: "#a0c9cd", // Ligeramente claro
+          300: "#7aa1b6", // Moderadamente claro
+          400: "#4d7a9f", // Medio
+          500: "#1d4d59", // Color principal
+          600: "#1a4150", // Oscuro
+          700: "#163743", // Muy oscuro
+          800: "#0f2b36", // Casi negro
+          900: "#0a1c1e", // Casi negro
         },
         gold: {
           DEFAULT: "#D4AF37", // Dorado profesional
