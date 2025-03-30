@@ -1,261 +1,243 @@
-import { useState, useEffect } from "react";
-import { ChevronDown, MessageSquare } from "lucide-react";
-import { Chatbot } from "./Chatbot";
-import { Magistrado3D } from "./Magistradoo3D";
+"use client"
 
-import { Footer } from "./Footer";
-import { Navbar } from "../components/Navbar";
-import { Contact } from "./Contact";
-import { Propuestas } from "./Propuestas";
-import { Faq } from "./Faq";
+import { useState, useEffect, useRef } from "react"
+import { MessageSquare } from "lucide-react"
+import { motion } from "framer-motion"
 
-import poder_judicial from "../assets/tribunal_jalisco_logo.png";
-import magistrado from "../assets/magistrado-sergio.jpeg";
-import avatar from "../assets/magistrado-avatar.png";
+// Componentes
+import { ProfileSection } from "../components/ProfileSection"
+import { InspirationSection } from "../components/InspirationSection"
+import { ProposalsSection } from "../components/ProposalsSection"
+import { GallerySection } from "../components/GallerySection"
+import { Chatbot } from "./Chatbot"
+import { Magistrado3D } from "./Magistrado3D"
+
+import fondo from "../../assets/fondo.jpeg"
 
 export default function ElectoralLandingPage() {
-    const [activeSection, setActiveSection] = useState("inicio");
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [animatedText, setAnimatedText] = useState("");
-    const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true)
+  const [heroImage, setHeroImage] = useState(fondo)
+  const heroRef = useRef(null)
 
-    // Control para el “avatar”:
-    // - isTypingGlobal: indica si el bot está procesando (para mostrar "waiting")
-    // - lastBotMessageGlobal: último mensaje del bot (para mostrar "responding")
-    const [isWaitingGlobal, setIsWaitingGlobal] = useState(false);
-    const [isTypingGlobal, setIsTypingGlobal] = useState(false);
-    const [lastBotMessageGlobal, setLastBotMessageGlobal] = useState(null);
+  // Control para el "avatar"
+  const [isWaitingGlobal, setIsWaitingGlobal] = useState(false)
+  const [isTypingGlobal, setIsTypingGlobal] = useState(false)
+  const [lastBotMessageGlobal, setLastBotMessageGlobal] = useState(null)
 
-    const [isVisible, setIsVisible] = useState({
-        hero: false,
-        info: false,
-        faq: false,
-        contact: false,
-    });
+  // Estado de visibilidad
+  const [isVisible, setIsVisible] = useState({
+    hero: false,
+    profile: false,
+    proposals: false,
+    inspiration: false,
+    gallery: false,
+  })
 
-    const fullText = "Justicia Electoral para el Futuro de México";
+  // Cargar imagen de fondo y activar Hero
+  useEffect(() => {
+    setHeroImage(fondo)
+    setTimeout(() => setIsVisible((prev) => ({ ...prev, hero: true })), 300)
+  }, [])
 
-    // Animación del texto principal
-    useEffect(() => {
-        let index = 0;
-        const timer = setInterval(() => {
-            setAnimatedText(fullText.substring(0, index));
-            index++;
-            if (index > fullText.length) clearInterval(timer);
-        }, 100);
-        return () => clearInterval(timer);
-    }, []);
+  // Manejo de scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      const windowHeight = window.innerHeight
 
-    // Manejo de scroll para animaciones y sección activa
-    useEffect(() => {
-        setIsVisible({
-            hero: true,
-            info: false,
-            faq: false,
-            contact: false,
-        });
+      setShowScrollIndicator(scrollPosition <= 100)
+      setIsVisible((prev) => ({
+        hero: true,
+        profile: scrollPosition > windowHeight * 0.5,
+        proposals: scrollPosition > windowHeight * 1.3,
+        inspiration: scrollPosition > windowHeight * 2.1,
+        gallery: scrollPosition > windowHeight * 2.9,
+      }))
+    }
 
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-            const windowHeight = window.innerHeight;
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
-            setShowScrollIndicator(scrollPosition <= 100);
+  // Variantes de animación personalizadas
+  const heroVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  }
 
-            if (scrollPosition < windowHeight * 0.5) {
-                setActiveSection("inicio");
-            } else if (scrollPosition < windowHeight * 1.5) {
-                setActiveSection("informacion");
-            } else if (scrollPosition < windowHeight * 2.5) {
-                setActiveSection("preguntas");
-            } else {
-                setActiveSection("contacto");
-            }
+  const profileVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeInOut" },
+    },
+  }
 
-            setIsVisible({
-                hero: true,
-                info: scrollPosition > windowHeight * 0.1,
-                faq: scrollPosition > windowHeight * 0.6,
-                contact: scrollPosition > windowHeight * 1.2,
-            });
-        };
+  const proposalsVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  }
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+  const inspirationVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeInOut" },
+    },
+  }
 
-    const scrollToSection = (id) => {
-        const element = document.getElementById(id);
-        if (element) element.scrollIntoView({ behavior: "smooth" });
-        setIsMenuOpen(false);
-    };
+  const galleryVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  }
 
-    return (
-        <div className="min-h-screen bg-[#F5F5F0] overflow-x-hidden font-electoral">
-            {/* Fondo Pattern */}
-            <div className="fixed inset-0 z-0 opacity-5">
-                <div className="absolute inset-0 bg-pattern"></div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
+  }
+
+  return (
+    <div className="relative bg-gray-100">
+      {/* Sección Hero */}
+      <motion.section
+        id="inicio"
+        ref={heroRef}
+        className="relative min-h-screen px-4 py-16 md:py-20 bg-cover bg-center"
+        style={{
+          backgroundImage: `url('${heroImage}')`,
+          backgroundAttachment: "scroll",
+        }}
+        variants={heroVariants}
+        initial="hidden"
+        animate={isVisible.hero ? "visible" : "hidden"}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-law-700/70 via-law-900/50 to-law-900/30"></div>
+        <div className="absolute top-20 left-10 w-24 h-24 md:w-32 md:h-32 rounded-full bg-gold-500/10 blur-2xl"></div>
+        <div className="absolute bottom-20 right-10 w-32 h-32 md:w-40 md:h-40 rounded-full bg-gold-500/10 blur-2xl"></div>
+        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-600 via-white to-red-600"></div>
+
+        <motion.div
+          className="container mx-auto max-w-7xl relative z-10"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isVisible.hero ? "visible" : "hidden"}
+        >
+          <motion.div variants={heroVariants} className="text-center mb-10 md:mb-12">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4 md:mb-6 leading-tight tracking-tight">
+              Bienvenido al Primer Asistente
+              <br />
+              <span className="text-gold-300">Virtual Electoral Sergio</span>
+            </h1>
+            <p className="text-gray-100 text-base md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
+              Interactúa con Sergio Arturo Guerrero Olvera y conoce su visión electoral.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="flex flex-col items-stretch justify-center gap-0 max-w-5xl mx-auto rounded-2xl overflow-hidden border border-white/20 shadow-xl bg-white/10 backdrop-blur-md"
+            variants={containerVariants}
+          >
+            <div className="bg-gradient-to-r from-law-700 to-law-800 p-3 md:p-4 text-white flex items-center justify-between w-full border-b border-white/10">
+              <div className="flex items-center space-x-2 md:space-x-3">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                  <MessageSquare className="h-5 w-5 md:h-6 md:w-6 text-law-500" />
+                </div>
+                <div className="text-sm md:text-base">
+                  <h3 className="font-semibold text-base md:text-lg">Sergio Arturo Guerrero Olvera</h3>
+                  <p className="text-xs md:text-sm text-gray-200">Tribunal Electoral · Sala Guadalajara</p>
+                </div>
+              </div>
+              <span className="inline-flex items-center px-2 py-1 md:px-3 md:py-1 rounded-full text-xs md:text-sm font-medium bg-green-100 text-green-800 animate-pulse shadow-sm">
+                En línea
+              </span>
             </div>
-            {/* Navbar */}
-            <Navbar activeSection={activeSection} scrollToSection={scrollToSection} />
 
-            {/* Sección Hero */}
-            <section
-                id="inicio"
-                className={`relative min-h-screen px-4 py-20 md:py-24 transition-all duration-1000 bg-gradient-to-b from-white to-[#F5F5F0] ${isVisible.hero ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                    }`}
-            >
-                <div className="container mx-auto max-w-7xl">
-                    {/* Texto de cabecera */}
-                    <div className="text-center mb-8">
-                        <h1 className="text-3xl md:text-5xl font-extrabold text-[#006847] mb-4 leading-snug">
-                            Bienvenido al primer asistente virtual electoral
-                            <span className="block">del Poder Judicial de la Federación</span>
-                        </h1>
-                        <p className="text-gray-700 text-lg md:text-xl max-w-3xl mx-auto ">
-                            Interactúa con el Magistrado 3D y recibe orientación electoral de forma
-                            ágil y cercana. ¡Descubre cómo podemos ayudarte!
-                        </p>
-                    </div>
-
-                    {/* Contenedor principal (Barra verde + Avatar + Chatbot) */}
-                    <div className="flex flex-col items-stretch justify-center gap-0 max-w-10xl mx-auto rounded-2xl overflow-hidden border border-[#006847]/10 shadow-xl">
-                        {/* Barra verde única */}
-                        <div className="bg-[#006847] p-4 text-white flex items-center justify-between w-full">
-                            <div className="flex items-center space-x-3">
-                                <div className="w-10 h-10 rounded-full bg-[#E8DDB5] flex items-center justify-center">
-                                    <MessageSquare className="h-5 w-5 text-[#006847]" />
-                                </div>
-                                <div>
-                                    <h3 className="font-bold">Sergio</h3>
-                                    <p className="text-xs text-[#E8DDB5]">Asistente Virtual Electoral</p>
-                                </div>
-                            </div>
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 animate-pulse">
-                                En línea
-                            </span>
-                        </div>
-
-                        {/* Sección Avatar (izquierda) y Chatbot (derecha) */}
-                        <div className="flex flex-col lg:flex-row w-full">
-                            {/* Avatar: Muestra videos en distintos estados */}
-                            <div className="relative w-full lg:w-2/5 bg-white overflow-hidden">
-                                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#006847]/5 to-[#E8DDB5]/5 z-0" />
-                                <div className="relative z-10 h-[400px] lg:h-[600px] flex items-center justify-center">
-                                    <Magistrado3D
-                                        isWaiting={isWaitingGlobal}
-                                        isTyping={isTypingGlobal}
-                                        lastBotMessage={lastBotMessageGlobal}
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Chatbot */}
-                            <div className="w-full lg:w-3/5 bg-white">
-                                <Chatbot
-                                    setIsWaitingGlobal={setIsWaitingGlobal}
-                                    // Cuando el Chatbot empieza/termina de “pensar”
-                                    setIsTypingGlobal={setIsTypingGlobal}
-                                    // Cuando llega un nuevo mensaje del bot
-                                    setLastBotMessageGlobal={setLastBotMessageGlobal}
-
-                                    // Texto animado en el Chatbot
-                                    animatedText={animatedText}
-                                    
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Indicador de scroll (opcional) */}
-                    {showScrollIndicator && (
-                        <div className="absolute left-1/2 bottom-8 transform -translate-x-1/2 flex flex-col items-center animate-bounce-slow">
-                            <p className="text-[#006847] mb-2 text-sm font-medium">Descubre más</p>
-                            <div className="w-8 h-8 rounded-full border-2 border-[#006847] flex items-center justify-center pulse-border">
-                                <ChevronDown className="h-5 w-5 text-[#006847]" />
-                            </div>
-                        </div>
-                    )}
+            <div className="flex flex-col lg:flex-row w-full">
+              <motion.div
+                className="relative w-full lg:w-2/5 bg-gradient-to-b from-law-800/80 to-law-900/60 overflow-hidden"
+                variants={heroVariants}
+              >
+                <div className="absolute top-0 left-0 w-full h-full bg-[url('/patterns/subtle-pattern.png')] bg-repeat opacity-10 z-0"></div>
+                <div className="relative z-10 h-[350px] lg:h-[600px] flex items-center justify-center">
+                  <Magistrado3D
+                    isWaiting={isWaitingGlobal}
+                    isTyping={isTypingGlobal}
+                    lastBotMessage={lastBotMessageGlobal}
+                  />
                 </div>
-            </section>
-            {/* Sección Información */}
-            <section id="informacion" className={`py-16 px-4 bg-white relative z-10 transition-all duration-1000 ${isVisible.info ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"}`}>
-                <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-12">
-                        <div className="inline-block rounded-lg bg-[#006847] px-3 py-1 text-sm text-white mb-2 shadow-md">Trayectoria Profesional</div>
-                        <h2 className="text-3xl font-bold text-[#006847] mb-4">Magistrado Sergio Arturo Guerrero Olvera</h2>
-                        <div className="h-1 w-48 bg-[#E8DDB5] mx-auto mb-4"></div>
-                        <p className="text-gray-700 max-w-2xl mx-auto">
-                            Conoce la trayectoria profesional y académica del Magistrado Sergio, su experiencia y compromiso con la justicia electoral.
-                        </p>
-                    </div>
-                    <div className="relative h-16 mb-12 overflow-hidden rounded-lg shadow-lg">
-                        <div className="absolute inset-0 bg-[#006847] w-1/3 h-full left-0"></div>
-                        <div className="absolute inset-0 bg-white w-1/3 h-full left-1/3 flex items-center justify-center">
-                            <img src={poder_judicial} alt="Escudo Nacional" width={40} height={40} className="h-10 w-10 object-contain" />
-                        </div>
-                        <div className="absolute inset-0 bg-[#BC002D] w-1/3 h-full left-2/3"></div>
-                    </div>
-                    <div className="bg-white rounded-xl shadow-xl p-8 overflow-hidden relative border border-[#006847]/10 group hover:shadow-2xl transition-all duration-500">
-                        <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#006847]/10 to-[#E8DDB5]/10 rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500"></div>
-                        <div className="flex flex-col md:flex-row gap-8">
-                            <div className="md:w-1/3">
-                                <div className="rounded-lg overflow-hidden shadow-xl transform transition-transform duration-500 hover:scale-105 border-4 border-white group-hover:border-[#006847]/20">
-                                    <img src={magistrado} alt="Magistrado Sergio Arturo Guerrero Olvera" width={400} height={500} className="w-full h-full object-cover" />
-                                    <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#006847] to-transparent p-4 text-white">
-                                        <h3 className="font-bold text-base sm:text-xs">Mgdo. Sergio Arturo Guerrero Olvera</h3>
-                                        <p className="text-sm text-[#E8DDB5]">Sala Regional Guadalajara</p>
-                                    </div>
-                                </div>
-                                <div className="mt-4 flex flex-wrap gap-2 justify-center">
-                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#006847]/10 text-[#006847] border border-[#006847]/20">
-                                        15+ años de experiencia
-                                    </span>
-                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#E8DDB5]/20 text-[#006847] border border-[#E8DDB5]/30">
-                                        Autor y académico
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="md:w-2/3">
-                                <h3 className="text-2xl font-bold text-[#006847] mb-4">Perfil Profesional</h3>
-                                <div className="h-1 w-32 bg-[#E8DDB5] mb-6"></div>
-                                <p className="text-gray-700 mb-4">
-                                    El Magistrado Sergio es un destacado jurista con amplia experiencia en derecho electoral, egresado de la Universidad de Guadalajara y con estudios de posgrado en Derecho Constitucional y Electoral.
-                                </p>
-                                <p className="text-gray-700 mb-4">
-                                    Ha participado en numerosas resoluciones que han fortalecido la democracia y ha contribuido significativamente a la jurisprudencia electoral.
-                                </p>
-                                <p className="text-gray-700">
-                                    Además, es autor de diversos artículos académicos y ha impartido conferencias en universidades de prestigio.
-                                </p>
-                                <div className="mt-6 flex flex-wrap gap-3">
-                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#006847]/10 text-[#006847] border border-[#006847]/20">
-                                        Derecho Electoral
-                                    </span>
-                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#E8DDB5]/20 text-[#006847] border border-[#E8DDB5]/30">
-                                        Justicia Constitucional
-                                    </span>
-                                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#BC002D]/10 text-[#BC002D] border border-[#BC002D]/20">
-                                        Derechos Político-Electorales
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+              </motion.div>
 
-            {/* Sección Propuestas */}
+              <motion.div
+                className="w-full lg:w-3/5 bg-white"
+                variants={heroVariants}
+              >
+                <Chatbot
+                  setIsWaitingGlobal={setIsWaitingGlobal}
+                  setIsTypingGlobal={setIsTypingGlobal}
+                  setLastBotMessageGlobal={setLastBotMessageGlobal}
+                />
+              </motion.div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </motion.section>
 
-            <Propuestas isVisible={isVisible} />
+      {/* Sección de Perfil */}
+      <motion.div
+        className="bg-gradient-to-b from-gray-100 to-blue-50 py-12 md:py-16"
+        variants={profileVariants}
+        initial="hidden"
+        animate={isVisible.profile ? "visible" : "hidden"}
+      >
+        <ProfileSection isVisible={isVisible.profile} />
+      </motion.div>
 
-            {/* Sección FAQ */}
-            <Faq isVisible={isVisible} scrollToSection={scrollToSection} />
+      {/* Sección Propuestas */}
+      <motion.div
+        className="bg-gradient-to-b from-blue-50 to-green-50 py-12 md:py-16"
+        variants={proposalsVariants}
+        initial="hidden"
+        animate={isVisible.proposals ? "visible" : "hidden"}
+      >
+        <ProposalsSection isVisible={isVisible.proposals} />
+      </motion.div>
 
-            {/* Sección Contacto */}
-            <Contact isVisible={isVisible} />
+      {/* Sección Lo Que Me Inspira */}
+      <motion.div
+        className="bg-gradient-to-b from-green-50 to-yellow-50 py-12 md:py-16"
+        variants={inspirationVariants}
+        initial="hidden"
+        animate={isVisible.inspiration ? "visible" : "hidden"}
+      >
+        <InspirationSection isVisible={isVisible.inspiration} />
+      </motion.div>
 
-            {/* Footer */}
-            <Footer scrollToSection={scrollToSection} />
-        </div>
-    );
+      {/* Sección Galería */}
+      <motion.div
+        className="bg-gradient-to-b from-yellow-50 to-gray-100 py-12 md:py-16"
+        variants={galleryVariants}
+        initial="hidden"
+        animate={isVisible.gallery ? "visible" : "hidden"}
+      >
+        <GallerySection isVisible={isVisible.gallery} />
+      </motion.div>
+    </div>
+  )
 }
