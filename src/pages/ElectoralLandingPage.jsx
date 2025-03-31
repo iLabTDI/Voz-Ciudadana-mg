@@ -236,7 +236,7 @@ export default function ElectoralLandingPage() {
 
       {/* Sección Propuestas */}
       <motion.div
-        className="bg-gradient-to-b from-blue-50 to-green-50 py-12 md:py-16"
+        className="bg-gradient-to-b from-blue-50 to-green-50 "
         variants={proposalsVariants}
         initial="hidden"
         animate={isVisible.proposals ? "visible" : "hidden"}
@@ -246,7 +246,7 @@ export default function ElectoralLandingPage() {
 
       {/* Sección Galería */}
       <motion.div
-        className="bg-gradient-to-b from-yellow-50 to-gray-100 py-12 md:py-16"
+        className="bg-gradient-to-b from-yellow-50 to-gray-100"
         variants={galleryVariants}
         initial="hidden"
         animate={isVisible.gallery ? "visible" : "hidden"}

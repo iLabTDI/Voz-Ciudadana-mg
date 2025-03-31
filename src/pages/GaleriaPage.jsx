@@ -13,7 +13,7 @@ export const GaleriaPage = () => {
   const [searchTerm, setSearchTerm] = useState("")
 
   const items = [
-    // Reconocimientos
+    // 
     {
       id: "rec1",
       type: "recognition",

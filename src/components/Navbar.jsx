@@ -1,265 +1,255 @@
-"use client";
-import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Gavel } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+"use client"
+
+import { useState, useEffect } from "react"
+import { Menu, X, ChevronDown, Scale } from "lucide-react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
 export const Navbar = ({ activeSection, scrollToSection }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
-  const isHomePage = location.pathname === "/";
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate() // Para navegar programáticamente
+  const isHomePage = location.pathname === "/"
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      setScrolled(window.scrollY > 20)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Cerrar menú móvil al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (isMenuOpen && !e.target.closest("nav")) {
+        setIsMenuOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [isMenuOpen])
+
+  // Cerrar menú móvil al cambiar de ruta
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [location.pathname])
 
   const handleClick = (sectionId) => {
-    scrollToSection(sectionId);
-    setIsMenuOpen(false);
-  };
+    scrollToSection(sectionId)
+    setIsMenuOpen(false)
+  }
+
+  // Función para ir a la raíz y subir arriba
+  const handleLogoClick = () => {
+    navigate("/") // Navega a la raíz
+    window.scrollTo({ top: 0, behavior: "smooth" }) // Sube hasta arriba con animación suave
+    setIsMenuOpen(false) // Cierra el menú móvil si está abierto
+  }
 
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-500 ${
-        scrolled ? "bg-law-700 shadow-lg py-2" : "bg-transparent py-4"
+        scrolled
+          ? "bg-law-800/95 backdrop-blur-md shadow-lg py-2"
+          : "bg-gradient-to-b from-law-900/90 to-law-900/70 backdrop-blur-sm py-3"
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo y Nombre */}
         <div className="flex items-center space-x-3">
-          <div className="p-2 bg-white rounded-full shadow-md">
-            <Gavel className="w-6 h-6 text-blue-900" />
-          </div>
+          <button onClick={handleLogoClick} className="focus:outline-none">
+            <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 p-0.5 shadow-glow overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-gold-400 to-gold-600 opacity-70 animate-pulse"></div>
+              <div className="relative w-full h-full rounded-full bg-law-800 flex items-center justify-center">
+                <Scale className="w-5 h-5 text-gold-400" />
+              </div>
+            </div>
+          </button>
+
           <div className="flex flex-col">
-            <span className="font-bold text-lg text-white">
-              Sergio Guerrero IA
-            </span>
-            <span className="text-sm text-blue-200">
-              Tribunal Electoral · Sala Guadalajara
-            </span>
+            <span className="font-bold text-base text-white">Sergio Guerrero IA</span>
+            <span className="text-xs text-gold-200/80">Tribunal Electoral · Sala Guadalajara</span>
           </div>
         </div>
+
         {/* Menú en escritorio */}
-        <div className="hidden md:flex space-x-6">
+        <div className="hidden md:flex items-center space-x-1 lg:space-x-3">
           {isHomePage ? (
             <>
-              <button
-                onClick={() => handleClick("inicio")}
-                className={`relative px-2 py-1 transition-colors ${
-                  activeSection === "inicio"
-                    ? "text-gold-300 font-semibold"
-                    : "text-white hover:text-gold-300"
-                }`}
-              >
-                Inicio
-                {activeSection === "inicio" && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gold-300 rounded-full"></span>
-                )}
-              </button>
-              <button
-                onClick={() => handleClick("profile")}
-                className={`relative px-2 py-1 transition-colors ${
-                  activeSection === "profile"
-                    ? "text-gold-300 font-semibold"
-                    : "text-white hover:text-gold-300"
-                }`}
-              >
-                Perfil
-                {activeSection === "profile" && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gold-300 rounded-full"></span>
-                )}
-              </button>
-              <button
-                onClick={() => handleClick("proposals")}
-                className={`relative px-2 py-1 transition-colors ${
-                  activeSection === "proposals"
-                    ? "text-gold-300 font-semibold"
-                    : "text-white hover:text-gold-300"
-                }`}
-              >
-                Propuestas
-                {activeSection === "proposals" && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gold-300 rounded-full"></span>
-                )}
-              </button>
-              <button
-                onClick={() => handleClick("inspiration")}
-                className={`relative px-2 py-1 transition-colors ${
-                  activeSection === "inspiration"
-                    ? "text-gold-300 font-semibold"
-                    : "text-white hover:text-gold-300"
-                }`}
-              >
-                Inspiración
-                {activeSection === "inspiration" && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gold-300 rounded-full"></span>
-                )}
-              </button>
-              <button
-                onClick={() => handleClick("gallery")}
-                className={`relative px-2 py-1 transition-colors ${
-                  activeSection === "gallery"
-                    ? "text-gold-300 font-semibold"
-                    : "text-white hover:text-gold-300"
-                }`}
-              >
-                Galería
-                {activeSection === "gallery" && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gold-300 rounded-full"></span>
-                )}
-              </button>
+              {[
+                { id: "inicio", label: "Inicio" },
+                { id: "profile", label: "Perfil" },
+                { id: "proposals", label: "Propuestas" },
+                { id: "inspiration", label: "Inspiración" },
+                { id: "gallery", label: "Galería" },
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => handleClick(item.id)}
+                  className={`relative px-3 py-2 text-sm transition-colors rounded-lg ${
+                    activeSection === item.id
+                      ? "text-gold-300 font-medium bg-white/10"
+                      : "text-white hover:text-gold-300 hover:bg-white/5"
+                  }`}
+                >
+                  {item.label}
+                  {activeSection === item.id && (
+                    <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-0.5 bg-gold-400 rounded-full"></span>
+                  )}
+                </button>
+              ))}
             </>
           ) : (
             <>
               <Link
                 to="/"
-                className="relative px-2 py-1 transition-colors hover:text-gold-300"
+                className="relative px-3 py-2 text-sm transition-colors rounded-lg text-white hover:text-gold-300 hover:bg-white/5"
               >
                 Inicio
               </Link>
               <Link
                 to="/#profile"
-                className="relative px-2 py-1 transition-colors hover:text-gold-300"
+                className="relative px-3 py-2 text-sm transition-colors rounded-lg text-white hover:text-gold-300 hover:bg-white/5"
               >
                 Perfil
               </Link>
               <Link
                 to="/#proposals"
-                className="relative px-2 py-1 transition-colors hover:text-gold-300"
+                className="relative px-3 py-2 text-sm transition-colors rounded-lg text-white hover:text-gold-300 hover:bg-white/5"
               >
                 Propuestas
               </Link>
               <Link
                 to="/#inspiration"
-                className="relative px-2 py-1 transition-colors hover:text-gold-300"
+                className="relative px-3 py-2 text-sm transition-colors rounded-lg text-white hover:text-gold-300 hover:bg-white/5"
               >
                 Inspiración
               </Link>
               <Link
                 to="/#gallery"
-                className="relative px-2 py-1 transition-colors hover:text-gold-300"
+                className="relative px-3 py-2 text-sm transition-colors rounded-lg text-white hover:text-gold-300 hover:bg-white/5"
               >
                 Galería
               </Link>
             </>
           )}
+
           <Link
             to="/foro"
-            className="bg-gold-500 hover:bg-gold-400 text-law-900 px-4 py-1.5 rounded-full text-sm font-medium transition-colors shadow-md hover:shadow-lg flex items-center space-x-1"
+            className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-law-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 shadow-md hover:shadow-lg flex items-center space-x-1 transform hover:scale-105"
           >
             <span>Foro</span>
             <ChevronDown className="h-4 w-4" />
           </Link>
         </div>
+
         {/* Botón menú móvil */}
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-white">
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 transition-colors text-white"
+          aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+        >
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
+
       {/* Menú móvil */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-blue-900/95 backdrop-blur-md pb-4 px-4 animate-fadeIn">
-          <div className="flex flex-col space-y-3">
+      <div
+        className={`md:hidden fixed inset-0 bg-law-900/95 backdrop-blur-md z-40 transition-all duration-300 ease-in-out ${
+          isMenuOpen ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none -translate-y-10"
+        }`}
+        style={{ top: "60px", height: "calc(100vh - 60px)" }}
+      >
+        <div className="container mx-auto px-4 py-6 h-full overflow-y-auto">
+          <div className="flex flex-col space-y-2">
             {isHomePage ? (
               <>
-                <button
-                  onClick={() => handleClick("inicio")}
-                  className={`text-left py-2 px-2 rounded-lg transition-colors ${
-                    activeSection === "inicio"
-                      ? "bg-gold-500/20 border-l-4 border-gold-400 text-gold-300"
-                      : "hover:bg-gold-500/10"
-                  }`}
-                >
-                  Inicio
-                </button>
-                <button
-                  onClick={() => handleClick("profile")}
-                  className={`text-left py-2 px-2 rounded-lg transition-colors ${
-                    activeSection === "profile"
-                      ? "bg-gold-500/20 border-l-4 border-gold-400 text-gold-300"
-                      : "hover:bg-gold-500/10"
-                  }`}
-                >
-                  Perfil
-                </button>
-                <button
-                  onClick={() => handleClick("proposals")}
-                  className={`text-left py-2 px-2 rounded-lg transition-colors ${
-                    activeSection === "proposals"
-                      ? "bg-gold-500/20 border-l-4 border-gold-400 text-gold-300"
-                      : "hover:bg-gold-500/10"
-                  }`}
-                >
-                  Propuestas
-                </button>
-                <button
-                  onClick={() => handleClick("inspiration")}
-                  className={`text-left py-2 px-2 rounded-lg transition-colors ${
-                    activeSection === "inspiration"
-                      ? "bg-gold-500/20 border-l-4 border-gold-400 text-gold-300"
-                      : "hover:bg-gold-500/10"
-                  }`}
-                >
-                  Inspiración
-                </button>
-                <button
-                  onClick={() => handleClick("gallery")}
-                  className={`text-left py-2 px-2 rounded-lg transition-colors ${
-                    activeSection === "gallery"
-                      ? "bg-gold-500/20 border-l-4 border-gold-400 text-gold-300"
-                      : "hover:bg-gold-500/10"
-                  }`}
-                >
-                  Galería
-                </button>
+                {[
+                  { id: "inicio", label: "Inicio" },
+                  { id: "profile", label: "Perfil" },
+                  { id: "proposals", label: "Propuestas" },
+                  { id: "inspiration", label: "Inspiración" },
+                  { id: "gallery", label: "Galería" },
+                ].map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handleClick(item.id)}
+                    className={`text-left py-4 px-4 rounded-xl transition-all duration-300 flex items-center ${
+                      activeSection === item.id
+                        ? "bg-gold-500/20 text-gold-300 font-medium"
+                        : "text-white hover:bg-white/10"
+                    }`}
+                  >
+                    <div
+                      className={`w-1 h-8 rounded-full mr-4 transition-all duration-300 ${
+                        activeSection === item.id ? "bg-gold-400" : "bg-transparent"
+                      }`}
+                    ></div>
+                    <span className="text-lg">{item.label}</span>
+                  </button>
+                ))}
               </>
             ) : (
               <>
                 <Link
                   to="/"
-                  className="text-left py-2 px-2 rounded-lg transition-colors hover:bg-gold-500/10"
+                  className="text-left py-4 px-4 rounded-xl transition-all duration-300 flex items-center text-white hover:bg-white/10"
                 >
-                  Inicio
+                  <div className="w-1 h-8 rounded-full mr-4 bg-transparent"></div>
+                  <span className="text-lg">Inicio</span>
                 </Link>
                 <Link
                   to="/#profile"
-                  className="text-left py-2 px-2 rounded-lg transition-colors hover:bg-gold-500/10"
+                  className="text-left py-4 px-4 rounded-xl transition-all duration-300 flex items-center text-white hover:bg-white/10"
                 >
-                  Perfil
+                  <div className="w-1 h-8 rounded-full mr-4 bg-transparent"></div>
+                  <span className="text-lg">Perfil</span>
                 </Link>
                 <Link
                   to="/#proposals"
-                  className="text-left py-2 px-2 rounded-lg transition-colors hover:bg-gold-500/10"
+                  className="text-left py-4 px-4 rounded-xl transition-all duration-300 flex items-center text-white hover:bg-white/10"
                 >
-                  Propuestas
+                  <div className="w-1 h-8 rounded-full mr-4 bg-transparent"></div>
+                  <span className="text-lg">Propuestas</span>
                 </Link>
                 <Link
                   to="/#inspiration"
-                  className="text-left py-2 px-2 rounded-lg transition-colors hover:bg-gold-500/10"
+                  className="text-left py-4 px-4 rounded-xl transition-all duration-300 flex items-center text-white hover:bg-white/10"
                 >
-                  Inspiración
+                  <div className="w-1 h-8 rounded-full mr-4 bg-transparent"></div>
+                  <span className="text-lg">Inspiración</span>
                 </Link>
                 <Link
                   to="/#gallery"
-                  className="text-left py-2 px-2 rounded-lg transition-colors hover:bg-gold-500/10"
+                  className="text-left py-4 px-4 rounded-xl transition-all duration-300 flex items-center text-white hover:bg-white/10"
                 >
-                  Galería
+                  <div className="w-1 h-8 rounded-full mr-4 bg-transparent"></div>
+                  <span className="text-lg">Galería</span>
                 </Link>
               </>
             )}
-            <Link
-              to="/foro"
-              className="bg-gold-500 hover:bg-gold-400 text-law-900 px-4 py-2 rounded-lg text-center font-medium transition-colors shadow-md"
-            >
-              Foro
-            </Link>
+
+            <div className="pt-6 pb-4">
+              <Link
+                to="/foro"
+                className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-law-900 py-4 px-4 rounded-xl text-center font-medium transition-all duration-300 shadow-lg hover:shadow-xl block text-lg"
+              >
+                Acceder al Foro
+              </Link>
+            </div>
+
+            {/* Información de contacto en móvil */}
+            <div className="mt-auto pt-8 border-t border-white/10">
+              <p className="text-gold-300 font-medium mb-2">Contacto</p>
+              <p className="text-white/70 text-sm mb-1">contacto@tribunalelectoral.gob.mx</p>
+              <p className="text-white/70 text-sm">Av. López Mateos Norte 1189, Guadalajara</p>
+            </div>
           </div>
         </div>
-      )}
+      </div>
     </nav>
-  );
-};
+  )
+}
+
+export default Navbar

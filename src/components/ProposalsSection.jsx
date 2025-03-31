@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react"
 import {
   Scale,
   Shield,
@@ -18,14 +18,14 @@ import {
   Calendar,
   Target,
   Zap,
-} from "lucide-react";
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
+} from "lucide-react"
+import { motion, useAnimation } from "framer-motion"
 
 export const ProposalsSection = ({ isVisible }) => {
-  const [activeModal, setActiveModal] = useState(null);
-  const [activeCard, setActiveCard] = useState("vision"); // Para el efecto flip en móvil
-  const controls = useAnimation();
-  const sectionRef = useRef(null);
+  const [activeModal, setActiveModal] = useState(null)
+  const [activeCard, setActiveCard] = useState("vision") // Para el efecto flip en móvil
+  const controls = useAnimation()
+  const sectionRef = useRef(null)
 
   const [images, setImages] = useState({
     digital: "/placeholder.svg?height=600&width=800",
@@ -35,7 +35,7 @@ export const ProposalsSection = ({ isVisible }) => {
     future: "/placeholder.svg?height=1080&width=1920",
     transparency: "/placeholder.svg?height=600&width=800",
     innovation: "/placeholder.svg?height=600&width=800",
-  });
+  })
 
   useEffect(() => {
     // Cargar imágenes de la API de Vercel
@@ -48,14 +48,14 @@ export const ProposalsSection = ({ isVisible }) => {
       transparency:
         "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?q=80&w=800&h=600&auto=format&fit=crop",
       innovation: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&h=600&auto=format&fit=crop",
-    });
-  }, []);
+    })
+  }, [])
 
   useEffect(() => {
     if (isVisible) {
-      controls.start("visible");
+      controls.start("visible")
     }
-  }, [isVisible, controls]);
+  }, [isVisible, controls])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -66,7 +66,7 @@ export const ProposalsSection = ({ isVisible }) => {
         delayChildren: 0.3,
       },
     },
-  };
+  }
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -77,7 +77,7 @@ export const ProposalsSection = ({ isVisible }) => {
         duration: 0.6,
       },
     },
-  };
+  }
 
   const flipVariants = {
     hidden: {
@@ -98,7 +98,7 @@ export const ProposalsSection = ({ isVisible }) => {
         duration: 0.4,
       },
     },
-  };
+  }
 
   const proposals = [
     {
@@ -274,8 +274,18 @@ export const ProposalsSection = ({ isVisible }) => {
     { name: "Excelencia", description: "Búsqueda constante de la máxima calidad en el servicio público." },
   ]
 
+  const pillars = [
+    { name: "Democracia Inclusiva", description: "Donde cada voto cuenta y todas las voces son escuchadas." },
+    { name: "Innovación Tecnológica", description: "Para acercar las instituciones a los ciudadanos." },
+    { name: "Confianza Ciudadana", description: "A través de la transparencia y la rendición de cuentas." },
+  ]
+
   return (
-    <section id="proposals" ref={sectionRef} className="py-16 relative overflow-hidden bg-gradient-to-b from-slate-100 to-white">
+    <section
+      id="proposals"
+      ref={sectionRef}
+      className="py-16 md:py-24 relative overflow-hidden bg-gradient-to-b from-slate-100 to-white"
+    >
       {/* Fondo con textura */}
       <div
         className="absolute inset-0 opacity-5"
@@ -289,8 +299,13 @@ export const ProposalsSection = ({ isVisible }) => {
       <div className="absolute top-40 left-10 w-64 h-64 rounded-full bg-law-500/5 blur-3xl"></div>
       <div className="absolute bottom-40 right-10 w-80 h-80 rounded-full bg-gold-500/5 blur-3xl"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div initial="hidden" animate={controls} variants={containerVariants} className="mb-12 text-center">
+      <div className="container mx-auto px-3 sm:px-4 lg:px-6 relative z-10 max-w-[1500px]">
+        <motion.div
+          initial="hidden"
+          animate={controls}
+          variants={containerVariants}
+          className="mb-12 md:mb-16 text-center"
+        >
           <motion.div variants={itemVariants} className="inline-block">
             <div className="flex items-center justify-center mb-3">
               <div className="h-px w-12 bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
@@ -299,9 +314,12 @@ export const ProposalsSection = ({ isVisible }) => {
               </div>
               <div className="h-px w-12 bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-law-800 mb-2">Propuestas para el Futuro Electoral</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
-              Conoce mi visión y propuestas innovadoras para modernizar la justicia electoral y fortalecer la democracia en México.
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-law-800 mb-2">
+              Propuestas para el Futuro Electoral
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base lg:text-lg">
+              Conoce mi visión y propuestas innovadoras para modernizar la justicia electoral y fortalecer la democracia
+              en México.
             </p>
           </motion.div>
         </motion.div>
@@ -312,7 +330,9 @@ export const ProposalsSection = ({ isVisible }) => {
             <button
               onClick={() => setActiveCard("vision")}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCard === "vision" ? "bg-law-600 text-white shadow-md" : "bg-transparent text-gray-700 hover:bg-slate-100"
+                activeCard === "vision"
+                  ? "bg-law-600 text-white shadow-md"
+                  : "bg-transparent text-gray-700 hover:bg-slate-100"
               }`}
             >
               Mi Visión
@@ -320,7 +340,9 @@ export const ProposalsSection = ({ isVisible }) => {
             <button
               onClick={() => setActiveCard("values")}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCard === "values" ? "bg-law-600 text-white shadow-md" : "bg-transparent text-gray-700 hover:bg-slate-100"
+                activeCard === "values"
+                  ? "bg-law-600 text-white shadow-md"
+                  : "bg-transparent text-gray-700 hover:bg-slate-100"
               }`}
             >
               Mis Valores
@@ -329,166 +351,126 @@ export const ProposalsSection = ({ isVisible }) => {
         </div>
 
         {/* Contenedor principal dividido en dos secciones */}
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 xl:gap-10">
           {/* SECCIÓN 1: VISIÓN Y VALORES (Lado izquierdo) */}
           <motion.div
             initial="hidden"
             animate={controls}
             variants={containerVariants}
-            className="lg:w-5/12 h-[550px] flex flex-col gap-6"
+            className="lg:w-[60%] flex flex-col gap-6"
           >
-            {/* Contenedor para el efecto flip en móvil */}
-            <div className="relative min-h-[300px] lg:min-h-0">
-              <AnimatePresence mode="wait">
-                {/* Visión */}
-                {(activeCard === "vision" || window.innerWidth >= 1024) && (
-                  <motion.div
-                    key="vision"
-                    variants={flipVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className={`bg-white rounded-2xl shadow-lg p-6 border border-slate-100 relative overflow-hidden h-full ${
-                      activeCard !== "vision" && window.innerWidth < 1024 ? "hidden" : ""
-                    }`}
-                    style={{
-                      transformStyle: "preserve-3d",
-                      backfaceVisibility: "hidden",
-                      perspective: "1000px",
-                    }}
-                  >
-                    <div className="absolute top-0 right-0 w-40 h-40 bg-law-50 rounded-bl-full -z-10"></div>
+            {/* Visión - Visible en móvil cuando está activo, siempre visible en desktop */}
+            <div className={`${activeCard !== "vision" && "hidden lg:block"}`}>
+              <div className="bg-white rounded-xl shadow-md border border-slate-200 p-10 md:p-7 lg:p-8">
+                <div className="flex items-center mb-5">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-law-500 to-law-600 flex items-center justify-center text-white shadow-md mr-3">
+                    <Eye className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-law-800">Mi Visión</h3>
+                </div>
 
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-law-500 to-law-600 flex items-center justify-center text-white shadow-md mr-3">
-                        <Eye className="h-6 w-6" />
-                      </div>
-                      <h3 className="text-xl font-bold text-law-800">Mi Visión</h3>
-                    </div>
+                <div className="bg-gradient-to-br from-white to-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm mb-5">
+                  <p className="text-gray-700 leading-relaxed">
+                    Mi visión es consolidar un sistema de justicia electoral moderno, eficiente y cercano a la
+                    ciudadanía, que garantice la protección efectiva de los derechos político-electorales de todos los
+                    mexicanos.
+                  </p>
+                </div>
 
-                    <div className="mb-5">
-                      <p className="text-gray-700 leading-relaxed mb-4">
-                        Mi visión es consolidar un sistema de justicia electoral moderno, eficiente y cercano a la
-                        ciudadanía, que garantice la protección efectiva de los derechos político-electorales de todos
-                        los mexicanos.
-                      </p>
+                <div className="bg-gradient-to-r from-law-600 to-law-700 text-white p-4 rounded-xl shadow-sm mb-5">
+                  <div className="flex items-start">
+                    <div className="text-2xl text-gold-300 mr-2 font-serif">"</div>
+                    <p className="text-gray-100 italic text-sm">
+                      Mi compromiso es trabajar incansablemente para que la justicia electoral sea un pilar fundamental
+                      en la construcción de un México más democrático, justo e incluyente.
+                    </p>
+                  </div>
+                </div>
 
-                      <div className="bg-gradient-to-r from-law-600 to-law-700 text-white p-4 rounded-xl mb-5">
-                        <p className="text-gray-100 italic text-sm">
-                          "Mi compromiso es trabajar incansablemente para que la justicia electoral sea un pilar
-                          fundamental en la construcción de un México más democrático, justo e incluyente."
-                        </p>
-                      </div>
-                    </div>
+                <div className="mb-3 flex items-center">
+                  <div className="w-1.5 h-5 bg-gold-500 rounded-full mr-2"></div>
+                  <h4 className="font-semibold text-law-700">Pilares fundamentales:</h4>
+                </div>
 
-                    <h4 className="font-semibold text-law-700 mb-3 flex items-center">
-                      <div className="w-1 h-5 bg-gold-500 rounded-full mr-2"></div>
-                      Pilares fundamentales:
-                    </h4>
-                    <ul className="space-y-3">
-                      <li className="flex items-start">
-                        <div className="w-6 h-6 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-2 flex-shrink-0 mt-0.5">
-                          <Check className="h-3 w-3" />
+                <div className="space-y-3">
+                  {pillars.map((pillar, index) => (
+                    <div
+                      key={index}
+                      className="bg-gradient-to-br from-white to-slate-50 p-3 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 hover:border-law-200 hover:translate-y-[-2px]"
+                    >
+                      <div className="flex items-start">
+                        <div className="w-7 h-7 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-2.5 flex-shrink-0">
+                          <Check className="h-3.5 w-3.5" />
                         </div>
                         <div>
-                          <p className="font-medium text-law-800 text-sm">Democracia Inclusiva</p>
-                          <p className="text-gray-600 text-xs">
-                            Donde cada voto cuenta y todas las voces son escuchadas.
-                          </p>
+                          <p className="font-medium text-law-800 text-sm">{pillar.name}</p>
+                          <p className="text-gray-600 text-xs">{pillar.description}</p>
                         </div>
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-6 h-6 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-2 flex-shrink-0 mt-0.5">
-                          <Check className="h-3 w-3" />
-                        </div>
-                        <div>
-                          <p className="font-medium text-law-800 text-sm">Innovación Tecnológica</p>
-                          <p className="text-gray-600 text-xs">Para acercar las instituciones a los ciudadanos.</p>
-                        </div>
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-6 h-6 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-2 flex-shrink-0 mt-0.5">
-                          <Check className="h-3 w-3" />
-                        </div>
-                        <div>
-                          <p className="font-medium text-law-800 text-sm">Confianza Ciudadana</p>
-                          <p className="text-gray-600 text-xs">
-                            A través de la transparencia y la rendición de cuentas.
-                          </p>
-                        </div>
-                      </li>
-                    </ul>
-                  </motion.div>
-                )}
-                {/* Valores */}
-                {(activeCard === "values" || window.innerWidth >= 1024) && (
-                  <motion.div
-                    key="values"
-                    variants={flipVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className={`bg-white rounded-2xl shadow-lg p-6 border border-slate-100 relative overflow-hidden h-full ${
-                      activeCard !== "values" && window.innerWidth < 1024 ? "hidden" : ""
-                    } ${window.innerWidth < 1024 ? "absolute inset-0" : ""}`}
-                    style={{
-                      transformStyle: "preserve-3d",
-                      backfaceVisibility: "hidden",
-                      perspective: "1000px",
-                    }}
-                  >
-                    <div className="absolute top-0 right-0 w-40 h-40 bg-law-50 rounded-bl-full -z-10"></div>
-
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gold-500 to-gold-600 flex items-center justify-center text-white shadow-md mr-3">
-                        <Shield className="h-6 w-6" />
                       </div>
-                      <h3 className="text-xl font-bold text-law-800">Mis Valores</h3>
                     </div>
+                  ))}
+                </div>
+              </div>
+            </div>
 
-                    <div className="grid grid-cols-2 gap-3 mb-5">
-                      {values.slice(0, 6).map((value, index) => (
-                        <div
-                          key={index}
-                          className="bg-gradient-to-br from-slate-50 to-white p-3 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gold-200"
-                        >
-                          <h4 className="font-semibold text-law-700 text-sm mb-1 flex items-center">
-                            <div className="w-1.5 h-1.5 rounded-full bg-gold-500 mr-1.5"></div>
-                            {value.name}
-                          </h4>
+            {/* Valores - Visible en móvil cuando está activo, siempre visible en desktop */}
+            <div className={`${activeCard !== "values" && "hidden lg:block"}`}>
+              <div className="bg-white rounded-xl shadow-md border border-slate-200 p-5 md:p-7 lg:p-8">
+                <div className="flex items-center mb-5">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gold-500 to-gold-600 flex items-center justify-center text-white shadow-md mr-3">
+                    <Shield className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-law-800">Mis Valores</h3>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-5">
+                  {values.map((value, index) => (
+                    <div
+                      key={index}
+                      className="bg-gradient-to-br from-white to-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gold-200 hover:translate-y-[-2px]"
+                    >
+                      <div className="flex items-start">
+                        <div className="w-7 h-7 rounded-full bg-gold-100 flex items-center justify-center text-gold-600 mr-2.5 flex-shrink-0">
+                          <Check className="h-3.5 w-3.5" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-law-700 text-sm mb-1">{value.name}</h4>
                           <p className="text-gray-600 text-xs">{value.description}</p>
                         </div>
-                      ))}
+                      </div>
                     </div>
+                  ))}
+                </div>
 
-                    <div className="bg-gradient-to-r from-gold-500 to-gold-600 text-law-900 p-4 rounded-xl">
-                      <p className="italic text-sm">
-                        "Estos valores no son solo palabras, sino principios que guían cada una de mis decisiones y
-                        acciones como servidor público y como Magistrado Electoral."
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                <div className="bg-gradient-to-r from-gold-500 to-gold-600 text-law-900 p-4 rounded-xl shadow-sm">
+                  <div className="flex items-start">
+                    <div className="text-2xl text-white mr-2 font-serif">"</div>
+                    <p className="italic text-sm">
+                      Estos valores no son solo palabras, sino principios que guían cada una de mis decisiones y
+                      acciones como servidor público y como Magistrado Electoral.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
 
           {/* SECCIÓN 2: PROPUESTAS (Lado derecho) */}
-          <motion.div initial="hidden" animate={controls} variants={containerVariants} className="lg:w-7/12">
+          <motion.div initial="hidden" animate={controls} variants={containerVariants} className="lg:w-[60%]">
             <motion.div variants={itemVariants}>
-              <h3 className="text-xl font-bold text-law-800 mb-4 flex items-center">
+              <h3 className="text-xl md:text-2xl font-bold text-law-800 mb-6 flex items-center">
                 <div className="w-1.5 h-6 bg-gold-500 rounded-full mr-2"></div>
                 Propuestas Principales
               </h3>
 
-              <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 xl:gap-6">
                 {proposals.map((proposal, index) => (
                   <div
                     key={proposal.id}
                     className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-lg transition-all duration-300 hover:border-law-200 group cursor-pointer h-full"
                     onClick={() => setActiveModal(proposal.id)}
                   >
-                    <div className="h-32 overflow-hidden relative">
+                    <div className="h-32 sm:h-36 md:h-40 overflow-hidden relative">
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 z-10"></div>
                       <img
                         src={proposal.image || "/placeholder.svg"}
@@ -509,17 +491,17 @@ export const ProposalsSection = ({ isVisible }) => {
                       </div>
                     </div>
 
-                    <div className="p-3">
+                    <div className="p-4">
                       <h4 className="text-base font-bold text-law-800 mb-1 group-hover:text-law-600 transition-colors line-clamp-1">
                         {proposal.title}
                       </h4>
                       <div className="h-0.5 w-12 bg-gold-500 mb-2 transform origin-left group-hover:scale-x-125 transition-transform duration-500 rounded-full"></div>
-                      <p className="text-gray-600 text-xs mb-2 line-clamp-2">{proposal.description}</p>
+                      <p className="text-gray-600 text-xs md:text-sm mb-3 line-clamp-2">{proposal.description}</p>
                       <button
-                        className="inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group text-xs"
+                        className="inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group text-xs md:text-sm"
                         onClick={(e) => {
-                          e.stopPropagation();
-                          setActiveModal(proposal.id);
+                          e.stopPropagation()
+                          setActiveModal(proposal.id)
                         }}
                       >
                         Ver detalles
@@ -532,20 +514,20 @@ export const ProposalsSection = ({ isVisible }) => {
             </motion.div>
 
             {/* Llamado a la acción */}
-            <motion.div variants={itemVariants} className="mt-6">
+            <motion.div variants={itemVariants} className="mt-8 md:mt-10">
               <div className="relative rounded-xl overflow-hidden">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{ backgroundImage: `url(${images.future})` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-law-900/90 to-law-800/90" />
-                <div className="relative z-10 p-6 text-white">
-                  <h3 className="text-xl font-bold mb-2">Juntos Construyamos el Futuro Electoral</h3>
-                  <p className="text-sm text-gray-200 mb-4">
+                <div className="relative z-10 p-6 md:p-8 text-white">
+                  <h3 className="text-xl md:text-2xl font-bold mb-3">Juntos Construyamos el Futuro Electoral</h3>
+                  <p className="text-sm md:text-base text-gray-200 mb-5">
                     Estas propuestas son solo el comienzo. Necesitamos la participación de todos para construir un
                     sistema electoral más justo, transparente y eficiente.
                   </p>
-                  <button className="bg-gradient-to-r from-gold-500 to-gold-600 text-law-900 hover:from-gold-400 hover:to-gold-500 py-2 px-5 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 shadow-md flex items-center">
+                  <button className="bg-gradient-to-r from-gold-500 to-gold-600 text-law-900 hover:from-gold-400 hover:to-gold-500 py-2 px-5 rounded-full text-sm md:text-base font-medium transition-all duration-300 transform hover:scale-105 shadow-md flex items-center">
                     Súmate a esta visión
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </button>
@@ -595,7 +577,7 @@ export const ProposalsSection = ({ isVisible }) => {
                       </div>
 
                       {/* Estadísticas */}
-                      <div className="grid grid-cols-3 gap-2 mb-5">
+                      <div className="grid grid-cols-3 gap-3 mb-5">
                         {proposal.stats.map((stat, index) => (
                           <div
                             key={index}
@@ -687,10 +669,11 @@ export const ProposalsSection = ({ isVisible }) => {
                 </div>
               </div>
             </div>
-          )
+          ),
       )}
     </section>
-  );
-};
+  )
+}
 
-export default ProposalsSection;
+export default ProposalsSection
+

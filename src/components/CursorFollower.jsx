@@ -71,8 +71,8 @@ export const CursorFollower = () => {
             isClicking
               ? "scale-75 border-magistral-sand-500"
               : isHovering
-                ? "scale-150 border-blue-400"
-                : "scale-100 border-blue-500"
+                ? "scale-150 border-law-400"
+                : "scale-100 border-law-500"
           }`}
           style={{
             transform: `translate(0, 0) scale(${isClicking ? 0.75 : isHovering ? 1.5 : 1})`,
@@ -83,8 +83,8 @@ export const CursorFollower = () => {
             isClicking
               ? "scale-150 bg-magistral-sand-500"
               : isHovering
-                ? "scale-75 bg-blue-400"
-                : "scale-100 bg-blue-500"
+                ? "scale-75 bg-law-400"
+                : "scale-100 bg-law-500"
           }`}
           style={{
             transform: `translate(0, 0) scale(${isClicking ? 1.5 : isHovering ? 0.75 : 1})`,
