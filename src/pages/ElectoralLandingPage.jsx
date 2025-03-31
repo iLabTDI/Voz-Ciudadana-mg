@@ -174,7 +174,7 @@ export default function ElectoralLandingPage() {
                 </div>
                 <div className="text-sm md:text-base">
                   <h3 className="font-semibold text-base md:text-lg">Sergio Arturo Guerrero Olvera</h3>
-                  <p className="text-xs md:text-sm text-gold-200">Sala Regional Guadalajara</p>
+                  <p className="text-xs md:text-sm text-gold-200">Candidato a magistrado</p>
                 </div>
               </div>
               <span className="inline-flex items-center px-2 py-1 md:px-3 md:py-1 rounded-full text-xs md:text-sm font-medium bg-green-100 text-green-800 animate-pulse shadow-sm">

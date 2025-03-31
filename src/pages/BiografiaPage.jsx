@@ -766,7 +766,7 @@ export const BiografiaPage = () => {
                     </div>
                   </div>
                   <p className="text-gray-700 mb-6 leading-relaxed">
-                    Como docente, he formado a numerosas generaciones de abogados especializados en derecho electoral, combinando teoría y análisis práctico para profundizar en el estudio de los procesos electorales y la protección de derechos.
+                    Como docente, he formado a numerosas generaciones de abogadas y abogados especializados en derecho electoral, combinando teoría y análisis práctico para profundizar en el estudio de los procesos electorales y la protección de derechos.
                   </p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <h4 className="font-medium text-law-700 mb-2">Cursos impartidos:</h4>

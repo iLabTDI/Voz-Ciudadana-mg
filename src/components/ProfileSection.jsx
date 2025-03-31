@@ -112,10 +112,10 @@ export const ProfileSection = ({ isVisible }) => {
                 </div>
 
                 <h2 className="text-xl md:text-2xl font-bold text-law-800 mb-2">Sergio Arturo Guerrero Olvera</h2>
-                <p className="text-gold-700 font-medium mb-4 md:mb-6 flex items-center text-sm md:text-base">
+                {/*<p className="text-gold-700 font-medium mb-4 md:mb-6 flex items-center text-sm md:text-base">
                   <span className="w-2 h-2 md:w-3 md:h-3 bg-law-600 rounded-full mr-2"></span>
                   Candidato a Magistrado de la Sala Regional Guadalajara
-                </p>
+                </p>*/}
 
                 <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
                   <div className="flex items-start bg-slate-50 p-3 md:p-4 rounded-lg md:rounded-xl hover:bg-slate-100 transition-colors">
@@ -252,7 +252,7 @@ export const ProfileSection = ({ isVisible }) => {
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold-500/20 flex items-center justify-center mr-2 md:mr-3">
                       <span className="text-gold-300 font-bold text-sm md:text-base">1</span>
                     </div>
-                    <p className="text-gray-100 text-xs md:text-sm">Implementación de juicios electorales en línea</p>
+                    <p className="text-gray-100 text-xs md:text-sm">Juicios electorales en línea</p>
                   </div>
                   <div className="flex items-center bg-white/10 p-2 md:p-3 rounded-md md:rounded-lg backdrop-blur-sm">
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold-500/20 flex items-center justify-center mr-2 md:mr-3">

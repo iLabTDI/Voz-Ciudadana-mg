@@ -136,8 +136,8 @@ export const Footer = ({ scrollToSection }) => {
           {/* Columna 1: Descripción */}
           <div>
             <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-6">
-              El primer asistente virtual electoral interactivo para candidatos a magistrados en Guadalajara. Innovando
-              en la justicia electoral para un México más democrático.
+              Asistente virtual del candidato a magistrado de la sala regional Guadalajara del TEPJF Sergio Arturo Guerrero Olvera. 
+              Innovando en la justicia electoral para un México más democrático.
             </p>
 
             <div className="bg-law-700/70 rounded-xl p-4 border border-law-600/70 backdrop-blur-md">
