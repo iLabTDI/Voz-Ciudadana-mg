@@ -52,7 +52,7 @@ export const Vision = ({ isVisible }) => {
           <h2 className="text-4xl font-bold text-tech-700 mb-4">Una Visión Innovadora para el Futuro Electoral</h2>
           <div className="h-1 w-48 bg-aqua-400 mx-auto mb-6"></div>
           <p className="text-slate-700 max-w-2xl mx-auto">
-            El Magistrado Sergio tiene una visión clara y transformadora para el futuro de la justicia electoral en
+            Tengo una visión clara y transformadora para el futuro de la justicia electoral en
             México, basada en principios fundamentales y un compromiso inquebrantable con la democracia.
           </p>
         </div>

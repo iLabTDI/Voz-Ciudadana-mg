@@ -5,6 +5,7 @@ import { Award, BookOpen, GraduationCap, Briefcase, ExternalLink, Scale, Gavel }
 import { Link } from "react-router-dom"
 import { motion, useAnimation } from "framer-motion"
 import magistrado from "../../assets/Magistrado.png"
+import pattern from "../../public/pateerns/paper-texture.png";
 
 export const ProfileSection = ({ isVisible }) => {
   const controls = useAnimation()
@@ -38,6 +39,8 @@ export const ProfileSection = ({ isVisible }) => {
     },
   }
 
+ 
+
   return (
     <section
       id="profile"
@@ -47,7 +50,7 @@ export const ProfileSection = ({ isVisible }) => {
       {/* Fondo con textura */}
       <div
         className="absolute inset-0 opacity-10"
-        style={{ backgroundImage: "url('/patterns/paper-texture.png')", backgroundRepeat: "repeat" }}
+        style={{ backgroundImage: pattern, backgroundRepeat: "repeat" }}
       ></div>
 
       {/* Decoración */}
@@ -79,8 +82,9 @@ export const ProfileSection = ({ isVisible }) => {
             <h2 className="text-3xl md:text-4xl font-bold text-law-800 mb-3 md:mb-4">Perfil Profesional</h2>
             <div className="h-1 w-24 md:w-32 bg-gold-500 mx-auto mb-4 md:mb-6 rounded-full"></div>
             <p className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg">
-              Conoce al Magistrado Sergio Arturo Guerrero Olvera, un jurista comprometido con la justicia electoral y el
-              fortalecimiento de la democracia en México.
+              ¡Conóceme! Soy Sergio Arturo Guerrero Olvera, candidato a magistrado de la Sala Regional Guadalajara. Como
+              jurista, me comprometo a fortalecer la justicia electoral y a garantizar una democracia más inclusiva y
+              transparente.
             </p>
           </motion.div>
         </motion.div>
@@ -102,15 +106,15 @@ export const ProfileSection = ({ isVisible }) => {
                   <div className="absolute inset-0 bg-gradient-to-b from-law-600/20 to-gold-500/20 mix-blend-overlay"></div>
                   <img
                     src={magistrado || "/placeholder.svg"}
-                    alt="Magistrado Sergio Arturo Guerrero Olvera"
+                    alt="Sergio Arturo Guerrero Olvera"
                     className="w-full h-auto relative z-10"
                   />
                 </div>
 
-                <h2 className="text-xl md:text-2xl font-bold text-law-800 mb-2">Mgdo. Sergio Arturo Guerrero Olvera</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-law-800 mb-2">Sergio Arturo Guerrero Olvera</h2>
                 <p className="text-gold-700 font-medium mb-4 md:mb-6 flex items-center text-sm md:text-base">
                   <span className="w-2 h-2 md:w-3 md:h-3 bg-law-600 rounded-full mr-2"></span>
-                  Tribunal Electoral del Poder Judicial de la Federación
+                  Candidato a Magistrado de la Sala Regional Guadalajara
                 </p>
 
                 <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
@@ -119,8 +123,8 @@ export const ProfileSection = ({ isVisible }) => {
                       <Briefcase className="h-4 w-4 md:h-5 md:w-5" />
                     </div>
                     <div>
-                      <p className="font-medium text-law-800 text-sm md:text-base">Magistrado Electoral</p>
-                      <p className="text-xs md:text-sm text-gray-600">Sala Regional Guadalajara (2018-Presente)</p>
+                      <p className="font-medium text-law-800 text-sm md:text-base">Jurista Electoral</p>
+                      <p className="text-xs md:text-sm text-gray-600">Especialista en Derecho Electoral</p>
                     </div>
                   </div>
 
@@ -139,7 +143,7 @@ export const ProfileSection = ({ isVisible }) => {
                       <Award className="h-4 w-4 md:h-5 md:w-5" />
                     </div>
                     <div>
-                      <p className="font-medium text-law-800 text-sm md:text-base">15+ años de experiencia</p>
+                      <p className="font-medium text-law-800 text-sm md:text-base">20+ años de experiencia</p>
                       <p className="text-xs md:text-sm text-gray-600">En justicia electoral</p>
                     </div>
                   </div>
@@ -147,9 +151,9 @@ export const ProfileSection = ({ isVisible }) => {
 
                 <Link
                   to="/biografia"
-                  className="w-full py-2 md:py-3 px-4 bg-law-600 hover:bg-law-700 text-white rounded-lg md:rounded-xl text-center font-medium text-sm md:text-base transition-colors duration-300 shadow-md hover:shadow-lg flex items-center justify-center"
+                  className="w-full py-2 md:py-3 px-4 bg-law-600 hover:bg-law-700 text-white rounded-xl md:rounded-xl text-center font-medium text-sm md:text-base transition-colors duration-300 shadow-md hover:shadow-lg flex items-center justify-center"
                 >
-                  Ver biografía completa
+                  Ver mi biografía completa
                   <ExternalLink className="ml-2 h-3 w-3 md:h-4 md:w-4" />
                 </Link>
               </div>
@@ -163,12 +167,13 @@ export const ProfileSection = ({ isVisible }) => {
               className="bg-white rounded-xl md:rounded-2xl shadow-lg p-6 md:p-8 border border-slate-200 h-full"
             >
               <div className="mb-6 md:mb-8">
-                <h3 className="text-xl md:text-2xl font-bold text-law-800 mb-3 md:mb-4">Trayectoria Destacada</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-law-800 mb-3 md:mb-4">Mi Trayectoria</h3>
                 <div className="h-1 w-16 md:w-20 bg-gold-500 mb-4 md:mb-6 rounded-full"></div>
                 <p className="text-gray-700 leading-relaxed text-sm md:text-base">
-                  Sergio Arturo Guerrero Olvera, Magistrado Presidente de la Sala Regional Guadalajara del TEPJF, es un
-                  jurista especializado en derecho electoral con más de 15 años de experiencia. Su labor fortalece la
-                  democracia y protege los derechos político-electorales en México.
+                  Soy un jurista especializado en derecho electoral con más de 20 años de experiencia. A lo largo de mi
+                  carrera, he combinado la práctica jurídica con la docencia y la investigación, lo que me ha permitido
+                  desarrollar una visión integral del derecho electoral y contribuir significativamente a su evolución
+                  en México.
                 </p>
               </div>
 
@@ -178,7 +183,7 @@ export const ProfileSection = ({ isVisible }) => {
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-3 md:mr-4">
                       <BookOpen className="h-5 w-5 md:h-6 md:w-6" />
                     </div>
-                    <h4 className="text-lg md:text-xl font-semibold text-law-800">Publicaciones</h4>
+                    <h4 className="text-lg md:text-xl font-semibold text-law-800">Mis Publicaciones</h4>
                   </div>
                   <ul className="space-y-2 md:space-y-3">
                     <li className="flex items-start">
@@ -191,15 +196,15 @@ export const ProfileSection = ({ isVisible }) => {
                       <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-gold-100 flex items-center justify-center text-gold-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5">
                         <span className="text-xs md:text-sm">02</span>
                       </div>
-                      <span className="text-gray-700 text-sm md:text-base">
-                        "Derechos de Grupos Vulnerables" (2021)
-                      </span>
+                      <span className="text-gray-700 text-sm md:text-base">"Justicia Electoral Inclusiva" (2021)</span>
                     </li>
                     <li className="flex items-start">
                       <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-gold-100 flex items-center justify-center text-gold-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5">
                         <span className="text-xs md:text-sm">03</span>
                       </div>
-                      <span className="text-gray-700 text-sm md:text-base">"Sistema Electoral Mexicano" (2019)</span>
+                      <span className="text-gray-700 text-sm md:text-base">
+                        "Estatus, organización y funcionamiento del TEPJF" (2021)
+                      </span>
                     </li>
                   </ul>
                 </div>
@@ -209,26 +214,28 @@ export const ProfileSection = ({ isVisible }) => {
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-3 md:mr-4">
                       <Award className="h-5 w-5 md:h-6 md:w-6" />
                     </div>
-                    <h4 className="text-lg md:text-xl font-semibold text-law-800">Reconocimientos</h4>
+                    <h4 className="text-lg md:text-xl font-semibold text-law-800">Mi Experiencia</h4>
                   </div>
                   <ul className="space-y-2 md:space-y-3">
                     <li className="flex items-start">
                       <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-gold-100 flex items-center justify-center text-gold-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5">
                         <span className="text-xs md:text-sm">01</span>
                       </div>
-                      <span className="text-gray-700 text-sm md:text-base">Premio Jurisprudencia (2022)</span>
+                      <span className="text-gray-700 text-sm md:text-base">Magistrado Presidente (2022-Presente)</span>
                     </li>
                     <li className="flex items-start">
                       <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-gold-100 flex items-center justify-center text-gold-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5">
                         <span className="text-xs md:text-sm">02</span>
                       </div>
-                      <span className="text-gray-700 text-sm md:text-base">Medalla al Mérito (2020)</span>
+                      <span className="text-gray-700 text-sm md:text-base">Magistrado Propietario (2019-2022)</span>
                     </li>
                     <li className="flex items-start">
                       <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-gold-100 flex items-center justify-center text-gold-600 mr-2 md:mr-3 flex-shrink-0 mt-0.5">
                         <span className="text-xs md:text-sm">03</span>
                       </div>
-                      <span className="text-gray-700 text-sm md:text-base">Excelencia Académica (2018)</span>
+                      <span className="text-gray-700 text-sm md:text-base">
+                        Secretario de Estudio y Cuenta (2010-2015)
+                      </span>
                     </li>
                   </ul>
                 </div>
@@ -238,26 +245,28 @@ export const ProfileSection = ({ isVisible }) => {
               <div className="bg-gradient-to-r from-law-600 to-law-700 text-white p-4 md:p-6 rounded-lg md:rounded-xl shadow-lg mb-4 md:mb-6">
                 <h4 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 flex items-center">
                   <Award className="h-4 w-4 md:h-5 md:w-5 mr-2 text-gold-300" />
-                  Logros Destacados
+                  Mis Logros Destacados
                 </h4>
                 <div className="space-y-2 md:space-y-3">
                   <div className="flex items-center bg-white/10 p-2 md:p-3 rounded-md md:rounded-lg backdrop-blur-sm">
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold-500/20 flex items-center justify-center mr-2 md:mr-3">
                       <span className="text-gold-300 font-bold text-sm md:text-base">1</span>
                     </div>
-                    <p className="text-gray-100 text-xs md:text-sm">Juicios electorales en línea</p>
+                    <p className="text-gray-100 text-xs md:text-sm">Implementación de juicios electorales en línea</p>
                   </div>
                   <div className="flex items-center bg-white/10 p-2 md:p-3 rounded-md md:rounded-lg backdrop-blur-sm">
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold-500/20 flex items-center justify-center mr-2 md:mr-3">
                       <span className="text-gold-300 font-bold text-sm md:text-base">2</span>
                     </div>
-                    <p className="text-gray-100 text-xs md:text-sm">Protección de derechos vulnerables</p>
+                    <p className="text-gray-100 text-xs md:text-sm">Protección de derechos de grupos vulnerables</p>
                   </div>
                   <div className="flex items-center bg-white/10 p-2 md:p-3 rounded-md md:rounded-lg backdrop-blur-sm">
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold-500/20 flex items-center justify-center mr-2 md:mr-3">
                       <span className="text-gold-300 font-bold text-sm md:text-base">3</span>
                     </div>
-                    <p className="text-gray-100 text-xs md:text-sm">Asistente virtual electoral</p>
+                    <p className="text-gray-100 text-xs md:text-sm">
+                      Contribución al desarrollo del asistente virtual "Alfonsina"
+                    </p>
                   </div>
                 </div>
               </div>

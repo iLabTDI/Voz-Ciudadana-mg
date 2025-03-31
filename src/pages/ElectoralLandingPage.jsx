@@ -150,16 +150,18 @@ export default function ElectoralLandingPage() {
           initial="hidden"
           animate={isVisible.hero ? "visible" : "hidden"}
         >
-          <motion.div variants={heroVariants} className="text-center mb-10 md:mb-12">
-            <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4 md:mb-6 leading-tight tracking-tight">
-              Bienvenido al Primer Asistente
+          <motion.div variants={heroVariants} className="text-center mb-5 md:mb-10">
+            <h1 className="text-2xl md:text-5xl font-extrabold mt-5 text-white mb-4 md:mb-6 leading-tight tracking-tight">
+              Asistente Virtual del Candidato a Magistrado
               <br />
-              <span className="text-gold-300">Virtual Electoral Sergio</span>
+              <span className="text-gold-300">Sergio Arturo Guerrero Olvera</span>
             </h1>
-            <p className="text-gray-100 text-base md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
-              Interactúa con Sergio Arturo Guerrero Olvera y conoce su visión electoral.
+            <p className="text-gray-100 text-sm md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
+              Innovando en la justicia electoral para un México más democrático.
             </p>
           </motion.div>
+
+
 
           <motion.div
             className="flex flex-col items-stretch justify-center gap-0 max-w-5xl mx-auto rounded-2xl overflow-hidden border border-white/20 shadow-xl bg-white/10 backdrop-blur-md"
@@ -172,7 +174,7 @@ export default function ElectoralLandingPage() {
                 </div>
                 <div className="text-sm md:text-base">
                   <h3 className="font-semibold text-base md:text-lg">Sergio Arturo Guerrero Olvera</h3>
-                  <p className="text-xs md:text-sm text-gray-200">Tribunal Electoral · Sala Guadalajara</p>
+                  <p className="text-xs md:text-sm text-gold-200">Sala Regional Guadalajara</p>
                 </div>
               </div>
               <span className="inline-flex items-center px-2 py-1 md:px-3 md:py-1 rounded-full text-xs md:text-sm font-medium bg-green-100 text-green-800 animate-pulse shadow-sm">
@@ -226,7 +228,6 @@ export default function ElectoralLandingPage() {
 
       {/* Sección de Perfil */}
       <motion.div
-        className="bg-gradient-to-b from-gray-100 to-blue-50 py-12 md:py-16"
         variants={profileVariants}
         initial="hidden"
         animate={isVisible.profile ? "visible" : "hidden"}

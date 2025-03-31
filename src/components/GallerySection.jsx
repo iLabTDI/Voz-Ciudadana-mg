@@ -71,23 +71,23 @@ export const GallerySection = ({ isVisible }) => {
   const recognitions = [
     {
       id: "rec1",
-      title: "Premio Nacional de Jurisprudencia",
-      year: "2022",
-      organization: "Barra Mexicana de Abogados",
+      title: "Contribución a la Justicia Electoral Digital",
+      year: "2023",
+      organization: "Tribunal Electoral del Poder Judicial de la Federación",
       image: images.award,
     },
     {
       id: "rec2",
-      title: "Medalla al Mérito Judicial",
-      year: "2020",
-      organization: "Poder Judicial de la Federación",
+      title: "Impulso a la Justicia Electoral Inclusiva",
+      year: "2021",
+      organization: "Escuela Judicial Electoral",
       image: images.medal,
     },
     {
       id: "rec3",
-      title: "Reconocimiento a la Excelencia Académica",
-      year: "2018",
-      organization: "Universidad de Guadalajara",
+      title: "Doctorado en Derecho con Tesis Laureada",
+      year: "2005",
+      organization: "Universidad Autónoma de Querétaro",
       image: images.university,
     },
   ]
@@ -95,49 +95,50 @@ export const GallerySection = ({ isVisible }) => {
   const publications = [
     {
       id: "pub1",
-      title: "Justicia Electoral en la Era Digital",
+      title: "Justicia Electoral Digital",
       year: "2023",
-      publisher: "Editorial Porrúa",
+      publisher: "Tribunal Electoral del Poder Judicial de la Federación",
       image: images.book,
     },
     {
       id: "pub2",
-      title: "Derechos Político-Electorales de Grupos Vulnerables",
+      title: "Justicia Electoral Inclusiva",
       year: "2021",
-      publisher: "Instituto de Investigaciones Jurídicas, UNAM",
+      publisher: "Escuela Judicial Electoral, TEPJF",
       image: images.rights,
     },
     {
       id: "pub3",
-      title: "La Evolución del Sistema Electoral Mexicano",
-      year: "2019",
-      publisher: "Fondo de Cultura Económica",
+      title: "Estatus, organización y funcionamiento del TEPJF",
+      year: "2021",
+      publisher: "Tirant Lo Blanch",
       image: images.history,
     },
   ]
 
   const highlights = [
     {
-      title: "Conferencia Internacional de Derecho Electoral",
-      date: "Octubre 2023",
+      title: "Seminario Ciberdemocracia",
+      date: "2022",
       location: "Ciudad de México",
       description:
-        "Participación como ponente principal en la conferencia sobre 'El Futuro de la Justicia Electoral Digital'",
+        "Participación en el seminario sobre acciones afirmativas y ciudadanía de pueblos indígenas en el ámbito electoral",
       image: "https://images.unsplash.com/photo-1560523160-754a9e25c68f?q=80&w=1200&h=600&auto=format&fit=crop",
     },
     {
-      title: "Publicación del Libro 'Justicia Electoral en la Era Digital'",
-      date: "Julio 2023",
-      location: "Editorial Porrúa",
+      title: "Publicación del Cuadernillo 'Justicia Electoral Digital'",
+      date: "2023",
+      location: "Editorial del TEPJF",
       description:
-        "Lanzamiento de mi más reciente obra sobre los desafíos y oportunidades de la tecnología en la justicia electoral",
+        "Lanzamiento de mi trabajo sobre los desafíos y oportunidades de la tecnología en la justicia electoral",
       image: "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?q=80&w=1200&h=600&auto=format&fit=crop",
     },
     {
-      title: "Premio Nacional de Jurisprudencia",
-      date: "Noviembre 2022",
-      location: "Barra Mexicana de Abogados",
-      description: "Reconocimiento a la trayectoria y contribuciones al derecho electoral mexicano",
+      title: "Implementación de la Plataforma de Juicio en Línea Electoral",
+      date: "2021-2022",
+      location: "Sala Regional Guadalajara",
+      description:
+        "Liderazgo en la modernización de los procesos jurisdiccionales electorales mediante tecnología digital",
       image: "https://images.unsplash.com/photo-1523294587484-bae6cc870010?q=80&w=1200&h=600&auto=format&fit=crop",
     },
   ]
@@ -167,10 +168,10 @@ export const GallerySection = ({ isVisible }) => {
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-law-100 flex items-center justify-center">
               <Award className="h-10 w-10 text-law-600" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-law-800 mb-4">Reconocimientos y Publicaciones</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-law-800 mb-4">Mis Contribuciones y Publicaciones</h2>
             <div className="h-1 w-32 bg-gold-500 mx-auto mb-6 rounded-full"></div>
             <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-              Explora los momentos más destacados de mi trayectoria profesional, reconocimientos y publicaciones en el
+              Explora los momentos más destacados de mi trayectoria profesional, contribuciones y publicaciones en el
               ámbito de la justicia electoral.
             </p>
           </motion.div>
@@ -229,7 +230,7 @@ export const GallerySection = ({ isVisible }) => {
                     : "bg-transparent text-gray-700 hover:bg-slate-100"
                 }`}
               >
-                Reconocimientos
+                Contribuciones
               </button>
               <button
                 onClick={() => setActiveTab("publications")}

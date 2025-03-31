@@ -49,11 +49,10 @@ export const Navbar = ({ activeSection, scrollToSection }) => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-law-800/95 backdrop-blur-md shadow-lg py-2"
-          : "bg-gradient-to-b from-law-900/90 to-law-900/70 backdrop-blur-sm py-3"
-      }`}
+      className={`fixed w-full z-50 transition-all duration-500 ${scrolled
+        ? "bg-law-800/95 backdrop-blur-md shadow-lg py-2"
+        : "bg-gradient-to-b from-law-900/90 to-law-900/70 backdrop-blur-sm py-3"
+        }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo y Nombre */}
@@ -68,8 +67,8 @@ export const Navbar = ({ activeSection, scrollToSection }) => {
           </button>
 
           <div className="flex flex-col">
-            <span className="font-bold text-base text-white">Sergio Guerrero IA</span>
-            <span className="text-xs text-gold-200/80">Tribunal Electoral · Sala Guadalajara</span>
+            <span className="font-bold text-lg text-white">Sergio Guerrero</span>
+            <span className="text-sm text-gold-200/80">Candidato a Magistrado</span>
           </div>
         </div>
 
@@ -81,17 +80,16 @@ export const Navbar = ({ activeSection, scrollToSection }) => {
                 { id: "inicio", label: "Inicio" },
                 { id: "profile", label: "Perfil" },
                 { id: "proposals", label: "Propuestas" },
-                { id: "inspiration", label: "Inspiración" },
+                // { id: "inspiration", label: "Inspiración" },
                 { id: "gallery", label: "Galería" },
               ].map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleClick(item.id)}
-                  className={`relative px-3 py-2 text-sm transition-colors rounded-lg ${
-                    activeSection === item.id
-                      ? "text-gold-300 font-medium bg-white/10"
-                      : "text-white hover:text-gold-300 hover:bg-white/5"
-                  }`}
+                  className={`relative px-3 py-2 text-sm transition-colors rounded-xl ${activeSection === item.id
+                    ? "text-gold-300 font-medium bg-white/10"
+                    : "text-white hover:text-gold-300 hover:bg-white/5"
+                    }`}
                 >
                   {item.label}
                   {activeSection === item.id && (
@@ -120,12 +118,12 @@ export const Navbar = ({ activeSection, scrollToSection }) => {
               >
                 Propuestas
               </Link>
-              <Link
+              {/* <Link
                 to="/#inspiration"
                 className="relative px-3 py-2 text-sm transition-colors rounded-lg text-white hover:text-gold-300 hover:bg-white/5"
               >
                 Inspiración
-              </Link>
+              </Link> */}
               <Link
                 to="/#gallery"
                 className="relative px-3 py-2 text-sm transition-colors rounded-lg text-white hover:text-gold-300 hover:bg-white/5"
@@ -137,7 +135,7 @@ export const Navbar = ({ activeSection, scrollToSection }) => {
 
           <Link
             to="/foro"
-            className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-law-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 shadow-md hover:shadow-lg flex items-center space-x-1 transform hover:scale-105"
+            className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-law-900 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 shadow-md hover:shadow-lg flex items-center space-x-1 transform hover:scale-105"
           >
             <span>Foro</span>
             <ChevronDown className="h-4 w-4" />
@@ -156,9 +154,8 @@ export const Navbar = ({ activeSection, scrollToSection }) => {
 
       {/* Menú móvil */}
       <div
-        className={`md:hidden fixed inset-0 bg-law-900/95 backdrop-blur-md z-40 transition-all duration-300 ease-in-out ${
-          isMenuOpen ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none -translate-y-10"
-        }`}
+        className={`md:hidden fixed inset-0 bg-law-900/95 backdrop-blur-md z-40 transition-all duration-300 ease-in-out ${isMenuOpen ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none -translate-y-10"
+          }`}
         style={{ top: "60px", height: "calc(100vh - 60px)" }}
       >
         <div className="container mx-auto px-4 py-6 h-full overflow-y-auto">
@@ -175,16 +172,14 @@ export const Navbar = ({ activeSection, scrollToSection }) => {
                   <button
                     key={item.id}
                     onClick={() => handleClick(item.id)}
-                    className={`text-left py-4 px-4 rounded-xl transition-all duration-300 flex items-center ${
-                      activeSection === item.id
-                        ? "bg-gold-500/20 text-gold-300 font-medium"
-                        : "text-white hover:bg-white/10"
-                    }`}
+                    className={`text-left py-4 px-4 rounded-xl transition-all duration-300 flex items-center ${activeSection === item.id
+                      ? "bg-gold-500/20 text-gold-300 font-medium"
+                      : "text-white hover:bg-white/10"
+                      }`}
                   >
                     <div
-                      className={`w-1 h-8 rounded-full mr-4 transition-all duration-300 ${
-                        activeSection === item.id ? "bg-gold-400" : "bg-transparent"
-                      }`}
+                      className={`w-1 h-8 rounded-full mr-4 transition-all duration-300 ${activeSection === item.id ? "bg-gold-400" : "bg-transparent"
+                        }`}
                     ></div>
                     <span className="text-lg">{item.label}</span>
                   </button>
@@ -213,13 +208,13 @@ export const Navbar = ({ activeSection, scrollToSection }) => {
                   <div className="w-1 h-8 rounded-full mr-4 bg-transparent"></div>
                   <span className="text-lg">Propuestas</span>
                 </Link>
-                <Link
+                {/* <Link
                   to="/#inspiration"
                   className="text-left py-4 px-4 rounded-xl transition-all duration-300 flex items-center text-white hover:bg-white/10"
                 >
                   <div className="w-1 h-8 rounded-full mr-4 bg-transparent"></div>
                   <span className="text-lg">Inspiración</span>
-                </Link>
+                </Link> */}
                 <Link
                   to="/#gallery"
                   className="text-left py-4 px-4 rounded-xl transition-all duration-300 flex items-center text-white hover:bg-white/10"
@@ -240,10 +235,11 @@ export const Navbar = ({ activeSection, scrollToSection }) => {
             </div>
 
             {/* Información de contacto en móvil */}
-            <div className="mt-auto pt-8 border-t border-white/10">
-              <p className="text-gold-300 font-medium mb-2">Contacto</p>
-              <p className="text-white/70 text-sm mb-1">contacto@tribunalelectoral.gob.mx</p>
-              <p className="text-white/70 text-sm">Av. López Mateos Norte 1189, Guadalajara</p>
+
+            <div className="flex justified-center items-center space-x-2 mt-4">
+              <p className="text-gray-400 text-sm md:text-base mb-3 md:mb-0">
+                © {new Date().getFullYear()} Sergio Arturo Guerrero Olvera - Todos los derechos reservados
+              </p>
             </div>
           </div>
         </div>

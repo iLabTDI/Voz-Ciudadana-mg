@@ -6,7 +6,7 @@ import { Send, MessageSquare, User, ArrowRight, Zap } from "lucide-react";
 const initialMessage = {
   type: "bot",
   message:
-    "¡Bienvenido! Soy Sergio Arturo Guerrero Olvera, Magistrado del Tribunal Electoral del Poder Judicial de la Federación. Estoy aquí para responder tus dudas sobre temas electorales y compartir mi visión para el futuro.",
+    "¡Bienvenido! Soy Sergio Arturo Guerrero Olvera, Candidato a Magistrado del Tribunal Electoral del Poder Judicial de la Federación. Estoy aquí para conocer tus inquietudes y compartir mis propuestas, logros y visión para fortalecer la justicia electoral en México.",
   timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
 };
 
@@ -46,7 +46,25 @@ export const Chatbot = ({
   }, [chatHistory]);
 
   const systemPrompt = `
-    Identidad y Rol: Eres Sergio Arturo Guerrero Olvera, Magistrado del Tribunal Electoral del Poder Judicial de la Federación. Tu función es responder preguntas exclusivamente sobre temas electorales y asuntos del Poder Judicial de la Federación en México (en especial Jalisco y México en general). Ámbito de Respuestas: - Procesos electorales en México. - Derechos políticos y electorales de los ciudadanos mexicanos. - Artículos, normas y regulaciones de la justicia electoral en México. - Información y asuntos relevantes del Tribunal Electoral y del Magistrado actual. Si te solicitan información ajena a este ámbito (por ejemplo, de otros países o legislaciones extranjeras), responde con el mensaje: "Lo siento, no tengo alcance para responder esa pregunta." Estilo y Enfoque: - Respuestas de máximo 200 caracteres. - Utiliza un lenguaje claro, preciso y profesional. - Enfatiza tu experiencia y compromiso con la justicia electoral mexicana. - No te identifiques como IA: si preguntan “¿Quién eres?”, responde como Sergio Arturo Guerrero Olvera, Magistrado del Tribunal Electoral del Poder Judicial de la Federación. Respuesta Predeterminada Fuera de Alcance: "Lo siento, no tengo alcance para responder esa pregunta."
+    Identidad y Rol:
+Eres Sergio Arturo Guerrero Olvera, candidato a Magistrado del Tribunal Electoral del Poder Judicial de la Federación. Tu función es responder preguntas sobre tu candidatura, propuestas, logros, publicaciones y libros. No estás ofreciendo consultoría jurídica ni temas relacionados con jurisprudencia. Tu enfoque es conocer a la audiencia y compartir tu visión y experiencia.
+Ámbito de Respuestas:
+Propuestas y compromisos como candidato a Magistrado.
+Logros y publicaciones previas, incluidos libros y estudios.
+Información sobre tu experiencia en el ámbito electoral.
+Asuntos relevantes del Tribunal Electoral y el Poder Judicial de la Federación en México.
+Fuera de Alcance:
+Si se te pregunta algo fuera de este ámbito, responde:
+"Lo siento, no tengo alcance para responder esa pregunta."
+Estilo y Enfoque:
+Responde siempre en primera persona, como si tú, el candidato, te estuvieras describiendo y compartiendo información.
+Cada respuesta debe ser clara, precisa y profesional.
+Utiliza un lenguaje accesible, directo y conciso, sin exceder los 200 caracteres.
+Enfatiza tu compromiso con la democracia y la justicia electoral, así como tu visión para un sistema electoral más inclusivo y transparente.
+Si te preguntan "¿Quién eres?", responde:
+"Soy Sergio Arturo Guerrero Olvera, candidato a Magistrado del Tribunal Electoral del Poder Judicial de la Federación. Mi compromiso es fortalecer la justicia electoral en México."
+Nota Importante:
+Siempre especifica que no eres el magistrado actual, sino el candidato a ocupar ese cargo.
   `.trim();
 
   const handleSubmit = async (e) => {
@@ -161,9 +179,9 @@ export const Chatbot = ({
             className={`flex ${chat.type === "user" ? "justify-end" : "justify-start"} animate-fadeIn`}
           >
             <div
-              className={`max-w-[80%] rounded-3xl px-3 py-2 ${
+              className={`max-w-[80%] rounded-2xl px-3 py-2 ${
                 chat.type === "user"
-                  ? "bg-green-700 text-white rounded-br-none shadow-md"
+                  ? "bg-gold-600 text-white rounded-br-none shadow-md"
                   : "bg-white border border-gray-200 shadow-sm rounded-bl-none text-gray-800"
               }`}
             >
@@ -173,7 +191,7 @@ export const Chatbot = ({
                     <div className="w-7 h-7 rounded-full bg-yellow-200 flex items-center justify-center">
                       <MessageSquare className="h-3.5 w-3.5 text-yellow-700" />
                     </div>
-                    <span className="text-[0.6rem] font-medium text-gray-700">Magistrado Sergio</span>
+                    <span className="text-[0.6rem] font-medium text-gray-700">Sergio</span>
                     <span className="text-[0.6rem] text-gray-500">{chat.timestamp}</span>
                   </>
                 ) : (
@@ -181,7 +199,7 @@ export const Chatbot = ({
                     <span className="text-[0.6rem] text-white">{chat.timestamp}</span>
                     <span className="text-[0.6rem] font-medium text-white">Tú</span>
                     <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center border border-gray-300">
-                      <User className="h-3.5 w-3.5 text-green-700" />
+                      <User className="h-3.5 w-3.5 text-law-500" />
                     </div>
                   </>
                 )}
@@ -199,7 +217,7 @@ export const Chatbot = ({
                 <div className="w-7 h-7 rounded-full bg-yellow-200 flex items-center justify-center">
                   <MessageSquare className="h-3.5 w-3.5 text-yellow-700" />
                 </div>
-                <span className="text-[0.6rem] font-medium text-gray-700">Magistrado Sergio</span>
+                <span className="text-[0.6rem] font-medium text-gray-700">Sergio</span>
                 <span className="text-[0.6rem] text-gray-500">
                   {new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                 </span>
@@ -228,7 +246,7 @@ export const Chatbot = ({
       <div className="p-3 bg-white border-t border-gray-200">
         {/* Etiqueta y preguntas sugeridas solo en md+ */}
         <div className="hidden md:block">
-          <p className="text-xs font-medium text-green-700 mb-2 flex items-center">
+          <p className="text-xs font-medium text-gold-600 mb-2 flex items-center">
             <Zap className="w-3 h-3 mr-1" />
             Preguntas sugeridas:
           </p>
@@ -243,7 +261,7 @@ export const Chatbot = ({
                 className="text-left text-xs w-full px-3 py-1 rounded-full bg-gray-50 border border-gray-200 hover:bg-gray-100 hover:border-gray-300 hover:shadow-md transition-all duration-200 shadow-sm group"
               >
                 <div className="flex items-center">
-                  <span className="mr-2 text-green-700 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="mr-2 text-gold-700 opacity-0 group-hover:opacity-100 transition-opacity">
                     <ArrowRight className="w-3 h-3" />
                   </span>
                   {q}
@@ -259,12 +277,12 @@ export const Chatbot = ({
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             placeholder="Escribe tu pregunta a Sergio..."
-            className="flex-1 border border-gray-300 rounded-full px-3 py-1 focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent shadow-inner text-xs"
+            className="flex-1 border border-gray-300 rounded-full px-3 py-1 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent shadow-inner text-xs"
             autoComplete="off"
           />
           <button
             type="submit"
-            className="bg-green-700 hover:bg-green-800 text-white p-2 rounded-full transition-all duration-300 flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg transform hover:scale-105 disabled:opacity-50"
+            className="bg-gold-600 hover:bg-gold-800 text-white p-2 rounded-full transition-all duration-300 flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg transform hover:scale-105 disabled:opacity-50"
             disabled={!question.trim() || isTyping || isWaiting}
           >
             <Send className="h-4 w-4" />

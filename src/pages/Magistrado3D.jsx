@@ -83,19 +83,6 @@ export const Magistrado3D = ({ isWaiting, isTyping, lastBotMessage }) => {
         </button>
       </div>
 
-      {/* Indicador de estado */}
-      <div className="absolute bottom-6 left-6 z-20">
-        <div className="bg-black/30 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm flex items-center border border-white/10 shadow-lg">
-          <span
-            className={`w-2 h-2 rounded-full mr-2 ${
-              isTyping ? "bg-green-500 animate-pulse" : isWaiting ? "bg-amber-500 animate-pulse" : "bg-blue-400"
-            }`}
-          />
-          <span className="font-medium">
-            {isTyping ? "Respondiendo..." : isWaiting ? "Escuchando..." : "Listo para ayudar"}
-          </span>
-        </div>
-      </div>
 
       {/* Efecto de brillo en los bordes */}
       <div className="absolute inset-0 rounded-2xl pointer-events-none border border-white/5 z-20"></div>

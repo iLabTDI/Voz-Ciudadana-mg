@@ -54,7 +54,7 @@ export const ForoPage = () => {
   const posts = [
     {
       id: 1,
-      author: "Magistrado Sergio Arturo Guerrero Olvera",
+      author: "Sergio Arturo Guerrero Olvera",
       isOfficial: true,
       avatar: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Magistrado.png-xMRhFVdFSa29mRbXuEhHI2J4yyfrRX.jpeg",
       date: "15 de marzo, 2025",
@@ -66,7 +66,7 @@ export const ForoPage = () => {
     },
     {
       id: 2,
-      author: "Magistrado Sergio Arturo Guerrero Olvera",
+      author: "Sergio Arturo Guerrero Olvera",
       isOfficial: true,
       avatar: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Magistrado.png-xMRhFVdFSa29mRbXuEhHI2J4yyfrRX.jpeg",
       date: "10 de febrero, 2025",
@@ -78,7 +78,7 @@ export const ForoPage = () => {
     },
     {
       id: 4,
-      author: "Magistrado Sergio Arturo Guerrero Olvera",
+      author: "Sergio Arturo Guerrero Olvera",
       isOfficial: true,
       avatar: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Magistrado.png-xMRhFVdFSa29mRbXuEhHI2J4yyfrRX.jpeg",
       date: "20 de enero, 2025",
@@ -215,7 +215,7 @@ export const ForoPage = () => {
                   <ArrowLeft className="h-5 w-5" />
                 </div>
               </Link>
-              <h1 className="text-2xl font-bold">Foro Electoral</h1>
+              <h1 className="text-2xl font-bold ">Foro Electoral</h1>
             </div>
             <div className="flex items-center gap-4">
               <div className="hidden md:block relative">
@@ -277,25 +277,25 @@ export const ForoPage = () => {
         </div>
       </header>
 
-      {/* Hero */}
-      <div className="relative pt-24 pb-5 px-6">
-        <div className="container mx-auto relative z-10">
-          <motion.div
-            className="max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold text-law-800 mb-6 mt-10">Foro de Diálogo Electoral</h1>
-            <div className="w-32 h-1 bg-gold-500 mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl text-law-600 leading-relaxed">
-              Un espacio para conocer las propuestas y mensajes del Magistrado Sergio, participar con comentarios y fortalecer nuestra democracia.
-            </p>
-          </motion.div>
+      {/* /* Hero */} 
+        <div className="relative pt-24 pb-5 px-6">
+          <div className="container mx-auto relative z-10">
+            <motion.div
+          className="max-w-3xl mx-auto text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+            >
+          <h1 className="text-3xl md:text-5xl font-bold text-law-800 mb-6 mt-5">Foro de Diálogo Electoral</h1>
+          <div className="w-24 md:w-32 h-1 bg-gold-500 mx-auto mb-8 rounded-full"></div>
+          <p className="text-lg md:text-xl text-law-600 leading-relaxed">
+            Un espacio para conocer las propuestas y mensajes del Candidato a Magistrado Sergio, participar con comentarios y fortalecer nuestra democracia.
+          </p>
+            </motion.div>
+          </div>
         </div>
-      </div>
 
-      {/* Filtros */}
+        {/* Filtros */}
       <div className="sticky top-20 z-30 bg-law-50 shadow-md py-4 border-b border-law-200">
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-center overflow-x-auto hide-scrollbar">
@@ -304,7 +304,7 @@ export const ForoPage = () => {
                 <motion.button
                   key={category.id}
                   onClick={() => setActiveTab(category.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center whitespace-nowrap ${
+                  className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 flex items-center whitespace-nowrap ${
                     activeTab === category.id
                       ? "bg-gold-500 text-law-900 shadow-md"
                       : "bg-transparent text-law-700 hover:bg-law-200"
@@ -313,7 +313,7 @@ export const ForoPage = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   {category.icon}
-                  <span className="ml-2">{category.label}</span>
+                  <span className="ml-1 md:ml-2">{category.label}</span>
                 </motion.button>
               ))}
             </div>

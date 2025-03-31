@@ -13,104 +13,104 @@ export const GaleriaPage = () => {
   const [searchTerm, setSearchTerm] = useState("")
 
   const items = [
-    // 
+    // Contribuciones
     {
       id: "rec1",
       type: "recognition",
-      title: "Premio Nacional de Jurisprudencia",
-      date: "Noviembre 2022",
+      title: "Contribución a la Justicia Electoral Digital",
+      date: "2023",
       location: "Ciudad de México",
       description:
-        "Ceremonia de entrega del Premio Nacional de Jurisprudencia, otorgado por la Barra Mexicana de Abogados en reconocimiento a las contribuciones a la jurisprudencia electoral.",
-      image: "https://source.unsplash.com/random/800x600/?award,ceremony",
+        "Participación en el desarrollo del cuadernillo 'Justicia Electoral Digital' editado por el TEPJF, donde se analizan los retos y oportunidades de la tecnología para la justicia electoral.",
+      image: "https://images.unsplash.com/photo-1523294587484-bae6cc870010?q=80&w=800&h=600&auto=format&fit=crop",
     },
     {
       id: "rec2",
       type: "recognition",
-      title: "Medalla al Mérito Judicial",
-      date: "Octubre 2020",
+      title: "Impulso a la Justicia Electoral Inclusiva",
+      date: "2021-2022",
       location: "Ciudad de México",
-      description: "Reconocimiento por 15 años de servicio ejemplar en la administración de justicia electoral.",
-      image: "https://source.unsplash.com/random/800x600/?medal,honor",
+      description:
+        "Contribución a la difusión de materiales sobre justicia electoral inclusiva que analizan sentencias clave del Tribunal en favor de grupos históricamente discriminados.",
+      image: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?q=80&w=800&h=600&auto=format&fit=crop",
     },
     {
       id: "rec3",
       type: "recognition",
-      title: "Reconocimiento a la Excelencia Académica",
-      date: "Mayo 2018",
-      location: "Guadalajara, Jalisco",
+      title: "Doctorado en Derecho con Tesis Laureada",
+      date: "2005",
+      location: "Universidad Autónoma de Querétaro",
       description:
-        "Por su destacada labor como docente y sus contribuciones a la formación de nuevas generaciones de juristas.",
-      image: "https://source.unsplash.com/random/800x600/?university,education",
+        "Obtención del grado de Doctor en Derecho con mención honorífica por la investigación sobre los mecanismos de protección de los derechos político-electorales.",
+      image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800&h=600&auto=format&fit=crop",
     },
 
     // Publicaciones
     {
       id: "pub1",
+      title: "Justicia Electoral Digital",
       type: "publication",
-      title: "Justicia Electoral en la Era Digital",
-      date: "Marzo 2023",
-      publisher: "Editorial Porrúa",
+      date: "2023",
+      publisher: "Tribunal Electoral del Poder Judicial de la Federación",
       description:
-        "Análisis profundo sobre los retos y oportunidades que presenta la tecnología para la justicia electoral en México y América Latina.",
-      image: "https://source.unsplash.com/random/800x600/?book,digital",
+        "Cuadernillo que analiza los retos y oportunidades que presenta la tecnología para la justicia electoral en México, con propuestas para hacer más accesible y eficiente el sistema.",
+      image: "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?q=80&w=800&h=600&auto=format&fit=crop",
     },
     {
       id: "pub2",
+      title: "Justicia Electoral Inclusiva",
       type: "publication",
-      title: "Derechos Político-Electorales de Grupos Vulnerables",
-      date: "Junio 2021",
-      publisher: "Instituto de Investigaciones Jurídicas, UNAM",
+      date: "2021",
+      publisher: "Escuela Judicial Electoral, TEPJF",
       description:
-        "Estudio sobre la protección de los derechos electorales de grupos históricamente marginados y propuestas para su fortalecimiento.",
-      image: "https://source.unsplash.com/random/800x600/?rights,diversity",
+        "Análisis sobre la protección de los derechos electorales de grupos históricamente marginados y propuestas para su fortalecimiento en el sistema electoral mexicano.",
+      image: "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=800&h=600&auto=format&fit=crop",
     },
     {
       id: "pub3",
+      title: "Estatus, organización y funcionamiento del TEPJF",
       type: "publication",
-      title: "La Evolución del Sistema Electoral Mexicano",
-      date: "Septiembre 2019",
-      publisher: "Fondo de Cultura Económica",
+      date: "2021",
+      publisher: "Tirant Lo Blanch",
       description:
-        "Recorrido histórico por las transformaciones del sistema electoral mexicano desde la independencia hasta nuestros días.",
-      image: "https://source.unsplash.com/random/800x600/?history,mexico",
+        "Capítulo sobre la Dirección General de Jurisprudencia y Consulta, analizando su papel en el sistema de justicia electoral mexicano.",
+      image: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=800&h=600&auto=format&fit=crop",
     },
 
     // Eventos
     {
       id: "evt1",
       type: "event",
-      title: "Conferencia Internacional de Derecho Electoral",
-      date: "Marzo 2023",
+      title: "Seminario Ciberdemocracia",
+      date: "2022",
       location: "Ciudad de México",
       description:
-        "Participación como ponente principal en la Conferencia Internacional de Derecho Electoral, donde se discutieron los retos actuales para la democracia en América Latina.",
-      image: "https://source.unsplash.com/random/800x600/?conference,speaker",
+        "Participación en el seminario sobre acciones afirmativas y ciudadanía de pueblos indígenas en el ámbito electoral, organizado por el TEPJF.",
+      image: "https://images.unsplash.com/photo-1560523160-754a9e25c68f?q=80&w=800&h=600&auto=format&fit=crop",
     },
     {
       id: "evt2",
       type: "event",
-      title: "Seminario sobre Derechos Político-Electorales",
-      date: "Julio 2022",
-      location: "Guadalajara, Jalisco",
+      title: "Implementación de la Plataforma de Juicio en Línea Electoral",
+      date: "2021-2022",
+      location: "Sala Regional Guadalajara",
       description:
-        "Seminario organizado por la Universidad de Guadalajara sobre la protección de los derechos político-electorales de grupos vulnerables.",
-      image: "https://source.unsplash.com/random/800x600/?seminar,university",
+        "Liderazgo en la puesta en marcha de la plataforma de Juicio en Línea Electoral, permitiendo que más casos pudieran recibirse y resolverse de forma electrónica.",
+      image: "https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?q=80&w=800&h=600&auto=format&fit=crop",
     },
     {
       id: "evt3",
       type: "event",
-      title: "Foro de Participación Ciudadana",
-      date: "Mayo 2022",
-      location: "Monterrey, Nuevo León",
+      title: "Foro de Reforma Electoral",
+      date: "2022",
+      location: "Ciudad de México",
       description:
-        "Participación en el Foro de Participación Ciudadana, donde se discutieron estrategias para fomentar una mayor participación de la ciudadanía en los procesos electorales.",
-      image: "https://source.unsplash.com/random/800x600/?forum,people",
+        "Participación en foros de reforma electoral compartiendo perspectivas sobre el funcionamiento y mejoras al sistema electoral mexicano junto a otros expertos.",
+      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&h=600&auto=format&fit=crop",
     },
   ]
 
-  // Filtrar elementos según la pe
-
+  // Filtrar elementos según la pestaña activa y el término de búsqueda
   const filteredItems = items.filter((item) => {
     // Filtrar por tipo
     const typeMatch = activeTab === "all" || item.type === activeTab
@@ -138,22 +138,21 @@ export const GaleriaPage = () => {
               <ArrowLeft className="mr-2 h-5 w-5" />
               <span>Volver al inicio</span>
             </Link>
-            <h1 className="text-2xl font-bold">Galería de Experiencias</h1>
+            <h1 className="text-2xl font-bold">Mi Galería de Experiencias</h1>
           </div>
         </div>
       </header>
 
       {/* Hero */}
       <div className="relative py-16 px-4">
-        <div className="absolute inset-0 bg-[url('https://source.unsplash.com/random/1920x1080/?gallery,museum')] bg-cover bg-center opacity-20"></div>
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=1920&h=1080&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-magistral-teal-700 mb-6">
-              Reconocimientos, Publicaciones y Eventos
+              Mis Contribuciones, Publicaciones y Eventos
             </h1>
             <p className="text-xl text-slate-600 mb-8">
-              Explore los momentos más destacados de la trayectoria profesional del Magistrado Sergio Arturo Guerrero
-              Olvera.
+              Explora los momentos más destacados de mi trayectoria profesional en el ámbito de la justicia electoral.
             </p>
           </div>
         </div>
@@ -182,7 +181,7 @@ export const GaleriaPage = () => {
                   : "bg-transparent text-gray-700 hover:bg-magistral-sand-200"
               }`}
             >
-              Reconocimientos
+              Contribuciones
             </button>
             <button
               onClick={() => setActiveTab("publication")}
@@ -237,7 +236,7 @@ export const GaleriaPage = () => {
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-sm font-medium text-magistral-teal-600 bg-magistral-teal-50 px-3 py-1 rounded-full border border-magistral-teal-100">
                       {item.type === "recognition"
-                        ? "Reconocimiento"
+                        ? "Contribución"
                         : item.type === "publication"
                           ? "Publicación"
                           : "Evento"}
@@ -297,7 +296,7 @@ export const GaleriaPage = () => {
         <div className="mt-16">
           <div className="flex items-center mb-8">
             <div className="h-px bg-magistral-sand-300 flex-grow"></div>
-            <h2 className="text-2xl font-bold text-magistral-teal-700 px-4">Línea de Tiempo</h2>
+            <h2 className="text-2xl font-bold text-magistral-teal-700 px-4">Mi Trayectoria Profesional</h2>
             <div className="h-px bg-magistral-sand-300 flex-grow"></div>
           </div>
 
@@ -311,15 +310,12 @@ export const GaleriaPage = () => {
                 <div className="w-5/12 pr-8 text-right">
                   <div className="bg-white p-6 rounded-xl shadow-md border border-magistral-sand-200 hover:shadow-lg transition-all duration-300 hover:border-magistral-teal-200 transform hover:scale-105">
                     <div className="inline-block rounded-lg bg-magistral-teal-50 px-3 py-1 text-sm text-magistral-teal-600 font-medium mb-2 border border-magistral-teal-100">
-                      2015
+                      2022
                     </div>
                     <h4 className="text-lg font-semibold text-magistral-teal-700 mb-2">
-                      Nombramiento como Magistrado Electoral
+                      Magistrado Presidente de la Sala Regional Guadalajara
                     </h4>
-                    <p className="text-slate-600">
-                      Designado Magistrado de la Sala Regional Guadalajara del Tribunal Electoral del Poder Judicial de
-                      la Federación.
-                    </p>
+                    <p className="text-slate-600">Tribunal Electoral del Poder Judicial de la Federación</p>
                   </div>
                 </div>
 
@@ -334,15 +330,12 @@ export const GaleriaPage = () => {
                 <div className="w-5/12 pl-8 text-left">
                   <div className="bg-white p-6 rounded-xl shadow-md border border-magistral-sand-200 hover:shadow-lg transition-all duration-300 hover:border-magistral-teal-200 transform hover:scale-105">
                     <div className="inline-block rounded-lg bg-magistral-teal-50 px-3 py-1 text-sm text-magistral-teal-600 font-medium mb-2 border border-magistral-teal-100">
-                      2010
+                      2019
                     </div>
                     <h4 className="text-lg font-semibold text-magistral-teal-700 mb-2">
-                      Secretario de Estudio y Cuenta
+                      Magistrado Propietario de la Sala Regional
                     </h4>
-                    <p className="text-slate-600">
-                      Nombrado Secretario de Estudio y Cuenta en la Sala Superior del Tribunal Electoral del Poder
-                      Judicial de la Federación.
-                    </p>
+                    <p className="text-slate-600">Primera Circunscripción Plurinominal, TEPJF</p>
                   </div>
                 </div>
               </div>
@@ -353,14 +346,10 @@ export const GaleriaPage = () => {
                 <div className="w-5/12 pr-8 text-right">
                   <div className="bg-white p-6 rounded-xl shadow-md border border-magistral-sand-200 hover:shadow-lg transition-all duration-300 hover:border-magistral-teal-200 transform hover:scale-105">
                     <div className="inline-block rounded-lg bg-magistral-teal-50 px-3 py-1 text-sm text-magistral-teal-600 font-medium mb-2 border border-magistral-teal-100">
-                      2008
+                      2014-2019
                     </div>
-                    <h4 className="text-lg font-semibold text-magistral-teal-700 mb-2">
-                      Profesor de Derecho Electoral
-                    </h4>
-                    <p className="text-slate-600">
-                      Inicio de actividad docente como Profesor de Derecho Electoral en la Universidad de Guadalajara.
-                    </p>
+                    <h4 className="text-lg font-semibold text-magistral-teal-700 mb-2">Magistrado Propietario</h4>
+                    <p className="text-slate-600">Tribunal Electoral del Estado de Querétaro</p>
                   </div>
                 </div>
 
@@ -375,15 +364,12 @@ export const GaleriaPage = () => {
                 <div className="w-5/12 pl-8 text-left">
                   <div className="bg-white p-6 rounded-xl shadow-md border border-magistral-sand-200 hover:shadow-lg transition-all duration-300 hover:border-magistral-teal-200 transform hover:scale-105">
                     <div className="inline-block rounded-lg bg-magistral-teal-50 px-3 py-1 text-sm text-magistral-teal-600 font-medium mb-2 border border-magistral-teal-100">
-                      2005
+                      2011-2014
                     </div>
                     <h4 className="text-lg font-semibold text-magistral-teal-700 mb-2">
-                      Doctorado en Derecho Constitucional
+                      Coordinador de Jurisprudencia
                     </h4>
-                    <p className="text-slate-600">
-                      Obtención del grado de Doctor en Derecho Constitucional por la Universidad Nacional Autónoma de
-                      México.
-                    </p>
+                    <p className="text-slate-600">Tribunal Electoral del Poder Judicial de la Federación</p>
                   </div>
                 </div>
               </div>
