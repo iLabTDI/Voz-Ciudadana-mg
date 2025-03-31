@@ -4,6 +4,7 @@ import { ForoPage } from "./pages/ForoPage"
 import { BiografiaPage } from "./pages/BiografiaPage"
 import { GaleriaPage } from "./pages/GaleriaPage"
 import { MainLayout } from "./layouts/MainLayout"
+import Vota13Page from "./pages/vota13"
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         <Route path="foro" element={<ForoPage />} />
         <Route path="biografia" element={<BiografiaPage />} />
         <Route path="galeria" element={<GaleriaPage />} />
+        <Route path="vota13" element={<Vota13Page />} />
+
       </Route>
     </Routes>
 

@@ -17,7 +17,7 @@ import {
 } from "lucide-react"
 
 // Importamos la imagen del magistrado
-import magistradoImage from "../../assets/Magistrado.png"
+import magistradoImage from "../../assets/magistrado.jpg"
 
 export const BiografiaPage = () => {
   const controls = useAnimation()

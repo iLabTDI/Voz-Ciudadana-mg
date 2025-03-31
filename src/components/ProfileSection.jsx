@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import { Award, BookOpen, GraduationCap, Briefcase, ExternalLink, Scale, Gavel } from "lucide-react"
 import { Link } from "react-router-dom"
 import { motion, useAnimation } from "framer-motion"
-import magistrado from "../../assets/Magistrado.png"
+import magistrado from "../../assets/magistrado.jpg"
 import pattern from "../../public/pateerns/paper-texture.png";
 
 export const ProfileSection = ({ isVisible }) => {

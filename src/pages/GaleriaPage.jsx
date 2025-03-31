@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { ArrowLeft, Calendar, Award, BookOpen, Search, Filter } from "lucide-react"
+import { ArrowLeft, Calendar, Award, BookOpen, Search, Filter, ChevronRight, ExternalLink } from "lucide-react"
 
 export const GaleriaPage = () => {
   useEffect(() => {
@@ -126,92 +126,107 @@ export const GaleriaPage = () => {
   })
 
   return (
-    <div
-      className="min-h-screen bg-magistral-cream-500"
-      style={{ backgroundImage: "url('/patterns/paper-texture.png')", backgroundRepeat: "repeat" }}
-    >
+    <div className="min-h-screen bg-slate-50 relative">
+      {/* Fondo con textura */}
+      <div
+        className="absolute inset-0 opacity-5"
+        style={{ backgroundImage: "url('/patterns/paper-texture.png')", backgroundRepeat: "repeat" }}
+      ></div>
+
       {/* Header */}
-      <header className="bg-gradient-to-r from-magistral-teal-600 to-magistral-teal-700 text-white py-6">
-        <div className="container mx-auto px-4">
+      <header className="bg-gradient-to-r from-law-600 to-law-700 text-white py-4 md:py-6 sticky top-0 z-50 shadow-lg">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center text-white hover:text-magistral-sand-300 transition-colors">
-              <ArrowLeft className="mr-2 h-5 w-5" />
-              <span>Volver al inicio</span>
+            <Link to="/" className="flex items-center text-white hover:text-gold-300 transition-colors group">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 flex items-center justify-center mr-2 md:mr-3 group-hover:bg-white/20 transition-all">
+                <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
+              </div>
+              <span className="font-medium text-sm md:text-base">Volver al inicio</span>
             </Link>
-            <h1 className="text-2xl font-bold">Mi Galería de Experiencias</h1>
+            <h1 className="text-xl md:text-2xl font-bold">Mi Galería de Experiencias</h1>
+            <div className="w-10 h-10 rounded-full bg-white p-1 flex items-center justify-center shadow-md overflow-hidden">
+              <img src="/images/mexican-flag.svg" alt="Bandera de México" className="w-full h-full rounded-full" />
+            </div>
           </div>
         </div>
       </header>
 
       {/* Hero */}
-      <div className="relative py-16 px-4">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=1920&h=1080&auto=format&fit=crop')] bg-cover bg-center opacity-20"></div>
+      <div className="relative py-16 md:py-24 px-4">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=1920&h=1080&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-law-900/10 to-transparent"></div>
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-magistral-teal-700 mb-6">
-              Mis Contribuciones, Publicaciones y Eventos
+            <div className="inline-block mb-6">
+              <div className="flex items-center justify-center">
+                <div className="h-px w-12 bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
+                <div className="w-16 h-16 mx-3 rounded-full bg-law-500 flex items-center justify-center shadow-lg">
+                  <Award className="h-8 w-8 text-white" />
+                </div>
+                <div className="h-px w-12 bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
+              </div>
+            </div>
+            <h1 className="text-3xl md:text-5xl font-bold text-law-800 mb-4 md:mb-6">
+              Mis Contribuciones y Publicaciones
             </h1>
-            <p className="text-xl text-slate-600 mb-8">
-              Explora los momentos más destacados de mi trayectoria profesional en el ámbito de la justicia electoral.
+            <div className="h-1 w-24 md:w-32 bg-gold-500 mx-auto mb-6 rounded-full"></div>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+              Explora los momentos más destacados de mi trayectoria profesional.
             </p>
           </div>
         </div>
       </div>
 
       {/* Contenido principal */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 md:px-6 py-8 md:py-12 relative z-10">
         {/* Filtros y búsqueda */}
-        <div className="mb-10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="inline-flex bg-white rounded-full shadow-md p-1 border border-magistral-sand-200">
+        <div className="mb-8 md:mb-12 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="inline-flex bg-white rounded-full shadow-md p-1 border border-slate-200 overflow-x-auto max-w-full">
             <button
               onClick={() => setActiveTab("all")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeTab === "all"
-                  ? "bg-magistral-teal-600 text-white shadow-md"
-                  : "bg-transparent text-gray-700 hover:bg-magistral-sand-200"
-              }`}
+              className={`px-3 md:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${activeTab === "all"
+                ? "bg-law-500 text-white shadow-md"
+                : "bg-transparent text-gray-700 hover:bg-slate-100"
+                }`}
             >
               Todos
             </button>
             <button
               onClick={() => setActiveTab("recognition")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeTab === "recognition"
-                  ? "bg-magistral-teal-600 text-white shadow-md"
-                  : "bg-transparent text-gray-700 hover:bg-magistral-sand-200"
-              }`}
+              className={`px-3 md:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${activeTab === "recognition"
+                ? "bg-law-500 text-white shadow-md"
+                : "bg-transparent text-gray-700 hover:bg-slate-100"
+                }`}
             >
               Contribuciones
             </button>
             <button
               onClick={() => setActiveTab("publication")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeTab === "publication"
-                  ? "bg-magistral-teal-600 text-white shadow-md"
-                  : "bg-transparent text-gray-700 hover:bg-magistral-sand-200"
-              }`}
+              className={`px-3 md:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${activeTab === "publication"
+                ? "bg-law-500 text-white shadow-md"
+                : "bg-transparent text-gray-700 hover:bg-slate-100"
+                }`}
             >
               Publicaciones
             </button>
             <button
               onClick={() => setActiveTab("event")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeTab === "event"
-                  ? "bg-magistral-teal-600 text-white shadow-md"
-                  : "bg-transparent text-gray-700 hover:bg-magistral-sand-200"
-              }`}
+              className={`px-3 md:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${activeTab === "event"
+                ? "bg-law-500 text-white shadow-md"
+                : "bg-transparent text-gray-700 hover:bg-slate-100"
+                }`}
             >
               Eventos
             </button>
           </div>
 
-          <div className="relative w-full md:w-auto">
+          <div className="relative w-full md:w-auto mt-4 md:mt-0">
             <input
               type="text"
               placeholder="Buscar..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 pr-4 py-2 w-full md:w-64 rounded-full border border-magistral-sand-300 focus:outline-none focus:ring-2 focus:ring-magistral-teal-500 focus:border-transparent"
+              className="pl-10 pr-4 py-2 w-full md:w-64 rounded-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-law-500 focus:border-transparent shadow-sm"
             />
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
           </div>
@@ -219,169 +234,118 @@ export const GaleriaPage = () => {
 
         {/* Resultados */}
         {filteredItems.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {filteredItems.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-xl shadow-lg overflow-hidden border border-magistral-sand-200 hover:shadow-xl transition-all duration-500 hover:border-magistral-teal-200 group"
+                className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 h-full"
               >
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src={item.image || "/placeholder.svg"}
-                    alt={item.title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  />
+                <div className="h-48 overflow-hidden relative">
+                  <img src={item.image || "/placeholder.svg"} alt={item.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute top-4 left-4">
+                    <div className="w-10 h-10 rounded-full bg-law-500 flex items-center justify-center text-white shadow-md">
+                      {item.type === "recognition" ? (
+                        <Award className="h-5 w-5" />
+                      ) : item.type === "publication" ? (
+                        <BookOpen className="h-5 w-5" />
+                      ) : (
+                        <Calendar className="h-5 w-5" />
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <div className="p-6">
+                <div className="p-5 md:p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-sm font-medium text-magistral-teal-600 bg-magistral-teal-50 px-3 py-1 rounded-full border border-magistral-teal-100">
+                    <span className="text-xs md:text-sm font-medium text-law-600 bg-law-50 px-3 py-1 rounded-full border border-law-100">
                       {item.type === "recognition"
                         ? "Contribución"
                         : item.type === "publication"
                           ? "Publicación"
                           : "Evento"}
                     </span>
-                    {item.type === "recognition" ? (
-                      <Award className="h-5 w-5 text-magistral-teal-600" />
-                    ) : item.type === "publication" ? (
-                      <BookOpen className="h-5 w-5 text-magistral-teal-600" />
-                    ) : (
-                      <Calendar className="h-5 w-5 text-magistral-teal-600" />
-                    )}
+                    <span className="text-xs md:text-sm font-medium text-gray-500">{item.date}</span>
                   </div>
-                  <h4 className="text-xl font-semibold text-magistral-teal-700 mb-2 group-hover:text-magistral-teal-600 transition-colors">
-                    {item.title}
-                  </h4>
-                  <div className="flex items-center text-slate-600 text-sm mb-4">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    <span>{item.date}</span>
+                  <h4 className="text-lg md:text-xl font-semibold text-law-800 mb-2">{item.title}</h4>
+                  <div className="flex items-center text-gray-500 text-xs md:text-sm mb-3">
                     {item.location && (
-                      <>
-                        <span className="mx-2">•</span>
-                        <span>{item.location}</span>
-                      </>
+                      <span className="flex items-center">
+                        <Calendar className="h-3 w-3 md:h-4 md:w-4 mr-1" />
+                        {item.location}
+                      </span>
                     )}
                     {item.publisher && (
-                      <>
-                        <span className="mx-2">•</span>
-                        <span>{item.publisher}</span>
-                      </>
+                      <span className="flex items-center">
+                        <BookOpen className="h-3 w-3 md:h-4 md:w-4 mr-1" />
+                        {item.publisher}
+                      </span>
                     )}
                   </div>
-                  <p className="text-slate-600 text-sm mb-4 line-clamp-3">{item.description}</p>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">{item.description}</p>
+                  <div className="flex justify-end">
+                    <button className="inline-flex items-center text-law-600 font-medium text-sm">
+                      Ver detalles
+                      <ChevronRight className="ml-1 h-4 w-4" />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="text-center py-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-magistral-teal-100 mb-4">
-              <Filter className="h-8 w-8 text-magistral-teal-600" />
+          <div className="text-center py-12 bg-white rounded-xl shadow-md border border-slate-200">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-law-100 mb-4">
+              <Filter className="h-8 w-8 text-law-600" />
             </div>
-            <h3 className="text-xl font-semibold text-magistral-teal-700 mb-2">No se encontraron resultados</h3>
-            <p className="text-slate-600 mb-6">Intente con otros términos de búsqueda o cambie los filtros.</p>
+            <h3 className="text-xl font-semibold text-law-800 mb-2">No se encontraron resultados</h3>
+            <p className="text-gray-600 mb-6">Intente con otros términos de búsqueda o cambie los filtros.</p>
             <button
               onClick={() => {
                 setActiveTab("all")
                 setSearchTerm("")
               }}
-              className="bg-magistral-teal-600 hover:bg-magistral-teal-700 text-white py-2 px-6 rounded-full font-medium transition-colors"
+              className="bg-law-500 hover:bg-law-600 text-white py-2 px-6 rounded-full font-medium transition-colors shadow-md"
             >
               Limpiar filtros
             </button>
           </div>
         )}
 
-        {/* Línea de tiempo */}
-        <div className="mt-16">
-          <div className="flex items-center mb-8">
-            <div className="h-px bg-magistral-sand-300 flex-grow"></div>
-            <h2 className="text-2xl font-bold text-magistral-teal-700 px-4">Mi Trayectoria Profesional</h2>
-            <div className="h-px bg-magistral-sand-300 flex-grow"></div>
-          </div>
-
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-magistral-teal-500 to-magistral-teal-200"></div>
-
-            <div className="space-y-12">
-              <div className="relative flex items-center">
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-magistral-teal-500 border-4 border-white shadow-md"></div>
-
-                <div className="w-5/12 pr-8 text-right">
-                  <div className="bg-white p-6 rounded-xl shadow-md border border-magistral-sand-200 hover:shadow-lg transition-all duration-300 hover:border-magistral-teal-200 transform hover:scale-105">
-                    <div className="inline-block rounded-lg bg-magistral-teal-50 px-3 py-1 text-sm text-magistral-teal-600 font-medium mb-2 border border-magistral-teal-100">
-                      2022
-                    </div>
-                    <h4 className="text-lg font-semibold text-magistral-teal-700 mb-2">
-                      Magistrado Presidente de la Sala Regional Guadalajara
-                    </h4>
-                    <p className="text-slate-600">Tribunal Electoral del Poder Judicial de la Federación</p>
-                  </div>
-                </div>
-
-                <div className="w-5/12"></div>
-              </div>
-
-              <div className="relative flex items-center">
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-magistral-teal-500 border-4 border-white shadow-md"></div>
-
-                <div className="w-5/12"></div>
-
-                <div className="w-5/12 pl-8 text-left">
-                  <div className="bg-white p-6 rounded-xl shadow-md border border-magistral-sand-200 hover:shadow-lg transition-all duration-300 hover:border-magistral-teal-200 transform hover:scale-105">
-                    <div className="inline-block rounded-lg bg-magistral-teal-50 px-3 py-1 text-sm text-magistral-teal-600 font-medium mb-2 border border-magistral-teal-100">
-                      2019
-                    </div>
-                    <h4 className="text-lg font-semibold text-magistral-teal-700 mb-2">
-                      Magistrado Propietario de la Sala Regional
-                    </h4>
-                    <p className="text-slate-600">Primera Circunscripción Plurinominal, TEPJF</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative flex items-center">
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-magistral-teal-500 border-4 border-white shadow-md"></div>
-
-                <div className="w-5/12 pr-8 text-right">
-                  <div className="bg-white p-6 rounded-xl shadow-md border border-magistral-sand-200 hover:shadow-lg transition-all duration-300 hover:border-magistral-teal-200 transform hover:scale-105">
-                    <div className="inline-block rounded-lg bg-magistral-teal-50 px-3 py-1 text-sm text-magistral-teal-600 font-medium mb-2 border border-magistral-teal-100">
-                      2014-2019
-                    </div>
-                    <h4 className="text-lg font-semibold text-magistral-teal-700 mb-2">Magistrado Propietario</h4>
-                    <p className="text-slate-600">Tribunal Electoral del Estado de Querétaro</p>
-                  </div>
-                </div>
-
-                <div className="w-5/12"></div>
-              </div>
-
-              <div className="relative flex items-center">
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-magistral-teal-500 border-4 border-white shadow-md"></div>
-
-                <div className="w-5/12"></div>
-
-                <div className="w-5/12 pl-8 text-left">
-                  <div className="bg-white p-6 rounded-xl shadow-md border border-magistral-sand-200 hover:shadow-lg transition-all duration-300 hover:border-magistral-teal-200 transform hover:scale-105">
-                    <div className="inline-block rounded-lg bg-magistral-teal-50 px-3 py-1 text-sm text-magistral-teal-600 font-medium mb-2 border border-magistral-teal-100">
-                      2011-2014
-                    </div>
-                    <h4 className="text-lg font-semibold text-magistral-teal-700 mb-2">
-                      Coordinador de Jurisprudencia
-                    </h4>
-                    <p className="text-slate-600">Tribunal Electoral del Poder Judicial de la Federación</p>
-                  </div>
-                </div>
+        {/* Destacado */}
+        <div className="mt-16 md:mt-20">
+          <div className="relative rounded-xl overflow-hidden shadow-lg">
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage:
+                  "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&h=1080&auto=format&fit=crop')",
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-law-900/90 to-law-800/80" />
+            <div className="relative z-10 p-6 md:p-10 text-white">
+              <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Explora Mi Trayectoria Completa</h3>
+              <p className="text-base md:text-lg text-gray-200 mb-6 max-w-3xl">
+                Descubre más sobre mi experiencia profesional, publicaciones académicas, contribuciones y sobre mí.
+              </p>
+              <div className="flex justify-start">
+                <Link
+                  to="/biografia"
+                  className="bg-gradient-to-r from-gold-500 to-gold-600 text-law-900 hover:from-gold-400 hover:to-gold-500 py-2 px-5 rounded-full text-sm md:text-base font-medium transition-all duration-300 transform hover:scale-105 shadow-md flex items-center"
+                >
+                  <ExternalLink className="mr-2 h-4 w-4 md:h-5 md:w-5" />
+                  Conocer más
+                </Link>
               </div>
             </div>
           </div>
         </div>
 
+
         {/* Botón de regreso */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-16 md:mt-20">
           <Link
             to="/"
-            className="bg-magistral-teal-600 hover:bg-magistral-teal-700 text-white py-3 px-8 rounded-full font-medium transition-all duration-300 inline-flex items-center shadow-lg"
+            className="bg-law-500 hover:bg-law-600 text-white py-3 px-8 rounded-full font-medium transition-colors inline-flex items-center shadow-md"
           >
             <ArrowLeft className="mr-2 h-5 w-5" />
             Volver a la página principal

@@ -18,6 +18,7 @@ import {
   Calendar,
   Target,
   Zap,
+  Link,
 } from "lucide-react"
 import { motion, useAnimation } from "framer-motion"
 
@@ -329,21 +330,19 @@ export const ProposalsSection = ({ isVisible }) => {
           <div className="inline-flex bg-white rounded-full shadow-md p-1 border border-slate-200">
             <button
               onClick={() => setActiveCard("vision")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCard === "vision"
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCard === "vision"
                   ? "bg-law-600 text-white shadow-md"
                   : "bg-transparent text-gray-700 hover:bg-slate-100"
-              }`}
+                }`}
             >
               Mi Visión
             </button>
             <button
               onClick={() => setActiveCard("values")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCard === "values"
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCard === "values"
                   ? "bg-law-600 text-white shadow-md"
                   : "bg-transparent text-gray-700 hover:bg-slate-100"
-              }`}
+                }`}
             >
               Mis Valores
             </button>
@@ -527,10 +526,13 @@ export const ProposalsSection = ({ isVisible }) => {
                     Estas propuestas son solo el comienzo. Necesitamos la participación de todos para construir un
                     sistema electoral más justo, transparente y eficiente.
                   </p>
-                  <button className="bg-gradient-to-r from-gold-500 to-gold-600 text-law-900 hover:from-gold-400 hover:to-gold-500 py-2 px-5 rounded-full text-sm md:text-base font-medium transition-all duration-300 transform hover:scale-105 shadow-md flex items-center">
+                  <Link
+                    to="/vota13" 
+                    className="bg-gradient-to-r from-gold-500 to-gold-600 text-law-900 hover:from-gold-400 hover:to-gold-500 py-2 px-5 rounded-full text-sm md:text-base font-medium transition-all duration-300 transform hover:scale-105 shadow-md flex items-center"
+                  >
                     Súmate a esta visión
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </motion.div>

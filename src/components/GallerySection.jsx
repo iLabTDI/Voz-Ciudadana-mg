@@ -1,94 +1,81 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Award, BookOpen, ExternalLink, ChevronRight, Calendar } from "lucide-react"
+import { Award, BookOpen, ExternalLink, ChevronRight, Calendar, Star, FileText, Medal, Users } from "lucide-react"
 import { Link } from "react-router-dom"
-import { motion, useAnimation } from "framer-motion"
 
 export const GallerySection = ({ isVisible }) => {
   const [activeTab, setActiveTab] = useState("recognitions")
   const [currentSlide, setCurrentSlide] = useState(0)
-  const controls = useAnimation()
   const sectionRef = useRef(null)
+  const carouselRef = useRef(null)
 
+  // Imágenes para cada categoría
   const [images, setImages] = useState({
-    award: "/placeholder.svg?height=600&width=800",
-    medal: "/placeholder.svg?height=600&width=800",
-    university: "/placeholder.svg?height=600&width=800",
+    digital: "/placeholder.svg?height=600&width=800",
+    inclusion: "/placeholder.svg?height=600&width=800",
+    doctorate: "/placeholder.svg?height=600&width=800",
     book: "/placeholder.svg?height=600&width=800",
     rights: "/placeholder.svg?height=600&width=800",
-    history: "/placeholder.svg?height=600&width=800",
+    tepjf: "/placeholder.svg?height=600&width=800",
+    seminar: "/placeholder.svg?height=600&width=800",
+    platform: "/placeholder.svg?height=600&width=800",
+    reform: "/placeholder.svg?height=600&width=800",
   })
 
   useEffect(() => {
-    // Cargar imágenes de la API de Vercel
+    // Cargar imágenes de alta calidad
     setImages({
-      award: "https://images.unsplash.com/photo-1523294587484-bae6cc870010?q=80&w=800&h=600&auto=format&fit=crop",
-      medal: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?q=80&w=800&h=600&auto=format&fit=crop",
-      university: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800&h=600&auto=format&fit=crop",
+      digital: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=800&h=600&auto=format&fit=crop",
+      inclusion: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?q=80&w=800&h=600&auto=format&fit=crop",
+      doctorate: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&h=600&auto=format&fit=crop",
       book: "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?q=80&w=800&h=600&auto=format&fit=crop",
       rights: "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=800&h=600&auto=format&fit=crop",
-      history: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=800&h=600&auto=format&fit=crop",
+      tepjf: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&h=600&auto=format&fit=crop",
+      seminar: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&h=600&auto=format&fit=crop",
+      platform: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&h=600&auto=format&fit=crop",
+      reform: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&h=600&auto=format&fit=crop",
     })
   }, [])
 
-  useEffect(() => {
-    if (isVisible) {
-      controls.start("visible")
-    }
-  }, [isVisible, controls])
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  }
-
-  // Configuración del carrusel
+  // Configuración del carrusel con autoplay
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev === highlights.length - 1 ? 0 : prev + 1))
-    }, 5000)
+    }, 6000)
     return () => clearInterval(interval)
   }, [])
 
+  // Cambiar slide manualmente
+  const handleSlideChange = (index) => {
+    setCurrentSlide(index)
+  }
+
+  // Datos con iconos específicos
   const recognitions = [
     {
       id: "rec1",
       title: "Contribución a la Justicia Electoral Digital",
       year: "2023",
       organization: "Tribunal Electoral del Poder Judicial de la Federación",
-      image: images.award,
+      image: images.digital,
+      icon: <FileText className="h-5 w-5" />,
     },
     {
       id: "rec2",
       title: "Impulso a la Justicia Electoral Inclusiva",
       year: "2021",
       organization: "Escuela Judicial Electoral",
-      image: images.medal,
+      image: images.inclusion,
+      icon: <Users className="h-5 w-5" />,
     },
     {
       id: "rec3",
       title: "Doctorado en Derecho con Tesis Laureada",
       year: "2005",
       organization: "Universidad Autónoma de Querétaro",
-      image: images.university,
+      image: images.doctorate,
+      icon: <Medal className="h-5 w-5" />,
     },
   ]
 
@@ -99,6 +86,7 @@ export const GallerySection = ({ isVisible }) => {
       year: "2023",
       publisher: "Tribunal Electoral del Poder Judicial de la Federación",
       image: images.book,
+      icon: <BookOpen className="h-5 w-5" />,
     },
     {
       id: "pub2",
@@ -106,13 +94,15 @@ export const GallerySection = ({ isVisible }) => {
       year: "2021",
       publisher: "Escuela Judicial Electoral, TEPJF",
       image: images.rights,
+      icon: <BookOpen className="h-5 w-5" />,
     },
     {
       id: "pub3",
       title: "Estatus, organización y funcionamiento del TEPJF",
       year: "2021",
       publisher: "Tirant Lo Blanch",
-      image: images.history,
+      image: images.tepjf,
+      icon: <BookOpen className="h-5 w-5" />,
     },
   ]
 
@@ -123,7 +113,8 @@ export const GallerySection = ({ isVisible }) => {
       location: "Ciudad de México",
       description:
         "Participación en el seminario sobre acciones afirmativas y ciudadanía de pueblos indígenas en el ámbito electoral",
-      image: "https://images.unsplash.com/photo-1560523160-754a9e25c68f?q=80&w=1200&h=600&auto=format&fit=crop",
+      image: images.seminar,
+      icon: <Users className="h-6 w-6" />,
     },
     {
       title: "Publicación del Cuadernillo 'Justicia Electoral Digital'",
@@ -131,7 +122,8 @@ export const GallerySection = ({ isVisible }) => {
       location: "Editorial del TEPJF",
       description:
         "Lanzamiento de mi trabajo sobre los desafíos y oportunidades de la tecnología en la justicia electoral",
-      image: "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?q=80&w=1200&h=600&auto=format&fit=crop",
+      image: images.book,
+      icon: <FileText className="h-6 w-6" />,
     },
     {
       title: "Implementación de la Plataforma de Juicio en Línea Electoral",
@@ -139,7 +131,8 @@ export const GallerySection = ({ isVisible }) => {
       location: "Sala Regional Guadalajara",
       description:
         "Liderazgo en la modernización de los procesos jurisdiccionales electorales mediante tecnología digital",
-      image: "https://images.unsplash.com/photo-1523294587484-bae6cc870010?q=80&w=1200&h=600&auto=format&fit=crop",
+      image: images.platform,
+      icon: <Star className="h-6 w-6" />,
     },
   ]
 
@@ -147,7 +140,7 @@ export const GallerySection = ({ isVisible }) => {
     <section
       id="gallery"
       ref={sectionRef}
-      className="py-20 bg-gradient-to-b from-slate-100 to-white relative overflow-hidden"
+      className="py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden"
     >
       {/* Overlay de patrón */}
       <div
@@ -156,17 +149,13 @@ export const GallerySection = ({ isVisible }) => {
       ></div>
 
       {/* Decoración */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-law-300 via-law-500 to-law-300"></div>
+      <div className="absolute top-0 left-0 w-full h-1.5 bg-law-500"></div>
 
-      {/* Elementos decorativos */}
-      <div className="absolute top-40 right-10 w-64 h-64 rounded-full bg-law-500/5 blur-3xl"></div>
-      <div className="absolute bottom-40 left-10 w-80 h-80 rounded-full bg-gold-500/5 blur-3xl"></div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div initial="hidden" animate={controls} variants={containerVariants} className="mb-16 text-center">
-          <motion.div variants={itemVariants} className="inline-block">
-            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-law-100 flex items-center justify-center">
-              <Award className="h-10 w-10 text-law-600" />
+      <div className="container mx-auto px-4 relative z-10 max-w-7xl">
+        <div className="mb-16 text-center">
+          <div className="inline-block">
+            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-law-500 flex items-center justify-center">
+              <Award className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-law-800 mb-4">Mis Contribuciones y Publicaciones</h2>
             <div className="h-1 w-32 bg-gold-500 mx-auto mb-6 rounded-full"></div>
@@ -174,12 +163,12 @@ export const GallerySection = ({ isVisible }) => {
               Explora los momentos más destacados de mi trayectoria profesional, contribuciones y publicaciones en el
               ámbito de la justicia electoral.
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Carrusel de destacados */}
-        <motion.div initial="hidden" animate={controls} variants={containerVariants} className="mb-16">
-          <motion.div variants={itemVariants} className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+        <div className="mb-20" ref={carouselRef}>
+          <div className="relative h-[450px] rounded-2xl overflow-hidden shadow-xl">
             {highlights.map((item, index) => (
               <div
                 key={index}
@@ -187,85 +176,100 @@ export const GallerySection = ({ isVisible }) => {
                   currentSlide === index ? "opacity-100" : "opacity-0"
                 }`}
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
                 <img src={item.image || "/placeholder.svg"} alt={item.title} className="w-full h-full object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 p-8 z-20 text-white">
-                  <div className="flex items-center mb-3">
-                    <Calendar className="h-5 w-5 mr-2 text-gold-300" />
-                    <span className="text-gold-300 font-medium">
-                      {item.date} • {item.location}
-                    </span>
+                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10 z-20 text-white">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 rounded-full bg-law-500 flex items-center justify-center mr-4">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <div className="flex items-center mb-1">
+                        <Calendar className="h-4 w-4 mr-2 text-gold-300" />
+                        <span className="text-gold-300 font-medium text-sm">
+                          {item.date} • {item.location}
+                        </span>
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-bold">{item.title}</h3>
+                    </div>
                   </div>
-                  <h3 className="text-3xl font-bold mb-3">{item.title}</h3>
-                  <p className="text-gray-200 max-w-3xl mb-4">{item.description}</p>
+                  <p className="text-gray-200 max-w-3xl mb-6 text-base md:text-lg leading-relaxed pl-16">
+                    {item.description}
+                  </p>
+                  <div className="pl-16">
+                    <Link
+                      to="/galeria"
+                      className="inline-flex items-center px-5 py-2 bg-law-500 text-white rounded-full font-medium text-sm"
+                    >
+                      Ver más detalles
+                      <ChevronRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
 
             {/* Indicadores del carrusel */}
-            <div className="absolute bottom-4 right-4 flex space-x-2 z-30">
+            <div className="absolute bottom-6 right-6 flex space-x-3 z-30">
               {highlights.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    currentSlide === index ? "bg-white scale-125" : "bg-white/50 hover:bg-white/70"
-                  }`}
+                  onClick={() => handleSlideChange(index)}
+                  className={`w-3 h-3 rounded-full ${currentSlide === index ? "bg-white" : "bg-white/40"}`}
                   aria-label={`Ir a la diapositiva ${index + 1}`}
                 ></button>
               ))}
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Tabs */}
-        <motion.div initial="hidden" animate={controls} variants={containerVariants}>
-          <motion.div variants={itemVariants} className="flex justify-center mb-8">
-            <div className="inline-flex bg-white rounded-full shadow-md p-1 border border-slate-200">
-              <button
-                onClick={() => setActiveTab("recognitions")}
-                className={`px-6 py-3 rounded-full text-base font-medium transition-all duration-300 ${
-                  activeTab === "recognitions"
-                    ? "bg-law-600 text-white shadow-md"
-                    : "bg-transparent text-gray-700 hover:bg-slate-100"
-                }`}
-              >
-                Contribuciones
-              </button>
-              <button
-                onClick={() => setActiveTab("publications")}
-                className={`px-6 py-3 rounded-full text-base font-medium transition-all duration-300 ${
-                  activeTab === "publications"
-                    ? "bg-law-600 text-white shadow-md"
-                    : "bg-transparent text-gray-700 hover:bg-slate-100"
-                }`}
-              >
-                Publicaciones
-              </button>
-            </div>
-          </motion.div>
-        </motion.div>
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex bg-white rounded-full shadow-md p-1.5 border border-slate-200">
+            <button
+              onClick={() => setActiveTab("recognitions")}
+              className={`px-6 py-3 rounded-full text-base font-medium ${
+                activeTab === "recognitions"
+                  ? "bg-law-500 text-white"
+                  : "bg-transparent text-gray-700 hover:bg-slate-100"
+              }`}
+            >
+              Contribuciones
+            </button>
+            <button
+              onClick={() => setActiveTab("publications")}
+              className={`px-6 py-3 rounded-full text-base font-medium ${
+                activeTab === "publications"
+                  ? "bg-law-500 text-white"
+                  : "bg-transparent text-gray-700 hover:bg-slate-100"
+              }`}
+            >
+              Publicaciones
+            </button>
+          </div>
+        </div>
 
         {/* Contenido de las tabs */}
-        <motion.div
-          initial="hidden"
-          animate={controls}
-          variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
-        >
-          {activeTab === "recognitions"
-            ? recognitions.map((item) => (
-                <motion.div
+        <div className="min-h-[500px]">
+          {activeTab === "recognitions" ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+              {recognitions.map((item) => (
+                <div
                   key={item.id}
-                  variants={itemVariants}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200 hover:shadow-xl transition-all duration-500 hover:border-law-200 group"
+                  className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 h-full"
                 >
-                  <div className="h-48 overflow-hidden">
+                  <div className="h-52 overflow-hidden relative">
                     <img
                       src={item.image || "/placeholder.svg"}
                       alt={item.title}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute top-4 left-4">
+                      <div className="w-10 h-10 rounded-full bg-law-500 flex items-center justify-center text-white">
+                        {item.icon}
+                      </div>
+                    </div>
                   </div>
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-3">
@@ -274,32 +278,35 @@ export const GallerySection = ({ isVisible }) => {
                       </span>
                       <Award className="h-5 w-5 text-law-600" />
                     </div>
-                    <h4 className="text-xl font-semibold text-law-800 mb-2 group-hover:text-law-600 transition-colors">
-                      {item.title}
-                    </h4>
+                    <h4 className="text-xl font-semibold text-law-800 mb-2">{item.title}</h4>
                     <p className="text-gray-600 text-sm mb-4">{item.organization}</p>
-                    <Link
-                      to="/galeria"
-                      className="inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group"
-                    >
+                    <Link to="/galeria" className="inline-flex items-center text-law-600 font-medium">
                       Ver detalles
-                      <ChevronRight className="ml-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                      <ChevronRight className="ml-1 h-5 w-5" />
                     </Link>
                   </div>
-                </motion.div>
-              ))
-            : publications.map((item) => (
-                <motion.div
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+              {publications.map((item) => (
+                <div
                   key={item.id}
-                  variants={itemVariants}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200 hover:shadow-xl transition-all duration-500 hover:border-law-200 group"
+                  className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 h-full"
                 >
-                  <div className="h-48 overflow-hidden">
+                  <div className="h-52 overflow-hidden relative">
                     <img
                       src={item.image || "/placeholder.svg"}
                       alt={item.title}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute top-4 left-4">
+                      <div className="w-10 h-10 rounded-full bg-law-500 flex items-center justify-center text-white">
+                        {item.icon}
+                      </div>
+                    </div>
                   </div>
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-3">
@@ -308,33 +315,28 @@ export const GallerySection = ({ isVisible }) => {
                       </span>
                       <BookOpen className="h-5 w-5 text-law-600" />
                     </div>
-                    <h4 className="text-xl font-semibold text-law-800 mb-2 group-hover:text-law-600 transition-colors">
-                      {item.title}
-                    </h4>
+                    <h4 className="text-xl font-semibold text-law-800 mb-2">{item.title}</h4>
                     <p className="text-gray-600 text-sm mb-4">{item.publisher}</p>
-                    <Link
-                      to="/galeria"
-                      className="inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group"
-                    >
+                    <Link to="/galeria" className="inline-flex items-center text-law-600 font-medium">
                       Ver detalles
-                      <ChevronRight className="ml-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                      <ChevronRight className="ml-1 h-5 w-5" />
                     </Link>
                   </div>
-                </motion.div>
+                </div>
               ))}
-        </motion.div>
+            </div>
+          )}
+        </div>
 
-        <motion.div initial="hidden" animate={controls} variants={containerVariants} className="text-center">
-          <motion.div variants={itemVariants}>
-            <Link
-              to="/galeria"
-              className="inline-flex items-center px-6 py-3 bg-law-600 text-white rounded-full font-medium hover:bg-law-700 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-            >
-              Ver galería completa
-              <ExternalLink className="ml-2 h-5 w-5" />
-            </Link>
-          </motion.div>
-        </motion.div>
+        <div className="text-center">
+          <Link
+            to="/galeria"
+            className="inline-flex items-center px-8 py-4 bg-law-500 text-white rounded-full font-medium"
+          >
+            Ver galería completa
+            <ExternalLink className="ml-2 h-5 w-5" />
+          </Link>
+        </div>
       </div>
     </section>
   )
