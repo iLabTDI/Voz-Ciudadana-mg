@@ -17,6 +17,7 @@ import { VotaBannerHorizontal } from "../components/vota-banner-horizontal"
 import fondo from "../../assets/fondo.jpeg"
 import VotaBannerFlotante from "../components/vota-banner-flotante"
 import VotaBannerFull from "../components/vota-banner-full"
+import InspirationSection from "../components/inspiration-section"
 
 export default function ElectoralLandingPage() {
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -243,6 +244,8 @@ export default function ElectoralLandingPage() {
       >
         <ProposalsSection isVisible={isVisible.proposals} />
       </motion.div>
+
+      <InspirationSection isVisible={isVisible.inspiration} />
 
       {/* Banner Vota 13 */}
       <div className="container mx-auto px-4 md:px-6 relative z-1000">
