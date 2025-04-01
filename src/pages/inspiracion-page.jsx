@@ -127,26 +127,6 @@ export const InspiracionPage = () => {
       quote: "La justicia es el fin del gobierno. Es el fin de la sociedad civil.",
       color: "from-amber-500 to-yellow-600",
     },
-    {
-      title: "Cien años de soledad",
-      author: "Gabriel García Márquez",
-      cover: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=800&h=1200&auto=format&fit=crop",
-      description:
-        "Una obra maestra del realismo mágico que narra la historia de la familia Buendía a lo largo de siete generaciones en el pueblo ficticio de Macondo.",
-      year: "1967",
-      quote: "El tiempo pasa más lento en Macondo que en el resto del mundo.",
-      color: "from-amber-500 to-yellow-600",
-    },
-    {
-      title: "El laberinto de la soledad",
-      author: "Octavio Paz",
-      cover: "https://images.unsplash.com/photo-1531901599143-df5010ab9438?q=80&w=800&h=1200&auto=format&fit=crop",
-      description:
-        "Un profundo ensayo sobre la identidad mexicana que explora las contradicciones y complejidades de la cultura y la historia de México.",
-      year: "1950",
-      quote: "La soledad es el fondo último de la condición humana.",
-      color: "from-indigo-500 to-blue-600",
-    },
   ]
 
   // Datos de música favorita
