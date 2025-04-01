@@ -99,11 +99,6 @@ module.exports = {
           900: "#A68D47",
         },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
         display: ["Montserrat", "sans-serif"],

@@ -284,17 +284,6 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
-}
-
-.pattern-bg {
-  background-image: url("/patterns/subtle-pattern.png");
-  background-repeat: repeat;
-}
-
-.paper-bg {
-  background-image: url("/patterns/paper-texture.png");
-  background-repeat: repeat;
 }
 
 .divider {

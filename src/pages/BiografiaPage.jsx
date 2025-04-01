@@ -802,144 +802,93 @@ export const BiografiaPage = () => {
         <section
           id="publicaciones"
           ref={publicacionesRef}
-          className={`mb-24 transition-opacity duration-500 }`}
+          className="mb-20 px-4 sm:px-6 md:px-8 lg:px-10 transition-opacity duration-500"
         >
           <motion.div initial="hidden" animate={publicacionesInView ? "visible" : "hidden"} variants={staggerContainer}>
-            <motion.div variants={itemFadeIn} className="flex items-center mb-12">
-              <div className="h-px bg-law-200 flex-grow"></div>
-              <h2 className="text-3xl font-bold text-law-800 px-6 flex items-center">
-                <BookOpen className="mr-3 h-7 w-7 text-law-600" />
+
+            {/* Título central con ícono */}
+            <motion.div variants={itemFadeIn} className="flex items-center justify-center mb-10 text-center">
+              <div className="h-px bg-law-200 flex-grow hidden sm:block"></div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-law-800 px-4 sm:px-6 flex items-center justify-center">
+                <BookOpen className="mr-3 h-6 w-6 sm:h-7 sm:w-7 text-law-600" />
                 Mis Publicaciones Destacadas
               </h2>
-              <div className="h-px bg-law-200 flex-grow"></div>
+              <div className="h-px bg-law-200 flex-grow hidden sm:block"></div>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5">
-              <motion.div
-                variants={itemFadeIn}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 group h-full flex flex-col"
-              >
-                <div className="h-48 overflow-hidden relative">
-                  <img
-                    src="https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?q=80&w=800&h=600&auto=format&fit=crop"
-                    alt="Justicia Electoral en la Era Digital"
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-law-900/80 to-transparent"></div>
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">2023</span>
-                  </div>
-                </div>
-
-                <div className="p-6 flex-grow flex flex-col">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
-                      <BookOpen className="h-6 w-6" />
+            {/* Tarjetas responsivas */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
+              {[
+                {
+                  year: "2023",
+                  title: "Derecho de Acceso a la Información y Transparencia en Materia Electoral",
+                  source: "Serie Líneas Jurisprudenciales del TEPJF",
+                  image: "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?q=80&w=800&h=600&auto=format&fit=crop",
+                  description: `Se analizan los criterios más relevantes en materia de acceso a la información y transparencia electoral,
+          destacando su impacto en la rendición de cuentas y la participación ciudadana.`,
+                },
+                {
+                  year: "2021",
+                  title: "Guía de Actuación para Juzgadores en Materia de Derecho Electoral Indígena",
+                  source: "Tribunal Electoral del Poder Judicial de la Federación",
+                  image: "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=800&h=600&auto=format&fit=crop",
+                  description: `Como coautor, contribuí a esta guía con herramientas y criterios para juzgadores,
+          garantizando los derechos político-electorales de pueblos y comunidades indígenas.`,
+                },
+                {
+                  year: "2009",
+                  title: "Propuesta de Directrices Argumentativas en el Juicio de Amparo Indirecto",
+                  source: "Revista Lex Difusión y Análisis (2009)",
+                  image: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=800&h=600&auto=format&fit=crop",
+                  description: `Ensayo que presenta directrices argumentativas para fortalecer la defensa de derechos fundamentales 
+          y mejorar la protección judicial.`,
+                }
+              ].map((pub, i) => (
+                <motion.div
+                  key={i}
+                  variants={itemFadeIn}
+                  className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 flex flex-col"
+                >
+                  <div className="h-48 overflow-hidden relative">
+                    <img
+                      src={pub.image}
+                      alt={pub.title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-law-900/80 to-transparent"></div>
+                    <div className="absolute top-4 right-4">
+                      <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
+                        {pub.year}
+                      </span>
                     </div>
-                    <h3 className="text-xl font-bold text-law-700">Derecho de Acceso a la Información y Transparencia en Materia Electorall</h3>
                   </div>
 
-                  <p className="text-gray-600 mb-3">Serie Líneas Jurisprudenciales del TEPJF</p>
-
-                  <p className="text-gray-700 mb-6 flex-grow">
-                    En esta publicación, se analizan los criterios más relevantes en materia de acceso a la información y transparencia electoral,
-                    destacando su impacto en la rendición de cuentas y la participación ciudadana en los procesos democráticos..
-                  </p>
-
-                  <a
-                    href="#"
-                    className="inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group mt-auto"
-                  >
-                    Ver más detalles
-                    <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={itemFadeIn}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 group h-full flex flex-col"
-              >
-                <div className="h-48 overflow-hidden relative">
-                  <img
-                    src="https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=800&h=600&auto=format&fit=crop"
-                    alt="Justicia Electoral Inclusiva"
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-law-900/80 to-transparent"></div>
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">2021</span>
-                  </div>
-                </div>
-
-                <div className="p-6 flex-grow flex flex-col">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
-                      <BookOpen className="h-6 w-6" />
+                  <div className="p-6 flex-grow flex flex-col">
+                    <div className="flex items-center mb-4">
+                      <div className="min-w-[3rem] min-h-[3rem] w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
+                        <BookOpen className="h-6 w-6" />
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-bold text-law-700">{pub.title}</h3>
                     </div>
-                    <h3 className="text-xl font-bold text-law-700">Guía de Actuación para Juzgadores en Materia de Derecho Electoral Indígena</h3>
+
+                    <p className="text-gray-600 text-sm mb-2">{pub.source}</p>
+
+                    <p className="text-gray-700 text-sm mb-6 flex-grow leading-relaxed">{pub.description}</p>
+
+                    <a
+                      href="#"
+                      className="inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group mt-auto"
+                    >
+                      Ver más detalles
+                      <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
                   </div>
-
-                  <p className="text-gray-600 mb-3">Tribunal Electoral del Poder Judicial de la Federación</p>
-
-                  <p className="text-gray-700 mb-6 flex-grow">
-                    Como coautor, he contribuido a esta guía que proporciona herramientas y criterios esenciales para juzgadores,
-                    garantizando la protección de los derechos político-electorales de los pueblos y comunidades indígenas en México.
-                  </p>
-
-                  <a
-                    href="#"
-                    className="inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group mt-auto"
-                  >
-                    Ver más detalles
-                    <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={itemFadeIn}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 group h-full flex flex-col"
-              >
-                <div className="h-48 overflow-hidden relative">
-                  <img
-                    src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=800&h=600&auto=format&fit=crop"
-                    alt="Estatus, organización y funcionamiento del TEPJF"
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-law-900/80 to-transparent"></div>
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">2009</span>
-                  </div>
-                </div>
-
-                <div className="p-6 flex-grow flex flex-col">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
-                      <BookOpen className="h-6 w-6" />
-                    </div>
-                    <h3 className="text-xl font-bold text-law-700">Propuesta de Directrices Argumentativas en el Juicio de Amparo Indirecto</h3>
-                  </div>
-
-                  <p className="text-gray-600 mb-3">Revista Lex Difusión y Análisis (2009)</p>
-
-                  <p className="text-gray-700 mb-6 flex-grow">
-                    Este ensayo presenta una propuesta de directrices para la argumentación en el juicio de amparo indirecto,
-                    con el objetivo de fortalecer la defensa de los derechos fundamentales y mejorar la protección judicial en casos relevantes.
-                  </p>
-
-                  <a
-                    href="#"
-                    className="inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group mt-auto"
-                  >
-                    Ver más detalles
-                    <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </motion.div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </section>
+
 
         {/* Vida Personal */}
         <section

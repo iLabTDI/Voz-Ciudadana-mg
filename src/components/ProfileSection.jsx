@@ -5,7 +5,6 @@ import { Award, BookOpen, GraduationCap, Briefcase, ExternalLink, Scale, Gavel }
 import { Link } from "react-router-dom"
 import { motion, useAnimation } from "framer-motion"
 import magistrado from "../../assets/magistrado.jpg"
-import pattern from "../../public/pateerns/paper-texture.png";
 
 export const ProfileSection = ({ isVisible }) => {
   const controls = useAnimation()
@@ -39,7 +38,7 @@ export const ProfileSection = ({ isVisible }) => {
     },
   }
 
- 
+
 
   return (
     <section
@@ -47,20 +46,15 @@ export const ProfileSection = ({ isVisible }) => {
       ref={sectionRef}
       className="py-16 md:py-20 relative overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100"
     >
-      {/* Fondo con textura */}
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{ backgroundImage: pattern, backgroundRepeat: "repeat" }}
-      ></div>
 
       {/* Decoración */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-law-600 via-gold-500 to-law-600"></div>
 
-      {/* Elementos decorativos (reducidos en tamaño) */}
+      {/* Elementos decorativos */}
       <div className="absolute top-10 right-5 w-40 h-40 md:w-64 md:h-64 rounded-full bg-law-500/5 blur-2xl md:blur-3xl"></div>
       <div className="absolute bottom-10 left-5 w-48 h-48 md:w-80 md:h-80 rounded-full bg-gold-500/5 blur-2xl md:blur-3xl"></div>
 
-      {/* Símbolos de justicia (más pequeños y adaptados) */}
+      {/* Símbolos de justicia */}
       <div className="absolute top-20 right-10 text-law-200/10 hidden md:block">
         <Scale className="w-24 h-24 md:w-40 md:h-40" />
       </div>
@@ -178,7 +172,7 @@ export const ProfileSection = ({ isVisible }) => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
-                <div className="bg-slate-50 p-4 md:p-6 rounded-lg md:rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-[1.02]">
+                <div className="bg-slate-50 p-4 md:p-6 rounded-xl md:rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-[1.02]">
                   <div className="flex items-center mb-3 md:mb-4">
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-3 md:mr-4">
                       <BookOpen className="h-5 w-5 md:h-6 md:w-6" />
@@ -209,7 +203,7 @@ export const ProfileSection = ({ isVisible }) => {
                   </ul>
                 </div>
 
-                <div className="bg-slate-50 p-4 md:p-6 rounded-lg md:rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-[1.02]">
+                <div className="bg-slate-50 p-4 md:p-6 rounded-xl md:rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-[1.02]">
                   <div className="flex items-center mb-3 md:mb-4">
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-3 md:mr-4">
                       <Award className="h-5 w-5 md:h-6 md:w-6" />
@@ -242,34 +236,39 @@ export const ProfileSection = ({ isVisible }) => {
               </div>
 
               {/* Carrusel de logros */}
-              <div className="bg-gradient-to-r from-law-600 to-law-700 text-white p-4 md:p-6 rounded-lg md:rounded-xl shadow-lg mb-4 md:mb-6">
+              <div className="bg-gradient-to-r from-law-600 to-law-700 text-white p-4 md:p-6 rounded-xl md:rounded-xl shadow-lg mb-4 md:mb-6">
                 <h4 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 flex items-center">
                   <Award className="h-4 w-4 md:h-5 md:w-5 mr-2 text-gold-300" />
                   Mis Logros Destacados
                 </h4>
-                <div className="space-y-2 md:space-y-3">
-                  <div className="flex items-center bg-white/10 p-2 md:p-3 rounded-md md:rounded-lg backdrop-blur-sm">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold-500/20 flex items-center justify-center mr-2 md:mr-3">
-                      <span className="text-gold-300 font-bold text-sm md:text-base">1</span>
+                <div className="space-y-2 md:space-y-3 rounded-xl ">
+                  {[
+                    {
+                      number: 1,
+                      text: "Impulsé y participé activamente en la implementación de herramientas tecnológicas como el IUS Electoral y el Metabuscador Electoral."
+                    },
+                    {
+                      number: 2,
+                      text: 'Fui coautor(a/e) de la "Guía de Actuación para Juzgadores en Materia de Derecho Electoral Indígena".'
+                    },
+                    {
+                      number: 3,
+                      text: "Representé a mi país como persona delegada ante la ONU para la presentación de informes sobre la eliminación de la discriminación racial y el cumplimiento de sentencias de la Corte Interamericana de Derechos Humanos."
+                    }
+                  ].map(({ number, text }) => (
+                    <div key={number} className="flex items-center bg-white/10 p-2 md:p-3 rounded-xl  backdrop-blur-sm">
+                      <div className="min-w-8 min-h-8 md:min-w-10 md:min-h-10 w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold-500/20 flex items-center justify-center mr-2 md:mr-3">
+                        <span className="text-gold-300 font-bold text-sm md:text-base">
+                          {number}
+                        </span>
+                      </div>
+                      <p className="text-gray-100 text-xs md:text-sm">{text}</p>
                     </div>
-                    <p className="text-gray-100 text-xs md:text-sm">Juicios electorales en línea</p>
-                  </div>
-                  <div className="flex items-center bg-white/10 p-2 md:p-3 rounded-md md:rounded-lg backdrop-blur-sm">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold-500/20 flex items-center justify-center mr-2 md:mr-3">
-                      <span className="text-gold-300 font-bold text-sm md:text-base">2</span>
-                    </div>
-                    <p className="text-gray-100 text-xs md:text-sm">Protección de derechos de grupos vulnerables</p>
-                  </div>
-                  <div className="flex items-center bg-white/10 p-2 md:p-3 rounded-md md:rounded-lg backdrop-blur-sm">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold-500/20 flex items-center justify-center mr-2 md:mr-3">
-                      <span className="text-gold-300 font-bold text-sm md:text-base">3</span>
-                    </div>
-                    <p className="text-gray-100 text-xs md:text-sm">
-                      Contribución al desarrollo del asistente virtual "Alfonsina"
-                    </p>
-                  </div>
+                  ))}
                 </div>
               </div>
+
+
 
               <div className="flex justify-end">
                 <Link

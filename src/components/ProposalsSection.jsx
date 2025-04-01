@@ -18,9 +18,14 @@ import {
   Calendar,
   Target,
   Zap,
-  Link,
+  Gavel,
+  Award,
+  Briefcase,
+  Heart,
+  Leaf,
 } from "lucide-react"
 import { motion, useAnimation } from "framer-motion"
+import { Link } from "react-router-dom"
 
 export const ProposalsSection = ({ isVisible }) => {
   const [activeModal, setActiveModal] = useState(null)
@@ -104,164 +109,152 @@ export const ProposalsSection = ({ isVisible }) => {
   const proposals = [
     {
       id: 1,
-      title: "Justicia Electoral Digital",
-      description: "Implementación de plataformas digitales para agilizar los procesos de impugnación electoral.",
-      icon: <MessageSquare className="h-6 w-6" />,
-      color: "from-blue-500 to-blue-600",
-      image: images.digital,
+      title: "Magistratura Comprometida con la Democracia",
+      description: "Impulsaré un tribunal que refleje valores democráticos y responda a las exigencias de la sociedad.",
+      icon: <Gavel className="h-6 w-6" />,
+      color: "from-gold-500 to-gold-500",
+      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&h=600&auto=format&fit=crop",
       fullDescription:
-        "La Justicia Electoral Digital busca transformar completamente la forma en que los ciudadanos interactúan con el sistema de justicia electoral. A través de plataformas tecnológicas avanzadas, se facilitará la presentación de impugnaciones, consulta de expedientes y seguimiento de casos en tiempo real.",
+        "Mi objetivo es construir una magistratura innovadora, transparente y eficiente, que brinde certeza en los procesos electorales y sea un pilar de nuestra democracia. Aplicaré mecanismos de evaluación y autocrítica para garantizar una impartición de justicia eficiente y confiable.",
       benefits: [
-        "Reducción de tiempos en la resolución de impugnaciones",
-        "Mayor accesibilidad para ciudadanos de zonas remotas",
-        "Transparencia en el seguimiento de casos",
-        "Ahorro significativo en recursos materiales",
+        "Impulsaré un tribunal que refleje valores democráticos",
+        "Aplicaré mecanismos de evaluación y autocrítica",
+        "Garantizaré una impartición de justicia eficiente y confiable",
       ],
       implementation: [
-        "Fase 1: Desarrollo de plataforma digital (6 meses)",
-        "Fase 2: Prueba piloto en Sala Regional Guadalajara (3 meses)",
-        "Fase 3: Implementación nacional y capacitación (1 año)",
+        "Implementación de sistemas de evaluación continua",
+        "Creación de mecanismos de retroalimentación ciudadana",
+        "Desarrollo de indicadores de desempeño transparentes",
       ],
       stats: [
-        { label: "Reducción de tiempo", value: "60%", icon: <Clock className="h-4 w-4" /> },
-        { label: "Ahorro de recursos", value: "40%", icon: <Target className="h-4 w-4" /> },
-        { label: "Accesibilidad", value: "100%", icon: <Users className="h-4 w-4" /> },
+        { label: "Transparencia", value: "100%", icon: <Eye className="h-4 w-4" /> },
+        { label: "Eficiencia", value: "Alta", icon: <Zap className="h-4 w-4" /> },
+        { label: "Confianza", value: "Máxima", icon: <Shield className="h-4 w-4" /> },
       ],
     },
     {
       id: 2,
-      title: "Participación Ciudadana",
-      description: "Fortalecimiento de mecanismos de participación ciudadana en los procesos electorales.",
+      title: "Transparencia y Vinculación Social",
+      description: "Crearé el 'Café con la Ciudadanía' y fortaleceré la relación con organizaciones civiles.",
       icon: <Users className="h-6 w-6" />,
-      color: "from-green-500 to-green-600",
-      image: images.people,
+      color: "from-gold-500 to-gold-500",
+      image: "https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=800&h=600&auto=format&fit=crop",
       fullDescription:
-        "Esta propuesta busca revitalizar la democracia mexicana a través del fortalecimiento de los mecanismos de participación ciudadana. Se implementarán consultas digitales, observatorios electorales ciudadanos y foros de diálogo entre ciudadanos y autoridades.",
+        "Implementaré estrategias de comunicación inclusiva para reconocer a personas destacadas y promover la inclusión social. Fortaleceré la relación con organizaciones civiles y sectores clave para construir una justicia inclusiva y participativa.",
       benefits: [
-        "Mayor legitimidad de los procesos electorales",
-        "Ciudadanía más informada y comprometida",
-        "Detección temprana de problemas en procesos electorales",
-        "Fortalecimiento del tejido democrático",
+        "Crearé el 'Café con la Ciudadanía' como espacio de diálogo directo",
+        "Fortaleceré la relación con organizaciones civiles",
+        "Implementaré estrategias de comunicación inclusiva",
       ],
       implementation: [
-        "Creación de plataforma digital de participación ciudadana",
-        "Formación de observatorios electorales en cada estado",
-        "Programa de educación cívica en escuelas y universidades",
+        "Organización mensual de 'Café con la Ciudadanía'",
+        "Convenios de colaboración con organizaciones civiles",
+        "Desarrollo de plataformas digitales de comunicación",
       ],
       stats: [
-        { label: "Participación", value: "+35%", icon: <Users className="h-4 w-4" /> },
-        { label: "Observatorios", value: "32", icon: <Eye className="h-4 w-4" /> },
-        { label: "Legitimidad", value: "Alta", icon: <Shield className="h-4 w-4" /> },
+        { label: "Participación", value: "+40%", icon: <Users className="h-4 w-4" /> },
+        { label: "Inclusión", value: "Total", icon: <Check className="h-4 w-4" /> },
+        { label: "Diálogo", value: "Constante", icon: <MessageSquare className="h-4 w-4" /> },
       ],
     },
     {
       id: 3,
-      title: "Protección de Derechos",
-      description:
-        "Fortalecimiento de mecanismos para proteger los derechos político-electorales de grupos vulnerables.",
-      icon: <Shield className="h-6 w-6" />,
-      color: "from-purple-500 to-purple-600",
-      image: images.rights,
+      title: "Excelencia Internacional en Justicia",
+      description: "Adoptaré códigos de ética y mejores prácticas de sistemas judiciales avanzados.",
+      icon: <Award className="h-6 w-6" />,
+      color: "from-gold-500 to-gold-500",
+      image: "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=800&h=600&auto=format&fit=crop",
       fullDescription:
-        "La protección efectiva de los derechos político-electorales es fundamental para una democracia inclusiva. Esta propuesta contempla el desarrollo de protocolos especializados para la atención de grupos indígenas, medidas contra la violencia política de género y mejoras en la accesibilidad electoral para personas con discapacidad.",
+        "Implementaré los códigos de ética y mejores prácticas de los sistemas judiciales más avanzados del mundo. Aplicaré herramientas de jurimetría para hacer más eficiente la toma de decisiones judiciales.",
       benefits: [
-        "Inclusión efectiva de grupos históricamente marginados",
-        "Reducción de la violencia política de género",
-        "Mayor participación de comunidades indígenas",
-        "Accesibilidad real para personas con discapacidad",
+        "Adoptaré códigos de ética y mejores prácticas internacionales",
+        "Aplicaré herramientas de jurimetría para optimizar decisiones",
+        "Elevaré los estándares de la justicia electoral mexicana",
       ],
       implementation: [
-        "Desarrollo de protocolos especializados",
-        "Capacitación a funcionarios electorales",
-        "Campañas de concientización",
-        "Adaptación de materiales electorales",
+        "Estudio comparativo de sistemas judiciales internacionales",
+        "Implementación de herramientas de jurimetría",
+        "Capacitación continua en estándares internacionales",
       ],
       stats: [
-        { label: "Inclusión", value: "+45%", icon: <Users className="h-4 w-4" /> },
-        { label: "Protocolos", value: "12", icon: <BookOpen className="h-4 w-4" /> },
-        { label: "Capacitación", value: "5,000+", icon: <Target className="h-4 w-4" /> },
+        { label: "Estándares", value: "Globales", icon: <Globe className="h-4 w-4" /> },
+        { label: "Eficiencia", value: "+60%", icon: <Target className="h-4 w-4" /> },
+        { label: "Calidad", value: "Premium", icon: <Award className="h-4 w-4" /> },
       ],
     },
     {
       id: 4,
-      title: "Educación Cívica",
-      description: "Programas de educación cívica y electoral para fomentar una ciudadanía informada y participativa.",
-      icon: <BookOpen className="h-6 w-6" />,
-      color: "from-amber-500 to-amber-600",
-      image: images.education,
+      title: "Innovación y Tecnología Judicial",
+      description: "Aprovecharé el metaverso, hackathones e inteligencia artificial para modernizar la justicia.",
+      icon: <Lightbulb className="h-6 w-6" />,
+      color: "from-gold-500 to-gold-500",
+      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=600&auto=format&fit=crop",
       fullDescription:
-        "La educación cívica es la base de una democracia sólida. Esta propuesta incluye programas educativos en escuelas y universidades, plataformas digitales de aprendizaje electoral y campañas de concientización sobre la importancia del voto.",
+        "Soy promotor de una justicia de calidad, moderna y digital. Aprovecharé el metaverso y los hackathones como herramientas para acercar la justicia electoral a las nuevas generaciones. Aplicaré inteligencia artificial en la gestión judicial para optimizar el acceso y la eficiencia del tribunal.",
       benefits: [
-        "Reducción del abstencionismo electoral",
-        "Disminución de votos nulos por error",
-        "Mayor comprensión del sistema electoral",
-        "Formación de una cultura democrática desde edades tempranas",
+        "Aprovecharé el metaverso y hackathones para innovar",
+        "Aplicaré inteligencia artificial en la gestión judicial",
+        "Acercaré la justicia electoral a las nuevas generaciones",
       ],
       implementation: [
-        "Desarrollo de contenidos educativos por niveles",
-        "Capacitación a docentes",
-        "Creación de plataforma digital interactiva",
-        "Alianzas con instituciones educativas",
+        "Organización de hackathones para soluciones judiciales",
+        "Desarrollo de presencia en el metaverso",
+        "Implementación de IA para análisis de casos",
       ],
       stats: [
-        { label: "Participación", value: "+25%", icon: <Target className="h-4 w-4" /> },
-        { label: "Votos nulos", value: "-40%", icon: <Check className="h-4 w-4" /> },
-        { label: "Escuelas", value: "3,500+", icon: <BookOpen className="h-4 w-4" /> },
+        { label: "Innovación", value: "Constante", icon: <Lightbulb className="h-4 w-4" /> },
+        { label: "Tecnología", value: "Avanzada", icon: <Zap className="h-4 w-4" /> },
+        { label: "Accesibilidad", value: "+80%", icon: <Users className="h-4 w-4" /> },
       ],
     },
     {
       id: 5,
-      title: "Transparencia Electoral",
-      description: "Implementación de mecanismos para garantizar la total transparencia en los procesos electorales.",
-      icon: <Globe className="h-6 w-6" />,
-      color: "from-cyan-500 to-cyan-600",
-      image: images.transparency,
+      title: "Compromiso con Austeridad y Eficiencia",
+      description: "Reduciré costos innecesarios y optimizaré recursos a través de la digitalización.",
+      icon: <Clock className="h-6 w-6" />,
+      color: "from-gold-500 to-gold-500",
+      image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?q=80&w=800&h=600&auto=format&fit=crop",
       fullDescription:
-        "La transparencia es fundamental para la confianza ciudadana en los procesos electorales. Esta propuesta busca implementar mecanismos innovadores que permitan a los ciudadanos verificar cada etapa del proceso electoral, desde la emisión del voto hasta el conteo final.",
+        "Me comprometo a reducir costos innecesarios para hacer más eficiente el gasto público. Optimizaré recursos mediante la digitalización y el uso de tecnología avanzada. Cada ahorro se traducirá en mejores servicios para la ciudadanía.",
       benefits: [
-        "Mayor confianza ciudadana en los resultados electorales",
-        "Reducción de impugnaciones por falta de claridad",
-        "Acceso público a información electoral en tiempo real",
-        "Fortalecimiento de la legitimidad democrática",
+        "Reduciré costos innecesarios en la administración",
+        "Optimizaré recursos mediante la digitalización",
+        "Traduciré cada ahorro en mejores servicios",
       ],
       implementation: [
-        "Desarrollo de plataforma de transparencia electoral",
-        "Transmisión en vivo de conteos y sesiones",
-        "Publicación detallada de resultados y actas",
-        "Auditorías ciudadanas del proceso electoral",
+        "Auditoría de gastos y optimización de recursos",
+        "Digitalización de procesos administrativos",
+        "Reinversión de ahorros en servicios ciudadanos",
       ],
       stats: [
-        { label: "Confianza", value: "+60%", icon: <Shield className="h-4 w-4" /> },
-        { label: "Impugnaciones", value: "-35%", icon: <Check className="h-4 w-4" /> },
-        { label: "Transparencia", value: "100%", icon: <Eye className="h-4 w-4" /> },
+        { label: "Ahorro", value: "+30%", icon: <Target className="h-4 w-4" /> },
+        { label: "Eficiencia", value: "Máxima", icon: <Zap className="h-4 w-4" /> },
+        { label: "Digitalización", value: "100%", icon: <Check className="h-4 w-4" /> },
       ],
     },
     {
       id: 6,
-      title: "Innovación Electoral",
-      description:
-        "Aplicación de tecnologías emergentes para modernizar y hacer más eficientes los procesos electorales.",
-      icon: <Lightbulb className="h-6 w-6" />,
-      color: "from-indigo-500 to-indigo-600",
-      image: images.innovation,
+      title: "Bienestar Laboral y Sustentabilidad",
+      description: "Mejoraré condiciones laborales y promoveré prácticas ecológicas en el tribunal.",
+      icon: <Briefcase className="h-6 w-6" />,
+      color: "from-gold-500 to-gold-500",
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&h=600&auto=format&fit=crop",
       fullDescription:
-        "La innovación constante es clave para mantener un sistema electoral moderno y eficiente. Esta propuesta contempla la investigación y aplicación de tecnologías emergentes como blockchain, inteligencia artificial y análisis de datos para mejorar todos los aspectos del proceso electoral.",
+        "Combatiré el 'síndrome del edificio enfermo' con mejores condiciones laborales y espacios saludables. Implementaré programas de capacitación y bienestar para fortalecer a nuestro personal. Promoveré prácticas ecológicas dentro del tribunal, reafirmando nuestro compromiso con el medio ambiente.",
       benefits: [
-        "Mayor precisión y rapidez en el conteo de votos",
-        "Detección temprana de anomalías en el proceso electoral",
-        "Optimización de recursos humanos y materiales",
-        "Adaptación continua a nuevos desafíos electorales",
+        "Combatiré el 'síndrome del edificio enfermo'",
+        "Implementaré programas de capacitación y bienestar",
+        "Promoveré prácticas ecológicas en el tribunal",
       ],
       implementation: [
-        "Creación de laboratorio de innovación electoral",
-        "Desarrollo de proyectos piloto con nuevas tecnologías",
-        "Colaboración con universidades y centros de investigación",
-        "Implementación gradual de soluciones probadas",
+        "Mejora de espacios laborales y condiciones ambientales",
+        "Desarrollo de programas de capacitación continua",
+        "Implementación de prácticas sustentables",
       ],
       stats: [
-        { label: "Eficiencia", value: "+70%", icon: <Zap className="h-4 w-4" /> },
-        { label: "Precisión", value: "99.9%", icon: <Target className="h-4 w-4" /> },
-        { label: "Innovación", value: "Constante", icon: <Lightbulb className="h-4 w-4" /> },
+        { label: "Bienestar", value: "+70%", icon: <Heart className="h-4 w-4" /> },
+        { label: "Capacitación", value: "Continua", icon: <BookOpen className="h-4 w-4" /> },
+        { label: "Sustentabilidad", value: "Verde", icon: <Leaf className="h-4 w-4" /> },
       ],
     },
   ]
@@ -269,7 +262,10 @@ export const ProposalsSection = ({ isVisible }) => {
   const values = [
     { name: "Integridad", description: "Actuar con honestidad, transparencia y ética en todo momento." },
     { name: "Imparcialidad", description: "Decisiones basadas únicamente en la ley y los hechos, sin sesgos." },
-    { name: "Compromiso", description: "Dedicación total a la protección de los derechos electorales." },
+    {
+      name: "Compromiso",
+      description: "Dedicación total a la protección de los derechos electorales de todas las personas.",
+    },
     { name: "Innovación", description: "Búsqueda constante de nuevas formas de mejorar la justicia electoral." },
     { name: "Inclusión", description: "Garantizar que todas las voces sean escuchadas y representadas." },
     { name: "Excelencia", description: "Búsqueda constante de la máxima calidad en el servicio público." },
@@ -277,7 +273,7 @@ export const ProposalsSection = ({ isVisible }) => {
 
   const pillars = [
     { name: "Democracia Inclusiva", description: "Donde cada voto cuenta y todas las voces son escuchadas." },
-    { name: "Innovación Tecnológica", description: "Para acercar las instituciones a los ciudadanos." },
+    { name: "Innovación Tecnológica", description: "Para acercar las instituciones a la ciudadanía." },
     { name: "Confianza Ciudadana", description: "A través de la transparencia y la rendición de cuentas." },
   ]
 
@@ -300,7 +296,7 @@ export const ProposalsSection = ({ isVisible }) => {
       <div className="absolute top-40 left-10 w-64 h-64 rounded-full bg-law-500/5 blur-3xl"></div>
       <div className="absolute bottom-40 right-10 w-80 h-80 rounded-full bg-gold-500/5 blur-3xl"></div>
 
-      <div className="container mx-auto px-3 sm:px-4 lg:px-6 relative z-10 max-w-[1500px]">
+      <div className="container mx-auto px-3 sm:px-4 lg:px-6 relative z-10 max-w-[1400px]">
         <motion.div
           initial="hidden"
           animate={controls}
@@ -330,19 +326,21 @@ export const ProposalsSection = ({ isVisible }) => {
           <div className="inline-flex bg-white rounded-full shadow-md p-1 border border-slate-200">
             <button
               onClick={() => setActiveCard("vision")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCard === "vision"
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeCard === "vision"
                   ? "bg-law-600 text-white shadow-md"
                   : "bg-transparent text-gray-700 hover:bg-slate-100"
-                }`}
+              }`}
             >
               Mi Visión
             </button>
             <button
               onClick={() => setActiveCard("values")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCard === "values"
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeCard === "values"
                   ? "bg-law-600 text-white shadow-md"
                   : "bg-transparent text-gray-700 hover:bg-slate-100"
-                }`}
+              }`}
             >
               Mis Valores
             </button>
@@ -356,11 +354,11 @@ export const ProposalsSection = ({ isVisible }) => {
             initial="hidden"
             animate={controls}
             variants={containerVariants}
-            className="lg:w-[60%] flex flex-col gap-6"
+            className="lg:w-[40%] flex flex-col gap-6"
           >
             {/* Visión - Visible en móvil cuando está activo, siempre visible en desktop */}
             <div className={`${activeCard !== "vision" && "hidden lg:block"}`}>
-              <div className="bg-white rounded-xl shadow-md border border-slate-200 p-10 md:p-7 lg:p-8">
+              <div className="bg-white rounded-xl shadow-md border border-slate-200 p-5 md:p-7 lg:p-8">
                 <div className="flex items-center mb-5">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-law-500 to-law-600 flex items-center justify-center text-white shadow-md mr-3">
                     <Eye className="h-6 w-6" />
@@ -370,9 +368,10 @@ export const ProposalsSection = ({ isVisible }) => {
 
                 <div className="bg-gradient-to-br from-white to-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm mb-5">
                   <p className="text-gray-700 leading-relaxed">
-                    Mi visión es consolidar un sistema de justicia electoral moderno, eficiente y cercano a la
-                    ciudadanía, que garantice la protección efectiva de los derechos político-electorales de todos los
-                    mexicanos.
+                    Tengo una visión clara y un compromiso firme: la justicia electoral no es solo una herramienta
+                    legal, es un motor de transformación social. Mi objetivo es consolidar un sistema de justicia
+                    electoral moderno, eficiente y cercano a la ciudadanía, que garantice la protección efectiva de los
+                    derechos político-electorales de todas las personas en México.
                   </p>
                 </div>
 
@@ -381,7 +380,8 @@ export const ProposalsSection = ({ isVisible }) => {
                     <div className="text-2xl text-gold-300 mr-2 font-serif">"</div>
                     <p className="text-gray-100 italic text-sm">
                       Mi compromiso es trabajar incansablemente para que la justicia electoral sea un pilar fundamental
-                      en la construcción de un México más democrático, justo e incluyente.
+                      en la construcción de un México más democrático, justo e incluyente. El derecho no es un obstáculo
+                      para el cambio social, sino que debe ser su motor.
                     </p>
                   </div>
                 </div>
@@ -523,16 +523,18 @@ export const ProposalsSection = ({ isVisible }) => {
                 <div className="relative z-10 p-6 md:p-8 text-white">
                   <h3 className="text-xl md:text-2xl font-bold mb-3">Juntos Construyamos el Futuro Electoral</h3>
                   <p className="text-sm md:text-base text-gray-200 mb-5">
-                    Estas propuestas son solo el comienzo. Necesitamos la participación de todos para construir un
-                    sistema electoral más justo, transparente y eficiente.
+                    Estas propuestas son solo el comienzo. Necesitamos la participación de todas las personas para
+                    construir un sistema electoral más justo, transparente y eficiente.
                   </p>
-                  <Link
-                    to="/vota13" 
-                    className="bg-gradient-to-r from-gold-500 to-gold-600 text-law-900 hover:from-gold-400 hover:to-gold-500 py-2 px-5 rounded-full text-sm md:text-base font-medium transition-all duration-300 transform hover:scale-105 shadow-md flex items-center"
-                  >
-                    Súmate a esta visión
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                  <div className="flex justify-start">
+                    <Link
+                      to="/vota13"
+                      className="bg-gradient-to-r from-gold-500 to-gold-600 text-law-900 hover:from-gold-400 hover:to-gold-500 py-2 px-5 rounded-full text-sm md:text-base font-medium transition-all duration-300 transform hover:scale-105 shadow-md flex items-center"
+                    >
+                      Súmate a esta visión
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </motion.div>

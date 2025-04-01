@@ -2,11 +2,30 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
-import { ArrowLeft, Check, Calendar, MapPin, Award, ChevronRight, ExternalLink } from "lucide-react"
+import {
+  ArrowLeft,
+  Check,
+  Calendar,
+  MapPin,
+  Award,
+  ChevronRight,
+  ExternalLink,
+  Pause,
+  Play,
+  Share2,
+  Facebook,
+  Twitter,
+  Loader2,
+  PhoneIcon as WhatsApp,
+} from "lucide-react"
 
 export const Vota13Page = () => {
   const videoRef = useRef(null)
+  const videoSectionRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [isVideoVisible, setIsVideoVisible] = useState(false)
+  const [isVideoLoading, setIsVideoLoading] = useState(true)
+  const [showShareOptions, setShowShareOptions] = useState(false)
 
   // Color salmón extraído de la imagen
   const salmonColor = "#FA8072"
@@ -33,22 +52,127 @@ export const Vota13Page = () => {
     { titulo: "Sensibilidad", descripcion: "Comprensión de las realidades sociales en cada caso." },
   ]
 
-  // Reproducir/pausar video
-  const toggleVideo = () => {
+  // Mensaje para compartir
+  const shareMessage =
+    "¡Vota por Sergio Arturo Guerrero Olvera con el número 13 este 1 de junio! Boleta color salmón para Magistrado de Sala Regional Guadalajara. Justo, claro y cercano. Visita: https://sergioarturo.mx #Vota13 #JusticiaElectoral"
+
+  // Reproducir/pausar video manualmente
+  const toggleVideo = (e) => {
+    e.stopPropagation() // Evitar que el evento se propague
+
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause()
+        setIsPlaying(false)
       } else {
-        videoRef.current.play()
+        videoRef.current
+          .play()
+          .then(() => {
+            setIsPlaying(true)
+          })
+          .catch((error) => {
+            console.error("Error al reproducir el video:", error)
+          })
       }
-      setIsPlaying(!isPlaying)
     }
+  }
+
+  // Compartir en redes sociales
+  const shareOnSocial = (platform) => {
+    let shareUrl = ""
+
+    switch (platform) {
+      case "facebook":
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(shareMessage)}`
+        break
+      case "twitter":
+        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessage)}&url=${encodeURIComponent(window.location.href)}`
+        break
+      case "whatsapp":
+        shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareMessage + " " + window.location.href)}`
+        break
+      default:
+        // Usar la API Web Share si está disponible
+        if (navigator.share) {
+          navigator.share({
+            title: "Vota 13 - Sergio Arturo Guerrero Olvera",
+            text: shareMessage,
+            url: window.location.href,
+          })
+          return
+        }
+    }
+
+    if (shareUrl) {
+      window.open(shareUrl, "_blank", "width=600,height=400")
+    }
+
+    setShowShareOptions(false)
   }
 
   // Scroll al inicio cuando se carga la página
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  // Manejar eventos de carga del video
+  useEffect(() => {
+    const videoElement = videoRef.current
+
+    if (videoElement) {
+      const handleLoadStart = () => setIsVideoLoading(true)
+      const handleCanPlay = () => setIsVideoLoading(false)
+
+      videoElement.addEventListener("loadstart", handleLoadStart)
+      videoElement.addEventListener("canplay", handleCanPlay)
+
+      return () => {
+        videoElement.removeEventListener("loadstart", handleLoadStart)
+        videoElement.removeEventListener("canplay", handleCanPlay)
+      }
+    }
+  }, [])
+
+  // Configurar IntersectionObserver para detectar cuando el video está visible
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5, // El video se reproducirá cuando al menos el 50% sea visible
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        setIsVideoVisible(entry.isIntersecting)
+
+        if (entry.isIntersecting && videoRef.current && !isPlaying) {
+          // Reproducir video cuando sea visible
+          videoRef.current
+            .play()
+            .then(() => {
+              setIsPlaying(true)
+            })
+            .catch((error) => {
+              console.error("Error al reproducir el video:", error)
+            })
+        } else if (!entry.isIntersecting && videoRef.current && isPlaying) {
+          // Pausar video cuando no sea visible
+          videoRef.current.pause()
+          setIsPlaying(false)
+        }
+      })
+    }, options)
+
+    if (videoSectionRef.current) {
+      observer.observe(videoSectionRef.current)
+    }
+
+    return () => {
+      if (videoSectionRef.current) {
+        observer.unobserve(videoSectionRef.current)
+      }
+    }
+  }, [isPlaying])
 
   return (
     <div className="min-h-screen bg-slate-50 relative">
@@ -68,10 +192,7 @@ export const Vota13Page = () => {
               </div>
               <span className="font-medium text-sm md:text-base">Volver al inicio</span>
             </Link>
-            <h1 className="text-xl md:text-2xl font-bold">Vota 13</h1>
-            <div className="w-10 h-10 rounded-full bg-white p-1 flex items-center justify-center shadow-md overflow-hidden">
-              <img src="/images/mexican-flag.svg" alt="Bandera de México" className="w-full h-full rounded-full" />
-            </div>
+            {/* <h1 className="text-xl md:text-2xl font-bold">Vota 13</h1> */}
           </div>
         </div>
       </header>
@@ -163,10 +284,13 @@ export const Vota13Page = () => {
                   <ChevronRight className="ml-2 h-5 w-5" />
                 </button>
 
-                <button className="px-6 py-3 rounded-full bg-white/20 backdrop-blur-sm text-white font-bold flex items-center justify-center hover:bg-white/30 transition-all">
+                <a
+                  href="#video-section"
+                  className="px-6 py-3 rounded-full bg-white/20 backdrop-blur-sm text-white font-bold flex items-center justify-center hover:bg-white/30 transition-all"
+                >
                   Ver video
                   <ExternalLink className="ml-2 h-5 w-5" />
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -204,28 +328,63 @@ export const Vota13Page = () => {
       </section>
 
       {/* Video Section */}
-      <section className="py-12 md:py-16 bg-slate-50">
+      <section id="video-section" ref={videoSectionRef} className="py-12 md:py-16 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
               <div className="md:w-1/2">
-                <div className="relative rounded-xl overflow-hidden shadow-lg cursor-pointer" onClick={toggleVideo}>
-                  <div className="aspect-video bg-slate-200 flex items-center justify-center">
+                <div className="relative rounded-xl overflow-hidden shadow-lg">
+                  {/* Video sin miniatura/poster */}
+                  <div className=" bg-slate-800 flex items-center justify-center relative">
+                    {/* Capa para hacer clic en todo el video */}
+                    <div
+                      className="absolute inset-0 z-10 cursor-pointer"
+                      onClick={toggleVideo}
+                      aria-label={isPlaying ? "Pausar video" : "Reproducir video"}
+                    ></div>
+
                     <video
                       ref={videoRef}
-                      poster="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-03-31%20a%20las%2014.13.32_41cfd4a4.jpg-ZORJ1MzPvTYWNgOOQOAH84viOqbzq0.jpeg"
                       className="w-full h-full object-cover"
+                      muted={false}
+                      playsInline
+                      preload="auto"
                       onPlay={() => setIsPlaying(true)}
                       onPause={() => setIsPlaying(false)}
                     >
-                      <source src="#" type="video/mp4" />
+                      <source src="/propuestas.mp4" type="video/mp4" />
                       Tu navegador no soporta videos HTML5.
                     </video>
 
-                    {!isPlaying && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                        <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg">
-                          <div className="w-0 h-0 border-t-8 border-b-8 border-l-12 border-transparent border-l-law-600 ml-1"></div>
+                    {/* Indicador de carga */}
+                    {isVideoLoading && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-20">
+                        <div className="text-white text-center">
+                          <Loader2 className="h-12 w-12 mx-auto mb-2 animate-spin" />
+                          <p className="text-sm">Cargando video...</p>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Botón de control para pausar/reproducir */}
+                    <button
+                      onClick={toggleVideo}
+                      className="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow-lg transition-all z-20"
+                      aria-label={isPlaying ? "Pausar video" : "Reproducir video"}
+                    >
+                      {isPlaying ? (
+                        <Pause className="h-5 w-5 text-law-800" />
+                      ) : (
+                        <Play className="h-5 w-5 text-law-800 ml-0.5" />
+                      )}
+                    </button>
+
+                    {/* Indicador de reproducción automática */}
+                    {isVideoVisible && !isPlaying && !isVideoLoading && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/50 transition-opacity duration-300 z-15">
+                        <div className="text-white text-center">
+                          <Play className="h-16 w-16 mx-auto mb-2" />
+                          <p className="text-sm">Haz clic para reproducir</p>
                         </div>
                       </div>
                     )}
@@ -234,24 +393,34 @@ export const Vota13Page = () => {
               </div>
 
               <div className="md:w-1/2">
-                <h2 className="text-2xl md:text-3xl font-bold text-law-800 mb-4">Mensaje del candidato</h2>
-                <div className="h-1 w-16 bg-gold-500 mb-6 rounded-full"></div>
+                <div className="bg-white p-6 rounded-xl shadow-md border border-slate-100">
+                  <h2 className="text-2xl md:text-3xl font-bold text-law-800 mb-4">Mensaje del candidato</h2>
+                  <div className="h-1 w-16 bg-gold-500 mb-6 rounded-full"></div>
 
-                <div className="space-y-4 text-gray-600">
-                  <p>
-                    "Hola, te habla tu amigo Sergio Arturo Guerrero Olvera, orgullosamente candidato a magistrado
-                    regional en la Sala Regional Guadalajara del Tribunal Electoral del Poder Judicial de la
-                    Federación."
-                  </p>
-                  <p>
-                    "He recorrido cada uno de los ocho estados que te mencioné, desde los 19 años he trabajado en la
-                    impartición de justicia y hoy vengo a proponerte una justicia honesta, austera y oportuna, con
-                    lenguaje sencillo pero certero, independiente pero sensible y sobre todo comprobada honestidad."
-                  </p>
-                  <p>
-                    "Soy promotor de una justicia de calidad, moderna, digital, una justicia transformadora y ajustada a
-                    los nuevos tiempos. Hoy la nueva realidad democrática exige una nueva justicia."
-                  </p>
+                  <div className="space-y-4">
+                    <div className="bg-gradient-to-r from-law-50 to-white p-4 rounded-lg border-l-4 border-law-500">
+                      <p className="text-gray-700 italic">
+                        "Hola, te habla tu amigo Sergio Arturo Guerrero Olvera, orgullosamente candidato a magistrado
+                        regional en la Sala Regional Guadalajara del Tribunal Electoral del Poder Judicial de la
+                        Federación."
+                      </p>
+                    </div>
+
+                    <div className="bg-gradient-to-r from-law-50 to-white p-4 rounded-lg border-l-4 border-gold-500">
+                      <p className="text-gray-700 italic">
+                        "He recorrido cada uno de los ocho estados que te mencioné, desde los 19 años he trabajado en la
+                        impartición de justicia y hoy vengo a proponerte una justicia honesta, austera y oportuna, con
+                        lenguaje sencillo pero certero, independiente pero sensible y sobre todo comprobada honestidad."
+                      </p>
+                    </div>
+
+                    <div className="bg-gradient-to-r from-law-50 to-white p-4 rounded-lg border-l-4 border-law-500">
+                      <p className="text-gray-700 italic">
+                        "Soy promotor de una justicia de calidad, moderna, digital, una justicia transformadora y
+                        ajustada a los nuevos tiempos. Hoy la nueva realidad democrática exige una nueva justicia."
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -272,66 +441,87 @@ export const Vota13Page = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 gap-6 max-w-5xl mx-auto sm:grid-cols-2 lg:grid-cols-3">
             {propuestas.map((propuesta, index) => (
               <div
                 key={index}
                 className="bg-slate-50 rounded-xl p-6 shadow-md border border-slate-100 hover:shadow-lg transition-all"
               >
-                <div className="w-12 h-12 rounded-full bg-law-500 flex items-center justify-center text-white mb-4">
+                <div className="w-12 h-12 rounded-full bg-gold-500 flex items-center justify-center text-white mb-4">
                   <Award className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold text-law-800 mb-2">{propuesta.titulo}</h3>
-                <p className="text-gray-600">{propuesta.descripcion}</p>
+                <h3 className="text-base font-semibold text-law-800 mb-2">{propuesta.titulo}</h3>
+                <p className="text-gray-600 text-sm">{propuesta.descripcion}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+
       {/* CTA Section */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-5xl mx-auto">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl">
+      <section className="py-12 md:py-15 bg-gradient-to-br from-[#ffe4e1] to-[#ffd5c2]">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/30 backdrop-blur-lg">
               <div
-                className="absolute inset-0 bg-gradient-to-br"
+                className="absolute inset-0"
                 style={{
-                  background: `linear-gradient(135deg, ${salmonColor}ee, ${salmonColor}aa, #ff9f8d)`,
+                  background: `linear-gradient(135deg, ${salmonColor}ee, ${salmonColor}cc, #ff9f8d)`,
                 }}
               ></div>
 
-              <div className="relative z-10 p-8 md:p-12 text-white text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">Este 1 de junio, vota con el número 13</h2>
-                <p className="text-xl mb-8 max-w-3xl mx-auto">
-                  En la boleta de color salmón, casi melón, busca el número 13: Guerrero Olvera Sergio Arturo, justo,
-                  claro y cercano.
+              <div className="relative z-10 p-10 md:p-16 text-white text-center space-y-8">
+                <h2 className="text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-sm">
+                  Este <span className="underline decoration-white/50">1 de junio</span>, vota con el número <span className="text-white/90">13</span>
+                </h2>
+
+                <p className="text-lg md:text-2xl font-light leading-relaxed max-w-3xl mx-auto text-white/90">
+                  En la boleta de color <span className="font-semibold">salmón (casi melón)</span>, busca el número <span className="font-bold">13</span>: <br />
+                  <span className="font-semibold">Guerrero Olvera Sergio Arturo</span>, una opción justa, clara y cercana. <br />
+                  <span className="italic">¡Tu voto hace la diferencia para una justicia electoral moderna y eficiente!</span>
                 </p>
 
-                <div className="inline-flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full p-2 mb-8">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center shadow-lg mr-4">
-                    <div className="text-3xl md:text-4xl font-bold" style={{ color: salmonColor }}>
+                <div className="inline-flex items-center justify-center bg-white/20 backdrop-blur-md rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-105">
+                  <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white flex items-center justify-center mr-4 shadow-inner border border-white/50">
+                    <div className="text-4xl md:text-5xl font-black" style={{ color: salmonColor }}>
                       13
                     </div>
                   </div>
-                  <div className="text-left">
-                    <p className="font-medium">Boleta color salmón</p>
-                    <p className="text-sm">Magistrado de Sala Regional</p>
+                  <div className="text-left text-white/90">
+                    <p className="font-semibold text-lg">Boleta color salmón</p>
+                    <p className="text-sm italic">Magistrade de Sala Regional</p>
                   </div>
                 </div>
 
-                <button
-                  className="px-8 py-4 rounded-full bg-white font-bold text-lg flex items-center justify-center shadow-lg hover:shadow-xl transition-all mx-auto"
-                  style={{ color: salmonColor }}
-                >
-                  Comparte este mensaje
-                  <ExternalLink className="ml-2 h-5 w-5" />
-                </button>
+                <div className="relative pt-4 flex justify-center">
+                  <button
+                    onClick={() => {
+                      if (navigator.share) {
+                        navigator.share({
+                          title: "Comparte este mensaje",
+                          text: "Este 1 de junio, vota con el número 13: Guerrero Olvera Sergio Arturo. ¡Tu voto hace la diferencia!",
+                          url: window.location.href,
+                        });
+                      } else {
+                        window.prompt("Copia este enlace:", window.location.href);
+                      }
+                    }}
+                    className="px-5 py-4 rounded-full bg-white text-lg font-bold text-salmon-600 shadow-xl hover:shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-3"
+                    style={{ color: salmonColor }}
+                  >
+                    ¡Comparte este mensaje!
+                    <Share2 className="h-5 w-5" />
+                  </button>
+                </div>
+
               </div>
             </div>
           </div>
         </div>
       </section>
+
+
 
       {/* Footer */}
       <footer className="bg-law-800 text-white py-8">
@@ -342,6 +532,17 @@ export const Vota13Page = () => {
           </p>
         </div>
       </footer>
+
+      {/* Estilos adicionales */}
+      {/* <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out forwards;
+        }
+      `}</style> */}
     </div>
   )
 }

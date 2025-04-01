@@ -1,29 +1,32 @@
-"use client";
+"use client"
 
-import { useState, useEffect, useRef } from "react";
-import { MessageSquare, ArrowLeft } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react"
+import { MessageSquare, ArrowLeft } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 // Componentes
-import { ProfileSection } from "../components/ProfileSection";
-import { InspirationSection } from "../components/InspirationSection";
-import { ProposalsSection } from "../components/ProposalsSection";
-import { GallerySection } from "../components/GallerySection";
-import { Chatbot } from "./Chatbot";
-import { Magistrado3D } from "./Magistrado3D";
-import { FloatingSocialBar } from "../components/FloatingSocialBar";
+import { ProfileSection } from "../components/ProfileSection"
+import { ProposalsSection } from "../components/ProposalsSection"
+import { GallerySection } from "../components/GallerySection"
+import { Chatbot } from "./Chatbot"
+import { Magistrado3D } from "./Magistrado3D"
+import { FloatingSocialBar } from "../components/FloatingSocialBar"
+import { VotaBanner } from "../components/vota-banner"
+import { VotaBannerHorizontal } from "../components/vota-banner-horizontal"
 
-import fondo from "../../assets/fondo.jpeg";
+import fondo from "../../assets/fondo.jpeg"
+import VotaBannerFlotante from "../components/vota-banner-flotante"
+import VotaBannerFull from "../components/vota-banner-full"
 
 export default function ElectoralLandingPage() {
-  const [showScrollTop, setShowScrollTop] = useState(false);
-  const [heroImage, setHeroImage] = useState(fondo);
-  const heroRef = useRef(null);
+  const [showScrollTop, setShowScrollTop] = useState(false)
+  const [heroImage, setHeroImage] = useState(fondo)
+  const heroRef = useRef(null)
 
   // Control para el "avatar"
-  const [isWaitingGlobal, setIsWaitingGlobal] = useState(false);
-  const [isTypingGlobal, setIsTypingGlobal] = useState(false);
-  const [lastBotMessageGlobal, setLastBotMessageGlobal] = useState(null);
+  const [isWaitingGlobal, setIsWaitingGlobal] = useState(false)
+  const [isTypingGlobal, setIsTypingGlobal] = useState(false)
+  const [lastBotMessageGlobal, setLastBotMessageGlobal] = useState(null)
 
   // Estado de visibilidad
   const [isVisible, setIsVisible] = useState({
@@ -32,30 +35,30 @@ export default function ElectoralLandingPage() {
     proposals: false,
     inspiration: false,
     gallery: false,
-  });
+  })
 
   // Función para desplazarse hacia la parte superior
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-    });
-    setShowScrollTop(false); // Ocultar el botón después de hacer el scroll
-  };
+    })
+    setShowScrollTop(false) // Ocultar el botón después de hacer el scroll
+  }
 
   // Cargar imagen de fondo y activar Hero
   useEffect(() => {
-    setHeroImage(fondo);
-    setTimeout(() => setIsVisible((prev) => ({ ...prev, hero: true })), 300);
-  }, []);
+    setHeroImage(fondo)
+    setTimeout(() => setIsVisible((prev) => ({ ...prev, hero: true })), 300)
+  }, [])
 
   // Manejo de scroll
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const documentHeight = document.documentElement.scrollHeight;
-      const windowHeight = window.innerHeight;
-      setShowScrollTop(scrollPosition + windowHeight >= documentHeight - 100); // Aparece cuando llega al final
+      const scrollPosition = window.scrollY
+      const documentHeight = document.documentElement.scrollHeight
+      const windowHeight = window.innerHeight
+      setShowScrollTop(scrollPosition + windowHeight >= documentHeight - 100) // Aparece cuando llega al final
 
       setIsVisible((prev) => ({
         hero: true,
@@ -63,12 +66,12 @@ export default function ElectoralLandingPage() {
         proposals: scrollPosition > windowHeight * 1.3,
         inspiration: scrollPosition > windowHeight * 2.1,
         gallery: scrollPosition > windowHeight * 2.9,
-      }));
-    };
+      }))
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   // Variantes de animación personalizadas
   const heroVariants = {
@@ -78,7 +81,7 @@ export default function ElectoralLandingPage() {
       y: 0,
       transition: { duration: 0.8, ease: "easeOut" },
     },
-  };
+  }
 
   const profileVariants = {
     hidden: { opacity: 0, x: -50 },
@@ -87,7 +90,7 @@ export default function ElectoralLandingPage() {
       x: 0,
       transition: { duration: 0.6, ease: "easeInOut" },
     },
-  };
+  }
 
   const proposalsVariants = {
     hidden: { opacity: 0, scale: 0.95 },
@@ -96,7 +99,7 @@ export default function ElectoralLandingPage() {
       scale: 1,
       transition: { duration: 0.7, ease: "easeOut" },
     },
-  };
+  }
 
   const inspirationVariants = {
     hidden: { opacity: 0, x: 50 },
@@ -105,7 +108,7 @@ export default function ElectoralLandingPage() {
       x: 0,
       transition: { duration: 0.6, ease: "easeInOut" },
     },
-  };
+  }
 
   const galleryVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -114,7 +117,7 @@ export default function ElectoralLandingPage() {
       y: 0,
       transition: { duration: 0.8, ease: "easeOut" },
     },
-  };
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -122,7 +125,7 @@ export default function ElectoralLandingPage() {
       opacity: 1,
       transition: { staggerChildren: 0.2, delayChildren: 0.3 },
     },
-  };
+  }
 
   return (
     <div className="relative bg-gray-100">
@@ -160,8 +163,6 @@ export default function ElectoralLandingPage() {
               Innovando en la justicia electoral para un México más democrático.
             </p>
           </motion.div>
-
-
 
           <motion.div
             className="flex flex-col items-stretch justify-center gap-0 max-w-5xl mx-auto rounded-2xl overflow-hidden border border-white/20 shadow-xl bg-white/10 backdrop-blur-md"
@@ -209,6 +210,8 @@ export default function ElectoralLandingPage() {
         </motion.div>
       </motion.section>
 
+
+
       {/* Botón de Scroll hacia arriba */}
       <AnimatePresence>
         {showScrollTop && (
@@ -227,11 +230,7 @@ export default function ElectoralLandingPage() {
       </AnimatePresence>
 
       {/* Sección de Perfil */}
-      <motion.div
-        variants={profileVariants}
-        initial="hidden"
-        animate={isVisible.profile ? "visible" : "hidden"}
-      >
+      <motion.div variants={profileVariants} initial="hidden" animate={isVisible.profile ? "visible" : "hidden"}>
         <ProfileSection isVisible={isVisible.profile} />
       </motion.div>
 
@@ -245,6 +244,19 @@ export default function ElectoralLandingPage() {
         <ProposalsSection isVisible={isVisible.proposals} />
       </motion.div>
 
+      {/* Banner Vota 13 */}
+      <div className="container mx-auto px-4 md:px-6 relative z-1000">
+        {/* Versión móvil - solo visible en pantallas pequeñas */}
+        <div className="block md:hidden">
+          <VotaBannerHorizontal />
+        </div>
+
+        {/* Versión desktop - solo visible en pantallas medianas y grandes */}
+        <div className="hidden md:block z-10000">
+          <VotaBannerFlotante />
+        </div>
+      </div>
+
       {/* Sección Galería */}
       <motion.div
         className="bg-gradient-to-b from-yellow-50 to-gray-100"
@@ -255,8 +267,22 @@ export default function ElectoralLandingPage() {
         <GallerySection isVisible={isVisible.gallery} />
       </motion.div>
 
+      {/* Banner Vota 13 (Segundo banner) */}
+      <div className="container mx-auto relative z-10">
+        {/* Versión móvil - solo visible en pantallas pequeñas */}
+        <div className="block md:hidden">
+          <VotaBannerFull />
+        </div>
+
+        {/* Versión desktop - solo visible en pantallas medianas y grandes */}
+        <div className="hidden md:block z-10">
+          <VotaBanner />
+        </div>
+      </div>
+
       {/* Botón flotante de redes sociales */}
       <FloatingSocialBar />
     </div>
-  );
+  )
 }
+

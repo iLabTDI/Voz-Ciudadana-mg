@@ -2,6 +2,7 @@
 
 import { Instagram, Mail } from "lucide-react"
 import { Link } from "react-router-dom"
+import magistrado from "../../assets/magistrado.jpg"
 
 export const Footer = ({ scrollToSection }) => {
   // SVG personalizado para X (Twitter)
@@ -79,8 +80,8 @@ export const Footer = ({ scrollToSection }) => {
           <div className="flex items-center">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full opacity-80 blur-[3px]"></div>
-              <div className="relative w-16 h-16 rounded-full bg-white p-1.5 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.5)]">
-                <img src="/images/mexican-flag.svg" alt="Bandera de México" className="w-full h-full rounded-full" />
+              <div className="relative w-16 h-16 rounded-full bg-white p-0.5 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.5)]">
+                <img src={magistrado} alt="Bandera de México" className="w-full h-full rounded-full" />
               </div>
             </div>
             <div className="ml-4">

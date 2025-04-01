@@ -93,7 +93,7 @@ export const InspirationSection = ({ isVisible }) => {
       className="py-24 bg-gradient-to-b from-law-900 to-law-800 relative overflow-hidden"
     >
       {/* Fondo decorativo */}
-      <div className="absolute inset-0 bg-[url('/patterns/elegant-pattern.png')] opacity-5 bg-repeat"></div>
+      {/* <div className="absolute inset-0 bg-[url('/patterns/elegant-pattern.png')] opacity-5 bg-repeat"></div> */}
       <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
       <div className="absolute top-10 left-20 w-48 h-48 bg-gold-500/10 rounded-full blur-3xl"></div>

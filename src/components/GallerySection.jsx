@@ -140,19 +140,14 @@ export const GallerySection = ({ isVisible }) => {
     <section
       id="gallery"
       ref={sectionRef}
-      className="py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden"
+      className="py-10 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden"
     >
-      {/* Overlay de patrón */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{ backgroundImage: "url('/patterns/subtle-pattern.png')", backgroundRepeat: "repeat" }}
-      ></div>
 
       {/* Decoración */}
       <div className="absolute top-0 left-0 w-full h-1.5 bg-law-500"></div>
 
       <div className="container mx-auto px-4 relative z-10 max-w-7xl">
-        <div className="mb-16 text-center">
+        <div className="mb-10 text-center">
           <div className="inline-block">
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-law-500 flex items-center justify-center">
               <Award className="h-10 w-10 text-white" />
@@ -167,7 +162,7 @@ export const GallerySection = ({ isVisible }) => {
         </div>
 
         {/* Carrusel de destacados */}
-        <div className="mb-20" ref={carouselRef}>
+        <div className="mb-10" ref={carouselRef}>
           <div className="relative h-[450px] rounded-2xl overflow-hidden shadow-xl">
             {highlights.map((item, index) => (
               <div
