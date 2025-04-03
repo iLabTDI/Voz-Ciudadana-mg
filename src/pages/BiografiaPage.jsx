@@ -203,11 +203,11 @@ export const BiografiaPage = () => {
       {/* Contenido principal */}
       <div className="container mx-auto px-6 py-16 max-w-6xl">
         {/* Introducción */}
-        <section id="introduccion" ref={introRef} className="mb-24">
+        <section id="introduccion" ref={introRef} className="mb-24 mt-5">
           <motion.div initial="hidden" animate={introInView ? "visible" : "hidden"} variants={staggerContainer}>
             <motion.div variants={itemFadeIn} className="flex items-center mb-12">
-              <div className="h-px bg-law-200 flex-grow"></div>
-              <h2 className="text-3xl font-bold text-law-800 px-6 flex items-center">
+              <div className="h-px bg-law-200 flex-grow "></div>
+              <h2 className="text-3xl font-bold text-law-800 px-6  flex items-center">
                 <BookOpen className="mr-3 h-7 w-7 text-law-600" />
                 Introducción
               </h2>
@@ -263,39 +263,37 @@ export const BiografiaPage = () => {
                     </h3>
 
                     <p className="text-gray-700 text-lg mb-4 leading-relaxed">
-                      Nací en Guadalajara, Jalisco, el 15 de marzo de 1970. Desde temprana edad mostré un gran interés
-                      por el derecho y la justicia, lo que me llevó a estudiar la carrera de Derecho en la Universidad
-                      de Guadalajara, donde me gradué con honores en 1995.
+                      Mi nombre es Sergio Arturo Guerrero Olvera, soy originario de Querétaro y he dedicado mi vida al estudio
+                      y la práctica del Derecho, con la convicción de que la justicia debe ser cercana, accesible y humana.
                     </p>
 
                     <p className="text-gray-700 text-lg mb-4 leading-relaxed">
-                      Mi pasión por el derecho electoral comenzó durante mis estudios universitarios, cuando participé
-                      como observador electoral en las elecciones de 1994. Esta experiencia marcó profundamente mi
-                      trayectoria profesional, orientándola hacia la protección de los derechos político-electorales y
-                      el fortalecimiento de las instituciones democráticas.
-                    </p>
-                  </div>
+                      Soy licenciado, maestro y doctor en Derecho por la Universidad Autónoma de Querétaro, institución que marcó profundamente mi formación
+                      y mi compromiso con el servicio público. A lo largo de los años, he complementado mi preparación con especializaciones en Derecho Constitucional
+                      y Amparo, Justicia Electoral, Argumentación Jurídica y Justicia Constitucional, tanto en México como en el extranjero, particularmente en España.
 
+                    </p>
+
+                  </div>
+                  <p className="text-gray-700 text-lg mb-4 leading-relaxed">
+                    Más allá del ámbito jurisdiccional, la docencia ha sido una de mis grandes pasiones. He impartido clases en la Universidad Autónoma de Querétaro y en diversas
+                    instituciones nacionales, convencido de que el conocimiento debe compartirse y nutrirse en comunidad. He tenido también la oportunidad de participar en foros
+                    internacionales, representar a México ante organismos como la OEA y las Naciones Unidas, y colaborar en temas clave para el fortalecimiento democrático y la defensa
+                    de los derechos humanos.
+                  </p>
                   {/* Cita destacada */}
                   <div className="bg-gradient-to-r from-law-600 to-law-700 text-white p-6 rounded-xl mb-6 relative">
                     <div className="absolute top-4 left-4 text-6xl text-white/20 font-serif">"</div>
                     <div className="relative z-10">
                       <p className="text-lg italic text-white/90 mb-4">
-                        Mi compromiso es con la justicia electoral y la democracia. Cada decisión que tomo está
-                        orientada a fortalecer nuestras instituciones y garantizar que la voluntad del pueblo sea
-                        respetada.
+                        Creo firmemente en una justicia electoral innovadora, con visión social y profundamente comprometida con la ciudadanía. Por ello, promuevo el uso de la tecnología como
+                        herramienta para acercar la justicia a las personas, impulsar la transparencia y construir un tribunal más abierto, incluyente y sostenible.
                       </p>
                       <p className="text-right text-gold-300 font-medium">— Sergio Arturo Guerrero</p>
                     </div>
                     <div className="absolute bottom-4 right-4 text-6xl text-white/20 font-serif">"</div>
                   </div>
 
-                  <p className="text-gray-700 text-lg leading-relaxed">
-                    A lo largo de mi carrera, he combinado la práctica jurídica con la docencia y la investigación, lo
-                    que me ha permitido desarrollar una visión integral del derecho electoral y contribuir
-                    significativamente a su evolución en México. Mi enfoque innovador y mi compromiso con la
-                    transparencia me han convertido en un referente en el ámbito de la justicia electoral.
-                  </p>
 
                   {/* Línea de tiempo */}
                   <div className="mt-10">
@@ -330,30 +328,6 @@ export const BiografiaPage = () => {
             </div>
           </motion.div>
         </section>
-
-        {/* Tabs de navegación para secciones principales */}
-        {/* <div className="sticky top-24 z-40 bg-white/80 backdrop-blur-md rounded-full shadow-lg p-2 mb-16 border border-slate-200 max-w-3xl mx-auto">
-          <div className="flex justify-between">
-            {[
-              { id: "formacion", label: "Formación", icon: <GraduationCap className="h-4 w-4" /> },
-              { id: "trayectoria", label: "Trayectoria", icon: <Briefcase className="h-4 w-4" /> },
-              { id: "publicaciones", label: "Publicaciones", icon: <BookOpen className="h-4 w-4" /> },
-              { id: "personal", label: "Vida Personal", icon: <Heart className="h-4 w-4" /> },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => handleTabChange(tab.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center ${activeTab === tab.id
-                  ? "bg-law-600 text-white shadow-md"
-                  : "bg-transparent text-gray-700 hover:bg-slate-100"
-                  }`}
-              >
-                {tab.icon}
-                <span className="ml-2 hidden md:inline">{tab.label}</span>
-              </button>
-            ))}
-          </div>
-        </div> */}
 
         {/* Formación Académica */}
         <section

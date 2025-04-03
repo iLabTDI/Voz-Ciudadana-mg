@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect, useRef } from "react"
 import {
   Scale,
@@ -44,16 +42,15 @@ export const ProposalsSection = ({ isVisible }) => {
   })
 
   useEffect(() => {
-    // Cargar imágenes de la API de Vercel
+    // Cargar imágenes mejoradas relacionadas con temas electorales
     setImages({
-      digital: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=600&auto=format&fit=crop",
-      people: "https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=800&h=600&auto=format&fit=crop",
-      rights: "https://images.unsplash.com/photo-1591291621164-2c6367723315?q=80&w=800&h=600&auto=format&fit=crop",
-      education: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&h=600&auto=format&fit=crop",
-      future: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&h=1080&auto=format&fit=crop",
-      transparency:
-        "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?q=80&w=800&h=600&auto=format&fit=crop",
-      innovation: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&h=600&auto=format&fit=crop",
+      digital: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?q=80&w=800&h=600&auto=format&fit=crop", // Modernización
+      people: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=800&h=600&auto=format&fit=crop", // Ciudadanía
+      rights: "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=800&h=600&auto=format&fit=crop", // Derechos
+      education: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&h=600&auto=format&fit=crop", // Educación
+      future: "https://images.unsplash.com/photo-1616514197671-15d99ce7a6f8?q=80&w=1920&h=1080&auto=format&fit=crop", // Futuro electoral
+      transparency: "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?q=80&w=800&h=600&auto=format&fit=crop", // Transparencia
+      innovation: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=800&h=600&auto=format&fit=crop", // Innovación
     })
   }, [])
 
@@ -113,7 +110,7 @@ export const ProposalsSection = ({ isVisible }) => {
       description: "Impulsaré un tribunal que refleje valores democráticos y responda a las exigencias de la sociedad.",
       icon: <Gavel className="h-6 w-6" />,
       color: "from-gold-500 to-gold-500",
-      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=800&h=600&auto=format&fit=crop", // Imagen de justicia
       fullDescription:
         "Mi objetivo es construir una magistratura innovadora, transparente y eficiente, que brinde certeza en los procesos electorales y sea un pilar de nuestra democracia. Aplicaré mecanismos de evaluación y autocrítica para garantizar una impartición de justicia eficiente y confiable.",
       benefits: [
@@ -138,7 +135,7 @@ export const ProposalsSection = ({ isVisible }) => {
       description: "Crearé el 'Café con la Ciudadanía' y fortaleceré la relación con organizaciones civiles.",
       icon: <Users className="h-6 w-6" />,
       color: "from-gold-500 to-gold-500",
-      image: "https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1623282033815-40b05d96c333?q=80&w=800&h=600&auto=format&fit=crop", // Reunión ciudadana
       fullDescription:
         "Implementaré estrategias de comunicación inclusiva para reconocer a personas destacadas y promover la inclusión social. Fortaleceré la relación con organizaciones civiles y sectores clave para construir una justicia inclusiva y participativa.",
       benefits: [
@@ -163,7 +160,7 @@ export const ProposalsSection = ({ isVisible }) => {
       description: "Adoptaré códigos de ética y mejores prácticas de sistemas judiciales avanzados.",
       icon: <Award className="h-6 w-6" />,
       color: "from-gold-500 to-gold-500",
-      image: "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1575505586569-646b2ca898fc?q=80&w=800&h=600&auto=format&fit=crop", // Justicia internacional
       fullDescription:
         "Implementaré los códigos de ética y mejores prácticas de los sistemas judiciales más avanzados del mundo. Aplicaré herramientas de jurimetría para hacer más eficiente la toma de decisiones judiciales.",
       benefits: [
@@ -188,7 +185,7 @@ export const ProposalsSection = ({ isVisible }) => {
       description: "Aprovecharé el metaverso, hackathones e inteligencia artificial para modernizar la justicia.",
       icon: <Lightbulb className="h-6 w-6" />,
       color: "from-gold-500 to-gold-500",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=800&h=600&auto=format&fit=crop", // Tecnología e innovación
       fullDescription:
         "Soy promotor de una justicia de calidad, moderna y digital. Aprovecharé el metaverso y los hackathones como herramientas para acercar la justicia electoral a las nuevas generaciones. Aplicaré inteligencia artificial en la gestión judicial para optimizar el acceso y la eficiencia del tribunal.",
       benefits: [
@@ -213,7 +210,7 @@ export const ProposalsSection = ({ isVisible }) => {
       description: "Reduciré costos innecesarios y optimizaré recursos a través de la digitalización.",
       icon: <Clock className="h-6 w-6" />,
       color: "from-gold-500 to-gold-500",
-      image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&h=600&auto=format&fit=crop", // Eficiencia y optimización
       fullDescription:
         "Me comprometo a reducir costos innecesarios para hacer más eficiente el gasto público. Optimizaré recursos mediante la digitalización y el uso de tecnología avanzada. Cada ahorro se traducirá en mejores servicios para la ciudadanía.",
       benefits: [
@@ -238,7 +235,7 @@ export const ProposalsSection = ({ isVisible }) => {
       description: "Mejoraré condiciones laborales y promoveré prácticas ecológicas en el tribunal.",
       icon: <Briefcase className="h-6 w-6" />,
       color: "from-gold-500 to-gold-500",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1523287562758-66c7fc58967f?q=80&w=800&h=600&auto=format&fit=crop", // Entorno laboral
       fullDescription:
         "Combatiré el 'síndrome del edificio enfermo' con mejores condiciones laborales y espacios saludables. Implementaré programas de capacitación y bienestar para fortalecer a nuestro personal. Promoveré prácticas ecológicas dentro del tribunal, reafirmando nuestro compromiso con el medio ambiente.",
       benefits: [
@@ -680,4 +677,3 @@ export const ProposalsSection = ({ isVisible }) => {
 }
 
 export default ProposalsSection
-
