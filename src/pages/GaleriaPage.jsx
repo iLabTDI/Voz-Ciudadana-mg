@@ -22,7 +22,7 @@ export const GaleriaPage = () => {
       location: "Ciudad de México",
       description:
         "Participación en el desarrollo del cuadernillo 'Justicia Electoral Digital' editado por el TEPJF, donde se analizan los retos y oportunidades de la tecnología para la justicia electoral.",
-      image: "https://images.unsplash.com/photo-1523294587484-bae6cc870010?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen7.jpg-U4PQHFnFnvkvQxK0QOL527INacsJev.jpeg", // Tecnología/Estudio
     },
     {
       id: "rec2",
@@ -32,7 +32,7 @@ export const GaleriaPage = () => {
       location: "Ciudad de México",
       description:
         "Contribución a la difusión de materiales sobre justicia electoral inclusiva que analizan sentencias clave del Tribunal en favor de grupos históricamente discriminados.",
-      image: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen11.jpg-lcnX0bBxC8Wb4kSg2KAVjaiUCZkWp9.jpeg", // Diversidad, Igualdad, Inclusión
     },
     {
       id: "rec3",
@@ -42,7 +42,7 @@ export const GaleriaPage = () => {
       location: "Universidad Autónoma de Querétaro",
       description:
         "Obtención del grado de Doctor en Derecho con mención honorífica por la investigación sobre los mecanismos de protección de los derechos político-electorales.",
-      image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen1.jpg-OuMT4VDVvcAoXoPUal85jqG61W3L9i.jpeg", // Estatua de la Justicia
     },
 
     // Publicaciones
@@ -54,7 +54,7 @@ export const GaleriaPage = () => {
       publisher: "Tribunal Electoral del Poder Judicial de la Federación",
       description:
         "Cuadernillo que analiza los retos y oportunidades que presenta la tecnología para la justicia electoral en México, con propuestas para hacer más accesible y eficiente el sistema.",
-      image: "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen15.jpg-6BkA2pSRuCUFPoYSUNLNBC64OAI0Tw.jpeg", // Fichas de Scrabble "JUSTICE"
     },
     {
       id: "pub2",
@@ -64,7 +64,7 @@ export const GaleriaPage = () => {
       publisher: "Escuela Judicial Electoral, TEPJF",
       description:
         "Análisis sobre la protección de los derechos electorales de grupos históricamente marginados y propuestas para su fortalecimiento en el sistema electoral mexicano.",
-      image: "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen12.jpg-U32r8ZtpcQvi7Jz8q4yzJGqhaf02aL.jpeg", // Igualdad de género
     },
     {
       id: "pub3",
@@ -74,7 +74,7 @@ export const GaleriaPage = () => {
       publisher: "Tirant Lo Blanch",
       description:
         "Capítulo sobre la Dirección General de Jurisprudencia y Consulta, analizando su papel en el sistema de justicia electoral mexicano.",
-      image: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen13.jpg-LkJUmhp9Mm8oycwAu5QpuNCUWB0Tzl.jpeg", // Contrato legal con mazo
     },
 
     // Eventos
@@ -86,17 +86,7 @@ export const GaleriaPage = () => {
       location: "Ciudad de México",
       description:
         "Participación en el seminario sobre acciones afirmativas y ciudadanía de pueblos indígenas en el ámbito electoral, organizado por el TEPJF.",
-      image: "https://images.unsplash.com/photo-1560523160-754a9e25c68f?q=80&w=800&h=600&auto=format&fit=crop",
-    },
-    {
-      id: "evt2",
-      type: "event",
-      title: "Implementación de la Plataforma de Juicio en Línea Electoral",
-      date: "2021-2022",
-      location: "Sala Regional Guadalajara",
-      description:
-        "Liderazgo en la puesta en marcha de la plataforma de Juicio en Línea Electoral, permitiendo que más casos pudieran recibirse y resolverse de forma electrónica.",
-      image: "https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen8.jpg-XbVr242YWzcspBRXJBEQRRwElfJoiS.jpeg", // Aula/Salón de clases
     },
     {
       id: "evt3",
@@ -106,7 +96,7 @@ export const GaleriaPage = () => {
       location: "Ciudad de México",
       description:
         "Participación en foros de reforma electoral compartiendo perspectivas sobre el funcionamiento y mejoras al sistema electoral mexicano junto a otros expertos.",
-      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&h=600&auto=format&fit=crop",
+      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen10.jpg-S4OcuLy1ByF4TzQOJim63rKdOyI7yd.jpeg", // Grupo diverso con puños en alto
     },
   ]
 
@@ -127,12 +117,6 @@ export const GaleriaPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 relative">
-      {/* Fondo con textura */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{ backgroundImage: "url('/patterns/paper-texture.png')", backgroundRepeat: "repeat" }}
-      ></div>
-
       {/* Header */}
       <header className="bg-gradient-to-r from-law-600 to-law-700 text-white py-4 md:py-6 sticky top-0 z-50 shadow-lg">
         <div className="container mx-auto px-4 md:px-6">
@@ -144,16 +128,19 @@ export const GaleriaPage = () => {
               <span className="font-medium text-sm md:text-base">Volver al inicio</span>
             </Link>
             <h1 className="text-xl md:text-2xl font-bold">Mi Galería de Experiencias</h1>
-            <div className="w-10 h-10 rounded-full bg-white p-1 flex items-center justify-center shadow-md overflow-hidden">
-              <img src="/images/mexican-flag.svg" alt="Bandera de México" className="w-full h-full rounded-full" />
-            </div>
           </div>
         </div>
       </header>
 
       {/* Hero */}
       <div className="relative py-16 md:py-24 px-4">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=1920&h=1080&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{
+            backgroundImage:
+              "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen1.jpg-OuMT4VDVvcAoXoPUal85jqG61W3L9i.jpeg')",
+          }}
+        ></div>
         <div className="absolute inset-0 bg-gradient-to-b from-law-900/10 to-transparent"></div>
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -184,37 +171,41 @@ export const GaleriaPage = () => {
           <div className="inline-flex bg-white rounded-full shadow-md p-1 border border-slate-200 overflow-x-auto max-w-full">
             <button
               onClick={() => setActiveTab("all")}
-              className={`px-3 md:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${activeTab === "all"
-                ? "bg-law-500 text-white shadow-md"
-                : "bg-transparent text-gray-700 hover:bg-slate-100"
-                }`}
+              className={`px-3 md:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                activeTab === "all"
+                  ? "bg-law-500 text-white shadow-md"
+                  : "bg-transparent text-gray-700 hover:bg-slate-100"
+              }`}
             >
               Todos
             </button>
             <button
               onClick={() => setActiveTab("recognition")}
-              className={`px-3 md:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${activeTab === "recognition"
-                ? "bg-law-500 text-white shadow-md"
-                : "bg-transparent text-gray-700 hover:bg-slate-100"
-                }`}
+              className={`px-3 md:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                activeTab === "recognition"
+                  ? "bg-law-500 text-white shadow-md"
+                  : "bg-transparent text-gray-700 hover:bg-slate-100"
+              }`}
             >
               Contribuciones
             </button>
             <button
               onClick={() => setActiveTab("publication")}
-              className={`px-3 md:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${activeTab === "publication"
-                ? "bg-law-500 text-white shadow-md"
-                : "bg-transparent text-gray-700 hover:bg-slate-100"
-                }`}
+              className={`px-3 md:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                activeTab === "publication"
+                  ? "bg-law-500 text-white shadow-md"
+                  : "bg-transparent text-gray-700 hover:bg-slate-100"
+              }`}
             >
               Publicaciones
             </button>
             <button
               onClick={() => setActiveTab("event")}
-              className={`px-3 md:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${activeTab === "event"
-                ? "bg-law-500 text-white shadow-md"
-                : "bg-transparent text-gray-700 hover:bg-slate-100"
-                }`}
+              className={`px-3 md:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                activeTab === "event"
+                  ? "bg-law-500 text-white shadow-md"
+                  : "bg-transparent text-gray-700 hover:bg-slate-100"
+              }`}
             >
               Eventos
             </button>
@@ -318,7 +309,7 @@ export const GaleriaPage = () => {
               className="absolute inset-0 bg-cover bg-center"
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&h=1080&auto=format&fit=crop')",
+                  "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen15.jpg-6BkA2pSRuCUFPoYSUNLNBC64OAI0Tw.jpeg')",
               }}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-law-900/90 to-law-800/80" />
@@ -339,7 +330,6 @@ export const GaleriaPage = () => {
             </div>
           </div>
         </div>
-
 
         {/* Botón de regreso */}
         <div className="text-center mt-16 md:mt-20">

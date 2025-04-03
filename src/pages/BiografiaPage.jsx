@@ -437,7 +437,7 @@ export const BiografiaPage = () => {
                     <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
                       <GraduationCap className="h-6 w-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-law-700">Maestría en Derecho y Doctorando</h3>
+                    <h3 className="text-xl font-bold text-law-700">Maestría en Derecho y Doctorado</h3>
                   </div>
                   <p className="text-gray-600 mb-3">Universidad Autónoma de Querétaro</p>
                   <div className="bg-law-50 p-4 rounded-xl">

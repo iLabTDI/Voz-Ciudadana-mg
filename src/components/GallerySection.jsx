@@ -24,17 +24,21 @@ export const GallerySection = ({ isVisible }) => {
   })
 
   useEffect(() => {
-    // Cargar imágenes de alta calidad
+    // Cargar imágenes de alta calidad - usando imágenes diferentes a las anteriores
     setImages({
-      digital: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=800&h=600&auto=format&fit=crop",
-      inclusion: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?q=80&w=800&h=600&auto=format&fit=crop",
-      doctorate: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&h=600&auto=format&fit=crop",
-      book: "https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?q=80&w=800&h=600&auto=format&fit=crop",
-      rights: "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=800&h=600&auto=format&fit=crop",
-      tepjf: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&h=600&auto=format&fit=crop",
-      seminar: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&h=600&auto=format&fit=crop",
-      platform: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&h=600&auto=format&fit=crop",
-      reform: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&h=600&auto=format&fit=crop",
+      digital:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen2.jpg-7LuJymzSCCHSEVzGAVRWLKwNTJhLGZ.jpeg", // Justicia/Innovación
+      inclusion: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-jySBrr6lg5RLTRa2eLyJoZadZQtg1n.png", // Nueva imagen de diversidad para Justicia Electoral Inclusiva
+      doctorate: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-iYAyPuWVtH9sqTjV6qe2AXtZQj8NYC.png", // Nueva imagen de graduación para Doctorado
+      book: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen6.jpg-QIkCRr7JzxHeUu4oSQe73Ms6ykroIS.jpeg", // Transparencia/Aprobación
+      rights: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen9.jpg-JEyNyYCV1tYBnORjknuuOuGKU8z9tD.jpeg", // Ciudadanía/Colaboración
+      tepjf: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen12.jpg-U32r8ZtpcQvi7Jz8q4yzJGqhaf02aL.jpeg", // Igualdad de género
+      seminar:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen8.jpg-XbVr242YWzcspBRXJBEQRRwElfJoiS.jpeg", // Aula/Salón de clases
+      platform:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen10.jpg-S4OcuLy1ByF4TzQOJim63rKdOyI7yd.jpeg", // Grupo diverso con puños en alto
+      reform:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen13.jpg-LkJUmhp9Mm8oycwAu5QpuNCUWB0Tzl.jpeg", // Contrato legal con mazo
     })
   }, [])
 
@@ -93,7 +97,7 @@ export const GallerySection = ({ isVisible }) => {
       title: "Justicia Electoral Inclusiva",
       year: "2021",
       publisher: "Escuela Judicial Electoral, TEPJF",
-      image: images.rights,
+      image: images.inclusion, // Usando la misma imagen de diversidad para la publicación sobre inclusión
       icon: <BookOpen className="h-5 w-5" />,
     },
     {
@@ -125,15 +129,6 @@ export const GallerySection = ({ isVisible }) => {
       image: images.book,
       icon: <FileText className="h-6 w-6" />,
     },
-    {
-      title: "Implementación de la Plataforma de Juicio en Línea Electoral",
-      date: "2021-2022",
-      location: "Sala Regional Guadalajara",
-      description:
-        "Liderazgo en la modernización de los procesos jurisdiccionales electorales mediante tecnología digital",
-      image: images.platform,
-      icon: <Star className="h-6 w-6" />,
-    },
   ]
 
   return (
@@ -142,7 +137,6 @@ export const GallerySection = ({ isVisible }) => {
       ref={sectionRef}
       className="py-10 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden"
     >
-
       {/* Decoración */}
       <div className="absolute top-0 left-0 w-full h-1.5 bg-law-500"></div>
 
@@ -336,4 +330,6 @@ export const GallerySection = ({ isVisible }) => {
     </section>
   )
 }
+
+export default GallerySection
 

@@ -86,8 +86,7 @@ export const InspiracionPage = () => {
     {
       title: "Las niñas que sueñan consiguen lo que quieren",
       author: "Cristal Glangchai",
-      cover:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Las%20nin%CC%83as%20que%20suen%CC%83an%20consiguen%20lo%20que%20quiere.png-dA57NVUJq5oWiRtUqwXYe4w7uTE5yi.jpeg",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-oHganFe9cPF6mNNoWnaAk09jyx2Sqk.png",
       description:
         "Cómo ayudar a las niñas de primaria a desarrollar su interés en la ciencia, la tecnología y el emprendimiento para convertirse en las líderes del mañana.",
       year: "2018",
@@ -97,8 +96,7 @@ export const InspiracionPage = () => {
     {
       title: "El futuro borroso o el cielo en un chip",
       author: "Bart Kosko",
-      cover:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/El%20futuro%20borroso%20o%20el%20cielo%20en%20un%20chip.png-gBXHSoYgGCMVJkECeghSsbhmPWR2c0.jpeg",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-YCHKSNNzzQMYaWe4MwmZJ9PQRIRPp9.png",
       description:
         "Una exploración fascinante de la lógica difusa y cómo esta nueva forma de pensar está revolucionando la tecnología y nuestra comprensión del mundo.",
       year: "1995",
@@ -108,8 +106,7 @@ export const InspiracionPage = () => {
     {
       title: "The Star Wars Archives",
       author: "Paul Duncan",
-      cover:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Star%20Wars%20Archives.png-ZaUGnLfiC5GYFRwUwLafWkEZFDAIIt.jpeg",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-DMyvtfAdH6fMnWAhyTvAWUxXAsQmJi.png",
       description:
         "Un recorrido exhaustivo por la creación de la trilogía original de Star Wars, con material inédito, entrevistas y fotografías del archivo personal de George Lucas.",
       year: "2018",
@@ -117,53 +114,57 @@ export const InspiracionPage = () => {
       color: "from-yellow-500 to-amber-600",
     },
     {
-      title: "Los diez mejores jueces de la historia norteamericana",
-      author: "Bernard Schwartz",
-      cover:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Los%20diez%20mejores%20jueces%20de%20la%20historia%20norteamericana.png-BxnFznJX9NuE6PGxySnxcaCoSZu3Rm.jpeg",
+      title: "Diosas y Heroínas",
+      author: "Jean Menzies",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-W3uWBVJyKHz2QEJXJInPWAb4SnbSg8.png",
       description:
-        "Un análisis de las contribuciones de los jueces más influyentes en la historia judicial de Estados Unidos y su impacto en el desarrollo del derecho constitucional.",
-      year: "1980",
-      quote: "La justicia es el fin del gobierno. Es el fin de la sociedad civil.",
-      color: "from-amber-500 to-yellow-600",
+        "Un fascinante recorrido por las grandes mujeres y personajes femeninos de la mitología, ilustrado maravillosamente por Katie Ponder.",
+      year: "2022",
+      quote: "Grandes mujeres y personajes femeninos de la mitología.",
+      color: "from-red-500 to-orange-600",
     },
   ]
 
   // Datos de música favorita
   const favoriteMusic = [
     {
-      title: "Sonata para piano n.º 14 'Claro de Luna'",
-      artist: "Ludwig van Beethoven",
-      cover: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=800&h=800&auto=format&fit=crop",
+      title: "Corridos y música norteña",
+      artist: "Los Cadetes de Linares",
+      cover:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ab67616d00001e02d9a21006feafbb1cc9a2e288-pRkp0TGUphUUkl30sfhvAsl5glGbYx.jpeg",
       description:
-        "Una de las obras más célebres de Beethoven, con su primer movimiento lento y soñador que evoca la luz de la luna.",
-      year: "1801",
-      color: "from-blue-500 to-indigo-600",
-    },
-    {
-      title: "Concierto para piano n.º 21",
-      artist: "Wolfgang Amadeus Mozart",
-      cover: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=800&h=800&auto=format&fit=crop",
-      description: "Un concierto brillante con un segundo movimiento (Andante) de extraordinaria belleza melódica.",
-      year: "1785",
-      color: "from-emerald-500 to-teal-600",
-    },
-    {
-      title: "Las Cuatro Estaciones",
-      artist: "Antonio Vivaldi",
-      cover: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=800&h=800&auto=format&fit=crop",
-      description:
-        "Conjunto de cuatro conciertos para violín que representan las estaciones del año con vívidas imágenes musicales.",
-      year: "1725",
+        "Grupo pionero de la música norteña mexicana, conocidos por sus corridos y canciones que narran historias de la vida cotidiana y la frontera.",
+      year: "1960-presente",
       color: "from-amber-500 to-orange-600",
     },
     {
-      title: "Nocturno Op. 9 No. 2",
-      artist: "Frédéric Chopin",
-      cover: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=800&h=800&auto=format&fit=crop",
-      description: "Una pieza para piano de carácter íntimo y melancólico, con una melodía de gran belleza lírica.",
-      year: "1832",
-      color: "from-purple-500 to-violet-600",
+      title: "Música norteña tradicional",
+      artist: "Los Cardenales de Nuevo León",
+      cover:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CardenalesdeNL2-XSNlA8VqU4JHSD8c0CJ6eHY0poauqT.webp",
+      description:
+        "Legendario grupo de música norteña reconocido por su estilo único y sus interpretaciones de corridos, rancheras y baladas románticas.",
+      year: "1982-presente",
+      color: "from-purple-500 to-indigo-600",
+    },
+    {
+      title: "Rock alternativo",
+      artist: "The Killers",
+      cover:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20221128kill.jpg-A8L4yl5bIg5Qfw6oQSZT0bdKBvE7zY.jpeg",
+      description:
+        "Banda de rock alternativo de Las Vegas conocida por sus éxitos como 'Mr. Brightside' y 'Somebody Told Me', con un sonido que mezcla rock, new wave y synth-pop.",
+      year: "2001-presente",
+      color: "from-red-500 to-pink-600",
+    },
+    {
+      title: "Cantautor español",
+      artist: "Joaquín Sabina",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sabina.jpg-b4ZUjpsQ8ySSkEL3Ws5EyhkKbpC7x6.jpeg",
+      description:
+        "Reconocido cantautor español con una extensa carrera, famoso por sus letras poéticas y su capacidad para retratar la vida cotidiana con profundidad e ironía.",
+      year: "1978-presente",
+      color: "from-amber-700 to-yellow-800",
     },
   ]
 
@@ -291,7 +292,11 @@ export const InspiracionPage = () => {
             </Link>
             <h1 className="text-xl md:text-2xl font-bold hidden md:block">Mi Inspiración</h1>
             <div className="w-12 h-12 rounded-full bg-white p-1 flex items-center justify-center shadow-glow overflow-hidden">
-              <img src="/images/mexican-flag.svg" alt="Bandera de México" className="w-full h-full rounded-full" />
+              <img
+                src="/placeholder.svg?height=100&width=100"
+                alt="Bandera de México"
+                className="w-full h-full rounded-full"
+              />
             </div>
           </div>
         </div>
@@ -303,8 +308,7 @@ export const InspiracionPage = () => {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-10"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1920&h=1080&auto=format&fit=crop')",
+            backgroundImage: "url('/placeholder.svg?height=1080&width=1920')",
           }}
         ></div>
 
@@ -437,7 +441,7 @@ export const InspiracionPage = () => {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {favoriteBooks.map((book, index) => (
                 <motion.div
                   key={index}
@@ -447,7 +451,7 @@ export const InspiracionPage = () => {
                   <div className="relative">
                     <div className="aspect-[2/3] overflow-hidden">
                       <img
-                        src={book.cover || "/placeholder.svg"}
+                        src={book.cover || "/placeholder.svg?height=600&width=400"}
                         alt={book.title}
                         className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                       />
@@ -496,46 +500,44 @@ export const InspiracionPage = () => {
 
             <motion.div variants={itemFadeIn} className="mb-10">
               <p className="text-xl text-gray-600 text-center max-w-4xl mx-auto">
-                La música clásica ha sido siempre un refugio para mí. Estas son algunas de las piezas que me acompañan
-                en momentos de reflexión y trabajo.
+                La música es una parte fundamental de mi vida. Estos son algunos de los artistas que me acompañan en
+                momentos de reflexión y descanso.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {favoriteMusic.map((music, index) => (
                 <motion.div
                   key={index}
                   variants={itemFadeIn}
-                  className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 group"
+                  className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 group h-full flex flex-col"
                 >
-                  <div className="flex flex-col sm:flex-row h-full">
-                    <div className="sm:w-1/3 relative">
-                      <div className="aspect-square sm:h-full overflow-hidden">
-                        <img
-                          src={music.cover || "/placeholder.svg"}
-                          alt={music.title}
-                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                        />
-                      </div>
-                      <div
-                        className={`absolute top-3 right-3 sm:top-auto sm:bottom-3 w-10 h-10 rounded-full bg-gradient-to-br ${music.color} flex items-center justify-center text-white shadow-md`}
-                      >
-                        <Headphones className="h-5 w-5" />
-                      </div>
+                  <div className="relative">
+                    <div className="aspect-square overflow-hidden">
+                      <img
+                        src={music.cover || "/placeholder.svg?height=400&width=400"}
+                        alt={music.artist}
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                      />
                     </div>
-
-                    <div className="sm:w-2/3 p-6">
-                      <h3 className="text-xl font-bold text-law-800 mb-1">{music.title}</h3>
-                      <p className="text-gray-600 mb-4">
-                        {music.artist}, {music.year}
-                      </p>
-                      <p className="text-gray-700">{music.description}</p>
-
-                      <button className="mt-4 inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group">
-                        Más sobre esta pieza
-                        <ChevronRight className="ml-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                      </button>
+                    <div
+                      className={`absolute top-3 right-3 w-10 h-10 rounded-full bg-gradient-to-br ${music.color} flex items-center justify-center text-white shadow-md`}
+                    >
+                      <Headphones className="h-5 w-5" />
                     </div>
+                  </div>
+
+                  <div className="p-6 flex-grow flex flex-col">
+                    <h3 className="text-xl font-bold text-law-800 mb-1">{music.artist}</h3>
+                    <p className="text-gray-600 mb-4">
+                      {music.title}, {music.year}
+                    </p>
+                    <p className="text-gray-700 flex-grow">{music.description}</p>
+
+                    <button className="mt-4 inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group">
+                      Más sobre este artista
+                      <ChevronRight className="ml-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    </button>
                   </div>
                 </motion.div>
               ))}
@@ -666,7 +668,7 @@ export const InspiracionPage = () => {
         </section>
 
         {/* Citas inspiradoras */}
-        <section className="mb-16">
+        {/* <section className="mb-16">
           <div className="bg-gradient-to-r from-law-600 to-law-700 rounded-2xl shadow-xl p-8 md:p-10">
             <h3 className="text-2xl font-bold text-white mb-8 text-center">Pensamientos que me inspiran</h3>
 
@@ -679,10 +681,10 @@ export const InspiracionPage = () => {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Botón de regreso */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-16 mb-10">
           <Link
             to="/"
             className="bg-gradient-to-r from-law-600 to-law-700 hover:from-law-700 hover:to-law-800 text-white py-4 px-10 rounded-full font-medium transition-all duration-300 inline-flex items-center shadow-lg transform hover:scale-105"
