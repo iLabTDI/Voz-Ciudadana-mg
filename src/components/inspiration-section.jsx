@@ -15,18 +15,18 @@ export const InspirationSection = ({ isVisible }) => {
             text: "La justicia no es solo aplicar la ley, sino entender el corazón humano detrás de cada caso.",
             author: "Sergio Arturo Guerrero Olvera",
         },
-        {
-            text: "Los libros son espejos: sólo ves en ellos lo que ya llevas dentro.",
-            author: "Carlos Ruiz Zafón",
-        },
-        {
-            text: "La empatía es el puente entre el juicio y la comprensión.",
-            author: "Sergio Arturo Guerrero Olvera",
-        },
-        {
-            text: "La música expresa lo que no puede ser dicho y aquello sobre lo que es imposible permanecer en silencio.",
-            author: "Victor Hugo",
-        },
+        // {
+        //     text: "Los libros son espejos: sólo ves en ellos lo que ya llevas dentro.",
+        //     author: "Carlos Ruiz Zafón",
+        // },
+        // {
+        //     text: "La empatía es el puente entre el juicio y la comprensión.",
+        //     author: "Sergio Arturo Guerrero Olvera",
+        // },
+        // {
+        //     text: "La música expresa lo que no puede ser dicho y aquello sobre lo que es imposible permanecer en silencio.",
+        //     author: "Victor Hugo",
+        // },
     ]
 
 
@@ -230,7 +230,7 @@ export const InspirationSection = ({ isVisible }) => {
                                 {
                                     icon: <Music className="h-4 w-4 sm:h-5 sm:w-5" />,
                                     title: "Música",
-                                    text: "Beethoven, Mozart y música clásica",
+                                    text: "Música norteña tradicional y Rock alternativo",
                                 },
                                 {
                                     icon: <Coffee className="h-4 w-4 sm:h-5 sm:w-5" />,
