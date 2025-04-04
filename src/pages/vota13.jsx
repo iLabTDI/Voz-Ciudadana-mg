@@ -13,10 +13,9 @@ import {
   Pause,
   Play,
   Share2,
-  Facebook,
-  Twitter,
   Loader2,
-  PhoneIcon as WhatsApp,
+  Search,
+  Info,
 } from "lucide-react"
 
 export const Vota13Page = () => {
@@ -30,16 +29,40 @@ export const Vota13Page = () => {
   // Color salmón extraído de la imagen
   const salmonColor = "#FA8072"
 
-  // Estados que aparecen en la promoción
+  // Estados que aparecen en la promoción con sus imágenes
   const estados = [
-    "Baja California",
-    "Baja California Sur",
-    "Sinaloa",
-    "Sonora",
-    "Chihuahua",
-    "Durango",
-    "Jalisco",
-    "Nayarit",
+    {
+      nombre: "Baja California",
+      imagen: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yrew7qrlOv2CxpBLCpldxea7TvJgvk.png",
+    },
+    {
+      nombre: "Baja California Sur",
+      imagen: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yrew7qrlOv2CxpBLCpldxea7TvJgvk.png", // Usando la misma imagen por ahora
+    },
+    {
+      nombre: "Sinaloa",
+      imagen: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-d5m87tAlsWOkxqnJmRoxi4ppforCcJ.png",
+    },
+    {
+      nombre: "Sonora",
+      imagen: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-YVuOFai8HHaXEVkmOnBrJW0IKF6bBP.png",
+    },
+    {
+      nombre: "Chihuahua",
+      imagen: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-McsZorzNnTx5idEDaFvFBrcjdv9B3z.png",
+    },
+    {
+      nombre: "Durango",
+      imagen: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cs7l2FGa1QRsvtCJgIJVgHYglhMWC6.png",
+    },
+    {
+      nombre: "Jalisco",
+      imagen: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-7e3t3whUBlu01Q5qbPN02yXv9z0Xqb.png",
+    },
+    {
+      nombre: "Nayarit",
+      imagen: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-GGF5qjwvZXGk0iusrvvLCaQUXqp9VX.png",
+    },
   ]
 
   // Propuestas y cualidades
@@ -300,32 +323,38 @@ export const Vota13Page = () => {
       {/* Estados Section */}
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center mb-10">
+          <div className="max-w-5xl mx-auto text-center mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-law-800 mb-4">
               Si eres de alguno de estos estados, esta información te interesa
             </h2>
             <div className="h-1 w-24 bg-gold-500 mx-auto mb-6 rounded-full"></div>
             <p className="text-gray-600">
-              La Sala Regional Guadalajara del Tribunal Electoral del Poder Judicial de la Federación tiene jurisdicción
-              sobre los siguientes estados:
+              La Sala Regional Guadalajara del Tribunal Electoral del Poder Judicial de la Federación tiene jurisdicción sobre los siguientes estados:
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto sm:grid-cols-2 lg:grid-cols-4">
             {estados.map((estado, index) => (
               <div
                 key={index}
-                className="bg-slate-50 rounded-xl p-4 text-center shadow-md border border-slate-100 hover:shadow-lg transition-all"
+                className="bg-white rounded-xl overflow-hidden shadow-md border border-slate-100 hover:shadow-lg transition-all transform hover:scale-105 duration-300"
               >
-                <div className="w-12 h-12 rounded-full bg-law-500 flex items-center justify-center text-white mx-auto mb-3">
-                  <MapPin className="h-6 w-6" />
+                <div className="h-32 md:h-40 relative overflow-hidden">
+                  <img
+                    src={estado.imagen || "/placeholder.svg"}
+                    alt={`Letras turísticas de ${estado.nombre}`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <h3 className="font-medium text-law-800">{estado}</h3>
+                <div className="p-3 text-center bg-white">
+                  <h3 className="font-medium text-law-800">{estado.nombre}</h3>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* Video Section */}
       <section id="video-section" ref={videoSectionRef} className="py-12 md:py-16 bg-slate-50">
@@ -429,7 +458,7 @@ export const Vota13Page = () => {
       </section>
 
       {/* Propuestas Section */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-10 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-law-800 mb-4">
@@ -445,7 +474,7 @@ export const Vota13Page = () => {
             {propuestas.map((propuesta, index) => (
               <div
                 key={index}
-                className="bg-slate-50 rounded-xl p-6 shadow-md border border-slate-100 hover:shadow-lg transition-all"
+                className="bg-slate-50 flex flex-col items-center text-center rounded-xl p-6 shadow-md border border-slate-100 hover:shadow-lg transition-all"
               >
                 <div className="w-12 h-12 rounded-full bg-gold-500 flex items-center justify-center text-white mb-4">
                   <Award className="h-6 w-6" />
@@ -457,6 +486,81 @@ export const Vota13Page = () => {
           </div>
         </div>
       </section>
+
+      {/* Nueva sección: Próximamente ubica tu casilla (versión compacta) */}
+      <section className="py-8 md:py-10 bg-gradient-to-b from-white to-slate-50">
+  <div className="container mx-auto px-4 md:px-6">
+    <div className="max-w-4xl mx-auto text-center mb-6">
+      <h2 className="text-xl md:text-3xl font-bold text-law-800 mb-2">
+        Próximamente: Ubica tu casilla electoral
+      </h2>
+      <div className="h-1 w-20 bg-gold-500 mx-auto mb-3 rounded-full"></div>
+      <p className="text-gray-600 max-w-2xl mx-auto text-sm">
+        Estamos preparando una herramienta para que encuentres fácilmente dónde votar el 1 de junio.
+      </p>
+    </div>
+
+    <div className="max-w-4xl mx-auto">
+      <div className="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200 relative">
+        {/* Fondo decorativo con calendario */}
+        <div className="absolute inset-0 overflow-hidden opacity-5">
+          <div className="absolute -right-10 -bottom-10 w-64 h-64">
+            <Calendar className="w-full h-full text-law-800" />
+          </div>
+          <div className="absolute -left-10 -top-10 w-64 h-64 transform rotate-180">
+            <Calendar className="w-full h-full text-gold-500" />
+          </div>
+        </div>
+
+        <div className="relative z-10 p-6 md:p-8 flex flex-col items-center">
+          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-law-600 to-law-700 flex items-center justify-center text-white mb-4 shadow-md">
+            <MapPin className="h-8 w-8" />
+          </div>
+
+          <h3 className="text-xl font-bold text-law-800 mb-1 text-center">
+            Localizador de casillas electorales
+          </h3>
+          <p className="text-gray-600 text-center max-w-xl mb-4 text-sm">
+            Pronto podrás consultar la ubicación exacta de tu casilla ingresando tu sección o dirección.
+          </p>
+
+          {/* Solo 2 cards para mantenerlo compacto */}
+          <div className="grid grid-cols-2 gap-4 w-full max-w-3xl mb-4">
+            <div className="bg-law-50 rounded-xl p-4 text-center hover:shadow-md transition-all">
+              <div className="w-10 h-10 rounded-full bg-law-100 flex items-center justify-center text-law-600 mx-auto mb-2">
+                <MapPin className="h-5 w-5" />
+              </div>
+              <h4 className="font-medium text-law-700 mb-1 text-sm">Localiza tu casilla</h4>
+              <p className="text-gray-600 text-xs">Encuentra la más cercana.</p>
+            </div>
+
+            <div className="bg-law-50 rounded-xl p-4 text-center hover:shadow-md transition-all">
+              <div className="w-10 h-10 rounded-full bg-law-100 flex items-center justify-center text-law-600 mx-auto mb-2">
+                <Search className="h-5 w-5" />
+              </div>
+              <h4 className="font-medium text-law-700 mb-1 text-sm">Consulta tu sección</h4>
+              <p className="text-gray-600 text-xs">Revisa tu sección electoral.</p>
+            </div>
+          </div>
+
+          {/* <div className="inline-flex items-center bg-gradient-to-r from-law-50 to-white rounded-full px-4 py-2 shadow-md border border-law-100">
+            <Calendar className="h-4 w-4 text-law-600 mr-2" />
+            <span className="text-law-700 font-medium text-sm">Disponible a partir del 15 de mayo</span>
+          </div> */}
+
+          <div className="mt-4">
+            <button
+              className="px-4 py-2 rounded-full bg-gradient-to-r from-law-600 to-law-700 text-white font-medium shadow-md opacity-70 cursor-not-allowed text-sm"
+              disabled
+            >
+              Próximamente
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
       {/* CTA Section */}
@@ -473,13 +577,18 @@ export const Vota13Page = () => {
 
               <div className="relative z-10 p-10 md:p-16 text-white text-center space-y-8">
                 <h2 className="text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-sm">
-                  Este <span className="underline decoration-white/50">1 de junio</span>, vota con el número <span className="text-white/90">13</span>
+                  Este <span className="underline decoration-white/50">1 de junio</span>, vota con el número{" "}
+                  <span className="text-white/90">13</span>
                 </h2>
 
                 <p className="text-lg md:text-2xl font-light leading-relaxed max-w-3xl mx-auto text-white/90">
-                  En la boleta de color <span className="font-semibold">salmón (casi melón)</span>, busca el número <span className="font-bold">13</span>: <br />
-                  <span className="font-semibold">Guerrero Olvera Sergio Arturo</span>, una opción justa, clara y cercana. <br />
-                  <span className="italic">¡Tu voto hace la diferencia para una justicia electoral moderna y eficiente!</span>
+                  En la boleta de color <span className="font-semibold">salmón (casi melón)</span>, busca el número{" "}
+                  <span className="font-bold">13</span>: <br />
+                  <span className="font-semibold">Guerrero Olvera Sergio Arturo</span>, una opción justa, clara y
+                  cercana. <br />
+                  <span className="italic">
+                    ¡Tu voto hace la diferencia para una justicia electoral moderna y eficiente!
+                  </span>
                 </p>
 
                 <div className="inline-flex items-center justify-center bg-white/20 backdrop-blur-md rounded-full p-4 shadow-lg transition-all duration-300 hover:scale-105">
@@ -502,9 +611,9 @@ export const Vota13Page = () => {
                           title: "Comparte este mensaje",
                           text: "Este 1 de junio, vota con el número 13: Guerrero Olvera Sergio Arturo. ¡Tu voto hace la diferencia!",
                           url: window.location.href,
-                        });
+                        })
                       } else {
-                        window.prompt("Copia este enlace:", window.location.href);
+                        window.prompt("Copia este enlace:", window.location.href)
                       }
                     }}
                     className="px-5 py-4 rounded-full bg-white text-lg font-bold text-salmon-600 shadow-xl hover:shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-3"
@@ -514,14 +623,11 @@ export const Vota13Page = () => {
                     <Share2 className="h-5 w-5" />
                   </button>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
       </section>
-
-
 
       {/* Footer */}
       <footer className="bg-law-800 text-white py-8">
@@ -532,17 +638,6 @@ export const Vota13Page = () => {
           </p>
         </div>
       </footer>
-
-      {/* Estilos adicionales */}
-      {/* <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out forwards;
-        }
-      `}</style> */}
     </div>
   )
 }
