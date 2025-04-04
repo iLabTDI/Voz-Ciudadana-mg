@@ -15,18 +15,6 @@ export const InspirationSection = ({ isVisible }) => {
             text: "La justicia no es solo aplicar la ley, sino entender el corazón humano detrás de cada caso.",
             author: "Sergio Arturo Guerrero Olvera",
         },
-        // {
-        //     text: "Los libros son espejos: sólo ves en ellos lo que ya llevas dentro.",
-        //     author: "Carlos Ruiz Zafón",
-        // },
-        // {
-        //     text: "La empatía es el puente entre el juicio y la comprensión.",
-        //     author: "Sergio Arturo Guerrero Olvera",
-        // },
-        // {
-        //     text: "La música expresa lo que no puede ser dicho y aquello sobre lo que es imposible permanecer en silencio.",
-        //     author: "Victor Hugo",
-        // },
     ]
 
 
@@ -54,17 +42,6 @@ export const InspirationSection = ({ isVisible }) => {
             quote: "El mundo es gris, no blanco y negro.",
             color: "from-blue-500 to-cyan-600",
         },
-        // {
-        //     title: "The Star Wars Archives",
-        //     author: "Paul Duncan",
-        //     cover:
-        //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Star%20Wars%20Archives.png-ZaUGnLfiC5GYFRwUwLafWkEZFDAIIt.jpeg",
-        //     description:
-        //         "Un recorrido exhaustivo por la creación de la trilogía original de Star Wars, con material inédito, entrevistas y fotografías del archivo personal de George Lucas.",
-        //     year: "2018",
-        //     quote: "Una galaxia muy, muy lejana...",
-        //     color: "from-yellow-500 to-amber-600",
-        // },
         {
             title: "Los diez mejores jueces de la historia norteamericana",
             author: "Bernard Schwartz",
@@ -129,7 +106,7 @@ export const InspirationSection = ({ isVisible }) => {
                             </div>
                             <div className="h-px w-12 bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
                         </div>
-                        <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-law-800 mb-2">Mi Inspiración</h2>
+                        <h2 className="text-3xl md:text-2xl font-bold text-law-800 mb-2">Mi Inspiración</h2>
                         <p className="text-sm md:text-base max-w-2xl mx-auto">
                             Conoce lo que me inspira más allá del ámbito jurídico: literatura, arte, música y reflexiones personales.
                         </p>

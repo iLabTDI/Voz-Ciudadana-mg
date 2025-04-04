@@ -270,18 +270,12 @@ export const InspiracionPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-      {/* Patrones de fondo */}
-      <div
-        className="absolute inset-0 opacity-5 pointer-events-none"
-        style={{ backgroundImage: "url('/patterns/paper-texture.png')", backgroundRepeat: "repeat" }}
-      />
-
       {/* Elementos decorativos */}
       <div className="absolute top-40 left-10 w-96 h-96 rounded-full bg-law-500/5 blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-40 right-10 w-112 h-112 rounded-full bg-gold-500/5 blur-[140px] pointer-events-none"></div>
 
       {/* Header */}
-      <header className="bg-gradient-to-r from-law-700 to-law-800 text-white py-6 sticky top-0 z-50 shadow-lg">
+      <header className="bg-gradient-to-r from-law-700 to-law-800 text-white py-6 sticky z-50 shadow-lg">
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center text-white hover:text-gold-300 transition-colors group">
@@ -291,19 +285,12 @@ export const InspiracionPage = () => {
               <span className="font-medium">Volver al inicio</span>
             </Link>
             <h1 className="text-xl md:text-2xl font-bold hidden md:block">Mi Inspiración</h1>
-            <div className="w-12 h-12 rounded-full bg-white p-1 flex items-center justify-center shadow-glow overflow-hidden">
-              <img
-                src="/placeholder.svg?height=100&width=100"
-                alt="Bandera de México"
-                className="w-full h-full rounded-full"
-              />
-            </div>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative py-24 md:py-32 px-6">
+      <section ref={heroRef} className="relative py-10 px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-law-900/20 to-transparent pointer-events-none"></div>
         <div
           className="absolute inset-0 bg-cover bg-center opacity-10"
@@ -341,8 +328,8 @@ export const InspiracionPage = () => {
                 { id: "cita", label: "Mi Filosofía", icon: <Quote className="h-4 w-4" /> },
                 { id: "libros", label: "Libros", icon: <BookOpen className="h-4 w-4" /> },
                 { id: "musica", label: "Música", icon: <Music className="h-4 w-4" /> },
-                { id: "peliculas", label: "Películas", icon: <Film className="h-4 w-4" /> },
-                { id: "lugares", label: "Lugares", icon: <Globe className="h-4 w-4" /> },
+                // { id: "peliculas", label: "Películas", icon: <Film className="h-4 w-4" /> },
+                // { id: "lugares", label: "Lugares", icon: <Globe className="h-4 w-4" /> },
               ].map((item) => (
                 <a
                   key={item.id}
@@ -361,7 +348,7 @@ export const InspiracionPage = () => {
       {/* Contenido principal */}
       <div className="container mx-auto px-6 py-16 max-w-6xl">
         {/* Cita personal */}
-        <section id="cita" ref={quoteRef} className="mb-24">
+        <section id="cita" ref={quoteRef} className="mb-14">
           <motion.div initial="hidden" animate={quoteInView ? "visible" : "hidden"} variants={staggerContainer}>
             <motion.div variants={itemFadeIn} className="flex items-center mb-12">
               <div className="h-px bg-law-200 flex-grow"></div>
@@ -376,17 +363,17 @@ export const InspiracionPage = () => {
               variants={itemFadeIn}
               className="bg-gradient-to-r from-law-600 to-law-700 text-white p-10 rounded-2xl shadow-xl relative"
             >
-              <div className="absolute top-6 left-6 text-8xl text-white/10 font-serif">"</div>
+              <div className="absolute top-6 left-6  text-4xl md:text-8xl text-white/10 font-serif ">"</div>
               <div className="relative z-10 max-w-4xl mx-auto text-center">
-                <p className="text-2xl md:text-3xl italic text-white/90 mb-8 leading-relaxed">
+                <p className="text-lg md:text-3xl italic text-white/90 mb-8 leading-relaxed">
                   Este espacio no es jurídico. Es personal. Es íntimo. Es una ventana para que me conozcas más allá de
                   la sentencia y el cargo. Porque creo que la justicia también se enriquece con la imaginación, la
                   empatía, la ciencia, la ficción, la memoria… con todo eso que también nos hace humanos. Porque lo que
                   uno lee, también dice mucho de lo que uno cree.
                 </p>
-                <p className="text-xl text-gold-300 font-medium">— Sergio Arturo Guerrero Olvera</p>
+                <p className="text-lg md:text-xl text-gold-300 font-medium">— Sergio Arturo Guerrero Olvera</p>
               </div>
-              <div className="absolute bottom-6 right-6 text-8xl text-white/10 font-serif">"</div>
+              <div className="absolute bottom-6 right-6 text-4xl md:text-8xl text-white/10 font-serif">"</div>
             </motion.div>
 
             <motion.div variants={itemFadeIn} className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -394,38 +381,41 @@ export const InspiracionPage = () => {
                 {
                   icon: <Heart className="h-6 w-6" />,
                   title: "Empatía",
-                  text: "Creo firmemente que la empatía es fundamental para comprender verdaderamente los casos que llegan a mi escritorio. Cada expediente representa la vida y las esperanzas de personas reales.",
+                  text: "Escuchar con empatía no debilita el criterio jurídico, lo fortalece. Es el punto de partida para entender que detrás de cada caso hay personas reales, con vidas que merecen ser tratadas con respeto y dignidad.",
                 },
                 {
                   icon: <Feather className="h-6 w-6" />,
                   title: "Creatividad",
-                  text: "La creatividad no está reñida con la justicia. Al contrario, encontrar soluciones innovadoras a problemas complejos es parte esencial de mi enfoque como jurista.",
+                  text: "La creatividad no está reñida con el rigor jurídico. Al contrario, creo que la capacidad de encontrar soluciones innovadoras a los problemas complejos es parte fundamental del ejercicio jurídico consciente, actualizado y comprometido con el contexto.",
                 },
                 {
                   icon: <BookOpen className="h-6 w-6" />,
                   title: "Conocimiento",
-                  text: "La lectura constante, tanto de textos jurídicos como de literatura, filosofía y ciencia, me permite ampliar mi perspectiva y enriquecer mi visión del mundo y la justicia.",
+                  text: "La lectura constante no solo la jurídica amplía la mente, también afina el criterio. Mantenerme en contacto con distintas fuentes de pensamiento me permite enriquecer mi visión del mundo y tomar decisiones más profundas y humanas.",
                 },
               ].map((item, index) => (
                 <div
                   key={index}
                   className="bg-white p-6 rounded-xl shadow-md border border-slate-100 hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="w-14 h-14 rounded-full bg-law-100 flex items-center justify-center text-law-600 mb-4">
-                    {item.icon}
+                  <div className="flex items-center mb-4">
+                    <div className="w-14 h-14 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-3">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-law-800">{item.title}</h3>
                   </div>
-                  <h3 className="text-xl font-bold text-law-800 mb-3">{item.title}</h3>
                   <p className="text-gray-600">{item.text}</p>
                 </div>
               ))}
             </motion.div>
+
           </motion.div>
         </section>
 
         {/* Libros favoritos */}
-        <section id="libros" ref={booksRef} className="mb-24">
+        <section id="libros" ref={booksRef} className="mb-14">
           <motion.div initial="hidden" animate={booksInView ? "visible" : "hidden"} variants={staggerContainer}>
-            <motion.div variants={itemFadeIn} className="flex items-center mb-12">
+            <motion.div variants={itemFadeIn} className="flex items-center mb-10">
               <div className="h-px bg-law-200 flex-grow"></div>
               <h2 className="text-3xl font-bold text-law-800 px-6 flex items-center">
                 <BookOpen className="mr-3 h-7 w-7 text-law-600" />
@@ -449,7 +439,7 @@ export const InspiracionPage = () => {
                   className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 group h-full flex flex-col"
                 >
                   <div className="relative">
-                    <div className="aspect-[2/3] overflow-hidden">
+                    <div className="md:aspect-[2/3] aspect-[2/2] overflow-hidden">
                       <img
                         src={book.cover || "/placeholder.svg?height=600&width=400"}
                         alt={book.title}
@@ -546,7 +536,7 @@ export const InspiracionPage = () => {
         </section>
 
         {/* Películas favoritas */}
-        <section id="peliculas" ref={moviesRef} className="mb-24">
+        {/* <section id="peliculas" ref={moviesRef} className="mb-24">
           <motion.div initial="hidden" animate={moviesInView ? "visible" : "hidden"} variants={staggerContainer}>
             <motion.div variants={itemFadeIn} className="flex items-center mb-12">
               <div className="h-px bg-law-200 flex-grow"></div>
@@ -605,10 +595,10 @@ export const InspiracionPage = () => {
               ))}
             </div>
           </motion.div>
-        </section>
+        </section> */}
 
         {/* Lugares favoritos */}
-        <section id="lugares" ref={placesRef} className="mb-16">
+        {/* <section id="lugares" ref={placesRef} className="mb-16">
           <motion.div initial="hidden" animate={placesInView ? "visible" : "hidden"} variants={staggerContainer}>
             <motion.div variants={itemFadeIn} className="flex items-center mb-12">
               <div className="h-px bg-law-200 flex-grow"></div>
@@ -665,7 +655,7 @@ export const InspiracionPage = () => {
               ))}
             </div>
           </motion.div>
-        </section>
+        </section> */}
 
         {/* Citas inspiradoras */}
         {/* <section className="mb-16">
