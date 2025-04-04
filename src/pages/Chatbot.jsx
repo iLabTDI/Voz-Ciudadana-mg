@@ -6,7 +6,7 @@ import { Send, MessageSquare, User, ArrowRight, Zap } from "lucide-react";
 const initialMessage = {
   type: "bot",
   message:
-    "¡Bienvenido! Soy Sergio Arturo Guerrero Olvera, Candidato a Magistrado del Tribunal Electoral del Poder Judicial de la Federación. Estoy aquí para conocer tus inquietudes y compartir mis propuestas, logros y visión para fortalecer la justicia electoral en México.",
+    "¡Conóceme! Soy Sergio Arturo Guerrero Olvera, Candidato a Magistrado de la Sala Regional Guadalajara del Tribunal Electoral del Poder Judicial de la Federación. Como jurista, me comprometo a fortalecer la justicia electoral y a garantizar una democracia más inclusiva y transparente.",
   timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
 };
 

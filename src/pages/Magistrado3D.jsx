@@ -3,12 +3,15 @@ import { useState, useEffect, useRef } from "react"
 import { Volume2, VolumeX } from "lucide-react"
 
 export const Magistrado3D = ({ isWaiting, isTyping, lastBotMessage }) => {
-  const [videoSrc, setVideoSrc] = useState("/greeting.mp4")
-  const [isMuted, setIsMuted] = useState(true)
+  // Por defecto el audio está activo (no muteado)
+  const [videoSrc, setVideoSrc] = useState("/intro.mp4")
+  const [isMuted, setIsMuted] = useState(false)
   const [showControls, setShowControls] = useState(false)
+  const [hasAudioPlayed, setHasAudioPlayed] = useState(false)
+  const [isManualToggle, setIsManualToggle] = useState(false)
   const videoRef = useRef(null)
 
-  // Efecto para cambiar el video según el estado
+  // Cambio de video según el estado
   useEffect(() => {
     if (isWaiting) {
       setVideoSrc("/waiting.mp4")
@@ -16,42 +19,61 @@ export const Magistrado3D = ({ isWaiting, isTyping, lastBotMessage }) => {
       setVideoSrc("/responding.mp4")
     } else if (lastBotMessage) {
       setVideoSrc("/responding.mp4")
-      // Volver a "idle" después de 5s
       const timer = setTimeout(() => {
-        setVideoSrc("/greeting.mp4")
+        setVideoSrc("/intro.mp4")
       }, 5000)
       return () => clearTimeout(timer)
     } else {
-      setVideoSrc("/greeting.mp4")
+      setVideoSrc("/intro.mp4")
     }
   }, [isWaiting, isTyping, lastBotMessage])
 
-  // Función para alternar el sonido
-  const toggleMute = () => {
-    setIsMuted(!isMuted)
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted
+  // Efecto para marcar que se reprodujo el audio 3 segundos después de cargar
+  useEffect(() => {
+    if (!hasAudioPlayed && videoRef.current) {
+      const timer = setTimeout(() => {
+        if (!isManualToggle) {
+          setIsMuted(false)
+          videoRef.current.muted = false
+          setHasAudioPlayed(true)
+        }
+      }, 3000)
+      return () => clearTimeout(timer)
     }
+  }, [hasAudioPlayed, isManualToggle])
+
+  // Efecto para forzar el mute en el inicio de cada loop (solo después de la primera reproducción)
+  useEffect(() => {
+    const handleTimeUpdate = () => {
+      if (hasAudioPlayed && !isManualToggle && videoRef.current && videoRef.current.currentTime < 1) {
+        videoRef.current.muted = true
+      }
+    }
+    if (videoRef.current) {
+      videoRef.current.addEventListener("timeupdate", handleTimeUpdate)
+    }
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.removeEventListener("timeupdate", handleTimeUpdate)
+      }
+    }
+  }, [hasAudioPlayed, isManualToggle])
+
+  // Función para alternar el sonido manualmente
+  const toggleMute = () => {
+    setIsManualToggle(true)
+    setIsMuted((prev) => {
+      const newMuted = !prev
+      if (videoRef.current) {
+        videoRef.current.muted = newMuted
+      }
+      return newMuted
+    })
   }
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-2xl">
-      {/* Fondo decorativo con gradiente oscuro */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a192f] via-[#112240] to-[#1a365d] z-0" />
-
-      {/* Efectos de luz */}
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-500/5 blur-3xl" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-500/5 blur-3xl" />
-        <div className="absolute top-[30%] right-[10%] w-[20%] h-[20%] rounded-full bg-purple-500/5 blur-2xl" />
-      </div>
-
-      {/* Patrón de fondo */}
-      <div className="absolute inset-0 bg-[url('/patterns/circuit-board.svg')] bg-repeat opacity-5 z-1"></div>
-
-      {/* Overlay con efecto de viñeta */}
-      <div className="absolute inset-0 bg-radial-gradient from-transparent to-black/40 z-1"></div>
-
+    <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+  
 
       {/* Video del magistrado */}
       <div className="relative z-10 w-full h-full flex items-center justify-center">
@@ -79,17 +101,12 @@ export const Magistrado3D = ({ isWaiting, isTyping, lastBotMessage }) => {
           className="bg-black/30 hover:bg-black/50 text-white p-2.5 rounded-full backdrop-blur-md transition-all duration-300 border border-white/10"
           aria-label={isMuted ? "Activar sonido" : "Silenciar"}
         >
-          {isMuted ? <Volume2 size={18} /> : <VolumeX size={18} />}
+          {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
         </button>
       </div>
 
-
-      {/* Efecto de brillo en los bordes */}
-      <div className="absolute inset-0 rounded-2xl pointer-events-none border border-white/5 z-20"></div>
-      <div className="absolute inset-0 rounded-2xl pointer-events-none shadow-[0_0_15px_rgba(59,130,246,0.1)] z-20"></div>
     </div>
   )
 }
 
 export default Magistrado3D
-
