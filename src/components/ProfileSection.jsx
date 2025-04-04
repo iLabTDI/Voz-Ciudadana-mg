@@ -91,10 +91,6 @@ export const ProfileSection = ({ isVisible }) => {
               <div className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 w-full h-full bg-gold-500 rounded-xl md:rounded-2xl transform -rotate-2 opacity-70"></div>
 
               <div className="relative bg-white p-6 md:p-8 rounded-xl md:rounded-2xl shadow-lg border border-slate-200">
-                {/* Bandera mexicana estilizada */}
-                <div className="absolute -top-2 -right-2 md:-top-3 md:-right-3 w-12 h-6 md:w-16 md:h-8 overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-r from-green-600 via-white to-red-600 transform rotate-45 scale-150"></div>
-                </div>
 
                 <div className="mb-6 md:mb-8 relative rounded-lg md:rounded-xl overflow-hidden shadow-md">
                   <div className="absolute inset-0 bg-gradient-to-b from-law-600/20 to-gold-500/20 mix-blend-overlay"></div>

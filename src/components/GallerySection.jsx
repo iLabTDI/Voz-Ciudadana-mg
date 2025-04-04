@@ -143,10 +143,10 @@ export const GallerySection = ({ isVisible }) => {
       <div className="container mx-auto px-4 relative z-10 max-w-7xl">
         <div className="mb-10 text-center">
           <div className="inline-block">
-            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-law-500 flex items-center justify-center">
-              <Award className="h-10 w-10 text-white" />
+            <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-6 rounded-full bg-law-500 flex items-center justify-center">
+              <Award className="h-7 w-7 text-white" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-law-800 mb-4">Mis Contribuciones y Publicaciones</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-law-800 mb-4">Mis Contribuciones y Publicaciones</h2>
             <div className="h-1 w-32 bg-gold-500 mx-auto mb-6 rounded-full"></div>
             <p className="text-gray-600 max-w-3xl mx-auto text-lg">
               Explora los momentos más destacados de mi trayectoria profesional, contribuciones y publicaciones en el

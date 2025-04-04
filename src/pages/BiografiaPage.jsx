@@ -136,9 +136,6 @@ export const BiografiaPage = () => {
               <span className="font-medium">Volver al inicio</span>
             </Link>
             <h1 className="text-xl md:text-2xl font-bold hidden md:block">Sergio Arturo Guerrero Olvera</h1>
-            <div className="w-12 h-12 rounded-full bg-white p-1 flex items-center justify-center shadow-glow overflow-hidden">
-              <img src="/images/mexican-flag.svg" alt="Bandera de México" className="w-full h-full rounded-full" />
-            </div>
           </div>
         </div>
       </header>
