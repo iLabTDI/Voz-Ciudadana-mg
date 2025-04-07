@@ -13,12 +13,9 @@ import {
   Quote,
   Lightbulb,
   Bookmark,
-  ChevronRight,
   Feather,
-  Globe,
-  Camera,
   Headphones,
-  Star,
+  Clapperboard,
 } from "lucide-react"
 
 export const InspiracionPage = () => {
@@ -130,30 +127,24 @@ export const InspiracionPage = () => {
     {
       title: "Corridos y música norteña",
       artist: "Los Cadetes de Linares",
-      cover:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ab67616d00001e02d9a21006feafbb1cc9a2e288-pRkp0TGUphUUkl30sfhvAsl5glGbYx.jpeg",
-      description:
-        "Grupo pionero de la música norteña mexicana, conocidos por sus corridos y canciones que narran historias de la vida cotidiana y la frontera.",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ab67616d00001e02d9a21006feafbb1cc9a2e288-pRkp0TGUphUUkl30sfhvAsl5glGbYx.jpeg",
+      description: "Grupo pionero de la música norteña mexicana, conocidos por sus corridos y canciones que narran historias de la vida cotidiana y la frontera.",
       year: "1960-presente",
       color: "from-amber-500 to-orange-600",
     },
     {
       title: "Música norteña tradicional",
       artist: "Los Cardenales de Nuevo León",
-      cover:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CardenalesdeNL2-XSNlA8VqU4JHSD8c0CJ6eHY0poauqT.webp",
-      description:
-        "Legendario grupo de música norteña reconocido por su estilo único y sus interpretaciones de corridos, rancheras y baladas románticas.",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CardenalesdeNL2-XSNlA8VqU4JHSD8c0CJ6eHY0poauqT.webp",
+      description: "Legendario grupo de música norteña reconocido por su estilo único y sus interpretaciones de corridos, rancheras y baladas románticas.",
       year: "1982-presente",
       color: "from-purple-500 to-indigo-600",
     },
     {
       title: "Rock alternativo",
       artist: "The Killers",
-      cover:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20221128kill.jpg-A8L4yl5bIg5Qfw6oQSZT0bdKBvE7zY.jpeg",
-      description:
-        "Banda de rock alternativo de Las Vegas conocida por sus éxitos como 'Mr. Brightside' y 'Somebody Told Me', con un sonido que mezcla rock, new wave y synth-pop.",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20221128kill.jpg-A8L4yl5bIg5Qfw6oQSZT0bdKBvE7zY.jpeg",
+      description: "Banda de rock alternativo de Las Vegas conocida por sus éxitos como 'Mr. Brightside' y 'Somebody Told Me', con un sonido que mezcla rock, new wave y synth-pop.",
       year: "2001-presente",
       color: "from-red-500 to-pink-600",
     },
@@ -161,53 +152,133 @@ export const InspiracionPage = () => {
       title: "Cantautor español",
       artist: "Joaquín Sabina",
       cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sabina.jpg-b4ZUjpsQ8ySSkEL3Ws5EyhkKbpC7x6.jpeg",
-      description:
-        "Reconocido cantautor español con una extensa carrera, famoso por sus letras poéticas y su capacidad para retratar la vida cotidiana con profundidad e ironía.",
+      description: "Reconocido cantautor español con una extensa carrera, famoso por sus letras poéticas y su capacidad para retratar la vida cotidiana con profundidad e ironía.",
       year: "1978-presente",
       color: "from-amber-700 to-yellow-800",
     },
+    {
+      title: "Pop y R&B",
+      artist: "Michael Jackson",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-nEn7Q6ALue0VG7JUzk69BVekmBuvGM.png",
+      description: "El 'Rey del Pop', revolucionó la música y el entretenimiento con su innovador estilo de baile, voz única y producciones musicales vanguardistas.",
+      year: "1964-2009",
+      color: "from-purple-700 to-red-600",
+    },
+    {
+      title: "Pop contemporáneo",
+      artist: "Adele",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9k%3D%20%281%29.png-c0PTimvxFxyl86SnXNCFnn8v9X2wFe.jpeg",
+      description: "Cantante y compositora británica conocida por su poderosa voz y sus emotivas baladas que han conquistado al público mundial.",
+      year: "2008-presente",
+      color: "from-gray-700 to-gray-900",
+    },
+    {
+      title: "Rock and Roll",
+      artist: "Elvis Presley",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ri8YeoPadG18zcC0XiKCVYr7rbEljP.png",
+      description: "El 'Rey del Rock and Roll', cuya música, estilo y carisma transformaron la cultura popular y sentaron las bases del rock moderno.",
+      year: "1954-1977",
+      color: "from-blue-600 to-blue-800",
+    },
+    {
+      title: "Rock progresivo",
+      artist: "Pink Floyd",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-aL7u9wZIEw6pfzpdgsTKkLE8ZhnoZ5.png",
+      description: "Banda británica pionera del rock progresivo y psicodélico, conocida por sus conceptos musicales elaborados y espectáculos visuales innovadores.",
+      year: "1965-1995",
+      color: "from-purple-800 to-pink-900",
+    },
+    {
+      title: "Rock alternativo",
+      artist: "Muse",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bz11b0drYhuH3RlXJi5ZtfM4SrsnKH.png",
+      description: "Banda británica que fusiona rock alternativo, música clásica y electrónica, conocida por sus actuaciones en vivo energéticas y su sonido único.",
+      year: "1994-presente",
+      color: "from-blue-700 to-indigo-900",
+    },
+    {
+      title: "Pop y dance",
+      artist: "Lady Gaga",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FUYrK7uwsSwgf48XTCASbnWZNiZYVD.png",
+      description: "Artista multifacética conocida por su versatilidad musical, actuaciones teatrales y constante reinvención artística.",
+      year: "2005-presente",
+      color: "from-pink-600 to-purple-700",
+    },
+    {
+      title: "Pop latino",
+      artist: "Shakira",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bbOWAThjkhllAUFvxflCugxhnXl9bh.png",
+      description: "Cantante, compositora y bailarina colombiana que ha fusionado con éxito diversos géneros musicales y culturas en su carrera internacional.",
+      year: "1990-presente",
+      color: "from-yellow-600 to-amber-700",
+    },
+    {
+      title: "Nueva Trova Cubana",
+      artist: "Silvio Rodríguez",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FUyr2fq30mIvO3R3hUdzd4qovpA8KK.png",
+      description: "Cantautor cubano, poeta y uno de los fundadores del movimiento de la Nueva Trova Cubana, con letras profundas y poéticas.",
+      year: "1967-presente",
+      color: "from-amber-800 to-red-900",
+    }
   ]
 
   // Datos de películas favoritas
   const favoriteMovies = [
     {
-      title: "Los siete samuráis",
-      director: "Akira Kurosawa",
-      cover: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&h=450&auto=format&fit=crop",
+      title: "Forrest Gump",
+      director: "Robert Zemeckis",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-i2TKHVmRATkHsHlnSq7rWH4ToN4fMB.png",
       description:
-        "Una obra maestra del cine japonés que narra la historia de un pueblo que contrata a siete samuráis para protegerse de bandidos.",
-      year: "1954",
-      color: "from-gray-700 to-gray-900",
+        "La historia de un hombre con un coeficiente intelectual por debajo de la media que, a pesar de ello, se convierte en protagonista de varios momentos cruciales de la historia de Estados Unidos.",
+      year: "1994",
+      color: "from-blue-700 to-blue-900",
     },
     {
-      title: "La dolce vita",
-      director: "Federico Fellini",
-      cover: "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=800&h=450&auto=format&fit=crop",
+      title: "Amistad",
+      director: "Steven Spielberg",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-0akYmryt3leaLayu2dq7h5EsoMuJts.png",
       description:
-        "Un retrato de la vida nocturna de la alta sociedad romana en los años 50, explorando temas como la decadencia y la búsqueda de sentido.",
-      year: "1960",
-      color: "from-gray-800 to-black",
+        "Basada en hechos reales, narra la historia de un motín en un barco de esclavos y el subsiguiente juicio que puso a prueba el sistema legal estadounidense.",
+      year: "1997",
+      color: "from-amber-800 to-amber-900",
     },
     {
-      title: "El ciudadano Kane",
-      director: "Orson Welles",
-      cover: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=800&h=450&auto=format&fit=crop",
+      title: "Dos tipos de cuidado",
+      director: "Ismael Rodríguez",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-myF3nAuWkxklqVl0HXczkJcTvPcuX3.png",
       description:
-        "Considerada una de las mejores películas de todos los tiempos, narra la vida del magnate Charles Foster Kane a través de flashbacks.",
-      year: "1941",
-      color: "from-gray-700 to-gray-900",
+        "Clásico del cine mexicano protagonizado por Pedro Infante y Jorge Negrete, una comedia musical sobre la amistad, el amor y el honor.",
+      year: "1953",
+      color: "from-amber-600 to-red-700",
     },
     {
-      title: "El laberinto del fauno",
-      director: "Guillermo del Toro",
-      cover: "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?q=80&w=800&h=450&auto=format&fit=crop",
+      title: "Los puentes de Madison",
+      director: "Clint Eastwood",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ZRoeABBXZdzhdxaQfEyu6RH13j3rv0.png",
       description:
-        "Una fábula oscura ambientada en la España de posguerra que mezcla fantasía y realidad a través de los ojos de una niña.",
-      year: "2006",
-      color: "from-indigo-800 to-purple-900",
+        "Una emotiva historia de amor entre una ama de casa y un fotógrafo, que explora temas como el deber, la pasión y las decisiones que definen nuestras vidas.",
+      year: "1995",
+      color: "from-green-700 to-green-900",
     },
+    {
+      title: "Mad Max (Saga)",
+      director: "George Miller",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-0MVNB5RmdUe7lt3J5vRTpFSgizJxzD.png",
+      description:
+        "Serie de películas ambientadas en un futuro post-apocalíptico que combina acción frenética con una visión única del colapso de la civilización.",
+      year: "1979-2015",
+      color: "from-orange-700 to-red-800",
+    },
+    {
+      title: "La vida es bella",
+      director: "Roberto Benigni",
+      cover: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-L0hGEboIoSEI87vaBd9yAeIFtvtv3L.png",
+      description:
+        "Conmovedora historia sobre un padre que utiliza su imaginación y sentido del humor para proteger a su hijo de los horrores de un campo de concentración nazi.",
+      year: "1997",
+      color: "from-yellow-700 to-amber-800",
+    }
   ]
-
   // Datos de lugares favoritos
   const favoritePlaces = [
     {
@@ -250,22 +321,22 @@ export const InspiracionPage = () => {
       text: "La justicia no es solo aplicar la ley, sino entender el corazón humano detrás de cada caso.",
       author: "Sergio Arturo Guerrero Olvera",
     },
-    {
-      text: "Los libros son espejos: sólo ves en ellos lo que ya llevas dentro.",
-      author: "Carlos Ruiz Zafón",
-    },
-    {
-      text: "La empatía es el puente entre el juicio y la comprensión.",
-      author: "Sergio Arturo Guerrero Olvera",
-    },
-    {
-      text: "La música expresa lo que no puede ser dicho y aquello sobre lo que es imposible permanecer en silencio.",
-      author: "Victor Hugo",
-    },
-    {
-      text: "El arte de hacer justicia es el arte de humanizar la ley.",
-      author: "Sergio Arturo Guerrero Olvera",
-    },
+    // {
+    //   text: "Los libros son espejos: sólo ves en ellos lo que ya llevas dentro.",
+    //   author: "Carlos Ruiz Zafón",
+    // },
+    // {
+    //   text: "La empatía es el puente entre el juicio y la comprensión.",
+    //   author: "Sergio Arturo Guerrero Olvera",
+    // },
+    // {
+    //   text: "La música expresa lo que no puede ser dicho y aquello sobre lo que es imposible permanecer en silencio.",
+    //   author: "Victor Hugo",
+    // },
+    // {
+    //   text: "El arte de hacer justicia es el arte de humanizar la ley.",
+    //   author: "Sergio Arturo Guerrero Olvera",
+    // },
   ]
 
   return (
@@ -328,7 +399,7 @@ export const InspiracionPage = () => {
                 { id: "cita", label: "Mi Filosofía", icon: <Quote className="h-4 w-4" /> },
                 { id: "libros", label: "Libros", icon: <BookOpen className="h-4 w-4" /> },
                 { id: "musica", label: "Música", icon: <Music className="h-4 w-4" /> },
-                // { id: "peliculas", label: "Películas", icon: <Film className="h-4 w-4" /> },
+                { id: "peliculas", label: "Películas", icon: <Film className="h-4 w-4" /> },
                 // { id: "lugares", label: "Lugares", icon: <Globe className="h-4 w-4" /> },
               ].map((item) => (
                 <a
@@ -381,17 +452,17 @@ export const InspiracionPage = () => {
                 {
                   icon: <Heart className="h-6 w-6" />,
                   title: "Empatía",
-                  text: "Escuchar con empatía no debilita el criterio jurídico, lo fortalece. Es el punto de partida para entender que detrás de cada caso hay personas reales, con vidas que merecen ser tratadas con respeto y dignidad.",
+                  text: "Escuchar con empatía no debilita el criterio jurídico, lo fortalece. Es el punto de partida para entender que detrás de cada caso hay personas reales, con vidas que merecen ser tratadas con respeto y dignidad.",
                 },
                 {
                   icon: <Feather className="h-6 w-6" />,
                   title: "Creatividad",
-                  text: "La creatividad no está reñida con el rigor jurídico. Al contrario, creo que la capacidad de encontrar soluciones innovadoras a los problemas complejos es parte fundamental del ejercicio jurídico consciente, actualizado y comprometido con el contexto.",
+                  text: "La creatividad no está reñida con el rigor jurídico. Al contrario, creo que la capacidad de encontrar soluciones innovadoras a los problemas complejos es parte fundamental del ejercicio jurídico consciente, actualizado y comprometido con el contexto.",
                 },
                 {
                   icon: <BookOpen className="h-6 w-6" />,
                   title: "Conocimiento",
-                  text: "La lectura constante no solo la jurídica amplía la mente, también afina el criterio. Mantenerme en contacto con distintas fuentes de pensamiento me permite enriquecer mi visión del mundo y tomar decisiones más profundas y humanas.",
+                  text: "La lectura constante no solo la jurídica amplía la mente, también afina el criterio. Mantenerme en contacto con distintas fuentes de pensamiento me permite enriquecer mi visión del mundo y tomar decisiones más profundas y humanas.",
                 },
               ].map((item, index) => (
                 <div
@@ -408,7 +479,6 @@ export const InspiracionPage = () => {
                 </div>
               ))}
             </motion.div>
-
           </motion.div>
         </section>
 
@@ -431,7 +501,7 @@ export const InspiracionPage = () => {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 ">
               {favoriteBooks.map((book, index) => (
                 <motion.div
                   key={index}
@@ -439,7 +509,7 @@ export const InspiracionPage = () => {
                   className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 group h-full flex flex-col"
                 >
                   <div className="relative">
-                    <div className="md:aspect-[2/3] aspect-[2/2] overflow-hidden">
+                    <div className="md:aspect-[2/2] aspect-[2/2] overflow-hidden">
                       <img
                         src={book.cover || "/placeholder.svg?height=600&width=400"}
                         alt={book.title}
@@ -463,12 +533,12 @@ export const InspiracionPage = () => {
                       <p className="text-gray-700 italic">"{book.quote}"</p>
                     </div>
 
-                    <p className="text-gray-700 mb-4 flex-grow">{book.description}</p>
+                    {/* <p className="text-gray-700 mb-4 flex-grow">{book.description}</p> */}
 
-                    <button className="mt-auto inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group">
+                    {/* <button className="mt-auto inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group">
                       Leer más sobre este libro
                       <ChevronRight className="ml-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    </button> */}
                   </div>
                 </motion.div>
               ))}
@@ -495,7 +565,7 @@ export const InspiracionPage = () => {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-4">
               {favoriteMusic.map((music, index) => (
                 <motion.div
                   key={index}
@@ -519,15 +589,15 @@ export const InspiracionPage = () => {
 
                   <div className="p-6 flex-grow flex flex-col">
                     <h3 className="text-xl font-bold text-law-800 mb-1">{music.artist}</h3>
-                    <p className="text-gray-600 mb-4">
+                    <p className="text-gray-600 mb-4 md:text-base">
                       {music.title}, {music.year}
                     </p>
-                    <p className="text-gray-700 flex-grow">{music.description}</p>
+                    {/* <p className="text-gray-700 flex-grow md:text-base text-sm">{music.description}</p> */}
 
-                    <button className="mt-4 inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group">
+                    {/* <button className="mt-4 inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group">
                       Más sobre este artista
                       <ChevronRight className="ml-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    </button> */}
                   </div>
                 </motion.div>
               ))}
@@ -536,7 +606,7 @@ export const InspiracionPage = () => {
         </section>
 
         {/* Películas favoritas */}
-        {/* <section id="peliculas" ref={moviesRef} className="mb-24">
+        <section id="peliculas" ref={moviesRef} className="mb-24">
           <motion.div initial="hidden" animate={moviesInView ? "visible" : "hidden"} variants={staggerContainer}>
             <motion.div variants={itemFadeIn} className="flex items-center mb-12">
               <div className="h-px bg-law-200 flex-grow"></div>
@@ -554,17 +624,17 @@ export const InspiracionPage = () => {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {favoriteMovies.map((movie, index) => (
                 <motion.div
                   key={index}
                   variants={itemFadeIn}
-                  className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 group"
+                  className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 group h-full flex flex-col"
                 >
                   <div className="relative">
-                    <div className="aspect-video overflow-hidden">
+                    <div className="aspect-square overflow-hidden">
                       <img
-                        src={movie.cover || "/placeholder.svg"}
+                        src={movie.cover || "/placeholder.svg?height=400&width=400"}
                         alt={movie.title}
                         className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                       />
@@ -579,23 +649,23 @@ export const InspiracionPage = () => {
                     <div
                       className={`absolute top-3 right-3 w-10 h-10 rounded-full bg-gradient-to-br ${movie.color} flex items-center justify-center text-white shadow-md`}
                     >
-                      <Camera className="h-5 w-5" />
+                      <Clapperboard className="h-5 w-5" />
                     </div>
                   </div>
 
                   <div className="p-6">
                     <p className="text-gray-700">{movie.description}</p>
 
-                    <button className="mt-4 inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group">
+                    {/* <button className="mt-4 inline-flex items-center text-law-600 font-medium hover:text-law-700 transition-colors group">
                       Más sobre esta película
                       <ChevronRight className="ml-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    </button> */}
                   </div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
-        </section> */}
+        </section>
 
         {/* Lugares favoritos */}
         {/* <section id="lugares" ref={placesRef} className="mb-16">
