@@ -41,8 +41,8 @@ export const VotaBannerFlotante = () => {
             {/* Número 13 destacado - sin animación */}
             <div className="relative">
               <div className="absolute -inset-1 bg-white/30 rounded-full blur-md"></div>
-              <div className="relative w-14 h-14 md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center shadow-md border-2 border-white">
-                <div className="text-2xl md:text-xl font-bold" style={{ color: salmonColor }}>
+              <div className="relative w-14 h-14 md:w-14 md:h-14 rounded-full bg-white flex items-center justify-center shadow-md border-2 border-white">
+                <div className="text-2xl md:text-3xl font-bold" style={{ color: salmonColor }}>
                   13
                 </div>
               </div>
@@ -52,15 +52,15 @@ export const VotaBannerFlotante = () => {
             <div className="ml-3">
               <div className="flex items-center mb-0.5">
                 <Calendar className="h-3 w-3 text-white mr-1" />
-                <span className="text-white/90 text-xs">1 de junio de 2024</span>
+                <span className="text-white/90 text-sm mr-10">1 de junio de 2024</span>
               </div>
-              <h2 className="text-lg font-bold text-white drop-shadow-md">¡VOTA!</h2>
-              <p className="text-white/90 text-xs">Sergio Arturo Guerrero Olvera</p>
+              <h2 className="text-2xl font-bold text-white drop-shadow-md">¡VOTA!</h2>
+              <p className="text-white/90 text-base">Sergio Arturo Guerrero Olvera</p>
             </div>
           </div>
 
           <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2 text-center">
-            <p className="text-white text-sm">Boleta color salmón • Magistrado de Sala Regional</p>
+            <p className="text-white text-base">Boleta color salmón</p>
           </div>
         </Link>
 
