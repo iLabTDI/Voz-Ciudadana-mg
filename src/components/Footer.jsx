@@ -6,24 +6,24 @@ import magistrado from "../../assets/magistrado.jpg"
 
 export const Footer = ({ scrollToSection }) => {
   // SVG personalizado para X (Twitter)
-  const XIcon = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      shapeRendering="geometricPrecision"
-      textRendering="geometricPrecision"
-      imageRendering="optimizeQuality"
-      fillRule="evenodd"
-      clipRule="evenodd"
-      viewBox="0 0 512 462.799"
-      className="w-5 h-5 md:w-6 md:h-6 text-white/90 group-hover:text-gold-300 transition-colors"
-      fill="currentColor"
-    >
-      <path
-        fillRule="nonzero"
-        d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"
-      />
-    </svg>
-  )
+  // const XIcon = () => (
+  //   <svg
+  //     xmlns="http://www.w3.org/2000/svg"
+  //     shapeRendering="geometricPrecision"
+  //     textRendering="geometricPrecision"
+  //     imageRendering="optimizeQuality"
+  //     fillRule="evenodd"
+  //     clipRule="evenodd"
+  //     viewBox="0 0 512 462.799"
+  //     className="w-5 h-5 md:w-6 md:h-6 text-white/90 group-hover:text-gold-300 transition-colors"
+  //     fill="currentColor"
+  //   >
+  //     <path
+  //       fillRule="nonzero"
+  //       d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"
+  //     />
+  //   </svg>
+  // )
 
   // SVG personalizado para TikTok
   const TikTokIcon = () => (
@@ -85,7 +85,7 @@ export const Footer = ({ scrollToSection }) => {
               </div>
             </div>
             <div className="ml-4">
-              <h3 className="font-bold text-lg text-white">Sergio Arturo Guerrero</h3>
+              <h3 className="font-bold text-lg text-white">Sergio Arturo Guerrero Olvera</h3>
               <p className="text-gold-200/90 text-sm">Candidato a Magistrado · Sala Guadalajara</p>
             </div>
           </div>
@@ -97,11 +97,11 @@ export const Footer = ({ scrollToSection }) => {
                 label: "Facebook",
                 href: "https://www.facebook.com/profile.php?id=100011499285580&ref=ig_profile_ac",
               },
-              {
-                icon: "x",
-                label: "X",
-                href: "https://twitter.com", // Reemplaza con el enlace real si lo tienes
-              },
+              // {
+              //   icon: "x",
+              //   label: "X",
+              //   href: "https://twitter.com", 
+              // },
               {
                 icon: "instagram",
                 label: "Instagram",
@@ -110,7 +110,7 @@ export const Footer = ({ scrollToSection }) => {
               {
                 icon: "tiktok",
                 label: "TikTok",
-                href: "https://www.tiktok.com", // Reemplaza con el enlace real si lo tienes
+                href: "https://www.tiktok.com/@sergioguerreroolvera?_t=ZM-8vLD0vFwG63&_r=1", 
               },
             ].map((social) => (
               <a
@@ -123,7 +123,7 @@ export const Footer = ({ scrollToSection }) => {
               >
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-law-700 border border-law-600 flex items-center justify-center shadow-md group-hover:shadow-[0_0_10px_rgba(212,175,55,0.4)] group-hover:border-gold-500/70 transition-all duration-300">
                   {social.icon === "facebook" && <FacebookIcon />}
-                  {social.icon === "x" && <XIcon />}
+                  {/* {social.icon === "x" && <XIcon />} */}
                   {social.icon === "instagram" && <Instagram className="w-5 h-5 md:w-6 md:h-6 text-white/90 group-hover:text-gold-300 transition-colors" />}
                   {social.icon === "tiktok" && <TikTokIcon />}
                 </div>
@@ -137,7 +137,7 @@ export const Footer = ({ scrollToSection }) => {
           {/* Columna 1: Descripción */}
           <div>
             <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-6">
-              Asistente virtual del candidato a magistrado de la sala regional Guadalajara del TEPJF Sergio Arturo Guerrero Olvera. 
+              Asistente virtual del candidato a magistrado de la sala regional Guadalajara del TEPJF Sergio Arturo Guerrero Olvera.
               Innovando en la justicia electoral para un México más democrático.
             </p>
 
@@ -146,7 +146,7 @@ export const Footer = ({ scrollToSection }) => {
                 "Mi compromiso es con la justicia electoral y la democracia. Cada decisión que tomo está orientada a
                 fortalecer nuestras instituciones y garantizar que la voluntad del pueblo sea respetada."
               </p>
-              <p className="text-right text-gold-300 font-medium mt-2 text-sm">— Sergio Arturo Guerrero</p>
+              <p className="text-right text-gold-300 font-medium mt-2 text-sm">— Sergio Arturo Guerrero Olvera</p>
             </div>
           </div>
 

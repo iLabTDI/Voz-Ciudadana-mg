@@ -57,24 +57,24 @@ export const FloatingSocialBar = () => {
   )
 
   // SVG personalizado para X (Twitter)
-  const XIcon = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      shapeRendering="geometricPrecision"
-      textRendering="geometricPrecision"
-      imageRendering="optimizeQuality"
-      fillRule="evenodd"
-      clipRule="evenodd"
-      viewBox="0 0 512 462.799"
-      className="h-5 w-5"
-      fill="currentColor"
-    >
-      <path
-        fillRule="nonzero"
-        d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"
-      />
-    </svg>
-  )
+  // const XIcon = () => (
+  //   <svg
+  //     xmlns="http://www.w3.org/2000/svg"
+  //     shapeRendering="geometricPrecision"
+  //     textRendering="geometricPrecision"
+  //     imageRendering="optimizeQuality"
+  //     fillRule="evenodd"
+  //     clipRule="evenodd"
+  //     viewBox="0 0 512 462.799"
+  //     className="h-5 w-5"
+  //     fill="currentColor"
+  //   >
+  //     <path
+  //       fillRule="nonzero"
+  //       d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"
+  //     />
+  //   </svg>
+  // )
 
   // SVG personalizado para TikTok
   const TikTokIcon = () => (
@@ -113,13 +113,13 @@ export const FloatingSocialBar = () => {
       bgColor: "bg-[#1877F2]",
       hoverColor: "hover:bg-[#0E5FC0]",
     },
-    {
-      name: "Twitter",
-      icon: <XIcon />,
-      url: "https://twitter.com", // Reemplaza con el enlace real si lo tienes
-      bgColor: "bg-[#000000]",
-      hoverColor: "hover:bg-[#1A1A1A]",
-    },
+    // {
+    //   name: "Twitter",
+    //   icon: <XIcon />,
+    //   url: "https://twitter.com", // Reemplaza con el enlace real si lo tienes
+    //   bgColor: "bg-[#000000]",
+    //   hoverColor: "hover:bg-[#1A1A1A]",
+    // },
     {
       name: "Instagram",
       icon: <Instagram className="h-5 w-5" />,
@@ -130,7 +130,7 @@ export const FloatingSocialBar = () => {
     {
       name: "TikTok",
       icon: <TikTokIcon />,
-      url: "https://www.tiktok.com", // Reemplaza con el enlace real si lo tienes
+      url: "https://www.tiktok.com/@sergioguerreroolvera?_t=ZM-8vLD0vFwG63&_r=1", // Reemplaza con el enlace real si lo tienes
       bgColor: "bg-[#000000]",
       hoverColor: "hover:bg-[#1A1A1A]",
     },

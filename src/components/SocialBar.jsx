@@ -65,7 +65,7 @@ export const SocialBar = () => {
         </a>
 
         {/* Ajustar el tamaño del icono de X (Twitter) */}
-        <a
+        {/* <a
           href="https://twitter.com"
           className="w-10 h-10 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full bg-[#000000] hover:bg-[#1A1A1A] flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
           aria-label="Twitter (X)"
@@ -73,7 +73,7 @@ export const SocialBar = () => {
           rel="noopener noreferrer"
         >
           <XIcon />
-        </a>
+        </a> */}
 
         {/* Ajustar el tamaño del icono de Instagram */}
         <a
@@ -88,7 +88,7 @@ export const SocialBar = () => {
 
         {/* Ajustar el tamaño del icono de TikTok */}
         <a
-          href="https://www.tiktok.com"
+          href="https://www.tiktok.com/@sergioguerreroolvera?_t=ZM-8vLD0vFwG63&_r=1"
           className="w-10 h-10 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full bg-[#000000] hover:bg-[#1A1A1A] flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
           aria-label="TikTok"
           target="_blank"
