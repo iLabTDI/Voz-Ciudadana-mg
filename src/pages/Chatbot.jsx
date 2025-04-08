@@ -1,4 +1,5 @@
 "use client"
+
 import { useState, useEffect, useRef } from "react"
 import { Send, MessageSquare, User, ArrowRight, Zap } from "lucide-react"
 
@@ -8,6 +9,15 @@ const initialMessage = {
   message:
     "¡Bienvenidas y bienvenidos! Soy Sergio Arturo Guerrero Olvera, candidato a Magistrado de la Sala Regional Guadalajara del Tribunal Electoral del Poder Judicial de la Federación. Soy un avatar que está para servirte: puedes consultar las sentencias donde he participado, mis votos y publicaciones. ¡Conóceme mejor y conversemos!",
   timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+}
+
+// Respuestas predefinidas para preguntas específicas
+const predefinedResponses = {
+  "¿Cuál es tu trayectoria profesional?":
+    "He dedicado más de 20 años de mi vida al servicio de la justicia. Inicié mi carrera en el Poder Judicial de la Federación como secretario de tribunal, y desde entonces he recorrido cada etapa con compromiso, estudio y profunda vocación pública. Hoy tengo el honor de ser Magistrado Presidente de la Sala Regional Guadalajara del Tribunal Electoral del Poder Judicial de la Federación.\n\nMi formación jurídica ha estado acompañada de una convicción firme: la justicia no puede ser ajena a las personas ni a su contexto. Por eso me he especializado en derecho constitucional, justicia electoral, argumentación jurídica y, más recientemente, en innovación aplicada al ámbito judicial.\n\nA lo largo de estos años, he impulsado proyectos orientados a transformar la manera en que nos comunicamos con la ciudadanía, a fortalecer el lenguaje claro en las sentencias, a promover el uso de tecnología como la jurimetría y la inteligencia artificial, y a pensar nuevos caminos para una justicia más cercana, transparente y humana.\n\nMi compromiso es construir desde adentro una justicia más útil, más clara y más viva. Esa ha sido, y sigue siendo, mi ruta profesional.",
+
+  "¿Cuáles son tus propuestas principales?":
+    "A lo largo de mi carrera, he aprendido que la justicia no puede estar de espaldas a la ciudadanía ni quedarse inmóvil frente al cambio. Por eso, quiero compartirte las propuestas que guían mi aspiración a la magistratura electoral, todas ellas enfocadas en construir una justicia más clara, más útil y más cercana.\n\n[LISTA]\n[ITEM]1. Sentencias claras y accesibles\nLa justicia no puede hablar un lenguaje que la gente no entienda. Me comprometo a promover sentencias que sean comprensibles, sin perder solidez jurídica. Que cualquier persona, sin importar su formación, pueda entender por qué se resolvió de una forma y no de otra.\n\n[ITEM]2. Justicia con rostro humano\nDetrás de cada expediente hay una historia, una persona, una expectativa de justicia. Propongo una magistratura sensible al contexto, a las desigualdades, y con verdadera perspectiva de derechos humanos, género y diversidad.\n\n[ITEM]3. Innovación tecnológica aplicada a la justicia\nCreo profundamente en el uso de la tecnología como una herramienta de transformación judicial. He impulsado proyectos en metaverso, tribunales digitales y jurimetría. Hoy propongo avanzar aún más: desarrollar herramientas para que la ciudadanía tenga acceso a resúmenes personalizados de las sentencias, mapas conceptuales y explicaciones accesibles. La justicia del futuro debe empezar hoy.\n\n[ITEM]4. Café con la ciudadanía\nPropongo abrir espacios periódicos de diálogo directo con la gente. No en foros cerrados, sino en lugares cotidianos. Escuchar a quienes sienten lejos a la justicia es el primer paso para transformarla.\n\n[ITEM]5. Buenas prácticas internacionales y justicia global\nMéxico no está solo. Propongo incorporar estándares éticos y jurisdiccionales reconocidos internacionalmente, como la Declaración de Bangalore o el Código de Ética del Poder Judicial brasileño, adaptados a nuestro contexto, pero sin perder visión global.\n\n[ITEM]6. Austeridad institucional con sentido humano\nLa austeridad no es quitar por quitar, sino revisar con responsabilidad. Propongo una gestión eficiente de los recursos, sin sacrificar el bienestar laboral ni la dignidad del servicio público.\n\n[ITEM]7. Justicia ambiental y sostenibilidad\nTambién desde los tribunales podemos contribuir al cuidado del planeta. Desde reducir traslados con trabajo remoto institucional, hasta digitalizar procesos que reduzcan el uso de papel. Pequeñas acciones también generan justicia.\n\n[ITEM]8. Reconocimiento a la ciudadanía y al personal jurisdiccional\nLa democracia se construye todos los días, también desde el servicio público. Propongo mecanismos para visibilizar el trabajo, la entrega y la ética de quienes forman parte del sistema electoral, así como de quienes participan activamente desde la sociedad civil.\n[/LISTA]",
 }
 
 export const Chatbot = ({
@@ -23,19 +33,34 @@ export const Chatbot = ({
 
   // Llamada simulada al servicio
   async function queryStackAI(data) {
-    const response = await fetch(
-      "https://api.stack-ai.com/inference/v0/run/334ed14d-3ee5-4d16-84c5-9d8a284472ec/678e9d14af219aeb53d9b8e8",
-      {
-        headers: {
-          Authorization: "Bearer 99119d2b-0c5c-4f25-9c23-655cbabfeec6",
-          "Content-Type": "application/json",
+    // Verificar si la pregunta tiene una respuesta predefinida
+    const userQuestion = data["in-0"].split("Pregunta: ")[1]
+
+    if (predefinedResponses[userQuestion]) {
+      // Simular un pequeño retraso para que parezca que está procesando
+      await new Promise((resolve) => setTimeout(resolve, 500))
+      return { outputs: { "out-0": predefinedResponses[userQuestion] } }
+    }
+
+    // Si no hay respuesta predefinida, hacer la llamada a la API
+    try {
+      const response = await fetch(
+        "https://api.stack-ai.com/inference/v0/run/334ed14d-3ee5-4d16-84c5-9d8a284472ec/678e9d14af219aeb53d9b8e8",
+        {
+          headers: {
+            Authorization: "Bearer 99119d2b-0c5c-4f25-9c23-655cbabfeec6",
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(data),
         },
-        method: "POST",
-        body: JSON.stringify(data),
-      },
-    )
-    const result = await response.json()
-    return result
+      )
+      const result = await response.json()
+      return result
+    } catch (error) {
+      console.error("Error en la llamada a la API:", error)
+      return { outputs: { "out-0": "Lo siento, hubo un problema al procesar tu consulta." } }
+    }
   }
 
   // Autoscroll al final cada vez que cambie chatHistory
@@ -80,6 +105,12 @@ IMPORTANTE: Cuando la respuesta incluya listas, enumeraciones o pasos, usa el si
 
   // Función para reproducir texto con voz (incluye manejo de voces en móviles)
   const speakText = (text) => {
+    // Verificar si la API de síntesis de voz está disponible
+    if (!window.speechSynthesis) {
+      console.warn("La API de síntesis de voz no está disponible en este navegador")
+      return
+    }
+
     // Eliminar marcadores de formato para la lectura
     const cleanText = text.replace(/\[LISTA\]|\[\/LISTA\]|\[ITEM\]|\[TITULO\]/g, "").replace(/\n+/g, " ")
 
@@ -250,6 +281,7 @@ IMPORTANTE: Cuando la respuesta incluya listas, enumeraciones o pasos, usa el si
       setIsTyping(false)
       setIsTypingGlobal(false)
       setIsWaiting(false)
+      setIsWaitingGlobal(false)
     }
   }
 
@@ -386,4 +418,3 @@ IMPORTANTE: Cuando la respuesta incluya listas, enumeraciones o pasos, usa el si
 }
 
 export default Chatbot
-

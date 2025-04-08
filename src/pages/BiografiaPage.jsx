@@ -9,10 +9,6 @@ import {
   BookOpen,
   GraduationCap,
   Briefcase,
-  Heart,
-  Coffee,
-  Music,
-  ExternalLink,
   ChevronRight,
 } from "lucide-react"
 
