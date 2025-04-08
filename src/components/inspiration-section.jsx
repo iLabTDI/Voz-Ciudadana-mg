@@ -12,16 +12,36 @@ export const InspirationSection = ({ isVisible }) => {
   // Citas inspiradoras
   const quotes = [
     {
-      text: "La justicia no es solo aplicar la ley, sino entender el corazón humano detrás de cada caso.",
-      author: "Sergio Arturo Guerrero Olvera",
+      text: "“Que se oiga mi voz. Aunque sea una voz entre otras muchas. Aunque sea una voz pequeña.”",
+      author: "Rosario Castellanos",
     },
     {
-      text: "La empatía es el puente entre el juicio y la comprensión.",
-      author: "Sergio Arturo Guerrero Olvera",
+      text: "“La esencia de los derechos humanos no es la igualdad, sino el derecho a la diferencia.”",
+      author: "Hannah Arendt (filósofa y pensadora política)",
     },
     {
-      text: "El arte de hacer justicia es el arte de humanizar la ley.",
-      author: "Sergio Arturo Guerrero Olvera",
+      text: "“Imponte a ti mismo tu noble desorden.”",
+      author: "René Char (poeta y resistente francés)",
+    },
+    {
+      text: "“Quien tiene un porqué para vivir, puede soportar casi cualquier cómo.”",
+      author: "Friedrich Nietzsche",
+    },
+    {
+      text: "“Más importante que tu obligación de seguir tu conciencia, o al menos antes de ella, está tu obligación de formar correctamente tu conciencia.”",
+      author: "Juez Antonin Scalia",
+    },
+    {
+      text: "“Nos sobran los motivos.”",
+      author: "Joaquín Sabina",
+    },
+    {
+      text: "“Hay quienes cruzan el bosque y solo ven leña para el fuego.”",
+      author: "Tolstoi",
+    },
+    {
+      text: "“La esencia de la vida es servir a otros y hacer el bien.”",
+      author: "Aristóteles",
     },
   ]
 

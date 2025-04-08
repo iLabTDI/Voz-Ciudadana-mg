@@ -181,7 +181,6 @@ export const BiografiaPage = () => {
                 { id: "formacion", label: "Formación", icon: <GraduationCap className="h-4 w-4" /> },
                 { id: "trayectoria", label: "Trayectoria", icon: <Briefcase className="h-4 w-4" /> },
                 { id: "publicaciones", label: "Publicaciones", icon: <BookOpen className="h-4 w-4" /> },
-                { id: "personal", label: "Vida Personal", icon: <Heart className="h-4 w-4" /> },
               ].map((item) => (
                 <a
                   key={item.id}

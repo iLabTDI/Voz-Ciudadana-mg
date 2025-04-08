@@ -65,15 +65,15 @@ export const SocialBar = () => {
         </a>
 
         {/* Ajustar el tamaño del icono de X (Twitter) */}
-        {/* <a
-          href="https://twitter.com"
+        <a
+          href="https://x.com/magdo_sago?s=11&t=MKfjsVTqflfn65JjxQ5hTg"
           className="w-10 h-10 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full bg-[#000000] hover:bg-[#1A1A1A] flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
           aria-label="Twitter (X)"
           target="_blank"
           rel="noopener noreferrer"
         >
           <XIcon />
-        </a> */}
+        </a>
 
         {/* Ajustar el tamaño del icono de Instagram */}
         <a
@@ -98,13 +98,13 @@ export const SocialBar = () => {
         </a>
 
         {/* Ajustar el tamaño del icono de Email */}
-        <a
+        {/* <a
           href="mailto:contacto@tribunalelectoral.gob.mx"
           className="w-10 h-10 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full bg-[#EA4335] hover:bg-[#C63628] flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
           aria-label="Email"
         >
           <Mail className="h-5 w-5 md:h-4 md:w-4 lg:h-5 lg:w-5" />
-        </a>
+        </a> */}
       </div>
     </div>
   )

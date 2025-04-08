@@ -382,9 +382,9 @@ export const ProposalsSection = ({ isVisible }) => {
                   <div className="flex items-start">
                     <div className="text-2xl text-gold-300 mr-2 font-serif">"</div>
                     <p className="text-gray-100 italic text-sm">
-                      Mi compromiso es trabajar incansablemente para que la justicia electoral sea un pilar fundamental
-                      en la construcción de un México más democrático, justo e incluyente. El derecho no es un obstáculo
-                      para el cambio social, sino que debe ser su motor.
+                    Mi compromiso es trabajar incansablemente para que la justicia electoral no solo garantice legalidad, 
+                    sino que sea una fuerza viva para la inclusión, la confianza y el cambio social. Creo en un México donde el derecho no limite,
+                    sino libere; no excluya, sino escuche. El derecho debe estar al servicio de las personas, y nunca por encima de ellas.”
                     </p>
                   </div>
                 </div>

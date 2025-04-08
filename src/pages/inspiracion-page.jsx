@@ -424,7 +424,7 @@ export const InspiracionPage = () => {
             <motion.div variants={itemFadeIn} className="flex items-center mb-12">
               <div className="h-px bg-law-200 flex-grow"></div>
               <h2 className="text-3xl font-bold text-law-800 px-6 flex items-center">
-                <Quote className="mr-3 h-7 w-7 text-law-600" />
+                {/* <Quote className="mr-3 h-7 w-7 text-law-600" /> */}
                 Mi Filosofía Personal
               </h2>
               <div className="h-px bg-law-200 flex-grow"></div>
