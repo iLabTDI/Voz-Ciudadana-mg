@@ -349,32 +349,33 @@ export const BiografiaPage = () => {
               >
                 <div className="h-48 overflow-hidden relative">
                   <img
-                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&h=600&auto=format&fit=crop"
-                    alt="Licenciatura en Derecho"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1AmgxOLFvpUStHnKfo6sLKrVcRb0UY.png"
+                    alt="Formación Jurídica"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-law-900/80 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
-                      Sin rango
+                      Universidad Autónoma de Querétaro
                     </span>
                   </div>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
+                  <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
                       <GraduationCap className="h-6 w-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-law-700">Licenciatura en Derecho</h3>
+                    <h3 className="text-xl font-bold text-law-700">Formación Académica en Derecho</h3>
                   </div>
-                  <p className="text-gray-600 mb-3">Formación inicial en el ámbito jurídico</p>
+                  <p className="text-gray-600 mb-3">Licenciatura, Maestría y Doctorado en Derecho</p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                      Consolidada base legal para mi carrera, obtenida en mi etapa formativa.
+                      Consolidé una sólida base legal durante mi etapa de licenciatura, la cual fue fortalecida con estudios de posgrado orientados a la investigación jurídica avanzada a nivel de maestría y doctorado en la Universidad Autónoma de Querétaro.
                     </p>
                   </div>
                 </div>
               </motion.div>
+
 
               {/* Especialización en Derecho Constitucional y Amparo */}
               <motion.div
@@ -396,7 +397,7 @@ export const BiografiaPage = () => {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
+                  <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
                       <GraduationCap className="h-6 w-6" />
                     </div>
                     <h3 className="text-xl font-bold text-law-700">Especialización en Derecho Constitucional y Amparo</h3>
@@ -410,40 +411,6 @@ export const BiografiaPage = () => {
                 </div>
               </motion.div>
 
-              {/* Maestría en Derecho y Doctorando */}
-              <motion.div
-                variants={itemFadeIn}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 group"
-              >
-                <div className="h-48 overflow-hidden relative">
-                  <img
-                    src="https://images.unsplash.com/photo-1584697964154-d8b7b3d3d57d?q=80&w=800&h=600&auto=format&fit=crop"
-                    alt="Maestría y Doctorado en Derecho"
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-law-900/80 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
-                      Universidad Autónoma de Querétaro
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
-                      <GraduationCap className="h-6 w-6" />
-                    </div>
-                    <h3 className="text-xl font-bold text-law-700">Maestría en Derecho y Doctorado</h3>
-                  </div>
-                  <p className="text-gray-600 mb-3">Universidad Autónoma de Querétaro</p>
-                  <div className="bg-law-50 p-4 rounded-xl">
-                    <p className="text-gray-700">
-                      Formación avanzada que integra la maestría con el proceso de doctorado, orientada a la investigación jurídica.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
               {/* Especialización en Justicia Constitucional y Procesos Constitucionales */}
               <motion.div
                 variants={itemFadeIn}
@@ -451,7 +418,7 @@ export const BiografiaPage = () => {
               >
                 <div className="h-48 overflow-hidden relative">
                   <img
-                    src="https://images.unsplash.com/photo-1590608897129-79a9f7b5f98b?q=80&w=800&h=600&auto=format&fit=crop"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-QE5xXiz3LLYSusJmB3BMxciXQsFXpL.png"
                     alt="Justicia Constitucional y Procesos Constitucionales"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
@@ -464,7 +431,7 @@ export const BiografiaPage = () => {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
+                  <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
                       <GraduationCap className="h-6 w-6" />
                     </div>
                     <h3 className="text-xl font-bold text-law-700">Especialización en Justicia Constitucional y Procesos Constitucionales</h3>
@@ -498,7 +465,7 @@ export const BiografiaPage = () => {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
+                  <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
                       <GraduationCap className="h-6 w-6" />
                     </div>
                     <h3 className="text-xl font-bold text-law-700">Especialización y Master en Argumentación Jurídica</h3>
@@ -519,7 +486,7 @@ export const BiografiaPage = () => {
               >
                 <div className="h-48 overflow-hidden relative">
                   <img
-                    src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=80&w=800&h=600&auto=format&fit=crop"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1AmgxOLFvpUStHnKfo6sLKrVcRb0UY.png"
                     alt="Justicia Electoral"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
@@ -566,7 +533,7 @@ export const BiografiaPage = () => {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
+                  <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
                       <GraduationCap className="h-6 w-6" />
                     </div>
                     <h3 className="text-xl font-bold text-law-700">Especialización en Derecho Electoral</h3>
@@ -663,7 +630,7 @@ export const BiografiaPage = () => {
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/3 relative">
                   <img
-                    src="https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?q=80&w=800&h=600&auto=format&fit=crop"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-TvKb1c2uwITDPrIsnWlCS2l0mnQXSk.png"
                     alt="Secretario de Estudio y Cuenta y Coordinador de Jurisprudencia"
                     className="w-full h-full object-cover"
                   />
@@ -719,7 +686,7 @@ export const BiografiaPage = () => {
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/3 relative">
                   <img
-                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&h=600&auto=format&fit=crop"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-WYeBAJnJMKbET2WTRIk9ad13s3CDgY.png"
                     alt="Profesor de Derecho Electoral"
                     className="w-full h-full object-cover"
                   />

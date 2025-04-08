@@ -6,7 +6,7 @@ import { Send, MessageSquare, User, ArrowRight, Zap } from "lucide-react"
 const initialMessage = {
   type: "bot",
   message:
-    "!Bienvenido! Soy Sergio Arturo Guerrero Olvera, Candidato a Magistrado de la Sala Regional Guadalajara del Tribunal Electoral del Poder Judicial de la Federacion. Soy un avatar que está para servirte: puedes consultar las sentencias donde he participado, mis votos y publicaciones, así podrías conocerme mejor",
+    "¡Bienvenidas y bienvenidos! Soy Sergio Arturo Guerrero Olvera, candidato a Magistrado de la Sala Regional Guadalajara del Tribunal Electoral del Poder Judicial de la Federación. Soy un avatar que está para servirte: puedes consultar las sentencias donde he participado, mis votos y publicaciones. ¡Conóceme mejor y conversemos!",
   timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
 }
 
