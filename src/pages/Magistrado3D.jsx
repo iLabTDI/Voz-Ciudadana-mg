@@ -7,168 +7,206 @@ export const Magistrado3D = ({ isWaiting, isTyping, lastBotMessage }) => {
   const [videoSrc, setVideoSrc] = useState("/intro2.mp4")
   const [isMuted, setIsMuted] = useState(false)
   const [showControls, setShowControls] = useState(false)
-  const [hasPlayedIntro, setHasPlayedIntro] = useState(false)
+  const [videoState, setVideoState] = useState("intro") // posibles estados: intro, idle, waiting, responding
   const [isFirstVisit, setIsFirstVisit] = useState(true)
-  const [introEnded, setIntroEnded] = useState(false)
-  const [waitingEnded, setWaitingEnded] = useState(false)
-  const [pendingStateChange, setPendingStateChange] = useState(null)
+  const [isPlayingAnimation, setIsPlayingAnimation] = useState(false)
 
   const videoRef = useRef(null)
+  const audioContext = useRef(null)
   const responseTimerRef = useRef(null)
+  const transitionTimeoutRef = useRef(null)
 
-  // Verificar si es la primera visita usando sessionStorage
+  // Usar sessionStorage para detectar primera visita
   useEffect(() => {
-    const hasVisited = sessionStorage.getItem("hasVisitedMagistrado")
+    // Verificar si hay un contexto de audio existente para evitar errores en móviles
+    try {
+      audioContext.current = new (window.AudioContext || window.webkitAudioContext)()
+    } catch (e) {
+      console.error("El navegador no soporta AudioContext:", e)
+    }
 
+    const hasVisited = sessionStorage.getItem("hasVisitedMagistrado")
+    
     if (!hasVisited) {
-      // Primera visita: reproducir intro
+      // Primera visita: mostrar intro
       sessionStorage.setItem("hasVisitedMagistrado", "true")
       setIsFirstVisit(true)
+      setVideoState("intro")
       setVideoSrc("/intro2.mp4")
       setIsMuted(false)
     } else {
-      // No es la primera visita: marcar intro como ya reproducida
+      // No es primera visita: ir directo a idle
       setIsFirstVisit(false)
-      setHasPlayedIntro(true)
-      setIntroEnded(true)
-      // Comenzar con el estado idle
+      setVideoState("idle")
       setVideoSrc("/idle.mp4")
     }
 
-    // Limpieza al desmontar
+    // Limpieza
     return () => {
-      if (responseTimerRef.current) clearTimeout(responseTimerRef.current)
+      clearAllTimers()
     }
-  }, []) // Solo ejecutar al montar el componente
+  }, [])
+
+  // Función para limpiar todos los temporizadores
+  const clearAllTimers = () => {
+    if (responseTimerRef.current) clearTimeout(responseTimerRef.current)
+    if (transitionTimeoutRef.current) clearTimeout(transitionTimeoutRef.current)
+  }
 
   // Manejar el evento de finalización de videos
   useEffect(() => {
     const handleVideoEnded = () => {
-      if (videoSrc === "/intro2.mp4" && isFirstVisit) {
-        console.log("Intro video ended naturally")
-        setIntroEnded(true)
-        setHasPlayedIntro(true)
-
-        // Cambiar al estado pendiente o a idle
-        if (pendingStateChange) {
-          setVideoSrc(pendingStateChange)
-          setPendingStateChange(null)
-        } else if (!isWaiting && !isTyping) {
-          setVideoSrc("/idle.mp4")
-        }
-      } else if (videoSrc === "/waiting.mp4") {
-        console.log("Waiting video ended naturally")
-        setWaitingEnded(true)
-
-        // Si hay un cambio de estado pendiente, aplicarlo ahora
-        if (pendingStateChange) {
-          setVideoSrc(pendingStateChange)
-          setPendingStateChange(null)
+      console.log(`Video ${videoSrc} finished playing`)
+      
+      if (videoState === "intro") {
+        console.log("Intro video ended, transitioning to idle")
+        transitionToState("idle")
+      } else if (videoState === "waiting") {
+        console.log("Waiting video ended")
+        // Si estamos esperando pero ya hay respuesta y están escribiendo, ir a responding
+        if (isTyping) {
+          transitionToState("responding")
+        } else {
+          // Si terminó de esperar pero no hay typing, volver a idle
+          transitionToState("idle")
         }
       }
-      // No hacemos nada cuando termina responding porque debe hacer loop
+      // Los estados idle y responding hacen loop, así que no necesitan manejarse aquí
     }
 
-    if (videoRef.current) {
-      videoRef.current.addEventListener("ended", handleVideoEnded)
+    const videoElement = videoRef.current
+    if (videoElement) {
+      videoElement.addEventListener("ended", handleVideoEnded)
     }
 
     return () => {
-      if (videoRef.current) {
-        videoRef.current.removeEventListener("ended", handleVideoEnded)
+      if (videoElement) {
+        videoElement.removeEventListener("ended", handleVideoEnded)
       }
     }
-  }, [videoSrc, isFirstVisit, isWaiting, isTyping, pendingStateChange])
+  }, [videoSrc, videoState, isTyping])
 
-  // Manejar cambios de estado basados en props
-  useEffect(() => {
-    // Limpiar cualquier temporizador pendiente
-    if (responseTimerRef.current) {
-      clearTimeout(responseTimerRef.current)
-    }
-
-    // Caso 1: Intro está reproduciéndose - no interrumpir
-    if (videoSrc === "/intro2.mp4" && !introEnded && isFirstVisit) {
-      console.log("Intro is still playing, queuing state change")
-
-      // Guardar el cambio de estado para aplicarlo cuando termine la intro
-      if (isWaiting) {
-        setPendingStateChange("/waiting.mp4")
-      } else if (isTyping) {
-        setPendingStateChange("/responding.mp4")
-      }
-      return
-    }
-
-    // Caso 2: Waiting está reproduciéndose - no interrumpir hasta que termine
-    if (videoSrc === "/waiting.mp4" && !waitingEnded) {
-      console.log("Waiting is still playing, queuing state change")
-
-      // Guardar el cambio de estado para aplicarlo cuando termine waiting
-      if (isTyping) {
-        setPendingStateChange("/responding.mp4")
-      } else if (!isWaiting && !isTyping) {
-        setPendingStateChange("/idle.mp4")
-      }
-      return
-    }
-
-    // Caso 3: Cambios de estado normales cuando no hay videos en reproducción que no deban interrumpirse
-    if (isWaiting && videoSrc !== "/waiting.mp4") {
-      console.log("Changing to waiting state")
-      setVideoSrc("/waiting.mp4")
-      setWaitingEnded(false)
-      setIsMuted(false) // Con audio
-    } else if (isTyping && videoSrc !== "/responding.mp4") {
-      console.log("Changing to responding state")
-      setVideoSrc("/responding.mp4")
-      setIsMuted(true) // Sin audio
-    } else if (lastBotMessage && !isTyping && !isWaiting && videoSrc === "/responding.mp4") {
-      // Terminar de responder después de un tiempo
-      console.log("Response finished, scheduling change to idle")
-      responseTimerRef.current = setTimeout(() => {
+  // Función para transicionar entre estados con seguridad
+  const transitionToState = (newState) => {
+    console.log(`Transitioning from ${videoState} to ${newState}`)
+    
+    // Limpiar cualquier transición pendiente
+    clearAllTimers()
+    
+    // Actualizar el estado y el src del video
+    setVideoState(newState)
+    
+    // Actualizar la fuente del video según el estado
+    switch (newState) {
+      case "intro":
+        setVideoSrc("/intro2.mp4")
+        setIsMuted(false)
+        break
+      case "idle":
         setVideoSrc("/idle.mp4")
-      }, 5000) // Ajusta este tiempo según necesites
-    } else if (
-      hasPlayedIntro &&
-      !isWaiting &&
-      !isTyping &&
-      videoSrc !== "/idle.mp4" &&
-      introEnded &&
-      videoSrc !== "/waiting.mp4" &&
-      videoSrc !== "/responding.mp4"
-    ) {
-      // Estado idle cuando no hay actividad y no hay videos en reproducción
-      console.log("Changing to idle state")
-      setVideoSrc("/idle.mp4")
+        setIsMuted(true) // Idle suele ser silencioso
+        break
+      case "waiting":
+        setVideoSrc("/waiting.mp4")
+        setIsMuted(false)
+        break
+      case "responding":
+        setVideoSrc("/responding.mp4")
+        setIsMuted(true) // Para no solapar con el audio del chat
+        break
+      default:
+        setVideoSrc("/idle.mp4")
+        setIsMuted(true)
     }
-  }, [isWaiting, isTyping, lastBotMessage, hasPlayedIntro, videoSrc, introEnded, waitingEnded, isFirstVisit])
+    
+    // Marcar que estamos en transición para evitar cambios simultáneos
+    setIsPlayingAnimation(true)
+    
+    // Después de un tiempo prudente, permitir nuevas transiciones
+    transitionTimeoutRef.current = setTimeout(() => {
+      setIsPlayingAnimation(false)
+    }, 500) // Tiempo suficiente para que el video comience
+  }
 
-  // Asegurar que el video se reproduzca correctamente cuando cambie la fuente
+  // Manejar cambios en los props
   useEffect(() => {
-    if (videoRef.current) {
-      // Detener cualquier reproducción actual
-      videoRef.current.pause()
+    // Si estamos en intro y es primera visita, no interrumpir
+    if (videoState === "intro" && isFirstVisit) {
+      return
+    }
+    
+    // Evitar transiciones durante una animación en curso
+    if (isPlayingAnimation) {
+      return
+    }
 
-      // Cargar y reproducir el nuevo video
-      videoRef.current.load()
+    // Manejar la lógica de transiciones según los props
+    if (isWaiting && videoState !== "waiting") {
+      transitionToState("waiting")
+    } else if (isTyping && videoState !== "responding") {
+      transitionToState("responding")
+    } else if (!isWaiting && !isTyping && lastBotMessage && videoState === "responding") {
+      // Si terminó de escribir pero estamos en "responding", esperar un poco antes de volver a idle
+      responseTimerRef.current = setTimeout(() => {
+        if (!isWaiting && !isTyping) { // Verificar nuevamente el estado
+          transitionToState("idle")
+        }
+      }, 3000) // Esperar 3 segundos después de que termina la respuesta
+    } else if (!isWaiting && !isTyping && videoState !== "intro" && videoState !== "idle") {
+      // Si no hay actividad y no estamos en intro ni idle, ir a idle
+      transitionToState("idle")
+    }
+  }, [isWaiting, isTyping, lastBotMessage, videoState, isFirstVisit, isPlayingAnimation])
 
-      // Intentar reproducir con manejo de errores
-      videoRef.current.play().catch((error) => {
+  // Optimizar la carga y reproducción del video
+  useEffect(() => {
+    const playVideo = async () => {
+      if (!videoRef.current) return
+      
+      try {
+        // Pausar cualquier reproducción previa
+        videoRef.current.pause()
+        
+        // Configurar volumen y mute
+        videoRef.current.muted = isMuted
+        videoRef.current.volume = 0.8 // volumen no muy alto
+        
+        // Cargar el nuevo video
+        videoRef.current.load()
+        
+        // Intentar reproducir con manejo de errores
+        await videoRef.current.play()
+        console.log(`Playing video: ${videoSrc}, muted: ${isMuted}`)
+      } catch (error) {
         console.error("Error al reproducir el video:", error)
-        // Intentar reproducir sin sonido si hay error (política de autoplay)
+        
+        // Si falló la reproducción, intentar reproducir en silencio (política de autoplay)
         if (!isMuted) {
+          console.log("Intentando reproducir en silencio debido a política de autoplay")
           setIsMuted(true)
           videoRef.current.muted = true
-          videoRef.current.play().catch((e) => console.error("No se pudo reproducir ni siquiera silenciado:", e))
+          
+          try {
+            await videoRef.current.play()
+          } catch (e) {
+            console.error("Falló incluso reproduciendo en silencio:", e)
+          }
         }
-      })
+      }
     }
-  }, [videoSrc])
+    
+    // Asegurarse de que el DOM está listo
+    if (document.readyState === "complete") {
+      playVideo()
+    } else {
+      window.addEventListener("load", playVideo)
+      return () => window.removeEventListener("load", playVideo)
+    }
+  }, [videoSrc, isMuted])
 
   // Función para alternar el sonido manualmente
   const toggleMute = () => {
-    setIsMuted((prev) => {
+    setIsMuted(prev => {
       const newMuted = !prev
       if (videoRef.current) {
         videoRef.current.muted = newMuted
@@ -179,11 +217,15 @@ export const Magistrado3D = ({ isWaiting, isTyping, lastBotMessage }) => {
 
   // Manejar visibilidad de la página para pausar/reanudar el video
   useEffect(() => {
-    const handleVisibilityChange = () => {
+    const handleVisibilityChange = async () => {
       if (document.hidden && videoRef.current) {
         videoRef.current.pause()
       } else if (!document.hidden && videoRef.current) {
-        videoRef.current.play().catch((e) => console.error("Error al reanudar el video:", e))
+        try {
+          await videoRef.current.play()
+        } catch (e) {
+          console.error("Error al reanudar el video:", e)
+        }
       }
     }
 
@@ -194,33 +236,31 @@ export const Magistrado3D = ({ isWaiting, isTyping, lastBotMessage }) => {
     }
   }, [])
 
-  // Determinar si el video actual debe hacer loop
+  // Determinar si el video debe hacer loop
   const shouldLoop = () => {
-    // La intro nunca hace loop
-    if (videoSrc === "/intro2.mp4") return false
+    // Solo idle y responding deben hacer loop
+    return videoState === "idle" || videoState === "responding"
+  }
 
-    // Responding siempre hace loop mientras está respondiendo
-    if (videoSrc === "/responding.mp4" && isTyping) return true
-
-    // Waiting no hace loop, debe reproducirse una vez completo
-    if (videoSrc === "/waiting.mp4") return false
-
-    // Idle siempre hace loop
-    if (videoSrc === "/idle.mp4") return true
-
-    // Por defecto, hacer loop
-    return true
+  // Reiniciar el contexto de audio si hay problemas
+  const resetAudioContext = () => {
+    if (audioContext.current && audioContext.current.state === "suspended") {
+      audioContext.current.resume()
+    }
   }
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+    <div 
+      className="relative w-full h-full flex items-center justify-center overflow-hidden"
+      onClick={resetAudioContext} // Permitir interacción para activar audio
+    >
       {/* Video del magistrado */}
       <div className="relative z-10 w-full h-full flex items-center justify-center">
         <video
           ref={videoRef}
           src={videoSrc}
           autoPlay
-          loop={shouldLoop()} // Loop condicional con el estado
+          loop={shouldLoop()}
           muted={isMuted}
           playsInline
           className="w-full h-full object-cover"
@@ -244,12 +284,12 @@ export const Magistrado3D = ({ isWaiting, isTyping, lastBotMessage }) => {
         </button>
       </div>
 
-      {/* Indicador de estado (opcional, para depuracion) */}
+      {/* Indicador de estado (para depuración) */}
       {process.env.NODE_ENV === "development" && (
         <div className="absolute top-4 left-4 z-30 bg-black/50 text-white px-2 py-1 text-xs rounded">
-          Video: {videoSrc.replace("/", "")} |
-          {pendingStateChange ? ` Pendiente: ${pendingStateChange.replace("/", "")} |` : ""}
-          Loop: {shouldLoop() ? "Sí" : "No"}
+          Estado: {videoState} | Video: {videoSrc.replace("/", "")} | 
+          Loop: {shouldLoop() ? "Sí" : "No"} | 
+          Audio: {isMuted ? "Silenciado" : "Activado"}
         </div>
       )}
     </div>
@@ -257,4 +297,3 @@ export const Magistrado3D = ({ isWaiting, isTyping, lastBotMessage }) => {
 }
 
 export default Magistrado3D
-
