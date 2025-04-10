@@ -202,7 +202,7 @@ export const Footer = ({ scrollToSection }) => {
 
             <div className="mt-5 flex flex-col items-center">
               <a
-                href="https://ilabtdi.com"
+                href="https://www.facebook.com/ILabTDI/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-transform hover:scale-105"
