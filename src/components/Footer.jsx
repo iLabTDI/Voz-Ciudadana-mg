@@ -1,6 +1,6 @@
 "use client"
 
-import { Instagram, Mail } from "lucide-react"
+import { Instagram } from "lucide-react"
 import { Link } from "react-router-dom"
 import magistrado from "../../assets/magistrado.jpg"
 
@@ -81,7 +81,11 @@ export const Footer = ({ scrollToSection }) => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full opacity-80 blur-[3px]"></div>
               <div className="relative w-16 h-16 rounded-full bg-white p-0.5 flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.5)]">
-                <img src={magistrado} alt="Bandera de México" className="w-full h-full rounded-full" />
+                <img
+                  src={magistrado || "/placeholder.svg"}
+                  alt="Bandera de México"
+                  className="w-full h-full rounded-full"
+                />
               </div>
             </div>
             <div className="ml-4">
@@ -100,7 +104,7 @@ export const Footer = ({ scrollToSection }) => {
               {
                 icon: "x",
                 label: "X",
-                href: "https://x.com/magdo_sago?s=11&t=MKfjsVTqflfn65JjxQ5hTg", 
+                href: "https://x.com/magdo_sago?s=11&t=MKfjsVTqflfn65JjxQ5hTg",
               },
               {
                 icon: "instagram",
@@ -110,7 +114,7 @@ export const Footer = ({ scrollToSection }) => {
               {
                 icon: "tiktok",
                 label: "TikTok",
-                href: "https://www.tiktok.com/@sergioguerreroolvera?_t=ZM-8vLD0vFwG63&_r=1", 
+                href: "https://www.tiktok.com/@sergioguerreroolvera?_t=ZM-8vLD0vFwG63&_r=1",
               },
             ].map((social) => (
               <a
@@ -124,7 +128,9 @@ export const Footer = ({ scrollToSection }) => {
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-law-700 border border-law-600 flex items-center justify-center shadow-md group-hover:shadow-[0_0_10px_rgba(212,175,55,0.4)] group-hover:border-gold-500/70 transition-all duration-300">
                   {social.icon === "facebook" && <FacebookIcon />}
                   {social.icon === "x" && <XIcon />}
-                  {social.icon === "instagram" && <Instagram className="w-5 h-5 md:w-6 md:h-6 text-white/90 group-hover:text-gold-300 transition-colors" />}
+                  {social.icon === "instagram" && (
+                    <Instagram className="w-5 h-5 md:w-6 md:h-6 text-white/90 group-hover:text-gold-300 transition-colors" />
+                  )}
                   {social.icon === "tiktok" && <TikTokIcon />}
                 </div>
               </a>
@@ -137,14 +143,15 @@ export const Footer = ({ scrollToSection }) => {
           {/* Columna 1: Descripción */}
           <div>
             <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-6">
-            Asistente Virtual del candidato a Magistrado de la Sala Regional Guadalajara del TEPJF Sergio Arturo Guerrero Olvera.
-            Innovando en la justicia electoral para hacerla mas cercana.
+              Asistente Virtual del candidato a Magistrado de la Sala Regional Guadalajara del TEPJF Sergio Arturo
+              Guerrero Olvera. Innovando en la justicia electoral para hacerla mas cercana.
             </p>
 
             <div className="bg-law-700/70 rounded-xl p-4 border border-law-600/70 backdrop-blur-md">
               <p className="text-white/80 text-sm leading-relaxed">
-              “Creo en una justicia electoral que no se limite a cumplir la ley, sino que fortalezca la democracia y acerque a las instituciones con la gente. 
-               Cada decisión que tomo busca garantizar que la voluntad del pueblo sea escuchada, respetada y reflejada con claridad.”    
+                "Creo en una justicia electoral que no se limite a cumplir la ley, sino que fortalezca la democracia y
+                acerque a las instituciones con la gente. Cada decisión que tomo busca garantizar que la voluntad del
+                pueblo sea escuchada, respetada y reflejada con claridad."
               </p>
               <p className="text-right text-gold-300 font-medium mt-2 text-sm">— Sergio Arturo Guerrero Olvera</p>
             </div>
@@ -186,43 +193,40 @@ export const Footer = ({ scrollToSection }) => {
               </li>
             </ul>
           </div>
-
-          {/* Columna 3: Boletín */}
-          <div>
-            <h4 className="font-semibold text-base mb-4 relative inline-block">
-              Boletín Informativo
+          {/* Columna 3: Powered by iLabTDI */}
+          <div className="flex flex-col items-center justify-center">
+            <h4 className="font-semibold text-3xl mb-4 relative inline-block">
+              Powered by
               <span className="absolute -bottom-1 left-0 w-16 h-0.5 bg-gradient-to-r from-gold-400 to-gold-500 rounded-full"></span>
             </h4>
 
-            <p className="text-gray-300 text-sm md:text-base mb-5 mt-5">
-              Suscríbete para estar al día con mis propuestas y novedades electorales.
-            </p>
-
-            <form className="space-y-3">
-              <div className="relative">
-                <input
-                  type="email"
-                  placeholder="Tu correo electrónico"
-                  className="w-full bg-law-700/80 border border-law-600/80 rounded-full px-4 py-3 text-white text-sm md:text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold-500/60 focus:border-transparent transition-all duration-300"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-gold-500 to-gold-600 text-law-900 font-semibold py-3 px-6 rounded-full hover:from-gold-400 hover:to-gold-500 transition-all duration-300 text-sm md:text-base flex items-center justify-center shadow-md hover:shadow-lg"
+            <div className="mt-5 flex flex-col items-center">
+              <a
+                href="https://ilabtdi.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-transform hover:scale-105"
               >
-                Suscribirse
-                <Mail className="ml-2 h-4 w-4 md:h-5 md:w-5" />
-              </button>
-            </form>
+                <img
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-removebg-preview-am7WC43xdBTPmlzEGMRN2i4FweNAGu.png"
+                  alt="iLabTDI"
+                  className="h-24 md:h-32 w-auto object-contain"
+                />
+              </a>
+              <p className="text-gray-300 text-sm mt-4 text-center">
+              Integration Laboratory for technological development and innovation (ILabTDI)
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-law-700/70 py-6 flex flex-col md:flex-row items-center justify-center">
-          <p className="text-gray-400 text-sm md:text-base mb-3 md:mb-0">
-            © {new Date().getFullYear()} Sergio Arturo Guerrero Olvera - Todos los derechos reservados
-          </p>
+        {/* Copyright y Powered By */}
+        <div className="border-t border-law-700/70 py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <p className="text-gray-400 text-sm md:text-base mb-4 md:mb-0">
+              © {new Date().getFullYear()} Sergio Arturo Guerrero Olvera - Todos los derechos reservados
+            </p>
+          </div>
         </div>
       </div>
     </footer>

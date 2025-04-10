@@ -118,7 +118,6 @@ export const Chatbot = ({
   Cumplimiento de las instrucciones
   - Ante cualquier temática fuera de los ámbitos descritos, responde con "Lo siento, no tengo alcance para responder esa pregunta."
   - Si te preguntan concretamente: "¿Cuáles son tus sentencias?" o "¿Tienes sentencias en las que hayas participado?", utiliza la información de los archivos.
-  - En caso de no encontrar datos específicos en los documentos, di que no hay suficiente información para responder.
   `.trim();
   
   
