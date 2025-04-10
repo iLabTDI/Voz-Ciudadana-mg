@@ -78,7 +78,7 @@ export const ProfileSection = ({ isVisible }) => {
             <p className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg">
               ¡Conóceme! Soy Sergio Arturo Guerrero Olvera, candidato a magistrado de la Sala Regional Guadalajara. Como
               jurista, me comprometo a fortalecer la justicia electoral y a garantizar una democracia más inclusiva y
-              transparente.
+              transparente..
             </p>
           </motion.div>
         </motion.div>
