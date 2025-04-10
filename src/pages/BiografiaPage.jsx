@@ -366,7 +366,7 @@ export const BiografiaPage = () => {
                   <p className="text-gray-600 mb-3">Licenciatura, Maestría y Doctorado en Derecho</p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                    Cursé la Licenciatura, Maestría y Doctorado en Derecho en la Universidad Autónoma de Querétaro, con una orientación marcada hacia la investigación jurídica avanzada, particularmente en temas de constitucionalismo y argumentación.
+                    Cursé la Licenciatura, Maestría y Doctorado en Derecho en la Universidad Autónoma de Querétaro, con una orientación marcada hacia la investigación jurídica avanzada, particularmente en temas de constitucionalismo y argumentación.  
                     </p>
                   </div>
                 </div>
