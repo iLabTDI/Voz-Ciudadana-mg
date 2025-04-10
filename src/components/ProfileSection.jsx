@@ -73,12 +73,12 @@ export const ProfileSection = ({ isVisible }) => {
             <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-law-100 flex items-center justify-center">
               <Briefcase className="h-8 w-8 md:h-10 md:w-10 text-law-600" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-law-800 mb-3 md:mb-4">Perfil Profesional</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-law-800 mb-3 md:mb-4">Perfil Profesional.</h2>
             <div className="h-1 w-24 md:w-32 bg-gold-500 mx-auto mb-4 md:mb-6 rounded-full"></div>
             <p className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg">
               ¡Conóceme! Soy Sergio Arturo Guerrero Olvera, candidato a magistrado de la Sala Regional Guadalajara. Como
               jurista, me comprometo a fortalecer la justicia electoral y a garantizar una democracia más inclusiva y
-              transparente.
+              transparente..
             </p>
           </motion.div>
         </motion.div>

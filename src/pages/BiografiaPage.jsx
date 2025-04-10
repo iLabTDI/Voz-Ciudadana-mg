@@ -366,7 +366,7 @@ export const BiografiaPage = () => {
                   <p className="text-gray-600 mb-3">Licenciatura, Maestría y Doctorado en Derecho</p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                      Consolidé una sólida base legal durante mi etapa de licenciatura, la cual fue fortalecida con estudios de posgrado orientados a la investigación jurídica avanzada a nivel de maestría y doctorado en la Universidad Autónoma de Querétaro.
+                    Cursé la Licenciatura, Maestría y Doctorado en Derecho en la Universidad Autónoma de Querétaro, con una orientación marcada hacia la investigación jurídica avanzada, particularmente en temas de constitucionalismo y argumentación.  
                     </p>
                   </div>
                 </div>
@@ -396,12 +396,12 @@ export const BiografiaPage = () => {
                   <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
                       <GraduationCap className="h-6 w-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-law-700">Especialización en Derecho Constitucional y Amparo</h3>
+                    <h3 className="text-xl font-bold text-law-700">Especialización en Derecho Constitucional y Amparo Por la Universidad Autónoma de Querétaro.</h3>
                   </div>
                   <p className="text-gray-600 mb-3">Formación complementaria en normas y garantías constitucionales</p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                      Capacitación enfocada en la protección de derechos fundamentales y en el análisis de amparos.
+                    Formación especializada en el análisis del control constitucional, garantías individuales, procesos de amparo y su aplicación práctica en el ámbito jurisdiccional.
                     </p>
                   </div>
                 </div>
@@ -421,7 +421,7 @@ export const BiografiaPage = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-law-900/80 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
-                      Universidad de Castilla-La Mancha
+                      Universidad de Castilla-La Mancha, España
                     </span>
                   </div>
                 </div>
@@ -432,10 +432,10 @@ export const BiografiaPage = () => {
                     </div>
                     <h3 className="text-xl font-bold text-law-700">Especialización en Justicia Constitucional y Procesos Constitucionales</h3>
                   </div>
-                  <p className="text-gray-600 mb-3">Universidad de Castilla-La Mancha, Toledo, España</p>
+                  <p className="text-gray-600 mb-3">Universidad de Castilla-La Mancha, España – Especialización en Justicia Constitucional y Procesos Constitucionales</p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                      Estudio enfocado en la interpretación y aplicación de los principios constitucionales.
+                    Estudios en interpretación y aplicación de principios constitucionales, con enfoque en el derecho constitucional comparado.
                     </p>
                   </div>
                 </div>
@@ -466,10 +466,10 @@ export const BiografiaPage = () => {
                     </div>
                     <h3 className="text-xl font-bold text-law-700">Especialización y Master en Argumentación Jurídica</h3>
                   </div>
-                  <p className="text-gray-600 mb-3">Universidad de Alicante, España</p>
+                  <p className="text-gray-600 mb-3">Universidad de Alicante, España – Especialización y Máster en Argumentación Jurídica</p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                      Profundización en técnicas y metodologías de argumentación jurídica para el análisis de sentencias.
+                    Especialización en técnicas de argumentación jurídica, análisis estructural de sentencias y modelos de justificación racional del derecho.
                     </p>
                   </div>
                 </div>
@@ -503,7 +503,7 @@ export const BiografiaPage = () => {
                   <p className="text-gray-600 mb-3">Centro de Capacitación Judicial Electoral del TEPJF</p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                      Formación orientada a la aplicación de criterios de justicia en materia electoral.
+                    Formación especializada en criterios jurisdiccionales en materia electoral, impartida por el Centro de Capacitación Judicial Electoral del TEPJF.
                     </p>
                   </div>
                 </div>
@@ -537,7 +537,7 @@ export const BiografiaPage = () => {
                   <p className="text-gray-600 mb-3">Universidad Nacional Autónoma de México</p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                      Enfoque en el análisis de normas y procesos electorales con miras a mejorar la justicia en materia electoral.
+                    Especialización en Derecho Electoral en la UNAM, con énfasis en el análisis normativo y el diseño institucional de procesos electorales.
                     </p>
                   </div>
                 </div>
