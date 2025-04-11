@@ -133,7 +133,7 @@ export const InspirationSection = ({ isVisible }) => {
               </div>
               <div className="h-px w-12 bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
             </div>
-            <h2 className="text-3xl md:text-2xl font-bold text-law-800 mb-2">Mi Inspiración</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-law-800 mb-2">Mi Inspiración</h2>
             <p className="text-sm md:text-base max-w-2xl mx-auto">
               Conoce lo que me inspira más allá del ámbito jurídico: literatura, arte, música y reflexiones personales.
             </p>
@@ -233,6 +233,11 @@ export const InspirationSection = ({ isVisible }) => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
                 {
+                  icon: <Bookmark className="h-4 w-4 sm:h-5 sm:w-5" />,
+                  title: "Literatura",
+                  text: "Cristal Glangchai, Bart Kosko, Bernard Schwartz",
+                },
+                {
                   icon: <Music className="h-4 w-4 sm:h-5 sm:w-5" />,
                   title: "Música",
                   text: "Los Cadetes de Linares, Pink Floyd, Elvis Presley",
@@ -242,11 +247,11 @@ export const InspirationSection = ({ isVisible }) => {
                   title: "Cine",
                   text: "Forrest Gump, Mad Max, La vida es bella",
                 },
-                {
-                  icon: <Globe className="h-4 w-4 sm:h-5 sm:w-5" />,
-                  title: "Lugares",
-                  text: "Biblioteca Vasconcelos, Teatro Degollado",
-                },
+                // {
+                //   icon: <Globe className="h-4 w-4 sm:h-5 sm:w-5" />,
+                //   title: "Lugares",
+                //   text: "Biblioteca Vasconcelos, Teatro Degollado",
+                // },
               ].map((item, index) => (
                 <div
                   key={index}

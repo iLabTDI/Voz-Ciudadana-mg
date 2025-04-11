@@ -126,13 +126,13 @@ export const BiografiaPage = () => {
               </div>
               <span className="font-medium">Volver al inicio</span>
             </Link>
-            <h1 className="text-xl md:text-2xl font-bold hidden md:block">Sergio Arturo Guerrero Olvera</h1>
+            <h1 className="text-lg md:text-2xl font-bold hidden md:block">Sergio Arturo Guerrero Olvera</h1>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative py-24 md:py-32 px-6">
+      <section ref={heroRef} className="relative py-24 md:py-10 px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-law-900/20 to-transparent pointer-events-none"></div>
         <div
           className="absolute inset-0 bg-cover bg-center opacity-10"
@@ -160,7 +160,7 @@ export const BiografiaPage = () => {
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold text-law-800 mb-6 tracking-tight">Mi Biografía</h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-2xl text-gray-600 mb-10 max-w-4xl mx-auto leading-relaxed">
               Conoce mi trayectoria profesional, académica y personal. Soy Sergio Arturo Guerrero Olvera, un jurista
               comprometido con la justicia electoral y la democracia en México.
             </p>
@@ -233,7 +233,7 @@ export const BiografiaPage = () => {
                   <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-full bg-white shadow-xl flex items-center justify-center p-2">
                     <div className="w-full h-full rounded-full bg-gradient-to-br from-law-600 to-law-700 flex items-center justify-center text-white text-center">
                       <div>
-                        <div className="text-xl font-bold">20+</div>
+                        <div className="text-lg font-bold">20+</div>
                         <div className="text-xs">años de experiencia</div>
                       </div>
                     </div>
@@ -284,7 +284,7 @@ export const BiografiaPage = () => {
 
                   {/* Línea de tiempo */}
                   <div className="mt-10">
-                    <h4 className="text-xl font-bold text-law-700 mb-6">Mi Trayectoria Profesional</h4>
+                    <h4 className="text-lg font-bold text-law-700 mb-6">Mi Trayectoria Profesional</h4>
                     <div className="relative">
                       {/* Línea central */}
                       <div className="absolute left-16 top-0 bottom-0 w-1 bg-gradient-to-b from-law-500 to-law-200 rounded-full"></div>
@@ -322,7 +322,7 @@ export const BiografiaPage = () => {
           ref={formacionRef}
           className={`mb-24 transition-opacity duration-500`}
         >
-          <motion.div initial="hidden" animate={formacionInView ? "visible" : "hidden"} variants={staggerContainer}>
+          <motion.div initial="hidden" animate={formacionInView ? "visible" : "hidden"} variants={staggerContainer}></motion.div>
             <motion.div variants={itemFadeIn} className="flex items-center mb-12">
               <div className="h-px bg-law-200 flex-grow"></div>
               <h2 className="text-3xl font-bold text-law-800 px-6 flex items-center">
@@ -332,7 +332,7 @@ export const BiografiaPage = () => {
               <div className="h-px bg-law-200 flex-grow"></div>
             </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Licenciatura en Derecho */}
               <motion.div
                 variants={itemFadeIn}
@@ -352,21 +352,24 @@ export const BiografiaPage = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
+                  <div className="flex items-start mb-4">
+                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4 flex-shrink-0">
                       <GraduationCap className="h-6 w-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-law-700">Formación Académica en Derecho</h3>
+                    <div>
+                      <h3 className="text-lg font-bold text-law-700">Formación Académica en Derecho</h3>
+                    </div>
                   </div>
                   <p className="text-gray-600 mb-3">Licenciatura, Maestría y Doctorado en Derecho</p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                    Cursé la Licenciatura, Maestría y Doctorado en Derecho en la Universidad Autónoma de Querétaro, con una orientación marcada hacia la investigación jurídica avanzada, particularmente en temas de constitucionalismo y argumentación.  
+                      Cursé la Licenciatura, Maestría y Doctorado en Derecho en la Universidad Autónoma de Querétaro, con una
+                      orientación marcada hacia la investigación jurídica avanzada, particularmente en temas de constitucionalismo y
+                      argumentación.
                     </p>
                   </div>
                 </div>
               </motion.div>
-
 
               {/* Especialización en Derecho Constitucional y Amparo */}
               <motion.div
@@ -381,22 +384,25 @@ export const BiografiaPage = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-law-900/80 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
-                      Sin rango
-                    </span>
+                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Sin rango</span>
                   </div>
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
+                  <div className="flex items-start mb-4">
+                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4 flex-shrink-0">
                       <GraduationCap className="h-6 w-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-law-700">Especialización en Derecho Constitucional y Amparo Por la Universidad Autónoma de Querétaro.</h3>
+                    <div>
+                      <h3 className="text-lg font-bold text-law-700">
+                        Especialización en Derecho Constitucional y Amparo Por la Universidad Autónoma de Querétaro.
+                      </h3>
+                    </div>
                   </div>
                   <p className="text-gray-600 mb-3">Formación complementaria en normas y garantías constitucionales</p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                    Formación especializada en el análisis del control constitucional, garantías individuales, procesos de amparo y su aplicación práctica en el ámbito jurisdiccional.
+                      Formación especializada en el análisis del control constitucional, garantías individuales, procesos de amparo
+                      y su aplicación práctica en el ámbito jurisdiccional.
                     </p>
                   </div>
                 </div>
@@ -421,16 +427,24 @@ export const BiografiaPage = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
+                  <div className="flex items-start mb-4">
+                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4 flex-shrink-0">
                       <GraduationCap className="h-6 w-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-law-700">Especialización en Justicia Constitucional y Procesos Constitucionales</h3>
+                    <div>
+                      <h3 className="text-lg font-bold text-law-700">
+                        Especialización en Justicia Constitucional y Procesos Constitucionales
+                      </h3>
+                    </div>
                   </div>
-                  <p className="text-gray-600 mb-3">Universidad de Castilla-La Mancha, España – Especialización en Justicia Constitucional y Procesos Constitucionales</p>
+                  <p className="text-gray-600 mb-3">
+                    Universidad de Castilla-La Mancha, España – Especialización en Justicia Constitucional y Procesos
+                    Constitucionales
+                  </p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                    Estudios en interpretación y aplicación de principios constitucionales, con enfoque en el derecho constitucional comparado.
+                      Estudios en interpretación y aplicación de principios constitucionales, con enfoque en el derecho
+                      constitucional comparado.
                     </p>
                   </div>
                 </div>
@@ -455,16 +469,21 @@ export const BiografiaPage = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
+                  <div className="flex items-start mb-4">
+                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4 flex-shrink-0">
                       <GraduationCap className="h-6 w-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-law-700">Especialización y Master en Argumentación Jurídica</h3>
+                    <div>
+                      <h3 className="text-lg font-bold text-law-700">Especialización y Master en Argumentación Jurídica</h3>
+                    </div>
                   </div>
-                  <p className="text-gray-600 mb-3">Universidad de Alicante, España – Especialización y Máster en Argumentación Jurídica</p>
+                  <p className="text-gray-600 mb-3">
+                    Universidad de Alicante, España – Especialización y Máster en Argumentación Jurídica
+                  </p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                    Especialización en técnicas de argumentación jurídica, análisis estructural de sentencias y modelos de justificación racional del derecho.
+                      Especialización en técnicas de argumentación jurídica, análisis estructural de sentencias y modelos de
+                      justificación racional del derecho.
                     </p>
                   </div>
                 </div>
@@ -489,16 +508,19 @@ export const BiografiaPage = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
+                  <div className="flex items-start mb-4">
+                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4 flex-shrink-0">
                       <GraduationCap className="h-6 w-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-law-700">Especialización en Justicia Electoral</h3>
+                    <div>
+                      <h3 className="text-lg font-bold text-law-700">Especialización en Justicia Electoral</h3>
+                    </div>
                   </div>
                   <p className="text-gray-600 mb-3">Centro de Capacitación Judicial Electoral del TEPJF</p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                    Formación especializada en criterios jurisdiccionales en materia electoral, impartida por el Centro de Capacitación Judicial Electoral del TEPJF.
+                      Formación especializada en criterios jurisdiccionales en materia electoral, impartida por el Centro de
+                      Capacitación Judicial Electoral del TEPJF.
                     </p>
                   </div>
                 </div>
@@ -517,212 +539,32 @@ export const BiografiaPage = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-law-900/80 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
-                      UNAM
-                    </span>
+                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">UNAM</span>
                   </div>
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
+                  <div className="flex items-start mb-4">
+                    <div className="w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4 flex-shrink-0">
                       <GraduationCap className="h-6 w-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-law-700">Especialización en Derecho Electoral</h3>
+                    <div>
+                      <h3 className="text-lg font-bold text-law-700">Especialización en Derecho Electoral</h3>
+                    </div>
                   </div>
                   <p className="text-gray-600 mb-3">Universidad Nacional Autónoma de México</p>
                   <div className="bg-law-50 p-4 rounded-xl">
                     <p className="text-gray-700">
-                    Especialización en Derecho Electoral en la UNAM, con énfasis en el análisis normativo y el diseño institucional de procesos electorales.
+                      Especialización en Derecho Electoral en la UNAM, con énfasis en el análisis normativo y el diseño
+                      institucional de procesos electorales.
                     </p>
                   </div>
                 </div>
+
               </motion.div>
-            </div>
-          </motion.div>
-        </section>
-
-
-
-        {/* Trayectoria Profesional */}
-        <section
-          id="trayectoria"
-          ref={trayectoriaRef}
-          className={`mb-24 transition-opacity duration-500 }`}
-        >
-          <motion.div initial="hidden" animate={trayectoriaInView ? "visible" : "hidden"} variants={staggerContainer}>
-            <motion.div variants={itemFadeIn} className="flex items-center mb-12">
-              <div className="h-px bg-law-200 flex-grow"></div>
-              <h2 className="text-3xl font-bold text-law-800 px-6 flex items-center">
-                <Briefcase className="mr-3 h-7 w-7 text-law-600" />
-                Mi Trayectoria Profesional
-              </h2>
-              <div className="h-px bg-law-200 flex-grow"></div>
-            </motion.div>
-
-            {/* Bloque 1: Magistrado de la Sala Regional Guadalajara */}
-            <motion.div
-              variants={itemFadeIn}
-              className="bg-white mb-5 rounded-2xl shadow-lg overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 group"
-            >
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 relative">
-                  <img
-                    src="https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=800&h=600&auto=format&fit=crop"
-                    alt="Magistrado de la Sala Regional Guadalajara"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/70 hidden md:block"></div>
-                </div>
-                <div className="md:w-2/3 p-8">
-                  <div className="flex items-center mb-4">
-                    <div className="w-14 h-14 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
-                      <Briefcase className="h-7 w-7" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-law-700">Magistrado de la Sala Regional Guadalajara</h3>
-                      <p className="text-gray-600">Tribunal Electoral del Poder Judicial de la Federación</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    Actualmente desempeño el cargo de Magistrado de la Sala Regional Guadalajara. Con 20 años de servicio en el Poder Judicial de la Federación –incluyendo 9 años en la Sala Superior del Tribunal Electoral– he liderado la modernización y consolidación de la justicia electoral en México. Fui nombrado Magistrado el 28 de marzo de 2019, marcando un hito en mi trayectoria.
-                  </p>
-                  <div className="bg-law-50 p-4 rounded-xl">
-                    <h4 className="font-medium text-law-700 mb-2">Logros destacados:</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <div className="w-5 h-5 rounded-xl bg-law-100 flex items-center justify-center text-law-600 mr-2 flex-shrink-0 mt-0.5">
-                          <ChevronRight className="h-3 w-3" />
-                        </div>
-                        <span className="text-gray-700">Liderazgo en la modernización del sistema electoral</span>
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-5 h-5 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-2 flex-shrink-0 mt-0.5">
-                          <ChevronRight className="h-3 w-3" />
-                        </div>
-                        <span className="text-gray-700">Resolución de casos electorales de alta relevancia nacional</span>
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-5 h-5 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-2 flex-shrink-0 mt-0.5">
-                          <ChevronRight className="h-3 w-3" />
-                        </div>
-                        <span className="text-gray-700">Consolidación de 20 años de experiencia en el Poder Judicial</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Bloque 2: Secretario de Estudio y Cuenta / Coordinador de Jurisprudencia */}
-            <motion.div
-              variants={itemFadeIn}
-              className="bg-white mb-5 rounded-2xl shadow-lg overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 group"
-            >
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 relative">
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-TvKb1c2uwITDPrIsnWlCS2l0mnQXSk.png"
-                    alt="Secretario de Estudio y Cuenta y Coordinador de Jurisprudencia"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/70 hidden md:block"></div>
-                </div>
-                <div className="md:w-2/3 p-8">
-                  <div className="flex items-center mb-4">
-                    <div className="w-14 h-14 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
-                      <Briefcase className="h-7 w-7" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-law-700">
-                        Secretario de Estudio y Cuenta y Coordinador de Jurisprudencia
-                      </h3>
-                      <p className="text-gray-600">TEPJF (2005-2014)</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    Durante este periodo, participé en la elaboración de criterios jurisprudenciales innovadores y en la coordinación de más de 500 proyectos de sentencia. Mi labor fue clave para optimizar metodologías y agilizar procesos judiciales en casos electorales de gran relevancia.
-                  </p>
-                  <div className="bg-law-50 p-4 rounded-xl">
-                    <h4 className="font-medium text-law-700 mb-2">Contribuciones principales:</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <div className="w-5 h-5 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-2 flex-shrink-0 mt-0.5">
-                          <ChevronRight className="h-3 w-3" />
-                        </div>
-                        <span className="text-gray-700">Desarrollo de criterios jurisprudenciales innovadores</span>
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-5 h-5 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-2 flex-shrink-0 mt-0.5">
-                          <ChevronRight className="h-3 w-3" />
-                        </div>
-                        <span className="text-gray-700">Coordinación en la elaboración de proyectos de sentencia</span>
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-5 h-5 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-2 flex-shrink-0 mt-0.5">
-                          <ChevronRight className="h-3 w-3" />
-                        </div>
-                        <span className="text-gray-700">Optimización de procesos judiciales electorales</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Bloque 3: Profesor de Derecho Electoral */}
-            <motion.div
-              variants={itemFadeIn}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500 hover:border-law-200 group"
-            >
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 relative">
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-WYeBAJnJMKbET2WTRIk9ad13s3CDgY.png"
-                    alt="Profesor de Derecho Electoral"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/70 hidden md:block"></div>
-                </div>
-                <div className="md:w-2/3 p-8">
-                  <div className="flex items-center mb-4">
-                    <div className="w-14 h-14 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
-                      <GraduationCap className="h-7 w-7" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-law-700">Profesor de Derecho Electoral</h3>
-                      <p className="text-gray-600">Universidad de Guadalajara (2008-Presente)</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    Como docente, he formado a numerosas generaciones de abogadas y abogados especializados en derecho electoral, combinando teoría y análisis práctico para profundizar en el estudio de los procesos electorales y la protección de derechos.
-                  </p>
-                  <div className="bg-law-50 p-4 rounded-xl">
-                    <h4 className="font-medium text-law-700 mb-2">Cursos impartidos:</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <div className="w-5 h-5 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-2 flex-shrink-0 mt-0.5">
-                          <ChevronRight className="h-3 w-3" />
-                        </div>
-                        <span className="text-gray-700">Derecho Electoral Comparado</span>
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-5 h-5 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-2 flex-shrink-0 mt-0.5">
-                          <ChevronRight className="h-3 w-3" />
-                        </div>
-                        <span className="text-gray-700">Sistemas de Justicia Electoral</span>
-                      </li>
-                      <li className="flex items-start">
-                        <div className="w-5 h-5 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-2 flex-shrink-0 mt-0.5">
-                          <ChevronRight className="h-3 w-3" />
-                        </div>
-                        <span className="text-gray-700">Derechos Político-Electorales</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+            <motion.div/>
+            <motion.div/>
+            <motion.div/>
+          </div>
         </section>
 
 
@@ -796,7 +638,7 @@ export const BiografiaPage = () => {
                       <div className="min-w-[3rem] min-h-[3rem] w-12 h-12 rounded-full bg-law-100 flex items-center justify-center text-law-600 mr-4">
                         <BookOpen className="h-6 w-6" />
                       </div>
-                      <h3 className="text-lg sm:text-xl font-bold text-law-700">{pub.title}</h3>
+                      <h3 className="text-lg sm:text-lg font-bold text-law-700">{pub.title}</h3>
                     </div>
 
                     <p className="text-gray-600 text-sm mb-2">{pub.source}</p>
