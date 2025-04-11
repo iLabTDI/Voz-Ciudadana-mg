@@ -69,11 +69,6 @@ export const BiografiaPage = () => {
       event: "Magistrado Presidente de la Sala Regional Guadalajara",
       description: "Tribunal Electoral del Poder Judicial de la Federación",
     },
-    {
-      year: "2019",
-      event: "Magistrado Propietario de la Sala Regional",
-      description: "Primera Circunscripción Plurinominal, TEPJF",
-    },
     { year: "2014-2019", event: "Magistrado Propietario", description: "Tribunal Electoral del Estado de Querétaro" },
     { year: "2015-2016", event: "Magistrado Presidente", description: "Tribunal Electoral del Estado de Querétaro" },
     {
@@ -345,7 +340,7 @@ export const BiografiaPage = () => {
               >
                 <div className="h-48 overflow-hidden relative">
                   <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1AmgxOLFvpUStHnKfo6sLKrVcRb0UY.png"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-5auNQyrb5JjfH6k0kHmj9GR1hRcWTr.png"
                     alt="Formación Jurídica"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
