@@ -195,12 +195,12 @@ export const Footer = ({ scrollToSection }) => {
           </div>
           {/* Columna 3: Powered by iLabTDI */}
           <div className="flex flex-col items-center justify-center">
-            <h4 className="font-semibold text-3xl mb-4 relative inline-block">
+            <h4 className="font-semibold text-3xl relative inline-block">
               Powered by
               <span className="absolute -bottom-1 left-0 w-16 h-0.5 bg-gradient-to-r from-gold-400 to-gold-500 rounded-full"></span>
             </h4>
 
-            <div className="mt-5 flex flex-col items-center">
+            <div className="flex flex-col items-center">
               <a
                 href="https://www.facebook.com/ILabTDI/"
                 target="_blank"
@@ -210,7 +210,7 @@ export const Footer = ({ scrollToSection }) => {
                 <img
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-removebg-preview-am7WC43xdBTPmlzEGMRN2i4FweNAGu.png"
                   alt="iLabTDI"
-                  className="h-24 md:h-32 w-auto object-contain"
+                  className="h-40 md:h-52 w-60 object-contain"
                 />
               </a>
               <p className="text-gray-300 text-sm mt-4 text-center">
@@ -222,7 +222,7 @@ export const Footer = ({ scrollToSection }) => {
 
         {/* Copyright y Powered By */}
         <div className="border-t border-law-700/70 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="flex flex-col md:flex-row items-center justify-center">
             <p className="text-gray-400 text-sm md:text-base mb-4 md:mb-0">
               © {new Date().getFullYear()} Sergio Arturo Guerrero Olvera - Todos los derechos reservados
             </p>

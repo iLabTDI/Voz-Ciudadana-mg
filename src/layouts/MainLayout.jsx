@@ -1,10 +1,10 @@
 "use client"
 
 import { Outlet } from "react-router-dom"
-import { Navbar } from "../components/Navbar"
-import { Footer } from "../components/Footer"
-import { CursorFollower } from "../components/CursorFollower"
-import { SocialBar } from "../components/SocialBar"
+import { Navbar } from "./Navbar"
+import { Footer } from "./Footer"
+import { CursorFollower } from "./CursorFollower"
+import { SocialBar } from "./SocialBar"
 import { useEffect, useState } from "react"
 
 export const MainLayout = () => {
@@ -33,7 +33,7 @@ export const MainLayout = () => {
         { id: "profile", position: windowHeight * 0.8 },
         { id: "proposals", position: windowHeight * 1.6 },
         { id: "inspiration", position: windowHeight * 2.4 },
-        { id: "gallery", position: windowHeight * 3.2 },
+        // { id: "gallery", position: windowHeight * 3.2 },
       ]
 
       for (let i = sections.length - 1; i >= 0; i--) {

@@ -9,7 +9,6 @@ import { ProfileSection } from "../components/ProfileSection"
 import { ProposalsSection } from "../components/ProposalsSection"
 import { GallerySection } from "../components/GallerySection"
 import { Chatbot } from "./Chatbot"
-import { Magistrado3D } from "./Magistrado3D"
 import { FloatingSocialBar } from "../components/FloatingSocialBar"
 import { VotaBanner } from "../components/vota-banner"
 import { VotaBannerHorizontal } from "../components/vota-banner-horizontal"
@@ -18,6 +17,7 @@ import fondo from "../../assets/fondo.jpeg"
 import VotaBannerFlotante from "../components/vota-banner-flotante"
 import VotaBannerFull from "../components/vota-banner-full"
 import InspirationSection from "../components/inspiration-section"
+import { Magistrado } from "./Magistrado"
 
 export default function ElectoralLandingPage() {
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -185,17 +185,13 @@ export default function ElectoralLandingPage() {
             </div>
 
             <div className="flex flex-col lg:flex-row w-full">
+              {/* Ajustado para móviles: altura reducida y padding añadido */}
               <motion.div
                 className="relative w-full lg:w-2/5 bg-gradient-to-b from-law-800/80 to-law-900/60 overflow-hidden"
                 variants={heroVariants}
               >
-                <div className="absolute top-0 left-0 w-full h-full bg-[url('/patterns/subtle-pattern.png')] bg-repeat opacity-10 z-0"></div>
-                <div className="relative z-10 h-[350px] lg:h-[600px] flex items-center justify-center">
-                  <Magistrado3D
-                    isWaiting={isWaitingGlobal}
-                    isTyping={isTypingGlobal}
-                    lastBotMessage={lastBotMessageGlobal}
-                  />
+                <div className="relative z-10 h-[450px] sm:h-[300px] md:h-[350px] lg:h-[600px] flex items-center justify-center">
+                  <Magistrado />
                 </div>
               </motion.div>
 
@@ -210,8 +206,6 @@ export default function ElectoralLandingPage() {
           </motion.div>
         </motion.div>
       </motion.section>
-
-
 
       {/* Botón de Scroll hacia arriba */}
       <AnimatePresence>
@@ -288,4 +282,3 @@ export default function ElectoralLandingPage() {
     </div>
   )
 }
-
